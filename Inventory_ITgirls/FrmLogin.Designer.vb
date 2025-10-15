@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class Form1
+Partial Class FrmLogin
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -32,6 +32,7 @@ Partial Class Form1
         Label3 = New Label()
         PictureBox3 = New PictureBox()
         PictureBox4 = New PictureBox()
+        Label4 = New Label()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox3, ComponentModel.ISupportInitialize).BeginInit()
@@ -144,12 +145,22 @@ Partial Class Form1
         PictureBox4.TabIndex = 11
         PictureBox4.TabStop = False
         ' 
-        ' Form1
+        ' Label4
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        Label4.AutoSize = True
+        Label4.Location = New Point(354, 310)
+        Label4.Name = "Label4"
+        Label4.Size = New Size(41, 15)
+        Label4.TabIndex = 12
+        Label4.Text = "Label4"
+        ' 
+        ' FrmLogin
+        ' 
+        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(189), CByte(237), CByte(255))
         ClientSize = New Size(800, 450)
+        Controls.Add(Label4)
         Controls.Add(PictureBox4)
         Controls.Add(PictureBox3)
         Controls.Add(Label3)
@@ -160,7 +171,7 @@ Partial Class Form1
         Controls.Add(PictureBox2)
         Controls.Add(txtStudentID)
         Controls.Add(PictureBox1)
-        Name = "Form1"
+        Name = "FrmLogin"
         Text = "Form1"
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         CType(PictureBox2, ComponentModel.ISupportInitialize).EndInit()
@@ -180,5 +191,6 @@ Partial Class Form1
     Friend WithEvents Label3 As Label
     Friend WithEvents PictureBox3 As PictureBox
     Friend WithEvents PictureBox4 As PictureBox
+    Friend WithEvents Label4 As Label
 
 End Class
