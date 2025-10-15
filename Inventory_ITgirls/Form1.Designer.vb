@@ -94,11 +94,11 @@ Partial Class Form1
         ' 
         Label1.AutoSize = True
         Label1.BackColor = Color.Transparent
-        Label1.Font = New Font("Stencil", 36.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label1.Font = New Font("Arial Rounded MT Bold", 36F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label1.ForeColor = Color.DarkSlateGray
         Label1.Location = New Point(205, 84)
         Label1.Name = "Label1"
-        Label1.Size = New Size(167, 57)
+        Label1.Size = New Size(180, 55)
         Label1.TabIndex = 7
         Label1.Text = "LOGIN"
         ' 
@@ -106,7 +106,7 @@ Partial Class Form1
         ' 
         Label2.AutoSize = True
         Label2.BackColor = Color.Transparent
-        Label2.Font = New Font("Arial Rounded MT Bold", 9.0F)
+        Label2.Font = New Font("Arial Rounded MT Bold", 9F)
         Label2.ForeColor = Color.DarkSlateGray
         Label2.Location = New Point(177, 259)
         Label2.Name = "Label2"
@@ -118,7 +118,7 @@ Partial Class Form1
         ' 
         Label3.AutoSize = True
         Label3.BackColor = Color.Transparent
-        Label3.Font = New Font("Arial Rounded MT Bold", 9.0F)
+        Label3.Font = New Font("Arial Rounded MT Bold", 9F)
         Label3.ForeColor = Color.DarkSlateGray
         Label3.Location = New Point(176, 185)
         Label3.Name = "Label3"
