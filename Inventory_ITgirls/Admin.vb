@@ -13,6 +13,4 @@
         Hide()
         SalesReport.Show()
     End Sub
-
-
 End Class

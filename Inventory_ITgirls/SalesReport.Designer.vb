@@ -36,7 +36,7 @@ Partial Class SalesReport
         Label1.AutoSize = True
         Label1.BackColor = Color.Transparent
         Label1.Font = New Font("Franklin Gothic Medium Cond", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label1.ForeColor = Color.SteelBlue
+        Label1.ForeColor = Color.DarkSlateGray
         Label1.Location = New Point(366, 35)
         Label1.Name = "Label1"
         Label1.Size = New Size(51, 21)
@@ -45,10 +45,10 @@ Partial Class SalesReport
         ' 
         ' btnSalesReport
         ' 
-        btnSalesReport.BackColor = Color.LightBlue
+        btnSalesReport.BackColor = Color.PaleTurquoise
         btnSalesReport.FlatStyle = FlatStyle.Flat
         btnSalesReport.Font = New Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        btnSalesReport.ForeColor = Color.MidnightBlue
+        btnSalesReport.ForeColor = Color.DarkSlateGray
         btnSalesReport.Location = New Point(15, 206)
         btnSalesReport.Name = "btnSalesReport"
         btnSalesReport.Size = New Size(170, 44)
@@ -58,7 +58,7 @@ Partial Class SalesReport
         ' 
         ' btnStockManagement
         ' 
-        btnStockManagement.BackColor = Color.SteelBlue
+        btnStockManagement.BackColor = Color.DarkSlateGray
         btnStockManagement.FlatStyle = FlatStyle.Flat
         btnStockManagement.Font = New Font("Yu Gothic UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         btnStockManagement.ForeColor = Color.White
@@ -71,7 +71,7 @@ Partial Class SalesReport
         ' 
         ' btnBack
         ' 
-        btnBack.BackColor = Color.SteelBlue
+        btnBack.BackColor = Color.DarkSlateGray
         btnBack.FlatStyle = FlatStyle.Flat
         btnBack.Font = New Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         btnBack.ForeColor = Color.White
@@ -87,7 +87,7 @@ Partial Class SalesReport
         Label2.AutoSize = True
         Label2.BackColor = Color.Transparent
         Label2.Font = New Font("Stencil", 25F, FontStyle.Bold)
-        Label2.ForeColor = Color.SteelBlue
+        Label2.ForeColor = Color.DarkSlateGray
         Label2.Location = New Point(20, 20)
         Label2.Name = "Label2"
         Label2.Size = New Size(353, 40)

@@ -55,7 +55,7 @@ Partial Class Form1
         txtStudentID.Multiline = True
         txtStudentID.Name = "txtStudentID"
         txtStudentID.Size = New Size(217, 28)
-        txtStudentID.TabIndex = 2
+        txtStudentID.TabIndex = 0
         ' 
         ' PictureBox2
         ' 
@@ -68,14 +68,14 @@ Partial Class Form1
         ' 
         ' btnDone
         ' 
-        btnDone.BackColor = Color.SteelBlue
+        btnDone.BackColor = Color.DarkSlateGray
         btnDone.FlatStyle = FlatStyle.Flat
         btnDone.Font = New Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         btnDone.ForeColor = Color.White
         btnDone.Location = New Point(239, 333)
         btnDone.Name = "btnDone"
         btnDone.Size = New Size(98, 37)
-        btnDone.TabIndex = 5
+        btnDone.TabIndex = 2
         btnDone.Text = "DONE"
         btnDone.UseVisualStyleBackColor = False
         ' 
@@ -88,14 +88,14 @@ Partial Class Form1
         txtPassword.Multiline = True
         txtPassword.Name = "txtPassword"
         txtPassword.Size = New Size(217, 28)
-        txtPassword.TabIndex = 6
+        txtPassword.TabIndex = 1
         ' 
         ' Label1
         ' 
         Label1.AutoSize = True
         Label1.BackColor = Color.Transparent
-        Label1.Font = New Font("Stencil", 36F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label1.ForeColor = Color.SteelBlue
+        Label1.Font = New Font("Stencil", 36.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label1.ForeColor = Color.DarkSlateGray
         Label1.Location = New Point(205, 84)
         Label1.Name = "Label1"
         Label1.Size = New Size(167, 57)
@@ -106,8 +106,8 @@ Partial Class Form1
         ' 
         Label2.AutoSize = True
         Label2.BackColor = Color.Transparent
-        Label2.Font = New Font("Arial Rounded MT Bold", 9F)
-        Label2.ForeColor = Color.MidnightBlue
+        Label2.Font = New Font("Arial Rounded MT Bold", 9.0F)
+        Label2.ForeColor = Color.DarkSlateGray
         Label2.Location = New Point(177, 259)
         Label2.Name = "Label2"
         Label2.Size = New Size(79, 14)
@@ -118,8 +118,8 @@ Partial Class Form1
         ' 
         Label3.AutoSize = True
         Label3.BackColor = Color.Transparent
-        Label3.Font = New Font("Arial Rounded MT Bold", 9F)
-        Label3.ForeColor = Color.MidnightBlue
+        Label3.Font = New Font("Arial Rounded MT Bold", 9.0F)
+        Label3.ForeColor = Color.DarkSlateGray
         Label3.Location = New Point(176, 185)
         Label3.Name = "Label3"
         Label3.Size = New Size(82, 14)
@@ -128,7 +128,7 @@ Partial Class Form1
         ' 
         ' PictureBox3
         ' 
-        PictureBox3.BackColor = Color.SteelBlue
+        PictureBox3.BackColor = Color.DarkSlateGray
         PictureBox3.Location = New Point(603, 40)
         PictureBox3.Name = "PictureBox3"
         PictureBox3.Size = New Size(139, 372)
