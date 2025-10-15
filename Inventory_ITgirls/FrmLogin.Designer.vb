@@ -23,7 +23,7 @@ Partial Class FrmLogin
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         PictureBox1 = New PictureBox()
-        txtStudentID = New TextBox()
+        txtID = New TextBox()
         PictureBox2 = New PictureBox()
         btnDone = New Button()
         txtPassword = New TextBox()
@@ -33,6 +33,7 @@ Partial Class FrmLogin
         PictureBox3 = New PictureBox()
         PictureBox4 = New PictureBox()
         Label4 = New Label()
+        lblAttempts = New Label()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox3, ComponentModel.ISupportInitialize).BeginInit()
@@ -47,16 +48,16 @@ Partial Class FrmLogin
         PictureBox1.TabIndex = 1
         PictureBox1.TabStop = False
         ' 
-        ' txtStudentID
+        ' txtID
         ' 
-        txtStudentID.BackColor = Color.LightCyan
-        txtStudentID.BorderStyle = BorderStyle.None
-        txtStudentID.ForeColor = Color.MidnightBlue
-        txtStudentID.Location = New Point(180, 199)
-        txtStudentID.Multiline = True
-        txtStudentID.Name = "txtStudentID"
-        txtStudentID.Size = New Size(217, 28)
-        txtStudentID.TabIndex = 0
+        txtID.BackColor = Color.LightCyan
+        txtID.BorderStyle = BorderStyle.None
+        txtID.ForeColor = Color.MidnightBlue
+        txtID.Location = New Point(180, 199)
+        txtID.Multiline = True
+        txtID.Name = "txtID"
+        txtID.Size = New Size(217, 28)
+        txtID.TabIndex = 0
         ' 
         ' PictureBox2
         ' 
@@ -154,12 +155,22 @@ Partial Class FrmLogin
         Label4.TabIndex = 12
         Label4.Text = "Label4"
         ' 
+        ' lblAttempts
+        ' 
+        lblAttempts.AutoSize = True
+        lblAttempts.Location = New Point(451, 234)
+        lblAttempts.Name = "lblAttempts"
+        lblAttempts.Size = New Size(12, 15)
+        lblAttempts.TabIndex = 13
+        lblAttempts.Text = "-"
+        ' 
         ' FrmLogin
         ' 
-        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(189), CByte(237), CByte(255))
         ClientSize = New Size(800, 450)
+        Controls.Add(lblAttempts)
         Controls.Add(Label4)
         Controls.Add(PictureBox4)
         Controls.Add(PictureBox3)
@@ -169,7 +180,7 @@ Partial Class FrmLogin
         Controls.Add(txtPassword)
         Controls.Add(btnDone)
         Controls.Add(PictureBox2)
-        Controls.Add(txtStudentID)
+        Controls.Add(txtID)
         Controls.Add(PictureBox1)
         Name = "FrmLogin"
         Text = "Form1"
@@ -182,7 +193,7 @@ Partial Class FrmLogin
     End Sub
 
     Friend WithEvents PictureBox1 As PictureBox
-    Friend WithEvents txtStudentID As TextBox
+    Friend WithEvents txtID As TextBox
     Friend WithEvents PictureBox2 As PictureBox
     Friend WithEvents btnDone As Button
     Friend WithEvents txtPassword As TextBox
@@ -192,5 +203,6 @@ Partial Class FrmLogin
     Friend WithEvents PictureBox3 As PictureBox
     Friend WithEvents PictureBox4 As PictureBox
     Friend WithEvents Label4 As Label
+    Friend WithEvents lblAttempts As Label
 
 End Class

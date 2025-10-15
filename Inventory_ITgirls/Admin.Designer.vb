@@ -139,7 +139,7 @@ Partial Class Admin
         ' 
         Button1.BackColor = Color.DarkSlateGray
         Button1.FlatStyle = FlatStyle.Popup
-        Button1.Font = New Font("Arial Rounded MT Bold", 16.0F)
+        Button1.Font = New Font("Arial Rounded MT Bold", 16F)
         Button1.ForeColor = Color.MintCream
         Button1.Location = New Point(256, 375)
         Button1.Name = "Button1"
@@ -152,7 +152,7 @@ Partial Class Admin
         ' 
         Button2.BackColor = Color.DarkSlateGray
         Button2.FlatStyle = FlatStyle.Popup
-        Button2.Font = New Font("Arial Rounded MT Bold", 16.0F)
+        Button2.Font = New Font("Arial Rounded MT Bold", 16F)
         Button2.ForeColor = Color.MintCream
         Button2.Location = New Point(501, 365)
         Button2.Name = "Button2"
@@ -176,7 +176,7 @@ Partial Class Admin
         ' 
         ' Admin
         ' 
-        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.DarkSlateGray
         ClientSize = New Size(1040, 495)

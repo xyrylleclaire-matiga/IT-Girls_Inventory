@@ -1,92 +1,172 @@
 ﻿Imports MySql.Data.MySqlClient
 Public Class FrmLogin
     Private Sub btnDone_Click(sender As Object, e As EventArgs) Handles btnDone.Click
-        Call con()
-        sql = "Select * from tblusers where user_id = @user_id AND password= @password "
-        cmd = New MySqlCommand(sql, cn)
-        cmd.Parameters.AddWithValue("@user_id", txtStudentID.Text)
-        cmd.Parameters.AddWithValue("@password", txtPassword.Text)
+        userLogin()
 
-        dr = cmd.ExecuteReader()
-        If dr.Read = True Then
-            MsgBox("Login Success!")
-            Dim role As String = dr("role").ToString()
+    End Sub
 
-            If role = "Student" Then
-                Me.Hide()
-                ' FrmUser.Show()
-            End If
-        Else
-            MsgBox("Login Failed!")
+    Private Sub userLogin()
 
-            ' Refresh attempts from DB para sure na latest value
+        databaseConnection.con()
+        sql = "SELECT * FROM tblusers WHERE user_id = @user_id AND password = @password AND status = 'Active' AND attempts > 0"
+        databaseConnection.cmd = New MySqlCommand(sql, databaseConnection.cn)
+        databaseConnection.cmd.Parameters.AddWithValue("@user_id", txtID.Text)
+        databaseConnection.cmd.Parameters.AddWithValue("@password", txtPassword.Text)
+
+        databaseConnection.dr = databaseConnection.cmd.ExecuteReader()
+
+        If databaseConnection.dr.Read = True Then
+            Dim role As String = databaseConnection.dr("role").ToString()
+            databaseConnection.dr.Close()
+            databaseConnection.cn.Close()
             Call getAttempts()
 
-            Dim attempts As Integer = Convert.ToInt32(lblAttempts.Text)
-            attempts -= 1
-            lblAttempts.Text = attempts.ToString()
 
-            Call updateAttempts()
-
-            If attempts <= 0 Then
-                MsgBox("No attempts left. Contact the Admin.")
-                btnLogin.Enabled = False
-                deactivateActivate()
-                Exit Sub
-            End If
+            frmUser.Show()
+            Me.Hide()
+            txtID.Clear()
+            txtPassword.Clear()
+            Exit Sub
         End If
-        dr.Close()
-        cn.Close()
-        Me.Hide()
-            Admin.Show()
 
+        databaseConnection.dr.Close()
+        databaseConnection.cn.Close()
+
+        databaseConnection.con()
+        sql = "SELECT * FROM tbladmin_users WHERE admin_id = @user_id AND password = @password"
+        databaseConnection.cmd = New MySqlCommand(sql, databaseConnection.cn)
+        databaseConnection.cmd.Parameters.AddWithValue("@user_id", txtID.Text)
+        databaseConnection.cmd.Parameters.AddWithValue("@password", txtPassword.Text)
+
+        databaseConnection.dr = databaseConnection.cmd.ExecuteReader()
+
+        If databaseConnection.dr.Read() Then
+            Dim role As String = "Admin"
+            databaseConnection.dr.Close()
+            databaseConnection.cn.Close()
+            Admin.Show()
+            Me.Hide()
+            txtID.Clear()
+            txtPassword.Clear()
+            Exit Sub
+        End If
+
+
+        databaseConnection.dr.Close()
+        databaseConnection.cn.Close()
+
+        databaseConnection.con()
+        sql = "Select Count(*) from tblusers where user_id=@user_id"
+        databaseConnection.cmd = New MySqlCommand(sql, databaseConnection.cn)
+        databaseConnection.cmd.Parameters.AddWithValue("@user_id", txtID.Text)
+        Dim isUser As Integer = Convert.ToInt32(databaseConnection.cmd.ExecuteScalar())
+        databaseConnection.cn.Close()
+
+        databaseConnection.con()
+        sql = "Select Count(*) from tbladmin_users where admin_id=@user_id"
+        databaseConnection.cmd = New MySqlCommand(sql, databaseConnection.cn)
+        databaseConnection.cmd.Parameters.AddWithValue("@user_id", txtID.Text)
+        Dim isAdmin As Integer = Convert.ToInt32(databaseConnection.cmd.ExecuteScalar())
+        databaseConnection.cn.Close()
+
+        MsgBox("Login Failed, Invalid user ID or password", MsgBoxStyle.Exclamation)
+
+
+        If isUser > 0 Then
+            databaseConnection.con()
+            sql = "SELECT attempts FROM tblusers WHERE user_id=@user_id"
+            databaseConnection.cmd = New MySqlCommand(sql, databaseConnection.cn)
+            databaseConnection.cmd.Parameters.AddWithValue("@user_id", txtID.Text)
+            Dim currAttempts As Integer = Convert.ToInt32(databaseConnection.cmd.ExecuteScalar())
+            databaseConnection.cn.Close()
+
+            If currAttempts > 0 Then
+                callAttempts() ' deduct attempt here
+                getAttempts()
+                MsgBox("Attempts remaining: " & lblAttempts.Text, MsgBoxStyle.Information)
+            Else
+                MsgBox("Account already deactivated or no attempts left.", MsgBoxStyle.Critical)
+            End If
+        ElseIf isAdmin > 0 Then
+            ' Skip attempt system for admin
+            Exit Sub
+        End If
     End Sub
+
+
+
+    Private Sub callAttempts()
+        getAttempts()
+        Dim attempts As Integer = Convert.ToInt32(lblAttempts.Text)
+
+        If attempts <= 0 Then
+            MsgBox("Account already deactivated. Contact the Admin.")
+            deactivateActivate()
+            Exit Sub
+        End If
+
+        attempts -= 1
+        lblAttempts.Text = attempts.ToString()
+        updateAttempts()
+
+        If attempts <= 0 Then
+            MsgBox("No attempts left. Contact the Admin.")
+            deactivateActivate()
+            Exit Sub
+        End If
+    End Sub
+
+
     Private Sub deactivateActivate()
-        Call con()
-        sql = "UPDATE tblusers SET status = 'Inactive' WHERE user_id = @user_id"
-        cmd = New MySqlCommand(sql, cn)
-        cmd.Parameters.AddWithValue("@user_id", txtUsername.Text)
-        cmd.ExecuteNonQuery()
-        cn.Close()
+        databaseConnection.con()
+        sql = "UPDATE tblusers SET status = 'Deactivated' WHERE user_id = @user_id"
+        databaseConnection.cmd = New MySqlCommand(sql, databaseConnection.cn)
+        databaseConnection.cmd.Parameters.AddWithValue("@user_id", txtID.Text)
+        databaseConnection.cmd.ExecuteNonQuery()
+        databaseConnection.cn.Close()
     End Sub
+
+
 
     Private Sub getAttempts()
-        Call con()
+        'GET ATTEMPTS LANG AND THEN DISPLAY
+        databaseConnection.con()
         sql = "Select attempts from tblusers where user_id = @user_id"
-        cmd = New MySqlCommand(sql, cn)
-        cmd.Parameters.AddWithValue("@user_id", txtUsername.Text)
-        dr = cmd.ExecuteReader()
+        databaseConnection.cmd = New MySqlCommand(sql, databaseConnection.cn)
+        databaseConnection.cmd.Parameters.AddWithValue("@user_id", txtID.Text)
+        databaseConnection.dr = databaseConnection.cmd.ExecuteReader()
 
-        If dr.Read = True Then
-            lblAttempts.Text = dr("attempts").ToString
+        If databaseConnection.dr.Read = True Then
+            lblAttempts.Text = databaseConnection.dr("attempts").ToString()
         Else
             lblAttempts.Text = 0
         End If
-        dr.Close()
-        cn.Close()
+        databaseConnection.dr.Close()
+        databaseConnection.cn.Close()
 
     End Sub
 
 
     Private Sub updateAttempts()
-        Call con()
+        'UPDATE SA DATABASE
+        databaseConnection.con()
         sql = "Update tblusers set attempts=@attempts where user_id=@user_id"
-        cmd = New MySqlCommand(sql, cn)
-        cmd.Parameters.AddWithValue("@user_id", txtUsername.Text)
-        cmd.Parameters.AddWithValue("@attempts", lblAttempts.Text)
-        cmd.ExecuteNonQuery()
-        cn.Close()
+        databaseConnection.cmd = New MySqlCommand(sql, databaseConnection.cn)
+        databaseConnection.cmd.Parameters.AddWithValue("@user_id", txtID.Text)
+        databaseConnection.cmd.Parameters.AddWithValue("@attempts", lblAttempts.Text)
+        databaseConnection.cmd.ExecuteNonQuery()
+        databaseConnection.cn.Close()
 
     End Sub
 
-    Private Sub txtUsername_TextChanged(sender As Object, e As EventArgs) Handles txtUsername.TextChanged
+    Private Sub txtUsername_TextChanged(sender As Object, e As EventArgs) Handles txtID.TextChanged
 
     End Sub
 
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
         MsgBox("you have clicked this picture")
         Me.Hide()
-        FrmAdminPFMO.Show()
+        'FrmAdminPFMO.Show()
     End Sub
 
 End Class

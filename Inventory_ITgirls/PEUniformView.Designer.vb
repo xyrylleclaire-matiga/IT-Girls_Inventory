@@ -53,6 +53,7 @@ Partial Class PEUniformView
         Label2 = New Label()
         btnBack = New Button()
         PictureBox1 = New PictureBox()
+        btnLogOut = New Button()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -363,12 +364,26 @@ Partial Class PEUniformView
         PictureBox1.TabIndex = 88
         PictureBox1.TabStop = False
         ' 
+        ' btnLogOut
+        ' 
+        btnLogOut.BackColor = Color.DarkSlateGray
+        btnLogOut.FlatStyle = FlatStyle.Flat
+        btnLogOut.Font = New Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        btnLogOut.ForeColor = Color.White
+        btnLogOut.Location = New Point(9, 473)
+        btnLogOut.Name = "btnLogOut"
+        btnLogOut.Size = New Size(174, 30)
+        btnLogOut.TabIndex = 120
+        btnLogOut.Text = "BACK"
+        btnLogOut.UseVisualStyleBackColor = False
+        ' 
         ' PEUniformView
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(189), CByte(237), CByte(255))
         ClientSize = New Size(1034, 504)
+        Controls.Add(btnLogOut)
         Controls.Add(Label14)
         Controls.Add(Label13)
         Controls.Add(Label12)
@@ -438,4 +453,5 @@ Partial Class PEUniformView
     Friend WithEvents Label2 As Label
     Friend WithEvents btnBack As Button
     Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents btnLogOut As Button
 End Class

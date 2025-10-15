@@ -1,7 +1,9 @@
 ﻿Public Class Admin
     Private Sub btnLogOut_Click(sender As Object, e As EventArgs) Handles btnLogOut.Click
-        Hide()
-        Form1.Show()
+        If MsgBox("Are you sure you want to logout?", vbQuestion + vbYesNo) = vbYes Then
+            FrmLogin.Show()
+            Me.Close()
+        End If
     End Sub
 
     Private Sub btnStockManagement_Click(sender As Object, e As EventArgs) Handles btnStockManagement.Click
@@ -36,5 +38,10 @@
 
     Private Sub PictureBox8_Click(sender As Object, e As EventArgs) Handles PictureBox8.Click
 
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        PEUniformView.Show()
+        Me.Hide()
     End Sub
 End Class
