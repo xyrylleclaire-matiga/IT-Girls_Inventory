@@ -61,9 +61,9 @@ Partial Class LowStocks
         Label1.ForeColor = Color.DarkSlateGray
         Label1.Location = New Point(21, 18)
         Label1.Name = "Label1"
-        Label1.Size = New Size(338, 38)
+        Label1.Size = New Size(241, 38)
         Label1.TabIndex = 19
-        Label1.Text = "LOW STOCK ALERT"
+        Label1.Text = "LOW STOCKS"
         ' 
         ' btnStockManagement
         ' 
@@ -71,7 +71,7 @@ Partial Class LowStocks
         btnStockManagement.FlatStyle = FlatStyle.Flat
         btnStockManagement.Font = New Font("Yu Gothic UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         btnStockManagement.ForeColor = Color.White
-        btnStockManagement.Location = New Point(12, 134)
+        btnStockManagement.Location = New Point(12, 153)
         btnStockManagement.Name = "btnStockManagement"
         btnStockManagement.Size = New Size(170, 46)
         btnStockManagement.TabIndex = 20

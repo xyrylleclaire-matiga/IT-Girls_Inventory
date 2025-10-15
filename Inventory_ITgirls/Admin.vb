@@ -29,4 +29,12 @@
     Private Sub PictureBox7_Click(sender As Object, e As EventArgs) Handles picSchoolUniform.Click
         Dim borderColor As Color = Color.Blue
     End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+
+    End Sub
+
+    Private Sub PictureBox8_Click(sender As Object, e As EventArgs) Handles PictureBox8.Click
+
+    End Sub
 End Class

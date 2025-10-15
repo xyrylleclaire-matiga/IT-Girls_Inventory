@@ -37,7 +37,7 @@ Partial Class StockManagement
         Label1.BackColor = Color.Transparent
         Label1.Font = New Font("Franklin Gothic Medium Cond", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label1.ForeColor = Color.DarkSlateGray
-        Label1.Location = New Point(388, 34)
+        Label1.Location = New Point(396, 34)
         Label1.Name = "Label1"
         Label1.Size = New Size(51, 21)
         Label1.TabIndex = 20
@@ -86,11 +86,11 @@ Partial Class StockManagement
         ' 
         Label2.AutoSize = True
         Label2.BackColor = Color.Transparent
-        Label2.Font = New Font("Stencil", 25F, FontStyle.Bold)
+        Label2.Font = New Font("Arial Rounded MT Bold", 24.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label2.ForeColor = Color.DarkSlateGray
         Label2.Location = New Point(21, 20)
         Label2.Name = "Label2"
-        Label2.Size = New Size(371, 40)
+        Label2.Size = New Size(385, 38)
         Label2.TabIndex = 16
         Label2.Text = "STOCK MANAGEMENT"
         ' 

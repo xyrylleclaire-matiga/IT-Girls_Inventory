@@ -68,7 +68,7 @@ Partial Class Admin
         btnStockManagement.FlatStyle = FlatStyle.Flat
         btnStockManagement.Font = New Font("Yu Gothic UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         btnStockManagement.ForeColor = Color.White
-        btnStockManagement.Location = New Point(12, 133)
+        btnStockManagement.Location = New Point(12, 169)
         btnStockManagement.Name = "btnStockManagement"
         btnStockManagement.Size = New Size(174, 46)
         btnStockManagement.TabIndex = 12
@@ -81,7 +81,7 @@ Partial Class Admin
         btnSalesReport.FlatStyle = FlatStyle.Flat
         btnSalesReport.Font = New Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         btnSalesReport.ForeColor = Color.DarkSlateGray
-        btnSalesReport.Location = New Point(12, 206)
+        btnSalesReport.Location = New Point(12, 223)
         btnSalesReport.Name = "btnSalesReport"
         btnSalesReport.Size = New Size(174, 44)
         btnSalesReport.TabIndex = 13
@@ -90,36 +90,36 @@ Partial Class Admin
         ' 
         ' PictureBox5
         ' 
-        PictureBox5.BackColor = Color.Transparent
-        PictureBox5.BorderStyle = BorderStyle.FixedSingle
+        PictureBox5.BackColor = Color.LightGray
+        PictureBox5.BorderStyle = BorderStyle.Fixed3D
         PictureBox5.Image = CType(resources.GetObject("PictureBox5.Image"), Image)
-        PictureBox5.Location = New Point(205, 86)
+        PictureBox5.Location = New Point(205, 70)
         PictureBox5.Name = "PictureBox5"
-        PictureBox5.Size = New Size(251, 336)
+        PictureBox5.Size = New Size(277, 364)
         PictureBox5.SizeMode = PictureBoxSizeMode.StretchImage
         PictureBox5.TabIndex = 41
         PictureBox5.TabStop = False
         ' 
         ' picSchoolUniform
         ' 
-        picSchoolUniform.BackColor = Color.Transparent
-        picSchoolUniform.BorderStyle = BorderStyle.FixedSingle
+        picSchoolUniform.BackColor = Color.LightGray
+        picSchoolUniform.BorderStyle = BorderStyle.Fixed3D
         picSchoolUniform.Image = My.Resources.Resources.Copy_of_Cenardo_application_removebg_preview
-        picSchoolUniform.Location = New Point(474, 58)
+        picSchoolUniform.Location = New Point(475, 58)
         picSchoolUniform.Name = "picSchoolUniform"
-        picSchoolUniform.Size = New Size(282, 392)
+        picSchoolUniform.Size = New Size(283, 387)
         picSchoolUniform.SizeMode = PictureBoxSizeMode.StretchImage
         picSchoolUniform.TabIndex = 47
         picSchoolUniform.TabStop = False
         ' 
         ' PictureBox8
         ' 
-        PictureBox8.BackColor = Color.Transparent
-        PictureBox8.BorderStyle = BorderStyle.FixedSingle
+        PictureBox8.BackColor = Color.LightGray
+        PictureBox8.BorderStyle = BorderStyle.Fixed3D
         PictureBox8.Image = CType(resources.GetObject("PictureBox8.Image"), Image)
-        PictureBox8.Location = New Point(775, 72)
+        PictureBox8.Location = New Point(758, 68)
         PictureBox8.Name = "PictureBox8"
-        PictureBox8.Size = New Size(253, 350)
+        PictureBox8.Size = New Size(266, 363)
         PictureBox8.SizeMode = PictureBoxSizeMode.StretchImage
         PictureBox8.TabIndex = 52
         PictureBox8.TabStop = False
@@ -141,7 +141,7 @@ Partial Class Admin
         Button1.FlatStyle = FlatStyle.Popup
         Button1.Font = New Font("Arial Rounded MT Bold", 16.0F)
         Button1.ForeColor = Color.MintCream
-        Button1.Location = New Point(242, 368)
+        Button1.Location = New Point(256, 375)
         Button1.Name = "Button1"
         Button1.Size = New Size(179, 38)
         Button1.TabIndex = 54
@@ -154,7 +154,7 @@ Partial Class Admin
         Button2.FlatStyle = FlatStyle.Popup
         Button2.Font = New Font("Arial Rounded MT Bold", 16.0F)
         Button2.ForeColor = Color.MintCream
-        Button2.Location = New Point(509, 368)
+        Button2.Location = New Point(501, 365)
         Button2.Name = "Button2"
         Button2.Size = New Size(233, 38)
         Button2.TabIndex = 55
@@ -167,7 +167,7 @@ Partial Class Admin
         Button3.FlatStyle = FlatStyle.Popup
         Button3.Font = New Font("Arial Rounded MT Bold", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Button3.ForeColor = Color.MintCream
-        Button3.Location = New Point(811, 354)
+        Button3.Location = New Point(797, 360)
         Button3.Name = "Button3"
         Button3.Size = New Size(185, 41)
         Button3.TabIndex = 56
@@ -178,7 +178,7 @@ Partial Class Admin
         ' 
         AutoScaleDimensions = New SizeF(7.0F, 15.0F)
         AutoScaleMode = AutoScaleMode.Font
-        BackColor = Color.PaleTurquoise
+        BackColor = Color.DarkSlateGray
         ClientSize = New Size(1040, 495)
         Controls.Add(Button3)
         Controls.Add(Button2)

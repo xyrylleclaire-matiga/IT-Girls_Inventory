@@ -137,7 +137,7 @@ Partial Class SalesReport
         lblLowStockAlerts.AutoSize = True
         lblLowStockAlerts.Font = New Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblLowStockAlerts.ForeColor = SystemColors.ButtonFace
-        lblLowStockAlerts.Location = New Point(80, 34)
+        lblLowStockAlerts.Location = New Point(118, 73)
         lblLowStockAlerts.Name = "lblLowStockAlerts"
         lblLowStockAlerts.Size = New Size(20, 25)
         lblLowStockAlerts.TabIndex = 25
@@ -148,7 +148,7 @@ Partial Class SalesReport
         Label3.AutoSize = True
         Label3.Font = New Font("Yu Gothic UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Label3.ForeColor = SystemColors.ButtonFace
-        Label3.Location = New Point(34, 79)
+        Label3.Location = New Point(12, 4)
         Label3.Name = "Label3"
         Label3.Size = New Size(108, 17)
         Label3.TabIndex = 0
@@ -169,7 +169,7 @@ Partial Class SalesReport
         lblTotalStocks.AutoSize = True
         lblTotalStocks.Font = New Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblTotalStocks.ForeColor = SystemColors.ButtonFace
-        lblTotalStocks.Location = New Point(76, 34)
+        lblTotalStocks.Location = New Point(126, 75)
         lblTotalStocks.Name = "lblTotalStocks"
         lblTotalStocks.Size = New Size(20, 25)
         lblTotalStocks.TabIndex = 26
@@ -180,7 +180,7 @@ Partial Class SalesReport
         Label5.AutoSize = True
         Label5.Font = New Font("Yu Gothic UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Label5.ForeColor = SystemColors.ButtonFace
-        Label5.Location = New Point(48, 79)
+        Label5.Location = New Point(13, 4)
         Label5.Name = "Label5"
         Label5.Size = New Size(80, 17)
         Label5.TabIndex = 25
@@ -201,7 +201,7 @@ Partial Class SalesReport
         lblPendingRequest.AutoSize = True
         lblPendingRequest.Font = New Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblPendingRequest.ForeColor = SystemColors.ButtonFace
-        lblPendingRequest.Location = New Point(76, 34)
+        lblPendingRequest.Location = New Point(134, 76)
         lblPendingRequest.Name = "lblPendingRequest"
         lblPendingRequest.Size = New Size(20, 25)
         lblPendingRequest.TabIndex = 26
@@ -212,11 +212,11 @@ Partial Class SalesReport
         Label6.AutoSize = True
         Label6.Font = New Font("Yu Gothic UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Label6.ForeColor = SystemColors.ButtonFace
-        Label6.Location = New Point(36, 79)
+        Label6.Location = New Point(14, 4)
         Label6.Name = "Label6"
-        Label6.Size = New Size(111, 17)
+        Label6.Size = New Size(117, 17)
         Label6.TabIndex = 25
-        Label6.Text = "Pending Request"
+        Label6.Text = "Pending Requests"
         ' 
         ' Panel2
         ' 
@@ -233,7 +233,7 @@ Partial Class SalesReport
         lblTotalPullouts.AutoSize = True
         lblTotalPullouts.Font = New Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblTotalPullouts.ForeColor = SystemColors.ButtonFace
-        lblTotalPullouts.Location = New Point(78, 34)
+        lblTotalPullouts.Location = New Point(121, 73)
         lblTotalPullouts.Name = "lblTotalPullouts"
         lblTotalPullouts.Size = New Size(20, 25)
         lblTotalPullouts.TabIndex = 26
@@ -244,7 +244,7 @@ Partial Class SalesReport
         Label4.AutoSize = True
         Label4.Font = New Font("Yu Gothic UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Label4.ForeColor = SystemColors.ButtonFace
-        Label4.Location = New Point(43, 79)
+        Label4.Location = New Point(13, 4)
         Label4.Name = "Label4"
         Label4.Size = New Size(90, 17)
         Label4.TabIndex = 25
@@ -254,11 +254,11 @@ Partial Class SalesReport
         ' 
         Label11.AutoSize = True
         Label11.BackColor = Color.Transparent
-        Label11.Font = New Font("Arial Rounded MT Bold", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label11.Font = New Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label11.ForeColor = Color.DarkSlateGray
-        Label11.Location = New Point(211, 223)
+        Label11.Location = New Point(383, 229)
         Label11.Name = "Label11"
-        Label11.Size = New Size(195, 17)
+        Label11.Size = New Size(212, 18)
         Label11.TabIndex = 25
         Label11.Text = "RECENT TRANSACTIONS"
         ' 

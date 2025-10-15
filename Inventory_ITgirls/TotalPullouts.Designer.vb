@@ -40,7 +40,7 @@ Partial Class TotalPullouts
         DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         DataGridView1.Location = New Point(240, 85)
         DataGridView1.Name = "DataGridView1"
-        DataGridView1.Size = New Size(529, 332)
+        DataGridView1.Size = New Size(529, 320)
         DataGridView1.TabIndex = 30
         ' 
         ' btnBack
