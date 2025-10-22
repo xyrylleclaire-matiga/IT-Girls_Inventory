@@ -1,7 +1,7 @@
 ﻿Public Class TotalPullouts
 
     Private Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
-        Hide()
+        Me.Hide()
         SalesReport.Show()
     End Sub
 End Class

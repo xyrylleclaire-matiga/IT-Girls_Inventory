@@ -31,27 +31,35 @@ Partial Class PEUniformView
         Label8 = New Label()
         Label7 = New Label()
         Label6 = New Label()
-        TextBox10 = New TextBox()
-        TextBox9 = New TextBox()
-        TextBox8 = New TextBox()
-        TextBox7 = New TextBox()
-        TextBox6 = New TextBox()
-        TextBox5 = New TextBox()
-        TextBox4 = New TextBox()
-        TextBox3 = New TextBox()
+        txtDateAdded = New TextBox()
+        txtStatus = New TextBox()
+        txtPrice = New TextBox()
+        txtStockQuantity = New TextBox()
+        txtSize = New TextBox()
+        txtGender = New TextBox()
+        txtLevel = New TextBox()
+        txtCategory = New TextBox()
         Label4 = New Label()
         TextBox2 = New TextBox()
         Label3 = New Label()
-        TextBox1 = New TextBox()
+        txtItemName = New TextBox()
         Button2 = New Button()
         Button1 = New Button()
         btnModify = New Button()
         ListView1 = New ListView()
+        ColumnHeader1 = New ColumnHeader()
+        ColumnHeader2 = New ColumnHeader()
+        ColumnHeader3 = New ColumnHeader()
+        ColumnHeader4 = New ColumnHeader()
+        ColumnHeader5 = New ColumnHeader()
+        ColumnHeader10 = New ColumnHeader()
+        ColumnHeader6 = New ColumnHeader()
+        ColumnHeader7 = New ColumnHeader()
+        ColumnHeader8 = New ColumnHeader()
         Label1 = New Label()
         btnSalesReport = New Button()
         btnStockManagement = New Button()
         Label2 = New Label()
-        btnBack = New Button()
         PictureBox1 = New PictureBox()
         btnLogOut = New Button()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
@@ -61,7 +69,7 @@ Partial Class PEUniformView
         ' 
         Label14.AutoSize = True
         Label14.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label14.Location = New Point(476, 450)
+        Label14.Location = New Point(858, 164)
         Label14.Name = "Label14"
         Label14.Size = New Size(92, 14)
         Label14.TabIndex = 119
@@ -71,7 +79,7 @@ Partial Class PEUniformView
         ' 
         Label13.AutoSize = True
         Label13.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label13.Location = New Point(476, 413)
+        Label13.Location = New Point(858, 127)
         Label13.Name = "Label13"
         Label13.Size = New Size(57, 14)
         Label13.TabIndex = 118
@@ -81,7 +89,7 @@ Partial Class PEUniformView
         ' 
         Label12.AutoSize = True
         Label12.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label12.Location = New Point(477, 380)
+        Label12.Location = New Point(859, 94)
         Label12.Name = "Label12"
         Label12.Size = New Size(49, 14)
         Label12.TabIndex = 117
@@ -91,7 +99,7 @@ Partial Class PEUniformView
         ' 
         Label11.AutoSize = True
         Label11.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label11.Location = New Point(474, 345)
+        Label11.Location = New Point(545, 166)
         Label11.Name = "Label11"
         Label11.Size = New Size(123, 14)
         Label11.TabIndex = 116
@@ -101,7 +109,7 @@ Partial Class PEUniformView
         ' 
         Label10.AutoSize = True
         Label10.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label10.Location = New Point(225, 485)
+        Label10.Location = New Point(552, 131)
         Label10.Name = "Label10"
         Label10.Size = New Size(39, 14)
         Label10.TabIndex = 115
@@ -111,7 +119,7 @@ Partial Class PEUniformView
         ' 
         Label9.AutoSize = True
         Label9.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label9.Location = New Point(224, 451)
+        Label9.Location = New Point(551, 97)
         Label9.Name = "Label9"
         Label9.Size = New Size(64, 14)
         Label9.TabIndex = 114
@@ -121,7 +129,7 @@ Partial Class PEUniformView
         ' 
         Label8.AutoSize = True
         Label8.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label8.Location = New Point(225, 414)
+        Label8.Location = New Point(253, 165)
         Label8.Name = "Label8"
         Label8.Size = New Size(49, 14)
         Label8.TabIndex = 113
@@ -131,7 +139,7 @@ Partial Class PEUniformView
         ' 
         Label7.AutoSize = True
         Label7.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label7.Location = New Point(222, 380)
+        Label7.Location = New Point(250, 131)
         Label7.Name = "Label7"
         Label7.Size = New Size(82, 14)
         Label7.TabIndex = 112
@@ -141,75 +149,79 @@ Partial Class PEUniformView
         ' 
         Label6.AutoSize = True
         Label6.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label6.Location = New Point(222, 347)
+        Label6.Location = New Point(250, 98)
         Label6.Name = "Label6"
         Label6.Size = New Size(80, 14)
         Label6.TabIndex = 111
         Label6.Text = "ITEM NAME:"
         ' 
-        ' TextBox10
+        ' txtDateAdded
         ' 
-        TextBox10.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        TextBox10.Location = New Point(579, 444)
-        TextBox10.Name = "TextBox10"
-        TextBox10.Size = New Size(100, 21)
-        TextBox10.TabIndex = 109
+        txtDateAdded.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        txtDateAdded.Location = New Point(961, 158)
+        txtDateAdded.Name = "txtDateAdded"
+        txtDateAdded.Size = New Size(201, 21)
+        txtDateAdded.TabIndex = 109
         ' 
-        ' TextBox9
+        ' txtStatus
         ' 
-        TextBox9.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        TextBox9.Location = New Point(539, 407)
-        TextBox9.Name = "TextBox9"
-        TextBox9.Size = New Size(110, 21)
-        TextBox9.TabIndex = 108
+        txtStatus.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        txtStatus.Location = New Point(961, 124)
+        txtStatus.Name = "txtStatus"
+        txtStatus.Size = New Size(201, 21)
+        txtStatus.TabIndex = 108
         ' 
-        ' TextBox8
+        ' txtPrice
         ' 
-        TextBox8.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        TextBox8.Location = New Point(532, 376)
-        TextBox8.Name = "TextBox8"
-        TextBox8.Size = New Size(117, 21)
-        TextBox8.TabIndex = 107
+        txtPrice.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        txtPrice.Location = New Point(961, 91)
+        txtPrice.Name = "txtPrice"
+        txtPrice.Size = New Size(201, 21)
+        txtPrice.TabIndex = 107
         ' 
-        ' TextBox7
+        ' txtStockQuantity
         ' 
-        TextBox7.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        TextBox7.Location = New Point(605, 341)
-        TextBox7.Name = "TextBox7"
-        TextBox7.Size = New Size(101, 21)
-        TextBox7.TabIndex = 106
+        txtStockQuantity.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        txtStockQuantity.Location = New Point(676, 162)
+        txtStockQuantity.Name = "txtStockQuantity"
+        txtStockQuantity.Size = New Size(161, 21)
+        txtStockQuantity.TabIndex = 106
         ' 
-        ' TextBox6
+        ' txtSize
         ' 
-        TextBox6.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        TextBox6.Location = New Point(308, 482)
-        TextBox6.Name = "TextBox6"
-        TextBox6.Size = New Size(110, 21)
-        TextBox6.TabIndex = 105
+        txtSize.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        txtSize.Location = New Point(676, 128)
+        txtSize.Name = "txtSize"
+        txtSize.ReadOnly = True
+        txtSize.Size = New Size(161, 21)
+        txtSize.TabIndex = 105
         ' 
-        ' TextBox5
+        ' txtGender
         ' 
-        TextBox5.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        TextBox5.Location = New Point(308, 447)
-        TextBox5.Name = "TextBox5"
-        TextBox5.Size = New Size(124, 21)
-        TextBox5.TabIndex = 104
+        txtGender.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        txtGender.Location = New Point(676, 93)
+        txtGender.Name = "txtGender"
+        txtGender.ReadOnly = True
+        txtGender.Size = New Size(161, 21)
+        txtGender.TabIndex = 104
         ' 
-        ' TextBox4
+        ' txtLevel
         ' 
-        TextBox4.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        TextBox4.Location = New Point(309, 410)
-        TextBox4.Name = "TextBox4"
-        TextBox4.Size = New Size(123, 21)
-        TextBox4.TabIndex = 103
+        txtLevel.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        txtLevel.Location = New Point(337, 161)
+        txtLevel.Name = "txtLevel"
+        txtLevel.ReadOnly = True
+        txtLevel.Size = New Size(182, 21)
+        txtLevel.TabIndex = 103
         ' 
-        ' TextBox3
+        ' txtCategory
         ' 
-        TextBox3.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        TextBox3.Location = New Point(310, 376)
-        TextBox3.Name = "TextBox3"
-        TextBox3.Size = New Size(121, 21)
-        TextBox3.TabIndex = 102
+        txtCategory.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        txtCategory.Location = New Point(338, 127)
+        txtCategory.Name = "txtCategory"
+        txtCategory.ReadOnly = True
+        txtCategory.Size = New Size(180, 21)
+        txtCategory.TabIndex = 102
         ' 
         ' Label4
         ' 
@@ -234,25 +246,26 @@ Partial Class PEUniformView
         Label3.BackColor = Color.Transparent
         Label3.Font = New Font("Franklin Gothic Medium Cond", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label3.ForeColor = Color.DarkSlateGray
-        Label3.Location = New Point(220, 349)
+        Label3.Location = New Point(248, 100)
         Label3.Name = "Label3"
         Label3.Size = New Size(0, 21)
         Label3.TabIndex = 99
         ' 
-        ' TextBox1
+        ' txtItemName
         ' 
-        TextBox1.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        TextBox1.Location = New Point(308, 342)
-        TextBox1.Name = "TextBox1"
-        TextBox1.Size = New Size(123, 21)
-        TextBox1.TabIndex = 98
+        txtItemName.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        txtItemName.Location = New Point(336, 93)
+        txtItemName.Name = "txtItemName"
+        txtItemName.ReadOnly = True
+        txtItemName.Size = New Size(182, 21)
+        txtItemName.TabIndex = 98
         ' 
         ' Button2
         ' 
         Button2.BackColor = Color.DarkSlateGray
         Button2.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Button2.ForeColor = Color.White
-        Button2.Location = New Point(817, 227)
+        Button2.Location = New Point(815, 496)
         Button2.Name = "Button2"
         Button2.Size = New Size(100, 37)
         Button2.TabIndex = 97
@@ -264,7 +277,7 @@ Partial Class PEUniformView
         Button1.BackColor = Color.DarkSlateGray
         Button1.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Button1.ForeColor = Color.White
-        Button1.Location = New Point(817, 167)
+        Button1.Location = New Point(1045, 496)
         Button1.Name = "Button1"
         Button1.Size = New Size(100, 37)
         Button1.TabIndex = 96
@@ -276,7 +289,7 @@ Partial Class PEUniformView
         btnModify.BackColor = Color.DarkSlateGray
         btnModify.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         btnModify.ForeColor = Color.White
-        btnModify.Location = New Point(816, 106)
+        btnModify.Location = New Point(932, 496)
         btnModify.Name = "btnModify"
         btnModify.Size = New Size(100, 37)
         btnModify.TabIndex = 95
@@ -285,12 +298,66 @@ Partial Class PEUniformView
         ' 
         ' ListView1
         ' 
-        ListView1.Location = New Point(217, 74)
+        ListView1.BackColor = SystemColors.InactiveBorder
+        ListView1.Columns.AddRange(New ColumnHeader() {ColumnHeader1, ColumnHeader2, ColumnHeader3, ColumnHeader4, ColumnHeader5, ColumnHeader10, ColumnHeader6, ColumnHeader7, ColumnHeader8})
+        ListView1.Font = New Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        ListView1.FullRowSelect = True
+        ListView1.GridLines = True
+        ListView1.Location = New Point(226, 215)
         ListView1.Name = "ListView1"
-        ListView1.Size = New Size(590, 254)
+        ListView1.Size = New Size(936, 254)
         ListView1.TabIndex = 94
         ListView1.UseCompatibleStateImageBehavior = False
         ListView1.View = View.Details
+        ' 
+        ' ColumnHeader1
+        ' 
+        ColumnHeader1.Text = "item_name"
+        ColumnHeader1.Width = 90
+        ' 
+        ' ColumnHeader2
+        ' 
+        ColumnHeader2.Text = "category"
+        ColumnHeader2.Width = 90
+        ' 
+        ' ColumnHeader3
+        ' 
+        ColumnHeader3.Text = "level"
+        ColumnHeader3.Width = 90
+        ' 
+        ' ColumnHeader4
+        ' 
+        ColumnHeader4.Text = "gender"
+        ColumnHeader4.Width = 90
+        ' 
+        ' ColumnHeader5
+        ' 
+        ColumnHeader5.Text = "size"
+        ColumnHeader5.Width = 90
+        ' 
+        ' ColumnHeader10
+        ' 
+        ColumnHeader10.DisplayIndex = 8
+        ColumnHeader10.Text = "stock_quantity"
+        ColumnHeader10.Width = 90
+        ' 
+        ' ColumnHeader6
+        ' 
+        ColumnHeader6.DisplayIndex = 5
+        ColumnHeader6.Text = "price"
+        ColumnHeader6.Width = 90
+        ' 
+        ' ColumnHeader7
+        ' 
+        ColumnHeader7.DisplayIndex = 6
+        ColumnHeader7.Text = "status"
+        ColumnHeader7.Width = 90
+        ' 
+        ' ColumnHeader8
+        ' 
+        ColumnHeader8.DisplayIndex = 7
+        ColumnHeader8.Text = "date_added"
+        ColumnHeader8.Width = 110
         ' 
         ' Label1
         ' 
@@ -342,19 +409,6 @@ Partial Class PEUniformView
         Label2.TabIndex = 90
         Label2.Text = "PE UNIFORM"
         ' 
-        ' btnBack
-        ' 
-        btnBack.BackColor = Color.DarkSlateGray
-        btnBack.FlatStyle = FlatStyle.Flat
-        btnBack.Font = New Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        btnBack.ForeColor = Color.White
-        btnBack.Location = New Point(9, 510)
-        btnBack.Name = "btnBack"
-        btnBack.Size = New Size(174, 24)
-        btnBack.TabIndex = 89
-        btnBack.Text = "BACK"
-        btnBack.UseVisualStyleBackColor = False
-        ' 
         ' PictureBox1
         ' 
         PictureBox1.BackColor = Color.LightCyan
@@ -370,7 +424,7 @@ Partial Class PEUniformView
         btnLogOut.FlatStyle = FlatStyle.Flat
         btnLogOut.Font = New Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         btnLogOut.ForeColor = Color.White
-        btnLogOut.Location = New Point(9, 473)
+        btnLogOut.Location = New Point(9, 497)
         btnLogOut.Name = "btnLogOut"
         btnLogOut.Size = New Size(174, 30)
         btnLogOut.TabIndex = 120
@@ -382,7 +436,11 @@ Partial Class PEUniformView
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(189), CByte(237), CByte(255))
+<<<<<<< HEAD
         ClientSize = New Size(1040, 553)
+=======
+        ClientSize = New Size(1196, 545)
+>>>>>>> 56bd6526def7aadc965da7837133208cffe56603
         Controls.Add(btnLogOut)
         Controls.Add(Label14)
         Controls.Add(Label13)
@@ -393,18 +451,18 @@ Partial Class PEUniformView
         Controls.Add(Label8)
         Controls.Add(Label7)
         Controls.Add(Label6)
-        Controls.Add(TextBox10)
-        Controls.Add(TextBox9)
-        Controls.Add(TextBox8)
-        Controls.Add(TextBox7)
-        Controls.Add(TextBox6)
-        Controls.Add(TextBox5)
-        Controls.Add(TextBox4)
-        Controls.Add(TextBox3)
+        Controls.Add(txtDateAdded)
+        Controls.Add(txtStatus)
+        Controls.Add(txtPrice)
+        Controls.Add(txtStockQuantity)
+        Controls.Add(txtSize)
+        Controls.Add(txtGender)
+        Controls.Add(txtLevel)
+        Controls.Add(txtCategory)
         Controls.Add(Label4)
         Controls.Add(TextBox2)
         Controls.Add(Label3)
-        Controls.Add(TextBox1)
+        Controls.Add(txtItemName)
         Controls.Add(Button2)
         Controls.Add(Button1)
         Controls.Add(btnModify)
@@ -413,7 +471,6 @@ Partial Class PEUniformView
         Controls.Add(btnSalesReport)
         Controls.Add(btnStockManagement)
         Controls.Add(Label2)
-        Controls.Add(btnBack)
         Controls.Add(PictureBox1)
         Name = "PEUniformView"
         Text = "PEUniformView"
@@ -431,18 +488,18 @@ Partial Class PEUniformView
     Friend WithEvents Label8 As Label
     Friend WithEvents Label7 As Label
     Friend WithEvents Label6 As Label
-    Friend WithEvents TextBox10 As TextBox
-    Friend WithEvents TextBox9 As TextBox
-    Friend WithEvents TextBox8 As TextBox
-    Friend WithEvents TextBox7 As TextBox
-    Friend WithEvents TextBox6 As TextBox
-    Friend WithEvents TextBox5 As TextBox
-    Friend WithEvents TextBox4 As TextBox
-    Friend WithEvents TextBox3 As TextBox
+    Friend WithEvents txtDateAdded As TextBox
+    Friend WithEvents txtStatus As TextBox
+    Friend WithEvents txtPrice As TextBox
+    Friend WithEvents txtStockQuantity As TextBox
+    Friend WithEvents txtSize As TextBox
+    Friend WithEvents txtGender As TextBox
+    Friend WithEvents txtLevel As TextBox
+    Friend WithEvents txtCategory As TextBox
     Friend WithEvents Label4 As Label
     Friend WithEvents TextBox2 As TextBox
     Friend WithEvents Label3 As Label
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents txtItemName As TextBox
     Friend WithEvents Button2 As Button
     Friend WithEvents Button1 As Button
     Friend WithEvents btnModify As Button
@@ -451,7 +508,15 @@ Partial Class PEUniformView
     Friend WithEvents btnSalesReport As Button
     Friend WithEvents btnStockManagement As Button
     Friend WithEvents Label2 As Label
-    Friend WithEvents btnBack As Button
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents btnLogOut As Button
+    Friend WithEvents ColumnHeader1 As ColumnHeader
+    Friend WithEvents ColumnHeader2 As ColumnHeader
+    Friend WithEvents ColumnHeader3 As ColumnHeader
+    Friend WithEvents ColumnHeader4 As ColumnHeader
+    Friend WithEvents ColumnHeader5 As ColumnHeader
+    Friend WithEvents ColumnHeader6 As ColumnHeader
+    Friend WithEvents ColumnHeader7 As ColumnHeader
+    Friend WithEvents ColumnHeader8 As ColumnHeader
+    Friend WithEvents ColumnHeader10 As ColumnHeader
 End Class
