@@ -8,7 +8,7 @@
 
     Private Sub btnSalesReport_Click(sender As Object, e As EventArgs) Handles btnSalesReport.Click
         Hide()
-        Me.Show()
+        Show()
     End Sub
 
     Private Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
@@ -16,7 +16,7 @@
         Admin.Show()
     End Sub
 
-    Private Sub Label3_Click(sender As Object, e As EventArgs) Handles Label3.Click
+    Private Sub Label3_Click(sender As Object, e As EventArgs)
 
     End Sub
 
@@ -29,6 +29,14 @@
     End Sub
 
     Private Sub Panel4_Paint(sender As Object, e As PaintEventArgs) Handles Panel4.Paint
+
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+
+    End Sub
+
+    Private Sub SalesReport_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
 End Class

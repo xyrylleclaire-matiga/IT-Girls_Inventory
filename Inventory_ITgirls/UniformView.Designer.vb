@@ -368,7 +368,7 @@ Partial Class UniformView
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(189), CByte(237), CByte(255))
-        ClientSize = New Size(1040, 536)
+        ClientSize = New Size(1040, 581)
         Controls.Add(Label14)
         Controls.Add(Label13)
         Controls.Add(Label12)

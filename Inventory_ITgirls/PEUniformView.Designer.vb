@@ -382,7 +382,7 @@ Partial Class PEUniformView
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(189), CByte(237), CByte(255))
-        ClientSize = New Size(1034, 504)
+        ClientSize = New Size(1040, 553)
         Controls.Add(btnLogOut)
         Controls.Add(Label14)
         Controls.Add(Label13)

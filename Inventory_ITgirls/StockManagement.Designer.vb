@@ -75,7 +75,7 @@ Partial Class StockManagement
         btnBack.FlatStyle = FlatStyle.Flat
         btnBack.Font = New Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         btnBack.ForeColor = Color.White
-        btnBack.Location = New Point(12, 414)
+        btnBack.Location = New Point(12, 517)
         btnBack.Name = "btnBack"
         btnBack.Size = New Size(174, 24)
         btnBack.TabIndex = 17
@@ -99,7 +99,7 @@ Partial Class StockManagement
         PictureBox1.BackColor = Color.LightCyan
         PictureBox1.Location = New Point(-1, -1)
         PictureBox1.Name = "PictureBox1"
-        PictureBox1.Size = New Size(200, 452)
+        PictureBox1.Size = New Size(200, 558)
         PictureBox1.TabIndex = 15
         PictureBox1.TabStop = False
         ' 
@@ -108,7 +108,7 @@ Partial Class StockManagement
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(189), CByte(237), CByte(255))
-        ClientSize = New Size(800, 450)
+        ClientSize = New Size(1040, 553)
         Controls.Add(Label1)
         Controls.Add(btnSalesReport)
         Controls.Add(btnStockManagement)

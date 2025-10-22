@@ -26,14 +26,14 @@ Partial Class Admin
         PictureBox1 = New PictureBox()
         btnLogOut = New Button()
         btnStockManagement = New Button()
-        btnSalesReport = New Button()
         PictureBox5 = New PictureBox()
         picSchoolUniform = New PictureBox()
         PictureBox8 = New PictureBox()
         Label3 = New Label()
-        Button1 = New Button()
-        Button2 = New Button()
-        Button3 = New Button()
+        btnPeUniform = New Button()
+        btnSchoolUniform = New Button()
+        btnCorporateAttire = New Button()
+        btnSalesReport = New Button()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox5, ComponentModel.ISupportInitialize).BeginInit()
         CType(picSchoolUniform, ComponentModel.ISupportInitialize).BeginInit()
@@ -75,27 +75,14 @@ Partial Class Admin
         btnStockManagement.Text = "STOCK MANAGEMENT"
         btnStockManagement.UseVisualStyleBackColor = False
         ' 
-        ' btnSalesReport
-        ' 
-        btnSalesReport.BackColor = Color.PaleTurquoise
-        btnSalesReport.FlatStyle = FlatStyle.Flat
-        btnSalesReport.Font = New Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        btnSalesReport.ForeColor = Color.DarkSlateGray
-        btnSalesReport.Location = New Point(12, 223)
-        btnSalesReport.Name = "btnSalesReport"
-        btnSalesReport.Size = New Size(174, 44)
-        btnSalesReport.TabIndex = 13
-        btnSalesReport.Text = "SALES REPORT"
-        btnSalesReport.UseVisualStyleBackColor = False
-        ' 
         ' PictureBox5
         ' 
         PictureBox5.BackColor = Color.LightGray
         PictureBox5.BorderStyle = BorderStyle.Fixed3D
         PictureBox5.Image = CType(resources.GetObject("PictureBox5.Image"), Image)
-        PictureBox5.Location = New Point(205, 70)
+        PictureBox5.Location = New Point(207, 70)
         PictureBox5.Name = "PictureBox5"
-        PictureBox5.Size = New Size(277, 364)
+        PictureBox5.Size = New Size(275, 364)
         PictureBox5.SizeMode = PictureBoxSizeMode.StretchImage
         PictureBox5.TabIndex = 41
         PictureBox5.TabStop = False
@@ -135,59 +122,72 @@ Partial Class Admin
         Label3.Size = New Size(0, 24)
         Label3.TabIndex = 53
         ' 
-        ' Button1
+        ' btnPeUniform
         ' 
-        Button1.BackColor = Color.DarkSlateGray
-        Button1.FlatStyle = FlatStyle.Popup
-        Button1.Font = New Font("Arial Rounded MT Bold", 16F)
-        Button1.ForeColor = Color.MintCream
-        Button1.Location = New Point(256, 375)
-        Button1.Name = "Button1"
-        Button1.Size = New Size(179, 38)
-        Button1.TabIndex = 54
-        Button1.Text = "PE UNIFORM"
-        Button1.UseVisualStyleBackColor = False
+        btnPeUniform.BackColor = Color.DarkSlateGray
+        btnPeUniform.FlatStyle = FlatStyle.Popup
+        btnPeUniform.Font = New Font("Arial Rounded MT Bold", 16F)
+        btnPeUniform.ForeColor = Color.MintCream
+        btnPeUniform.Location = New Point(256, 375)
+        btnPeUniform.Name = "btnPeUniform"
+        btnPeUniform.Size = New Size(179, 38)
+        btnPeUniform.TabIndex = 54
+        btnPeUniform.Text = "PE UNIFORM"
+        btnPeUniform.UseVisualStyleBackColor = False
         ' 
-        ' Button2
+        ' btnSchoolUniform
         ' 
-        Button2.BackColor = Color.DarkSlateGray
-        Button2.FlatStyle = FlatStyle.Popup
-        Button2.Font = New Font("Arial Rounded MT Bold", 16F)
-        Button2.ForeColor = Color.MintCream
-        Button2.Location = New Point(501, 365)
-        Button2.Name = "Button2"
-        Button2.Size = New Size(233, 38)
-        Button2.TabIndex = 55
-        Button2.Text = "SCHOOL UNIFORM"
-        Button2.UseVisualStyleBackColor = False
+        btnSchoolUniform.BackColor = Color.DarkSlateGray
+        btnSchoolUniform.FlatStyle = FlatStyle.Popup
+        btnSchoolUniform.Font = New Font("Arial Rounded MT Bold", 16F)
+        btnSchoolUniform.ForeColor = Color.MintCream
+        btnSchoolUniform.Location = New Point(501, 365)
+        btnSchoolUniform.Name = "btnSchoolUniform"
+        btnSchoolUniform.Size = New Size(233, 38)
+        btnSchoolUniform.TabIndex = 55
+        btnSchoolUniform.Text = "SCHOOL UNIFORM"
+        btnSchoolUniform.UseVisualStyleBackColor = False
         ' 
-        ' Button3
+        ' btnCorporateAttire
         ' 
-        Button3.BackColor = Color.DarkSlateGray
-        Button3.FlatStyle = FlatStyle.Popup
-        Button3.Font = New Font("Arial Rounded MT Bold", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Button3.ForeColor = Color.MintCream
-        Button3.Location = New Point(797, 360)
-        Button3.Name = "Button3"
-        Button3.Size = New Size(185, 41)
-        Button3.TabIndex = 56
-        Button3.Text = "CORPORATE ATTIRE"
-        Button3.UseVisualStyleBackColor = False
+        btnCorporateAttire.BackColor = Color.DarkSlateGray
+        btnCorporateAttire.FlatStyle = FlatStyle.Popup
+        btnCorporateAttire.Font = New Font("Arial Rounded MT Bold", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        btnCorporateAttire.ForeColor = Color.MintCream
+        btnCorporateAttire.Location = New Point(797, 360)
+        btnCorporateAttire.Name = "btnCorporateAttire"
+        btnCorporateAttire.Size = New Size(185, 41)
+        btnCorporateAttire.TabIndex = 56
+        btnCorporateAttire.Text = "CORPORATE ATTIRE"
+        btnCorporateAttire.UseVisualStyleBackColor = False
+        ' 
+        ' btnSalesReport
+        ' 
+        btnSalesReport.BackColor = Color.DarkSlateGray
+        btnSalesReport.FlatStyle = FlatStyle.Flat
+        btnSalesReport.Font = New Font("Yu Gothic UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        btnSalesReport.ForeColor = Color.White
+        btnSalesReport.Location = New Point(12, 221)
+        btnSalesReport.Name = "btnSalesReport"
+        btnSalesReport.Size = New Size(174, 46)
+        btnSalesReport.TabIndex = 57
+        btnSalesReport.Text = "SALES REPORT"
+        btnSalesReport.UseVisualStyleBackColor = False
         ' 
         ' Admin
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.DarkSlateGray
-        ClientSize = New Size(1040, 495)
-        Controls.Add(Button3)
-        Controls.Add(Button2)
-        Controls.Add(Button1)
+        ClientSize = New Size(1040, 553)
+        Controls.Add(btnSalesReport)
+        Controls.Add(btnCorporateAttire)
+        Controls.Add(btnSchoolUniform)
+        Controls.Add(btnPeUniform)
         Controls.Add(Label3)
         Controls.Add(PictureBox8)
         Controls.Add(picSchoolUniform)
         Controls.Add(PictureBox5)
-        Controls.Add(btnSalesReport)
         Controls.Add(btnStockManagement)
         Controls.Add(btnLogOut)
         Controls.Add(PictureBox1)
@@ -204,12 +204,12 @@ Partial Class Admin
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents btnLogOut As Button
     Friend WithEvents btnStockManagement As Button
-    Friend WithEvents btnSalesReport As Button
     Friend WithEvents PictureBox5 As PictureBox
     Friend WithEvents picSchoolUniform As PictureBox
     Friend WithEvents PictureBox8 As PictureBox
     Friend WithEvents Label3 As Label
-    Friend WithEvents Button1 As Button
-    Friend WithEvents Button2 As Button
-    Friend WithEvents Button3 As Button
+    Friend WithEvents btnPeUniform As Button
+    Friend WithEvents btnSchoolUniform As Button
+    Friend WithEvents btnCorporateAttire As Button
+    Friend WithEvents btnSalesReport As Button
 End Class

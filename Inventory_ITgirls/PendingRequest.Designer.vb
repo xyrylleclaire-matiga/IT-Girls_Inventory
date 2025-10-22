@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class PendingOrders
+Partial Class PendingRequest
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -22,39 +22,14 @@ Partial Class PendingOrders
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Button1 = New Button()
-        DataGridView1 = New DataGridView()
         btnBack = New Button()
-        btnSalesReport = New Button()
-        btnStockManagement = New Button()
+        dgvPendingRequest = New DataGridView()
         Label1 = New Label()
         PictureBox1 = New PictureBox()
         Label2 = New Label()
-        CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
+        CType(dgvPendingRequest, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
-        ' 
-        ' Button1
-        ' 
-        Button1.BackColor = Color.DarkSlateGray
-        Button1.FlatStyle = FlatStyle.Flat
-        Button1.Font = New Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Button1.ForeColor = Color.White
-        Button1.Location = New Point(13, 422)
-        Button1.Name = "Button1"
-        Button1.Size = New Size(170, 24)
-        Button1.TabIndex = 39
-        Button1.Text = "BACK"
-        Button1.UseVisualStyleBackColor = False
-        ' 
-        ' DataGridView1
-        ' 
-        DataGridView1.BackgroundColor = Color.LightCyan
-        DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridView1.Location = New Point(237, 91)
-        DataGridView1.Name = "DataGridView1"
-        DataGridView1.Size = New Size(529, 332)
-        DataGridView1.TabIndex = 38
         ' 
         ' btnBack
         ' 
@@ -62,38 +37,21 @@ Partial Class PendingOrders
         btnBack.FlatStyle = FlatStyle.Flat
         btnBack.Font = New Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         btnBack.ForeColor = Color.White
-        btnBack.Location = New Point(30, 463)
+        btnBack.Location = New Point(12, 517)
         btnBack.Name = "btnBack"
         btnBack.Size = New Size(170, 24)
-        btnBack.TabIndex = 37
+        btnBack.TabIndex = 39
         btnBack.Text = "BACK"
         btnBack.UseVisualStyleBackColor = False
         ' 
-        ' btnSalesReport
+        ' dgvPendingRequest
         ' 
-        btnSalesReport.BackColor = Color.PaleTurquoise
-        btnSalesReport.FlatStyle = FlatStyle.Flat
-        btnSalesReport.Font = New Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        btnSalesReport.ForeColor = Color.DarkSlateGray
-        btnSalesReport.Location = New Point(15, 219)
-        btnSalesReport.Name = "btnSalesReport"
-        btnSalesReport.Size = New Size(170, 44)
-        btnSalesReport.TabIndex = 36
-        btnSalesReport.Text = "SALES REPORT"
-        btnSalesReport.UseVisualStyleBackColor = False
-        ' 
-        ' btnStockManagement
-        ' 
-        btnStockManagement.BackColor = Color.DarkSlateGray
-        btnStockManagement.FlatStyle = FlatStyle.Flat
-        btnStockManagement.Font = New Font("Yu Gothic UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        btnStockManagement.ForeColor = Color.White
-        btnStockManagement.Location = New Point(13, 148)
-        btnStockManagement.Name = "btnStockManagement"
-        btnStockManagement.Size = New Size(170, 46)
-        btnStockManagement.TabIndex = 35
-        btnStockManagement.Text = "STOCK MANAGEMENT"
-        btnStockManagement.UseVisualStyleBackColor = False
+        dgvPendingRequest.BackgroundColor = Color.LightCyan
+        dgvPendingRequest.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        dgvPendingRequest.Location = New Point(237, 91)
+        dgvPendingRequest.Name = "dgvPendingRequest"
+        dgvPendingRequest.Size = New Size(765, 431)
+        dgvPendingRequest.TabIndex = 38
         ' 
         ' Label1
         ' 
@@ -103,9 +61,9 @@ Partial Class PendingOrders
         Label1.ForeColor = Color.DarkSlateGray
         Label1.Location = New Point(29, 21)
         Label1.Name = "Label1"
-        Label1.Size = New Size(321, 38)
+        Label1.Size = New Size(363, 38)
         Label1.TabIndex = 34
-        Label1.Text = "PENDING ORDERS"
+        Label1.Text = "PENDING REQUESTS"
         ' 
         ' PictureBox1
         ' 
@@ -127,33 +85,27 @@ Partial Class PendingOrders
         Label2.Size = New Size(0, 38)
         Label2.TabIndex = 32
         ' 
-        ' PendingOrders
+        ' PendingRequest
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(189), CByte(237), CByte(255))
-        ClientSize = New Size(800, 450)
-        Controls.Add(Button1)
-        Controls.Add(DataGridView1)
+        ClientSize = New Size(1040, 553)
         Controls.Add(btnBack)
-        Controls.Add(btnSalesReport)
-        Controls.Add(btnStockManagement)
+        Controls.Add(dgvPendingRequest)
         Controls.Add(Label1)
         Controls.Add(PictureBox1)
         Controls.Add(Label2)
-        Name = "PendingOrders"
+        Name = "PendingRequest"
         Text = "PendingOrders"
-        CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
+        CType(dgvPendingRequest, ComponentModel.ISupportInitialize).EndInit()
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
 
-    Friend WithEvents Button1 As Button
-    Friend WithEvents DataGridView1 As DataGridView
     Friend WithEvents btnBack As Button
-    Friend WithEvents btnSalesReport As Button
-    Friend WithEvents btnStockManagement As Button
+    Friend WithEvents dgvPendingRequest As DataGridView
     Friend WithEvents Label1 As Label
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Label2 As Label

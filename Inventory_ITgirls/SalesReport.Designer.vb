@@ -29,25 +29,25 @@ Partial Class SalesReport
         Label2 = New Label()
         PictureBox1 = New PictureBox()
         Panel1 = New Panel()
+        Button1 = New Button()
         lblLowStockAlerts = New Label()
-        Label3 = New Label()
         Panel3 = New Panel()
+        Button3 = New Button()
         lblTotalStocks = New Label()
-        Label5 = New Label()
         Panel4 = New Panel()
+        Button4 = New Button()
         lblPendingRequest = New Label()
-        Label6 = New Label()
         Panel2 = New Panel()
+        Button2 = New Button()
         lblTotalPullouts = New Label()
-        Label4 = New Label()
         Label11 = New Label()
-        DataGridView1 = New DataGridView()
+        dgvRecentTransactions = New DataGridView()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         Panel1.SuspendLayout()
         Panel3.SuspendLayout()
         Panel4.SuspendLayout()
         Panel2.SuspendLayout()
-        CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
+        CType(dgvRecentTransactions, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' Label1
@@ -94,7 +94,7 @@ Partial Class SalesReport
         btnBack.FlatStyle = FlatStyle.Flat
         btnBack.Font = New Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         btnBack.ForeColor = Color.White
-        btnBack.Location = New Point(15, 483)
+        btnBack.Location = New Point(12, 517)
         btnBack.Name = "btnBack"
         btnBack.Size = New Size(170, 24)
         btnBack.TabIndex = 17
@@ -125,12 +125,25 @@ Partial Class SalesReport
         ' Panel1
         ' 
         Panel1.BackColor = Color.DarkSlateGray
+        Panel1.Controls.Add(Button1)
         Panel1.Controls.Add(lblLowStockAlerts)
-        Panel1.Controls.Add(Label3)
-        Panel1.Location = New Point(211, 63)
+        Panel1.Location = New Point(222, 77)
         Panel1.Name = "Panel1"
-        Panel1.Size = New Size(175, 105)
+        Panel1.Size = New Size(183, 116)
         Panel1.TabIndex = 22
+        ' 
+        ' Button1
+        ' 
+        Button1.BackColor = Color.DarkSlateGray
+        Button1.FlatStyle = FlatStyle.Popup
+        Button1.Font = New Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Button1.ForeColor = SystemColors.Control
+        Button1.Location = New Point(11, 4)
+        Button1.Name = "Button1"
+        Button1.Size = New Size(106, 23)
+        Button1.TabIndex = 26
+        Button1.Text = "Low Stock Alerts"
+        Button1.UseVisualStyleBackColor = False
         ' 
         ' lblLowStockAlerts
         ' 
@@ -143,90 +156,96 @@ Partial Class SalesReport
         lblLowStockAlerts.TabIndex = 25
         lblLowStockAlerts.Text = "-"
         ' 
-        ' Label3
-        ' 
-        Label3.AutoSize = True
-        Label3.Font = New Font("Yu Gothic UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label3.ForeColor = SystemColors.ButtonFace
-        Label3.Location = New Point(12, 4)
-        Label3.Name = "Label3"
-        Label3.Size = New Size(108, 17)
-        Label3.TabIndex = 0
-        Label3.Text = "Low Stock Alerts"
-        ' 
         ' Panel3
         ' 
         Panel3.BackColor = Color.DarkSlateGray
+        Panel3.Controls.Add(Button3)
         Panel3.Controls.Add(lblTotalStocks)
-        Panel3.Controls.Add(Label5)
-        Panel3.Location = New Point(588, 63)
+        Panel3.Location = New Point(627, 77)
         Panel3.Name = "Panel3"
-        Panel3.Size = New Size(175, 105)
+        Panel3.Size = New Size(183, 116)
         Panel3.TabIndex = 23
+        ' 
+        ' Button3
+        ' 
+        Button3.BackColor = Color.DarkSlateGray
+        Button3.FlatStyle = FlatStyle.Popup
+        Button3.Font = New Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Button3.ForeColor = SystemColors.Control
+        Button3.Location = New Point(3, 3)
+        Button3.Name = "Button3"
+        Button3.Size = New Size(94, 23)
+        Button3.TabIndex = 28
+        Button3.Text = "Total Stocks"
+        Button3.UseVisualStyleBackColor = False
         ' 
         ' lblTotalStocks
         ' 
         lblTotalStocks.AutoSize = True
         lblTotalStocks.Font = New Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblTotalStocks.ForeColor = SystemColors.ButtonFace
-        lblTotalStocks.Location = New Point(126, 75)
+        lblTotalStocks.Location = New Point(126, 73)
         lblTotalStocks.Name = "lblTotalStocks"
         lblTotalStocks.Size = New Size(20, 25)
         lblTotalStocks.TabIndex = 26
         lblTotalStocks.Text = "-"
         ' 
-        ' Label5
-        ' 
-        Label5.AutoSize = True
-        Label5.Font = New Font("Yu Gothic UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label5.ForeColor = SystemColors.ButtonFace
-        Label5.Location = New Point(13, 4)
-        Label5.Name = "Label5"
-        Label5.Size = New Size(80, 17)
-        Label5.TabIndex = 25
-        Label5.Text = "Total Stocks"
-        ' 
         ' Panel4
         ' 
         Panel4.BackColor = Color.DarkSlateGray
+        Panel4.Controls.Add(Button4)
         Panel4.Controls.Add(lblPendingRequest)
-        Panel4.Controls.Add(Label6)
-        Panel4.Location = New Point(777, 63)
+        Panel4.Location = New Point(827, 77)
         Panel4.Name = "Panel4"
-        Panel4.Size = New Size(175, 105)
+        Panel4.Size = New Size(189, 116)
         Panel4.TabIndex = 24
+        ' 
+        ' Button4
+        ' 
+        Button4.BackColor = Color.DarkSlateGray
+        Button4.FlatStyle = FlatStyle.Popup
+        Button4.Font = New Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Button4.ForeColor = SystemColors.Control
+        Button4.Location = New Point(3, 4)
+        Button4.Name = "Button4"
+        Button4.Size = New Size(116, 23)
+        Button4.TabIndex = 27
+        Button4.Text = "Pending Requests"
+        Button4.UseVisualStyleBackColor = False
         ' 
         ' lblPendingRequest
         ' 
         lblPendingRequest.AutoSize = True
         lblPendingRequest.Font = New Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblPendingRequest.ForeColor = SystemColors.ButtonFace
-        lblPendingRequest.Location = New Point(134, 76)
+        lblPendingRequest.Location = New Point(129, 74)
         lblPendingRequest.Name = "lblPendingRequest"
         lblPendingRequest.Size = New Size(20, 25)
         lblPendingRequest.TabIndex = 26
         lblPendingRequest.Text = "-"
         ' 
-        ' Label6
-        ' 
-        Label6.AutoSize = True
-        Label6.Font = New Font("Yu Gothic UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label6.ForeColor = SystemColors.ButtonFace
-        Label6.Location = New Point(14, 4)
-        Label6.Name = "Label6"
-        Label6.Size = New Size(117, 17)
-        Label6.TabIndex = 25
-        Label6.Text = "Pending Requests"
-        ' 
         ' Panel2
         ' 
         Panel2.BackColor = Color.DarkSlateGray
+        Panel2.Controls.Add(Button2)
         Panel2.Controls.Add(lblTotalPullouts)
-        Panel2.Controls.Add(Label4)
-        Panel2.Location = New Point(399, 63)
+        Panel2.Location = New Point(424, 77)
         Panel2.Name = "Panel2"
-        Panel2.Size = New Size(175, 105)
+        Panel2.Size = New Size(183, 116)
         Panel2.TabIndex = 23
+        ' 
+        ' Button2
+        ' 
+        Button2.BackColor = Color.DarkSlateGray
+        Button2.FlatStyle = FlatStyle.Popup
+        Button2.Font = New Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Button2.ForeColor = SystemColors.Control
+        Button2.Location = New Point(3, 4)
+        Button2.Name = "Button2"
+        Button2.Size = New Size(90, 23)
+        Button2.TabIndex = 27
+        Button2.Text = "Total Pullouts"
+        Button2.UseVisualStyleBackColor = False
         ' 
         ' lblTotalPullouts
         ' 
@@ -239,45 +258,34 @@ Partial Class SalesReport
         lblTotalPullouts.TabIndex = 26
         lblTotalPullouts.Text = "-"
         ' 
-        ' Label4
-        ' 
-        Label4.AutoSize = True
-        Label4.Font = New Font("Yu Gothic UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label4.ForeColor = SystemColors.ButtonFace
-        Label4.Location = New Point(13, 4)
-        Label4.Name = "Label4"
-        Label4.Size = New Size(90, 17)
-        Label4.TabIndex = 25
-        Label4.Text = "Total Pullouts"
-        ' 
         ' Label11
         ' 
         Label11.AutoSize = True
         Label11.BackColor = Color.Transparent
         Label11.Font = New Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label11.ForeColor = Color.DarkSlateGray
-        Label11.Location = New Point(383, 229)
+        Label11.Location = New Point(521, 231)
         Label11.Name = "Label11"
         Label11.Size = New Size(212, 18)
         Label11.TabIndex = 25
         Label11.Text = "RECENT TRANSACTIONS"
         ' 
-        ' DataGridView1
+        ' dgvRecentTransactions
         ' 
-        DataGridView1.BackgroundColor = Color.LightCyan
-        DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridView1.Location = New Point(211, 252)
-        DataGridView1.Name = "DataGridView1"
-        DataGridView1.Size = New Size(552, 255)
-        DataGridView1.TabIndex = 26
+        dgvRecentTransactions.BackgroundColor = Color.LightCyan
+        dgvRecentTransactions.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        dgvRecentTransactions.Location = New Point(222, 252)
+        dgvRecentTransactions.Name = "dgvRecentTransactions"
+        dgvRecentTransactions.Size = New Size(794, 289)
+        dgvRecentTransactions.TabIndex = 26
         ' 
         ' SalesReport
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(189), CByte(237), CByte(255))
-        ClientSize = New Size(960, 541)
-        Controls.Add(DataGridView1)
+        ClientSize = New Size(1040, 553)
+        Controls.Add(dgvRecentTransactions)
         Controls.Add(Label11)
         Controls.Add(Panel4)
         Controls.Add(Panel3)
@@ -300,7 +308,7 @@ Partial Class SalesReport
         Panel4.PerformLayout()
         Panel2.ResumeLayout(False)
         Panel2.PerformLayout()
-        CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
+        CType(dgvRecentTransactions, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -312,17 +320,17 @@ Partial Class SalesReport
     Friend WithEvents Label2 As Label
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents Label3 As Label
     Friend WithEvents Panel3 As Panel
     Friend WithEvents Panel4 As Panel
-    Friend WithEvents Label5 As Label
     Friend WithEvents Panel2 As Panel
-    Friend WithEvents Label4 As Label
     Friend WithEvents lblLowStockAlerts As Label
     Friend WithEvents lblTotalStocks As Label
     Friend WithEvents lblPendingRequest As Label
-    Friend WithEvents Label6 As Label
     Friend WithEvents lblTotalPullouts As Label
     Friend WithEvents Label11 As Label
-    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents dgvRecentTransactions As DataGridView
+    Friend WithEvents Button1 As Button
+    Friend WithEvents Button2 As Button
+    Friend WithEvents Button3 As Button
+    Friend WithEvents Button4 As Button
 End Class

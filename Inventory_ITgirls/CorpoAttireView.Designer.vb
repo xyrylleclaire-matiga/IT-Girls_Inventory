@@ -322,7 +322,7 @@ Partial Class CorpoAttireView
         btnStockManagement.FlatStyle = FlatStyle.Flat
         btnStockManagement.Font = New Font("Yu Gothic UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         btnStockManagement.ForeColor = Color.DarkSlateGray
-        btnStockManagement.Location = New Point(13, 184)
+        btnStockManagement.Location = New Point(9, 184)
         btnStockManagement.Name = "btnStockManagement"
         btnStockManagement.Size = New Size(174, 46)
         btnStockManagement.TabIndex = 59
@@ -368,7 +368,7 @@ Partial Class CorpoAttireView
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(189), CByte(237), CByte(255))
-        ClientSize = New Size(1037, 501)
+        ClientSize = New Size(1040, 553)
         Controls.Add(Label14)
         Controls.Add(Label13)
         Controls.Add(Label12)

@@ -32,8 +32,6 @@ Partial Class FrmLogin
         Label3 = New Label()
         PictureBox3 = New PictureBox()
         PictureBox4 = New PictureBox()
-        Label4 = New Label()
-        lblAttempts = New Label()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox3, ComponentModel.ISupportInitialize).BeginInit()
@@ -146,32 +144,12 @@ Partial Class FrmLogin
         PictureBox4.TabIndex = 11
         PictureBox4.TabStop = False
         ' 
-        ' Label4
-        ' 
-        Label4.AutoSize = True
-        Label4.Location = New Point(354, 310)
-        Label4.Name = "Label4"
-        Label4.Size = New Size(41, 15)
-        Label4.TabIndex = 12
-        Label4.Text = "Label4"
-        ' 
-        ' lblAttempts
-        ' 
-        lblAttempts.AutoSize = True
-        lblAttempts.Location = New Point(451, 234)
-        lblAttempts.Name = "lblAttempts"
-        lblAttempts.Size = New Size(12, 15)
-        lblAttempts.TabIndex = 13
-        lblAttempts.Text = "-"
-        ' 
         ' FrmLogin
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(189), CByte(237), CByte(255))
         ClientSize = New Size(800, 450)
-        Controls.Add(lblAttempts)
-        Controls.Add(Label4)
         Controls.Add(PictureBox4)
         Controls.Add(PictureBox3)
         Controls.Add(Label3)
@@ -202,7 +180,5 @@ Partial Class FrmLogin
     Friend WithEvents Label3 As Label
     Friend WithEvents PictureBox3 As PictureBox
     Friend WithEvents PictureBox4 As PictureBox
-    Friend WithEvents Label4 As Label
-    Friend WithEvents lblAttempts As Label
 
 End Class

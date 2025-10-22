@@ -39,7 +39,7 @@ Partial Class frmUser
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(800, 450)
+        ClientSize = New Size(1040, 553)
         Controls.Add(Label1)
         Name = "frmUser"
         Text = "frmUser"
