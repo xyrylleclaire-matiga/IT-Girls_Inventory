@@ -26,7 +26,6 @@ Partial Class TotalPullouts
         Label1 = New Label()
         PictureBox1 = New PictureBox()
         Label2 = New Label()
-        btnBack = New Button()
         CType(dgvTotalPullouts, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
@@ -71,19 +70,7 @@ Partial Class TotalPullouts
         Label2.Name = "Label2"
         Label2.Size = New Size(0, 38)
         Label2.TabIndex = 24
-        ' 
-        ' btnBack
-        ' 
-        btnBack.BackColor = Color.DarkSlateGray
-        btnBack.FlatStyle = FlatStyle.Flat
-        btnBack.Font = New Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        btnBack.ForeColor = Color.White
-        btnBack.Location = New Point(12, 517)
-        btnBack.Name = "btnBack"
-        btnBack.Size = New Size(170, 24)
-        btnBack.TabIndex = 31
-        btnBack.Text = "BACK"
-        btnBack.UseVisualStyleBackColor = False
+        '
         ' 
         ' TotalPullouts
         ' 
@@ -91,7 +78,6 @@ Partial Class TotalPullouts
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(189), CByte(237), CByte(255))
         ClientSize = New Size(1040, 553)
-        Controls.Add(btnBack)
         Controls.Add(dgvTotalPullouts)
         Controls.Add(Label1)
         Controls.Add(PictureBox1)
@@ -109,5 +95,4 @@ Partial Class TotalPullouts
     Friend WithEvents Label1 As Label
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Label2 As Label
-    Friend WithEvents btnBack As Button
 End Class
