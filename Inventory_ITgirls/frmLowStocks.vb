@@ -1,6 +1,6 @@
-﻿Public Class LowStocks
+﻿Public Class frmLowStocks
     Private Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
         Hide()
-        SalesReport.Show()
+        frmSalesReport.Show()
     End Sub
 End Class

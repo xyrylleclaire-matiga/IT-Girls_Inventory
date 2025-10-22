@@ -1,10 +1,10 @@
 ﻿Imports MySql.Data.MySqlClient
 
-Public Class PEUniformView
-    Private Sub btnLogOut_Click(sender As Object, e As EventArgs) Handles btnLogOut.Click
+Public Class frmPEUniformView
+    Private Sub btnLogOut_Click(sender As Object, e As EventArgs)
         If MsgBox("Are you sure you want to go back?", vbQuestion + vbYesNo) = vbYes Then
-            Admin.Show()
-            Me.Close()
+            frmAdmin.Show()
+            Close()
         End If
     End Sub
 
@@ -34,9 +34,9 @@ Public Class PEUniformView
     Private Sub PEUniformView_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         displayApplication()
     End Sub
-    Private Sub ListView1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListView1.SelectedIndexChanged
+    Private Sub ListView1_SelectedIndexChanged(sender As Object, e As EventArgs)
         If ListView1.SelectedItems.Count > 0 Then
-            Dim selectedItem As ListViewItem = ListView1.SelectedItems(0)
+            Dim selectedItem = ListView1.SelectedItems(0)
             txtItemName.Text = selectedItem.Text
             txtCategory.Text = selectedItem.SubItems(1).Text
             txtLevel.Text = selectedItem.SubItems(2).Text
@@ -48,5 +48,14 @@ Public Class PEUniformView
             txtDateAdded.Text = selectedItem.SubItems(8).Text
 
         End If
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
+        Me.Hide()
+
     End Sub
 End Class

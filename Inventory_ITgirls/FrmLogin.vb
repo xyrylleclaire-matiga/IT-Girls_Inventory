@@ -44,7 +44,7 @@ Public Class FrmLogin
             Dim role As String = "Admin"
             databaseConnection.dr.Close()
             databaseConnection.cn.Close()
-            Admin.Show()
+            frmAdmin.Show()
             Me.Hide()
             txtID.Clear()
             txtPassword.Clear()
@@ -163,10 +163,11 @@ Public Class FrmLogin
 
     End Sub
 
-    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
-        MsgBox("you have clicked this picture")
-        Me.Hide()
-        'FrmAdminPFMO.Show()
+    Private Sub chkShowPass_CheckedChanged(sender As Object, e As EventArgs) Handles chkShowPass.CheckedChanged
+        If chkShowPass.Checked Then
+            txtPassword.UseSystemPasswordChar = False
+        Else
+            txtPassword.UseSystemPasswordChar = True
+        End If
     End Sub
-
 End Class

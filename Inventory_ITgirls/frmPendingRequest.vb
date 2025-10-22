@@ -1,7 +1,9 @@
-﻿Public Class TotalPullouts
+﻿Public Class frmPendingRequest
 
     Private Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
-        Me.Hide()
-        SalesReport.Show()
+        Hide()
+        frmSalesReport.Show()
     End Sub
+
+
 End Class

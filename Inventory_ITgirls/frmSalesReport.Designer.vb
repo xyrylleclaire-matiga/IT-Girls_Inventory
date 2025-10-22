@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class SalesReport
+Partial Class frmSalesReport
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -23,12 +23,8 @@ Partial Class SalesReport
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Label1 = New Label()
-        btnSalesReport = New Button()
-        btnStockManagement = New Button()
-        btnBack = New Button()
         Label2 = New Label()
-        PictureBox1 = New PictureBox()
-        Panel1 = New Panel()
+        PanelLowStock = New Panel()
         Button1 = New Button()
         lblLowStockAlerts = New Label()
         Panel3 = New Panel()
@@ -42,8 +38,7 @@ Partial Class SalesReport
         lblTotalPullouts = New Label()
         Label11 = New Label()
         dgvRecentTransactions = New DataGridView()
-        CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
-        Panel1.SuspendLayout()
+        PanelLowStock.SuspendLayout()
         Panel3.SuspendLayout()
         Panel4.SuspendLayout()
         Panel2.SuspendLayout()
@@ -56,50 +51,11 @@ Partial Class SalesReport
         Label1.BackColor = Color.Transparent
         Label1.Font = New Font("Franklin Gothic Medium Cond", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label1.ForeColor = Color.DarkSlateGray
-        Label1.Location = New Point(370, 35)
+        Label1.Location = New Point(277, 35)
         Label1.Name = "Label1"
         Label1.Size = New Size(51, 21)
         Label1.TabIndex = 21
         Label1.Text = "ADMIN"
-        ' 
-        ' btnSalesReport
-        ' 
-        btnSalesReport.BackColor = Color.PaleTurquoise
-        btnSalesReport.FlatStyle = FlatStyle.Flat
-        btnSalesReport.Font = New Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        btnSalesReport.ForeColor = Color.DarkSlateGray
-        btnSalesReport.Location = New Point(15, 206)
-        btnSalesReport.Name = "btnSalesReport"
-        btnSalesReport.Size = New Size(170, 44)
-        btnSalesReport.TabIndex = 20
-        btnSalesReport.Text = "SALES REPORT"
-        btnSalesReport.UseVisualStyleBackColor = False
-        ' 
-        ' btnStockManagement
-        ' 
-        btnStockManagement.BackColor = Color.DarkSlateGray
-        btnStockManagement.FlatStyle = FlatStyle.Flat
-        btnStockManagement.Font = New Font("Yu Gothic UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        btnStockManagement.ForeColor = Color.White
-        btnStockManagement.Location = New Point(15, 133)
-        btnStockManagement.Name = "btnStockManagement"
-        btnStockManagement.Size = New Size(170, 46)
-        btnStockManagement.TabIndex = 19
-        btnStockManagement.Text = "STOCK MANAGEMENT"
-        btnStockManagement.UseVisualStyleBackColor = False
-        ' 
-        ' btnBack
-        ' 
-        btnBack.BackColor = Color.DarkSlateGray
-        btnBack.FlatStyle = FlatStyle.Flat
-        btnBack.Font = New Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        btnBack.ForeColor = Color.White
-        btnBack.Location = New Point(12, 517)
-        btnBack.Name = "btnBack"
-        btnBack.Size = New Size(170, 24)
-        btnBack.TabIndex = 17
-        btnBack.Text = "BACK"
-        btnBack.UseVisualStyleBackColor = False
         ' 
         ' Label2
         ' 
@@ -107,40 +63,31 @@ Partial Class SalesReport
         Label2.BackColor = Color.Transparent
         Label2.Font = New Font("Arial Rounded MT Bold", 24.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label2.ForeColor = Color.DarkSlateGray
-        Label2.Location = New Point(20, 20)
+        Label2.Location = New Point(12, 20)
         Label2.Name = "Label2"
-        Label2.Size = New Size(357, 38)
+        Label2.Size = New Size(274, 38)
         Label2.TabIndex = 16
-        Label2.Text = "INVENTORY SYSTEM"
+        Label2.Text = "SALES REPORT"
         ' 
-        ' PictureBox1
+        ' PanelLowStock
         ' 
-        PictureBox1.BackColor = Color.LightCyan
-        PictureBox1.Location = New Point(-6, -1)
-        PictureBox1.Name = "PictureBox1"
-        PictureBox1.Size = New Size(204, 652)
-        PictureBox1.TabIndex = 15
-        PictureBox1.TabStop = False
-        ' 
-        ' Panel1
-        ' 
-        Panel1.BackColor = Color.DarkSlateGray
-        Panel1.Controls.Add(Button1)
-        Panel1.Controls.Add(lblLowStockAlerts)
-        Panel1.Location = New Point(222, 77)
-        Panel1.Name = "Panel1"
-        Panel1.Size = New Size(183, 116)
-        Panel1.TabIndex = 22
+        PanelLowStock.BackColor = Color.Brown
+        PanelLowStock.Controls.Add(Button1)
+        PanelLowStock.Controls.Add(lblLowStockAlerts)
+        PanelLowStock.Location = New Point(50, 75)
+        PanelLowStock.Name = "PanelLowStock"
+        PanelLowStock.Size = New Size(183, 116)
+        PanelLowStock.TabIndex = 22
         ' 
         ' Button1
         ' 
-        Button1.BackColor = Color.DarkSlateGray
+        Button1.BackColor = Color.Brown
         Button1.FlatStyle = FlatStyle.Popup
-        Button1.Font = New Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Button1.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Button1.ForeColor = SystemColors.Control
-        Button1.Location = New Point(11, 4)
+        Button1.Location = New Point(4, 3)
         Button1.Name = "Button1"
-        Button1.Size = New Size(106, 23)
+        Button1.Size = New Size(80, 23)
         Button1.TabIndex = 26
         Button1.Text = "Low Stock Alerts"
         Button1.UseVisualStyleBackColor = False
@@ -158,20 +105,20 @@ Partial Class SalesReport
         ' 
         ' Panel3
         ' 
-        Panel3.BackColor = Color.DarkSlateGray
+        Panel3.BackColor = Color.DarkGoldenrod
         Panel3.Controls.Add(Button3)
         Panel3.Controls.Add(lblTotalStocks)
-        Panel3.Location = New Point(627, 77)
+        Panel3.Location = New Point(548, 72)
         Panel3.Name = "Panel3"
         Panel3.Size = New Size(183, 116)
         Panel3.TabIndex = 23
         ' 
         ' Button3
         ' 
-        Button3.BackColor = Color.DarkSlateGray
+        Button3.BackColor = Color.DarkGoldenrod
         Button3.FlatStyle = FlatStyle.Popup
         Button3.Font = New Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Button3.ForeColor = SystemColors.Control
+        Button3.ForeColor = SystemColors.ActiveCaptionText
         Button3.Location = New Point(3, 3)
         Button3.Name = "Button3"
         Button3.Size = New Size(94, 23)
@@ -195,7 +142,7 @@ Partial Class SalesReport
         Panel4.BackColor = Color.DarkSlateGray
         Panel4.Controls.Add(Button4)
         Panel4.Controls.Add(lblPendingRequest)
-        Panel4.Location = New Point(827, 77)
+        Panel4.Location = New Point(800, 72)
         Panel4.Name = "Panel4"
         Panel4.Size = New Size(189, 116)
         Panel4.TabIndex = 24
@@ -226,19 +173,19 @@ Partial Class SalesReport
         ' 
         ' Panel2
         ' 
-        Panel2.BackColor = Color.DarkSlateGray
+        Panel2.BackColor = Color.SeaGreen
         Panel2.Controls.Add(Button2)
         Panel2.Controls.Add(lblTotalPullouts)
-        Panel2.Location = New Point(424, 77)
+        Panel2.Location = New Point(298, 72)
         Panel2.Name = "Panel2"
         Panel2.Size = New Size(183, 116)
         Panel2.TabIndex = 23
         ' 
         ' Button2
         ' 
-        Button2.BackColor = Color.DarkSlateGray
+        Button2.BackColor = Color.SeaGreen
         Button2.FlatStyle = FlatStyle.Popup
-        Button2.Font = New Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Button2.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Button2.ForeColor = SystemColors.Control
         Button2.Location = New Point(3, 4)
         Button2.Name = "Button2"
@@ -262,11 +209,11 @@ Partial Class SalesReport
         ' 
         Label11.AutoSize = True
         Label11.BackColor = Color.Transparent
-        Label11.Font = New Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label11.Font = New Font("Arial Rounded MT Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label11.ForeColor = Color.DarkSlateGray
-        Label11.Location = New Point(521, 231)
+        Label11.Location = New Point(368, 230)
         Label11.Name = "Label11"
-        Label11.Size = New Size(212, 18)
+        Label11.Size = New Size(250, 22)
         Label11.TabIndex = 25
         Label11.Text = "RECENT TRANSACTIONS"
         ' 
@@ -274,34 +221,29 @@ Partial Class SalesReport
         ' 
         dgvRecentTransactions.BackgroundColor = Color.LightCyan
         dgvRecentTransactions.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        dgvRecentTransactions.Location = New Point(222, 252)
+        dgvRecentTransactions.Location = New Point(16, 243)
         dgvRecentTransactions.Name = "dgvRecentTransactions"
-        dgvRecentTransactions.Size = New Size(794, 289)
+        dgvRecentTransactions.Size = New Size(1010, 289)
         dgvRecentTransactions.TabIndex = 26
         ' 
-        ' SalesReport
+        ' frmSalesReport
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        BackColor = Color.FromArgb(CByte(189), CByte(237), CByte(255))
-        ClientSize = New Size(1040, 553)
-        Controls.Add(dgvRecentTransactions)
+        BackColor = Color.LightCyan
+        ClientSize = New Size(1038, 551)
+        Controls.Add(Label1)
         Controls.Add(Label11)
+        Controls.Add(dgvRecentTransactions)
         Controls.Add(Panel4)
         Controls.Add(Panel3)
         Controls.Add(Panel2)
-        Controls.Add(Panel1)
-        Controls.Add(Label1)
-        Controls.Add(btnSalesReport)
-        Controls.Add(btnStockManagement)
-        Controls.Add(btnBack)
+        Controls.Add(PanelLowStock)
         Controls.Add(Label2)
-        Controls.Add(PictureBox1)
-        Name = "SalesReport"
+        Name = "frmSalesReport"
         Text = "SalesReport"
-        CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
-        Panel1.ResumeLayout(False)
-        Panel1.PerformLayout()
+        PanelLowStock.ResumeLayout(False)
+        PanelLowStock.PerformLayout()
         Panel3.ResumeLayout(False)
         Panel3.PerformLayout()
         Panel4.ResumeLayout(False)
@@ -314,12 +256,8 @@ Partial Class SalesReport
     End Sub
 
     Friend WithEvents Label1 As Label
-    Friend WithEvents btnSalesReport As Button
-    Friend WithEvents btnStockManagement As Button
-    Friend WithEvents btnBack As Button
     Friend WithEvents Label2 As Label
-    Friend WithEvents PictureBox1 As PictureBox
-    Friend WithEvents Panel1 As Panel
+    Friend WithEvents PanelLowStock As Panel
     Friend WithEvents Panel3 As Panel
     Friend WithEvents Panel4 As Panel
     Friend WithEvents Panel2 As Panel
