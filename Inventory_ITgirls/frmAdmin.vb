@@ -136,4 +136,8 @@ Public Class frmAdmin
     Private Sub btnPullOut_Click(sender As Object, e As EventArgs) Handles btnPullOut.Click
         openChildForm(New TotalPullouts)
     End Sub
+
+    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
+
+    End Sub
 End Class

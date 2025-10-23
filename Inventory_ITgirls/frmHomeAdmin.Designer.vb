@@ -49,9 +49,9 @@ Partial Class frmHomeAdmin
         PanelMain.Controls.Add(btnPeUniform)
         PanelMain.Controls.Add(picPEUniform)
         PanelMain.Controls.Add(picSchoolUniform)
-        PanelMain.Location = New Point(-7, -10)
+        PanelMain.Location = New Point(-7, -7)
         PanelMain.Name = "PanelMain"
-        PanelMain.Size = New Size(1054, 590)
+        PanelMain.Size = New Size(1054, 703)
         PanelMain.TabIndex = 59
         ' 
         ' Label3
@@ -157,7 +157,7 @@ Partial Class frmHomeAdmin
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(1038, 551)
+        ClientSize = New Size(1038, 693)
         Controls.Add(PanelMain)
         Name = "frmHomeAdmin"
         Text = "frmHomeAdmin"

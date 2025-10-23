@@ -39,7 +39,6 @@ Partial Class frmAdmin
         btnStockManagement = New Button()
         PictureBox1 = New PictureBox()
         btnHome = New Button()
-        PictureBox2 = New PictureBox()
         btnPullOut = New Button()
         PanelMain.SuspendLayout()
         Panel1.SuspendLayout()
@@ -47,7 +46,6 @@ Partial Class frmAdmin
         CType(picPEUniform, ComponentModel.ISupportInitialize).BeginInit()
         CType(picSchoolUniform, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
-        CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' Label3
@@ -67,7 +65,7 @@ Partial Class frmAdmin
         PanelMain.Controls.Add(Panel1)
         PanelMain.Location = New Point(204, -1)
         PanelMain.Name = "PanelMain"
-        PanelMain.Size = New Size(1056, 557)
+        PanelMain.Size = New Size(1056, 670)
         PanelMain.TabIndex = 58
         ' 
         ' Panel1
@@ -81,9 +79,9 @@ Partial Class frmAdmin
         Panel1.Controls.Add(btnPeUniform)
         Panel1.Controls.Add(picPEUniform)
         Panel1.Controls.Add(picSchoolUniform)
-        Panel1.Location = New Point(0, 1)
+        Panel1.Location = New Point(0, 3)
         Panel1.Name = "Panel1"
-        Panel1.Size = New Size(1054, 590)
+        Panel1.Size = New Size(1054, 667)
         Panel1.TabIndex = 60
         ' 
         ' Label1
@@ -192,7 +190,7 @@ Partial Class frmAdmin
         btnBack.FlatStyle = FlatStyle.Flat
         btnBack.Font = New Font("Arial Rounded MT Bold", 10F)
         btnBack.ForeColor = Color.White
-        btnBack.Location = New Point(10, 506)
+        btnBack.Location = New Point(11, 617)
         btnBack.Name = "btnBack"
         btnBack.Size = New Size(180, 35)
         btnBack.TabIndex = 2
@@ -232,7 +230,7 @@ Partial Class frmAdmin
         PictureBox1.BackColor = Color.DarkSlateGray
         PictureBox1.Location = New Point(-1, -1)
         PictureBox1.Name = "PictureBox1"
-        PictureBox1.Size = New Size(208, 554)
+        PictureBox1.Size = New Size(208, 664)
         PictureBox1.TabIndex = 0
         PictureBox1.TabStop = False
         ' 
@@ -249,17 +247,6 @@ Partial Class frmAdmin
         btnHome.TabIndex = 59
         btnHome.Text = "HOME"
         btnHome.UseVisualStyleBackColor = False
-        ' 
-        ' PictureBox2
-        ' 
-        PictureBox2.BackColor = Color.Teal
-        PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), Image)
-        PictureBox2.Location = New Point(12, 506)
-        PictureBox2.Name = "PictureBox2"
-        PictureBox2.Size = New Size(44, 34)
-        PictureBox2.SizeMode = PictureBoxSizeMode.StretchImage
-        PictureBox2.TabIndex = 68
-        PictureBox2.TabStop = False
         ' 
         ' btnPullOut
         ' 
@@ -280,9 +267,8 @@ Partial Class frmAdmin
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.DarkSlateGray
-        ClientSize = New Size(1257, 553)
+        ClientSize = New Size(1257, 664)
         Controls.Add(btnPullOut)
-        Controls.Add(PictureBox2)
         Controls.Add(btnHome)
         Controls.Add(PanelMain)
         Controls.Add(btnSalesReport)
@@ -300,7 +286,6 @@ Partial Class frmAdmin
         CType(picPEUniform, ComponentModel.ISupportInitialize).EndInit()
         CType(picSchoolUniform, ComponentModel.ISupportInitialize).EndInit()
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
-        CType(PictureBox2, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -320,6 +305,5 @@ Partial Class frmAdmin
     Friend WithEvents picSchoolUniform As PictureBox
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
-    Friend WithEvents PictureBox2 As PictureBox
     Friend WithEvents btnPullOut As Button
 End Class

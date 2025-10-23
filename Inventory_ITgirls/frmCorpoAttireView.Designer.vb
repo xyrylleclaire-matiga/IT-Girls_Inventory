@@ -4,44 +4,32 @@ Imports System.Windows.Forms
 <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmCorpoAttireView
     Inherits Form
-    Private Label2 As Label
-    Private WithEvents txtSearch As TextBox
-    Private WithEvents btnModify, btnSave1 As Button
-
-
-    Private txtItemName, txtCategory, txtStockQuantity, txtPrice, txtDateAdded As TextBox
-    Private Label6, Label7, Label11, Label12, Label14 As Label
-    Private btnRemove As Button
 
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Label2 = New Label()
+        Panel1 = New Panel()
         txtSearch = New TextBox()
+        btnBack1 = New Button()
+        btnSave = New Button()
         pnlDetails = New Panel()
         Label5 = New Label()
         txtSize = New TextBox()
-        Label3 = New Label()
-        Label8 = New Label()
+        Label4 = New Label()
         lblTitle = New Label()
-        TextBox5 = New TextBox()
         txtLevel = New TextBox()
         Label9 = New Label()
-        Label4 = New Label()
+        Label6 = New Label()
         txtStatus = New TextBox()
         Label14 = New Label()
         txtDateAdded = New TextBox()
-        Label6 = New Label()
+        Label7 = New Label()
         txtGender = New TextBox()
         txtItemName = New TextBox()
-        Label7 = New Label()
-        txtCategory = New TextBox()
         Label11 = New Label()
         txtStockQuantity = New TextBox()
         Label12 = New Label()
         txtPrice = New TextBox()
-        btnModify = New Button()
-        btnSave1 = New Button()
-        btnBack = New Button()
         ListView1 = New ListView()
         Item = New ColumnHeader()
         Level = New ColumnHeader()
@@ -51,8 +39,8 @@ Partial Class frmCorpoAttireView
         price = New ColumnHeader()
         Status = New ColumnHeader()
         Date_added = New ColumnHeader()
-        Label1 = New Label()
-        btnRemove1 = New Button()
+        btnRemove = New Button()
+        Panel1.SuspendLayout()
         pnlDetails.SuspendLayout()
         SuspendLayout()
         ' 
@@ -61,20 +49,62 @@ Partial Class frmCorpoAttireView
         Label2.AutoSize = True
         Label2.Font = New Font("Arial Rounded MT Bold", 18F)
         Label2.ForeColor = Color.DarkSlateGray
-        Label2.Location = New Point(29, 22)
+        Label2.Location = New Point(25, 26)
         Label2.Name = "Label2"
         Label2.Size = New Size(260, 28)
-        Label2.TabIndex = 1
+        Label2.TabIndex = 111
         Label2.Text = "CORPORATE ATTIRE"
+        ' 
+        ' Panel1
+        ' 
+        Panel1.BackColor = Color.FromArgb(CByte(224), CByte(240), CByte(234))
+        Panel1.Controls.Add(txtSearch)
+        Panel1.Controls.Add(btnBack1)
+        Panel1.Controls.Add(btnSave)
+        Panel1.Controls.Add(pnlDetails)
+        Panel1.Controls.Add(ListView1)
+        Panel1.Controls.Add(btnRemove)
+        Panel1.Location = New Point(12, 76)
+        Panel1.Name = "Panel1"
+        Panel1.Size = New Size(944, 576)
+        Panel1.TabIndex = 118
         ' 
         ' txtSearch
         ' 
-        txtSearch.Font = New Font("Segoe UI", 10F)
-        txtSearch.Location = New Point(567, 22)
+        txtSearch.Font = New Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        txtSearch.Location = New Point(512, 28)
         txtSearch.Name = "txtSearch"
         txtSearch.PlaceholderText = "Search item..."
         txtSearch.Size = New Size(200, 25)
-        txtSearch.TabIndex = 2
+        txtSearch.TabIndex = 119
+        ' 
+        ' btnBack1
+        ' 
+        btnBack1.BackColor = Color.DimGray
+        btnBack1.FlatAppearance.BorderSize = 0
+        btnBack1.FlatStyle = FlatStyle.Flat
+        btnBack1.Font = New Font("Arial Rounded MT Bold", 12F)
+        btnBack1.ForeColor = Color.White
+        btnBack1.Location = New Point(465, 484)
+        btnBack1.Name = "btnBack1"
+        btnBack1.Size = New Size(137, 36)
+        btnBack1.TabIndex = 123
+        btnBack1.Text = "Back"
+        btnBack1.UseVisualStyleBackColor = False
+        ' 
+        ' btnSave
+        ' 
+        btnSave.BackColor = Color.SeaGreen
+        btnSave.FlatAppearance.BorderSize = 0
+        btnSave.FlatStyle = FlatStyle.Flat
+        btnSave.Font = New Font("Arial Rounded MT Bold", 12F)
+        btnSave.ForeColor = Color.White
+        btnSave.Location = New Point(154, 484)
+        btnSave.Name = "btnSave"
+        btnSave.Size = New Size(128, 36)
+        btnSave.TabIndex = 122
+        btnSave.Text = "Save"
+        btnSave.UseVisualStyleBackColor = False
         ' 
         ' pnlDetails
         ' 
@@ -82,34 +112,30 @@ Partial Class frmCorpoAttireView
         pnlDetails.BorderStyle = BorderStyle.FixedSingle
         pnlDetails.Controls.Add(Label5)
         pnlDetails.Controls.Add(txtSize)
-        pnlDetails.Controls.Add(Label3)
-        pnlDetails.Controls.Add(Label8)
+        pnlDetails.Controls.Add(Label4)
         pnlDetails.Controls.Add(lblTitle)
-        pnlDetails.Controls.Add(TextBox5)
         pnlDetails.Controls.Add(txtLevel)
         pnlDetails.Controls.Add(Label9)
-        pnlDetails.Controls.Add(Label4)
+        pnlDetails.Controls.Add(Label6)
         pnlDetails.Controls.Add(txtStatus)
         pnlDetails.Controls.Add(Label14)
         pnlDetails.Controls.Add(txtDateAdded)
-        pnlDetails.Controls.Add(Label6)
+        pnlDetails.Controls.Add(Label7)
         pnlDetails.Controls.Add(txtGender)
         pnlDetails.Controls.Add(txtItemName)
-        pnlDetails.Controls.Add(Label7)
-        pnlDetails.Controls.Add(txtCategory)
         pnlDetails.Controls.Add(Label11)
         pnlDetails.Controls.Add(txtStockQuantity)
         pnlDetails.Controls.Add(Label12)
         pnlDetails.Controls.Add(txtPrice)
-        pnlDetails.Location = New Point(755, 70)
+        pnlDetails.Location = New Point(727, 37)
         pnlDetails.Name = "pnlDetails"
-        pnlDetails.Size = New Size(200, 518)
-        pnlDetails.TabIndex = 4
+        pnlDetails.Size = New Size(200, 423)
+        pnlDetails.TabIndex = 121
         ' 
         ' Label5
         ' 
         Label5.Font = New Font("Arial Rounded MT Bold", 9F)
-        Label5.Location = New Point(10, 316)
+        Label5.Location = New Point(9, 271)
         Label5.Name = "Label5"
         Label5.Size = New Size(100, 23)
         Label5.TabIndex = 5
@@ -118,87 +144,73 @@ Partial Class frmCorpoAttireView
         ' txtSize
         ' 
         txtSize.Font = New Font("Arial Rounded MT Bold", 9F)
-        txtSize.Location = New Point(10, 335)
+        txtSize.Location = New Point(9, 290)
         txtSize.Name = "txtSize"
+        txtSize.ReadOnly = True
         txtSize.Size = New Size(170, 21)
         txtSize.TabIndex = 6
         ' 
-        ' Label3
+        ' Label4
         ' 
-        Label3.Font = New Font("Arial Rounded MT Bold", 9F)
-        Label3.Location = New Point(10, 225)
-        Label3.Name = "Label3"
-        Label3.Size = New Size(100, 23)
-        Label3.TabIndex = 1
-        Label3.Text = "Level:"
-        Label3.Visible = False
-        ' 
-        ' Label8
-        ' 
-        Label8.Font = New Font("Arial Rounded MT Bold", 9F)
-        Label8.Location = New Point(10, 361)
-        Label8.Name = "Label8"
-        Label8.Size = New Size(100, 23)
-        Label8.TabIndex = 7
-        Label8.Text = "Price:"
+        Label4.Font = New Font("Arial Rounded MT Bold", 9F)
+        Label4.Location = New Point(9, 180)
+        Label4.Name = "Label4"
+        Label4.Size = New Size(100, 23)
+        Label4.TabIndex = 1
+        Label4.Text = "Level:"
+        Label4.Visible = False
         ' 
         ' lblTitle
         ' 
         lblTitle.AutoSize = True
         lblTitle.Font = New Font("Arial Rounded MT Bold", 11F)
         lblTitle.ForeColor = Color.DarkSlateGray
-        lblTitle.Location = New Point(10, 8)
+        lblTitle.Location = New Point(9, 7)
         lblTitle.Name = "lblTitle"
         lblTitle.Size = New Size(94, 17)
         lblTitle.TabIndex = 0
         lblTitle.Text = "Item Details"
         ' 
-        ' TextBox5
-        ' 
-        TextBox5.Font = New Font("Arial Rounded MT Bold", 9F)
-        TextBox5.Location = New Point(10, 382)
-        TextBox5.Name = "TextBox5"
-        TextBox5.Size = New Size(170, 21)
-        TextBox5.TabIndex = 8
-        ' 
         ' txtLevel
         ' 
         txtLevel.Font = New Font("Arial Rounded MT Bold", 9F)
-        txtLevel.Location = New Point(10, 243)
+        txtLevel.Location = New Point(9, 198)
         txtLevel.Name = "txtLevel"
+        txtLevel.ReadOnly = True
         txtLevel.Size = New Size(170, 21)
         txtLevel.TabIndex = 2
         ' 
         ' Label9
         ' 
         Label9.Font = New Font("Arial Rounded MT Bold", 9F)
-        Label9.Location = New Point(10, 410)
+        Label9.Location = New Point(9, 319)
         Label9.Name = "Label9"
         Label9.Size = New Size(100, 23)
         Label9.TabIndex = 9
         Label9.Text = "Status"
         ' 
-        ' Label4
+        ' Label6
         ' 
-        Label4.Font = New Font("Arial Rounded MT Bold", 9F)
-        Label4.Location = New Point(10, 270)
-        Label4.Name = "Label4"
-        Label4.Size = New Size(100, 23)
-        Label4.TabIndex = 3
-        Label4.Text = "Gender:"
+        Label6.Font = New Font("Arial Rounded MT Bold", 9F)
+        Label6.Location = New Point(9, 225)
+        Label6.Name = "Label6"
+        Label6.Size = New Size(100, 23)
+        Label6.TabIndex = 3
+        Label6.Text = "Gender:"
         ' 
         ' txtStatus
         ' 
         txtStatus.Font = New Font("Arial Rounded MT Bold", 9F)
-        txtStatus.Location = New Point(10, 427)
+        txtStatus.Location = New Point(9, 336)
         txtStatus.Name = "txtStatus"
+        txtStatus.ReadOnly = True
         txtStatus.Size = New Size(170, 21)
         txtStatus.TabIndex = 10
         ' 
         ' Label14
         ' 
         Label14.Font = New Font("Arial Rounded MT Bold", 9F)
-        Label14.Location = New Point(10, 455)
+        Label14.Location = New Point(9, 364)
         Label14.Name = "Label14"
         Label14.Size = New Size(100, 23)
         Label14.TabIndex = 9
@@ -207,57 +219,43 @@ Partial Class frmCorpoAttireView
         ' txtDateAdded
         ' 
         txtDateAdded.Font = New Font("Arial Rounded MT Bold", 9F)
-        txtDateAdded.Location = New Point(10, 475)
+        txtDateAdded.Location = New Point(9, 384)
         txtDateAdded.Name = "txtDateAdded"
+        txtDateAdded.ReadOnly = True
         txtDateAdded.Size = New Size(170, 21)
         txtDateAdded.TabIndex = 10
         ' 
-        ' Label6
+        ' Label7
         ' 
-        Label6.Font = New Font("Arial Rounded MT Bold", 9F)
-        Label6.Location = New Point(10, 35)
-        Label6.Name = "Label6"
-        Label6.Size = New Size(100, 23)
-        Label6.TabIndex = 1
-        Label6.Text = "Item Name:"
+        Label7.Font = New Font("Arial Rounded MT Bold", 9F)
+        Label7.Location = New Point(9, 34)
+        Label7.Name = "Label7"
+        Label7.Size = New Size(100, 23)
+        Label7.TabIndex = 1
+        Label7.Text = "Item Name:"
         ' 
         ' txtGender
         ' 
         txtGender.Font = New Font("Arial Rounded MT Bold", 9F)
-        txtGender.Location = New Point(10, 289)
+        txtGender.Location = New Point(9, 244)
         txtGender.Name = "txtGender"
+        txtGender.ReadOnly = True
         txtGender.Size = New Size(170, 21)
         txtGender.TabIndex = 4
         ' 
         ' txtItemName
         ' 
         txtItemName.Font = New Font("Arial Rounded MT Bold", 9F)
-        txtItemName.Location = New Point(10, 55)
+        txtItemName.Location = New Point(9, 54)
         txtItemName.Name = "txtItemName"
+        txtItemName.ReadOnly = True
         txtItemName.Size = New Size(170, 21)
         txtItemName.TabIndex = 2
-        ' 
-        ' Label7
-        ' 
-        Label7.Font = New Font("Arial Rounded MT Bold", 9F)
-        Label7.Location = New Point(10, 83)
-        Label7.Name = "Label7"
-        Label7.Size = New Size(100, 23)
-        Label7.TabIndex = 3
-        Label7.Text = "Category:"
-        ' 
-        ' txtCategory
-        ' 
-        txtCategory.Font = New Font("Arial Rounded MT Bold", 9F)
-        txtCategory.Location = New Point(10, 103)
-        txtCategory.Name = "txtCategory"
-        txtCategory.Size = New Size(170, 21)
-        txtCategory.TabIndex = 4
         ' 
         ' Label11
         ' 
         Label11.Font = New Font("Arial Rounded MT Bold", 9F)
-        Label11.Location = New Point(10, 132)
+        Label11.Location = New Point(9, 87)
         Label11.Name = "Label11"
         Label11.Size = New Size(100, 23)
         Label11.TabIndex = 5
@@ -266,7 +264,7 @@ Partial Class frmCorpoAttireView
         ' txtStockQuantity
         ' 
         txtStockQuantity.Font = New Font("Arial Rounded MT Bold", 9F)
-        txtStockQuantity.Location = New Point(10, 151)
+        txtStockQuantity.Location = New Point(9, 106)
         txtStockQuantity.Name = "txtStockQuantity"
         txtStockQuantity.Size = New Size(170, 21)
         txtStockQuantity.TabIndex = 6
@@ -274,7 +272,7 @@ Partial Class frmCorpoAttireView
         ' Label12
         ' 
         Label12.Font = New Font("Arial Rounded MT Bold", 9F)
-        Label12.Location = New Point(10, 180)
+        Label12.Location = New Point(9, 135)
         Label12.Name = "Label12"
         Label12.Size = New Size(100, 23)
         Label12.TabIndex = 7
@@ -283,72 +281,32 @@ Partial Class frmCorpoAttireView
         ' txtPrice
         ' 
         txtPrice.Font = New Font("Arial Rounded MT Bold", 9F)
-        txtPrice.Location = New Point(10, 198)
+        txtPrice.Location = New Point(9, 153)
         txtPrice.Name = "txtPrice"
         txtPrice.Size = New Size(170, 21)
         txtPrice.TabIndex = 8
-        ' 
-        ' btnModify
-        ' 
-        btnModify.BackColor = Color.Teal
-        btnModify.FlatAppearance.BorderSize = 0
-        btnModify.FlatStyle = FlatStyle.Flat
-        btnModify.Font = New Font("Arial Rounded MT Bold", 12F)
-        btnModify.ForeColor = Color.White
-        btnModify.Location = New Point(51, 498)
-        btnModify.Name = "btnModify"
-        btnModify.Size = New Size(128, 36)
-        btnModify.TabIndex = 5
-        btnModify.Text = "Modify"
-        btnModify.UseVisualStyleBackColor = False
-        ' 
-        ' btnSave1
-        ' 
-        btnSave1.BackColor = Color.SeaGreen
-        btnSave1.FlatAppearance.BorderSize = 0
-        btnSave1.FlatStyle = FlatStyle.Flat
-        btnSave1.Font = New Font("Arial Rounded MT Bold", 12F)
-        btnSave1.ForeColor = Color.White
-        btnSave1.Location = New Point(362, 498)
-        btnSave1.Name = "btnSave1"
-        btnSave1.Size = New Size(128, 36)
-        btnSave1.TabIndex = 7
-        btnSave1.Text = "Save"
-        btnSave1.UseVisualStyleBackColor = False
-        ' 
-        ' btnBack
-        ' 
-        btnBack.BackColor = Color.DimGray
-        btnBack.FlatAppearance.BorderSize = 0
-        btnBack.FlatStyle = FlatStyle.Flat
-        btnBack.Font = New Font("Arial Rounded MT Bold", 12F)
-        btnBack.ForeColor = Color.White
-        btnBack.Location = New Point(513, 498)
-        btnBack.Name = "btnBack"
-        btnBack.Size = New Size(137, 36)
-        btnBack.TabIndex = 12
-        btnBack.Text = "Back"
-        btnBack.UseVisualStyleBackColor = False
         ' 
         ' ListView1
         ' 
         ListView1.Columns.AddRange(New ColumnHeader() {Item, Level, Gender, Size, stock_quantity, price, Status, Date_added})
         ListView1.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         ListView1.GridLines = True
-        ListView1.Location = New Point(12, 81)
+        ListView1.Location = New Point(16, 59)
         ListView1.Name = "ListView1"
-        ListView1.Size = New Size(728, 401)
-        ListView1.TabIndex = 13
+        ListView1.Size = New Size(696, 401)
+        ListView1.TabIndex = 120
         ListView1.UseCompatibleStateImageBehavior = False
         ListView1.View = View.Details
         ' 
         ' Item
         ' 
         Item.Text = "Item"
+        Item.Width = 90
         ' 
         ' Level
         ' 
         Level.Text = "Level"
+        Level.Width = 80
         ' 
         ' Gender
         ' 
@@ -371,75 +329,68 @@ Partial Class frmCorpoAttireView
         ' Status
         ' 
         Status.Text = "Status"
-        Status.Width = 80
+        Status.Width = 100
         ' 
         ' Date_added
         ' 
         Date_added.Text = "Date Added"
         Date_added.Width = 120
         ' 
-        ' Label1
+        ' btnRemove
         ' 
-        Label1.AutoSize = True
-        Label1.Font = New Font("Arial Rounded MT Bold", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label1.ForeColor = Color.White
-        Label1.Location = New Point(32, 9)
-        Label1.Name = "Label1"
-        Label1.Size = New Size(73, 17)
-        Label1.TabIndex = 0
-        Label1.Text = "REMOVE"
-        Label1.TextAlign = ContentAlignment.MiddleCenter
-        ' 
-        ' btnRemove1
-        ' 
-        btnRemove1.BackColor = Color.Firebrick
-        btnRemove1.FlatAppearance.BorderSize = 0
-        btnRemove1.FlatStyle = FlatStyle.Flat
-        btnRemove1.Font = New Font("Arial Rounded MT Bold", 12F)
-        btnRemove1.ForeColor = Color.White
-        btnRemove1.Location = New Point(201, 498)
-        btnRemove1.Name = "btnRemove1"
-        btnRemove1.Size = New Size(137, 36)
-        btnRemove1.TabIndex = 14
-        btnRemove1.Text = "Remove"
-        btnRemove1.UseVisualStyleBackColor = False
+        btnRemove.BackColor = Color.Firebrick
+        btnRemove.FlatAppearance.BorderSize = 0
+        btnRemove.FlatStyle = FlatStyle.Flat
+        btnRemove.Font = New Font("Arial Rounded MT Bold", 12F)
+        btnRemove.ForeColor = Color.White
+        btnRemove.Location = New Point(305, 484)
+        btnRemove.Name = "btnRemove"
+        btnRemove.Size = New Size(137, 36)
+        btnRemove.TabIndex = 124
+        btnRemove.Text = "Remove"
+        btnRemove.UseVisualStyleBackColor = False
         ' 
         ' frmCorpoAttireView
         ' 
         BackColor = Color.LightCyan
-        ClientSize = New Size(968, 600)
-        Controls.Add(btnRemove1)
-        Controls.Add(ListView1)
-        Controls.Add(btnBack)
+        ClientSize = New Size(968, 664)
+        Controls.Add(Panel1)
         Controls.Add(Label2)
-        Controls.Add(txtSearch)
-        Controls.Add(pnlDetails)
-        Controls.Add(btnModify)
-        Controls.Add(btnSave1)
         FormBorderStyle = FormBorderStyle.FixedSingle
         MaximizeBox = False
         Name = "frmCorpoAttireView"
         StartPosition = FormStartPosition.CenterScreen
         Text = "Inventory Management"
+        Panel1.ResumeLayout(False)
+        Panel1.PerformLayout()
         pnlDetails.ResumeLayout(False)
         pnlDetails.PerformLayout()
         ResumeLayout(False)
         PerformLayout()
     End Sub
-
+    Private WithEvents Label2 As Label
+    Friend WithEvents Panel1 As Panel
+    Private WithEvents txtSearch As TextBox
+    Private WithEvents btnBack1 As Button
+    Private WithEvents btnSave As Button
     Friend WithEvents pnlDetails As Panel
-    Friend WithEvents lblTitle As Label
-    Private WithEvents Label3 As Label
-    Private WithEvents txtLevel As TextBox
-    Private WithEvents Label4 As Label
-    Private WithEvents txtGender As TextBox
     Private WithEvents Label5 As Label
     Private WithEvents txtSize As TextBox
-    Private WithEvents Label8 As Label
-    Private WithEvents TextBox5 As TextBox
+    Private WithEvents Label4 As Label
+    Friend WithEvents lblTitle As Label
+    Private WithEvents txtLevel As TextBox
     Private WithEvents Label9 As Label
+    Private WithEvents Label6 As Label
     Private WithEvents txtStatus As TextBox
-    Private WithEvents btnBack As Button
+    Private WithEvents Label14 As Label
+    Private WithEvents txtDateAdded As TextBox
+    Private WithEvents Label7 As Label
+    Private WithEvents txtGender As TextBox
+    Private WithEvents txtItemName As TextBox
+    Private WithEvents Label11 As Label
+    Private WithEvents txtStockQuantity As TextBox
+    Private WithEvents Label12 As Label
+    Private WithEvents txtPrice As TextBox
     Friend WithEvents ListView1 As ListView
     Friend WithEvents Item As ColumnHeader
     Friend WithEvents Level As ColumnHeader
@@ -449,7 +400,6 @@ Partial Class frmCorpoAttireView
     Friend WithEvents price As ColumnHeader
     Friend WithEvents Status As ColumnHeader
     Friend WithEvents Date_added As ColumnHeader
-    Friend WithEvents Label1 As Label
-    Private WithEvents btnRemove1 As Button
+    Private WithEvents btnRemove As Button
 
 End Class
