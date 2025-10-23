@@ -24,115 +24,147 @@ Partial Class frmUser
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmUser))
         Panel1 = New Panel()
+        btnHome = New Button()
+        btnBack = New Button()
+        btnCorporateAttire = New Button()
+        btnSchoolUniform = New Button()
+        btnPeUniform = New Button()
+        PanelUser = New Panel()
+        picCorpo = New PictureBox()
         picPEUniform = New PictureBox()
         picSchoolUniform = New PictureBox()
-        picCorpo = New PictureBox()
-        Panel2 = New Panel()
-        btnPeUniform = New Button()
-        btnSchoolUniform = New Button()
-        btnCorporateAttire = New Button()
         Panel1.SuspendLayout()
+        PanelUser.SuspendLayout()
+        CType(picCorpo, ComponentModel.ISupportInitialize).BeginInit()
         CType(picPEUniform, ComponentModel.ISupportInitialize).BeginInit()
         CType(picSchoolUniform, ComponentModel.ISupportInitialize).BeginInit()
-        CType(picCorpo, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' Panel1
         ' 
         Panel1.BackColor = Color.DarkSlateGray
+        Panel1.Controls.Add(btnHome)
+        Panel1.Controls.Add(btnBack)
         Panel1.Controls.Add(btnCorporateAttire)
         Panel1.Controls.Add(btnSchoolUniform)
         Panel1.Controls.Add(btnPeUniform)
-        Panel1.Controls.Add(picPEUniform)
-        Panel1.Controls.Add(picCorpo)
-        Panel1.Controls.Add(picSchoolUniform)
         Panel1.Location = New Point(-2, -3)
         Panel1.Name = "Panel1"
-        Panel1.Size = New Size(1263, 166)
+        Panel1.Size = New Size(1263, 91)
         Panel1.TabIndex = 0
         ' 
-        ' picPEUniform
+        ' btnHome
         ' 
-        picPEUniform.BackColor = Color.CadetBlue
-        picPEUniform.BorderStyle = BorderStyle.Fixed3D
-        picPEUniform.Image = My.Resources.Resources.Copy_of_Cenardo_application_removebg_preview__1_
-        picPEUniform.Location = New Point(137, 15)
-        picPEUniform.Name = "picPEUniform"
-        picPEUniform.Size = New Size(127, 142)
-        picPEUniform.SizeMode = PictureBoxSizeMode.StretchImage
-        picPEUniform.TabIndex = 42
-        picPEUniform.TabStop = False
+        btnHome.BackColor = Color.MediumTurquoise
+        btnHome.FlatStyle = FlatStyle.Popup
+        btnHome.Font = New Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        btnHome.ForeColor = Color.Black
+        btnHome.Location = New Point(32, 25)
+        btnHome.Name = "btnHome"
+        btnHome.Size = New Size(215, 46)
+        btnHome.TabIndex = 67
+        btnHome.Text = "HOME"
+        btnHome.UseVisualStyleBackColor = False
         ' 
-        ' picSchoolUniform
+        ' btnBack
         ' 
-        picSchoolUniform.BackColor = Color.CadetBlue
-        picSchoolUniform.BorderStyle = BorderStyle.Fixed3D
-        picSchoolUniform.Image = My.Resources.Resources.Copy_of_Cenardo_application_removebg_preview
-        picSchoolUniform.Location = New Point(308, 15)
-        picSchoolUniform.Name = "picSchoolUniform"
-        picSchoolUniform.Size = New Size(127, 142)
-        picSchoolUniform.SizeMode = PictureBoxSizeMode.StretchImage
-        picSchoolUniform.TabIndex = 48
-        picSchoolUniform.TabStop = False
+        btnBack.BackColor = Color.Teal
+        btnBack.FlatAppearance.BorderSize = 0
+        btnBack.FlatStyle = FlatStyle.Flat
+        btnBack.Font = New Font("Arial Rounded MT Bold", 10F)
+        btnBack.ForeColor = Color.White
+        btnBack.Location = New Point(1035, 23)
+        btnBack.Name = "btnBack"
+        btnBack.Size = New Size(180, 45)
+        btnBack.TabIndex = 66
+        btnBack.Text = "LOGOUT"
+        btnBack.UseVisualStyleBackColor = False
         ' 
-        ' picCorpo
+        ' btnCorporateAttire
         ' 
-        picCorpo.BackColor = Color.CadetBlue
-        picCorpo.BorderStyle = BorderStyle.Fixed3D
-        picCorpo.Image = CType(resources.GetObject("picCorpo.Image"), Image)
-        picCorpo.Location = New Point(459, 15)
-        picCorpo.Name = "picCorpo"
-        picCorpo.Size = New Size(125, 142)
-        picCorpo.SizeMode = PictureBoxSizeMode.StretchImage
-        picCorpo.TabIndex = 63
-        picCorpo.TabStop = False
-        ' 
-        ' Panel2
-        ' 
-        Panel2.BackColor = Color.LightCyan
-        Panel2.Location = New Point(-2, 160)
-        Panel2.Name = "Panel2"
-        Panel2.Size = New Size(1263, 395)
-        Panel2.TabIndex = 1
-        ' 
-        ' btnPeUniform
-        ' 
-        btnPeUniform.BackColor = Color.DarkSlateGray
-        btnPeUniform.FlatStyle = FlatStyle.Popup
-        btnPeUniform.Font = New Font("Arial Rounded MT Bold", 8F)
-        btnPeUniform.ForeColor = Color.MintCream
-        btnPeUniform.Location = New Point(157, 129)
-        btnPeUniform.Name = "btnPeUniform"
-        btnPeUniform.Size = New Size(92, 18)
-        btnPeUniform.TabIndex = 64
-        btnPeUniform.Text = "PE UNIFORM"
-        btnPeUniform.UseVisualStyleBackColor = False
+        btnCorporateAttire.BackColor = Color.MediumTurquoise
+        btnCorporateAttire.FlatStyle = FlatStyle.Popup
+        btnCorporateAttire.Font = New Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        btnCorporateAttire.ForeColor = Color.Black
+        btnCorporateAttire.Location = New Point(776, 24)
+        btnCorporateAttire.Name = "btnCorporateAttire"
+        btnCorporateAttire.Size = New Size(215, 45)
+        btnCorporateAttire.TabIndex = 65
+        btnCorporateAttire.Text = "CORPORATE ATTIRE"
+        btnCorporateAttire.UseVisualStyleBackColor = False
         ' 
         ' btnSchoolUniform
         ' 
-        btnSchoolUniform.BackColor = Color.DarkSlateGray
+        btnSchoolUniform.BackColor = Color.MediumTurquoise
         btnSchoolUniform.FlatStyle = FlatStyle.Popup
-        btnSchoolUniform.Font = New Font("Arial Rounded MT Bold", 8F)
-        btnSchoolUniform.ForeColor = Color.MintCream
-        btnSchoolUniform.Location = New Point(313, 129)
+        btnSchoolUniform.Font = New Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        btnSchoolUniform.ForeColor = Color.Black
+        btnSchoolUniform.Location = New Point(528, 24)
         btnSchoolUniform.Name = "btnSchoolUniform"
-        btnSchoolUniform.Size = New Size(117, 18)
+        btnSchoolUniform.Size = New Size(215, 46)
         btnSchoolUniform.TabIndex = 62
         btnSchoolUniform.Text = "SCHOOL UNIFORM"
         btnSchoolUniform.UseVisualStyleBackColor = False
         ' 
-        ' btnCorporateAttire
+        ' btnPeUniform
         ' 
-        btnCorporateAttire.BackColor = Color.DarkSlateGray
-        btnCorporateAttire.FlatStyle = FlatStyle.Popup
-        btnCorporateAttire.Font = New Font("Arial Rounded MT Bold", 7F)
-        btnCorporateAttire.ForeColor = Color.MintCream
-        btnCorporateAttire.Location = New Point(459, 129)
-        btnCorporateAttire.Name = "btnCorporateAttire"
-        btnCorporateAttire.Size = New Size(125, 18)
-        btnCorporateAttire.TabIndex = 65
-        btnCorporateAttire.Text = "CORPORATE ATTIRE"
-        btnCorporateAttire.UseVisualStyleBackColor = False
+        btnPeUniform.BackColor = Color.MediumTurquoise
+        btnPeUniform.FlatStyle = FlatStyle.Popup
+        btnPeUniform.Font = New Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        btnPeUniform.ForeColor = Color.Black
+        btnPeUniform.Location = New Point(280, 25)
+        btnPeUniform.Name = "btnPeUniform"
+        btnPeUniform.Size = New Size(215, 45)
+        btnPeUniform.TabIndex = 64
+        btnPeUniform.Text = "PE UNIFORM"
+        btnPeUniform.UseVisualStyleBackColor = False
+        ' 
+        ' PanelUser
+        ' 
+        PanelUser.BackColor = Color.LightCyan
+        PanelUser.Controls.Add(picCorpo)
+        PanelUser.Controls.Add(picPEUniform)
+        PanelUser.Controls.Add(picSchoolUniform)
+        PanelUser.Location = New Point(-2, 85)
+        PanelUser.Name = "PanelUser"
+        PanelUser.Size = New Size(1263, 470)
+        PanelUser.TabIndex = 1
+        ' 
+        ' picCorpo
+        ' 
+        picCorpo.BackColor = Color.LightGray
+        picCorpo.BorderStyle = BorderStyle.Fixed3D
+        picCorpo.Image = CType(resources.GetObject("picCorpo.Image"), Image)
+        picCorpo.Location = New Point(773, 57)
+        picCorpo.Name = "picCorpo"
+        picCorpo.Size = New Size(272, 364)
+        picCorpo.SizeMode = PictureBoxSizeMode.StretchImage
+        picCorpo.TabIndex = 65
+        picCorpo.TabStop = False
+        ' 
+        ' picPEUniform
+        ' 
+        picPEUniform.BackColor = Color.LightGray
+        picPEUniform.BorderStyle = BorderStyle.Fixed3D
+        picPEUniform.Image = CType(resources.GetObject("picPEUniform.Image"), Image)
+        picPEUniform.Location = New Point(218, 57)
+        picPEUniform.Name = "picPEUniform"
+        picPEUniform.Size = New Size(275, 364)
+        picPEUniform.SizeMode = PictureBoxSizeMode.StretchImage
+        picPEUniform.TabIndex = 63
+        picPEUniform.TabStop = False
+        ' 
+        ' picSchoolUniform
+        ' 
+        picSchoolUniform.BackColor = Color.LightGray
+        picSchoolUniform.BorderStyle = BorderStyle.Fixed3D
+        picSchoolUniform.Image = My.Resources.Resources.Copy_of_Cenardo_application_removebg_preview
+        picSchoolUniform.Location = New Point(493, 35)
+        picSchoolUniform.Name = "picSchoolUniform"
+        picSchoolUniform.Size = New Size(283, 401)
+        picSchoolUniform.SizeMode = PictureBoxSizeMode.StretchImage
+        picSchoolUniform.TabIndex = 64
+        picSchoolUniform.TabStop = False
         ' 
         ' frmUser
         ' 
@@ -140,22 +172,25 @@ Partial Class frmUser
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(1257, 553)
         Controls.Add(Panel1)
-        Controls.Add(Panel2)
+        Controls.Add(PanelUser)
         Name = "frmUser"
         Text = "frmUser"
         Panel1.ResumeLayout(False)
+        PanelUser.ResumeLayout(False)
+        CType(picCorpo, ComponentModel.ISupportInitialize).EndInit()
         CType(picPEUniform, ComponentModel.ISupportInitialize).EndInit()
         CType(picSchoolUniform, ComponentModel.ISupportInitialize).EndInit()
-        CType(picCorpo, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
     End Sub
 
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents picPEUniform As PictureBox
-    Friend WithEvents picSchoolUniform As PictureBox
-    Friend WithEvents picCorpo As PictureBox
-    Friend WithEvents Panel2 As Panel
+    Friend WithEvents PanelUser As Panel
     Friend WithEvents btnPeUniform As Button
     Friend WithEvents btnSchoolUniform As Button
     Friend WithEvents btnCorporateAttire As Button
+    Friend WithEvents btnBack As Button
+    Friend WithEvents picCorpo As PictureBox
+    Friend WithEvents picPEUniform As PictureBox
+    Friend WithEvents picSchoolUniform As PictureBox
+    Friend WithEvents btnHome As Button
 End Class
