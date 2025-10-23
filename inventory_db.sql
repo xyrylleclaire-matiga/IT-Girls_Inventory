@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 15, 2025 at 08:30 AM
+-- Generation Time: Oct 23, 2025 at 05:55 AM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -102,9 +102,9 @@ CREATE TABLE `tbluniforms` (
 --
 
 INSERT INTO `tbluniforms` (`uniform_id`, `item_name`, `category`, `level`, `gender`, `size`, `stock_quantity`, `price`, `status`, `date_added`) VALUES
-(1, 'Slacks', 'School Uniform', 'College', 'Male', 'Extra Small', 10, 470, 'Available', '2025-10-07 11:28:08'),
-(2, 'Polo', 'School Uniform', 'College', 'Male', 'Extra Small', 10, 470, 'Available', '2025-10-07 11:29:07'),
-(3, 'Skirt', 'School Uniform', 'College', 'Female', 'Extra Small', 10, 470, 'Available', '2025-10-07 11:30:01'),
+(1, 'Slacks', 'School Uniform', 'College', 'Male', 'Extra Small', 0, 470, 'Available', '2025-10-07 11:28:08'),
+(2, 'Polo', 'School Uniform', 'College', 'Male', 'Extra Small', 8, 470, 'Available', '2025-10-07 11:29:07'),
+(3, 'Skirt', 'School Uniform', 'College', 'Female', 'Extra Small', 14, 470, 'Available', '2025-10-07 11:30:01'),
 (4, 'Polo', 'School Uniform', 'College', 'Female', 'Extra Small', 10, 470, 'Available', '2025-10-07 11:30:31'),
 (5, 'Slacks', 'School Uniform', 'College', 'Male', 'Small', 10, 470, 'Available', '2025-10-07 11:30:31'),
 (6, 'Polo', 'School Uniform', 'College', 'Male', 'Small', 10, 470, 'Available', '2025-10-07 11:31:23'),
@@ -448,6 +448,56 @@ INSERT INTO `tblusers` (`user_id`, `last_name`, `first_name`, `middle_name`, `pa
 ('2008-23', 'Cenardo', 'Vernalyn', 'Equing', 'CENARDO', 'Student', 'vernalyn@gmail.com', 'Active', 3),
 ('2097-23', 'Matiga', 'Xyrylle Claire', 'Lasin', 'MATIGA', 'Student', 'xyryllematiga@gmail.com', 'Active', 3);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_pullouts`
+--
+
+CREATE TABLE `tbl_pullouts` (
+  `PulloutId` int(11) NOT NULL,
+  `uniform_id` int(11) NOT NULL,
+  `PulloutReason` enum('Damaged','Misprinted') NOT NULL,
+  `Date` datetime NOT NULL,
+  `Quantity` int(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_pullouts`
+--
+
+INSERT INTO `tbl_pullouts` (`PulloutId`, `uniform_id`, `PulloutReason`, `Date`, `Quantity`) VALUES
+(4, 0, 'Misprinted', '2025-10-22 00:00:00', 2),
+(5, 0, 'Misprinted', '2025-10-22 00:00:00', 1),
+(6, 0, 'Damaged', '2025-10-22 00:00:00', 1),
+(7, 0, 'Misprinted', '2025-10-22 00:00:00', 1),
+(8, 8, 'Misprinted', '2025-10-22 00:00:00', 1),
+(9, 8, 'Misprinted', '2025-10-22 00:00:00', 1),
+(10, 8, '', '0000-00-00 00:00:00', 0),
+(11, 8, '', '0000-00-00 00:00:00', 0),
+(12, 8, '', '0000-00-00 00:00:00', 0),
+(13, 6, 'Damaged', '2025-10-22 00:00:00', 1),
+(14, 10, 'Damaged', '2025-10-22 17:42:07', 2),
+(15, 4, 'Misprinted', '2025-10-22 17:47:13', 0),
+(16, 1, 'Damaged', '2025-10-22 18:54:11', 2),
+(17, 1, 'Damaged', '2025-10-22 18:58:48', 11),
+(18, 1, 'Damaged', '2025-10-22 19:05:35', 11),
+(19, 1, 'Damaged', '2025-10-22 19:05:35', 2),
+(20, 1, 'Damaged', '2025-10-22 19:09:16', 11),
+(21, 1, 'Damaged', '2025-10-22 19:09:16', 2),
+(22, 1, 'Misprinted', '2025-10-22 19:14:59', 12),
+(23, 1, 'Misprinted', '2025-10-22 19:14:59', 2),
+(24, 1, 'Misprinted', '2025-10-22 20:39:45', 1),
+(25, 1, 'Misprinted', '2025-10-22 20:39:45', 4),
+(26, 1, 'Damaged', '2025-10-22 20:43:04', 2),
+(27, 2, 'Damaged', '2025-10-22 20:49:31', 2),
+(28, 3, 'Damaged', '2025-10-22 21:00:04', -2),
+(29, 4, 'Misprinted', '2025-10-22 21:00:36', 0),
+(30, 3, 'Damaged', '2025-10-22 21:03:03', -2),
+(31, 3, 'Damaged', '2025-10-22 21:03:27', 0),
+(32, 1, 'Damaged', '2025-10-23 11:17:19', 1),
+(33, 1, 'Misprinted', '2025-10-23 11:18:07', 2);
+
 --
 -- Indexes for dumped tables
 --
@@ -483,6 +533,12 @@ ALTER TABLE `tblusers`
   ADD PRIMARY KEY (`user_id`);
 
 --
+-- Indexes for table `tbl_pullouts`
+--
+ALTER TABLE `tbl_pullouts`
+  ADD PRIMARY KEY (`PulloutId`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -509,6 +565,12 @@ ALTER TABLE `tbluniforms`
 --
 ALTER TABLE `tbluniformsales`
   MODIFY `sale_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_pullouts`
+--
+ALTER TABLE `tbl_pullouts`
+  MODIFY `PulloutId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
