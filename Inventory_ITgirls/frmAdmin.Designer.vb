@@ -40,6 +40,7 @@ Partial Class frmAdmin
         PictureBox1 = New PictureBox()
         btnHome = New Button()
         PictureBox2 = New PictureBox()
+        btnPullOut = New Button()
         PanelMain.SuspendLayout()
         Panel1.SuspendLayout()
         CType(picCorpo, ComponentModel.ISupportInitialize).BeginInit()
@@ -260,12 +261,27 @@ Partial Class frmAdmin
         PictureBox2.TabIndex = 68
         PictureBox2.TabStop = False
         ' 
+        ' btnPullOut
+        ' 
+        btnPullOut.BackColor = Color.DarkSlateGray
+        btnPullOut.FlatAppearance.BorderSize = 0
+        btnPullOut.FlatStyle = FlatStyle.Flat
+        btnPullOut.Font = New Font("Arial Rounded MT Bold", 11.25F)
+        btnPullOut.ForeColor = Color.White
+        btnPullOut.Location = New Point(12, 254)
+        btnPullOut.Name = "btnPullOut"
+        btnPullOut.Size = New Size(180, 40)
+        btnPullOut.TabIndex = 69
+        btnPullOut.Text = "PULLOUTS"
+        btnPullOut.UseVisualStyleBackColor = False
+        ' 
         ' frmAdmin
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.DarkSlateGray
         ClientSize = New Size(1257, 553)
+        Controls.Add(btnPullOut)
         Controls.Add(PictureBox2)
         Controls.Add(btnHome)
         Controls.Add(PanelMain)
@@ -305,4 +321,5 @@ Partial Class frmAdmin
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents PictureBox2 As PictureBox
+    Friend WithEvents btnPullOut As Button
 End Class

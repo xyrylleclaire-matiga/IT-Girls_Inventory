@@ -36,7 +36,6 @@ Partial Class frmPEUniformView
         Label4 = New Label()
         txtStatus = New TextBox()
         Level = New ColumnHeader()
-        Category = New ColumnHeader()
         stock_quantity = New ColumnHeader()
         ListView1 = New ListView()
         Item = New ColumnHeader()
@@ -50,7 +49,7 @@ Partial Class frmPEUniformView
         txtItemName = New TextBox()
         btnRemove1 = New Button()
         txtCategory = New TextBox()
-        Button2 = New Button()
+        btnModify = New Button()
         btnSave = New Button()
         Label11 = New Label()
         txtStockQuantity = New TextBox()
@@ -169,11 +168,6 @@ Partial Class frmPEUniformView
         ' 
         Level.Text = "Level"
         ' 
-        ' Category
-        ' 
-        Category.Text = "Category"
-        Category.Width = 105
-        ' 
         ' stock_quantity
         ' 
         stock_quantity.Text = "Stock Quantity"
@@ -181,7 +175,7 @@ Partial Class frmPEUniformView
         ' 
         ' ListView1
         ' 
-        ListView1.Columns.AddRange(New ColumnHeader() {Item, Category, Level, Gender, Size, stock_quantity, price, Status, Date_added})
+        ListView1.Columns.AddRange(New ColumnHeader() {Item, Level, Gender, Size, stock_quantity, price, Status, Date_added})
         ListView1.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         ListView1.GridLines = True
         ListView1.Location = New Point(13, 83)
@@ -278,19 +272,19 @@ Partial Class frmPEUniformView
         txtCategory.Size = New Size(170, 21)
         txtCategory.TabIndex = 4
         ' 
-        ' Button2
+        ' btnModify
         ' 
-        Button2.BackColor = Color.Teal
-        Button2.FlatAppearance.BorderSize = 0
-        Button2.FlatStyle = FlatStyle.Flat
-        Button2.Font = New Font("Arial Rounded MT Bold", 12F)
-        Button2.ForeColor = Color.White
-        Button2.Location = New Point(52, 500)
-        Button2.Name = "Button2"
-        Button2.Size = New Size(128, 36)
-        Button2.TabIndex = 101
-        Button2.Text = "Modify"
-        Button2.UseVisualStyleBackColor = False
+        btnModify.BackColor = Color.Teal
+        btnModify.FlatAppearance.BorderSize = 0
+        btnModify.FlatStyle = FlatStyle.Flat
+        btnModify.Font = New Font("Arial Rounded MT Bold", 12F)
+        btnModify.ForeColor = Color.White
+        btnModify.Location = New Point(52, 500)
+        btnModify.Name = "btnModify"
+        btnModify.Size = New Size(128, 36)
+        btnModify.TabIndex = 101
+        btnModify.Text = "Modify"
+        btnModify.UseVisualStyleBackColor = False
         ' 
         ' btnSave
         ' 
@@ -412,7 +406,7 @@ Partial Class frmPEUniformView
         ClientSize = New Size(969, 600)
         Controls.Add(ListView1)
         Controls.Add(btnRemove1)
-        Controls.Add(Button2)
+        Controls.Add(btnModify)
         Controls.Add(btnSave)
         Controls.Add(btnBack)
         Controls.Add(Label2)
@@ -439,7 +433,6 @@ Partial Class frmPEUniformView
     Private WithEvents Label4 As Label
     Private WithEvents txtStatus As TextBox
     Friend WithEvents Level As ColumnHeader
-    Private WithEvents Category As ColumnHeader
     Friend WithEvents stock_quantity As ColumnHeader
     Friend WithEvents ListView1 As ListView
     Friend WithEvents Item As ColumnHeader
@@ -453,7 +446,7 @@ Partial Class frmPEUniformView
     Private WithEvents txtItemName As TextBox
     Private WithEvents btnRemove1 As Button
     Private WithEvents txtCategory As TextBox
-    Private WithEvents Button2 As Button
+    Private WithEvents btnModify As Button
     Private WithEvents btnSave As Button
     Private WithEvents Label11 As Label
     Private WithEvents txtStockQuantity As TextBox

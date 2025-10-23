@@ -17,6 +17,7 @@ Public Class frmAdmin
 
     Private Sub PictureBox7_Click(sender As Object, e As EventArgs) Handles picSchoolUniform.Click
         Dim borderColor As Color = Color.Blue
+        openChildForm(New frmUniformView)
     End Sub
 
 
@@ -128,5 +129,11 @@ Public Class frmAdmin
         openChildForm(New frmPEUniformView)
     End Sub
 
+    Private Sub btnSchoolUniform_Click(sender As Object, e As EventArgs) Handles btnSchoolUniform.Click
+        openChildForm(New frmUniformView)
+    End Sub
 
+    Private Sub btnPullOut_Click(sender As Object, e As EventArgs) Handles btnPullOut.Click
+        openChildForm(New TotalPullouts)
+    End Sub
 End Class

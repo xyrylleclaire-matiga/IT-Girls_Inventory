@@ -25,7 +25,6 @@ Partial Class frmUniformView
         btnRemove1 = New Button()
         ListView1 = New ListView()
         Item = New ColumnHeader()
-        Category = New ColumnHeader()
         Level = New ColumnHeader()
         Gender = New ColumnHeader()
         Size = New ColumnHeader()
@@ -79,7 +78,7 @@ Partial Class frmUniformView
         ' 
         ' ListView1
         ' 
-        ListView1.Columns.AddRange(New ColumnHeader() {Item, Category, Level, Gender, Size, stock_quantity, price, Status, Date_added})
+        ListView1.Columns.AddRange(New ColumnHeader() {Item, Level, Gender, Size, stock_quantity, price, Status, Date_added})
         ListView1.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         ListView1.GridLines = True
         ListView1.Location = New Point(12, 68)
@@ -92,11 +91,6 @@ Partial Class frmUniformView
         ' Item
         ' 
         Item.Text = "Item"
-        ' 
-        ' Category
-        ' 
-        Category.Text = "Category"
-        Category.Width = 105
         ' 
         ' Level
         ' 
@@ -429,7 +423,6 @@ Partial Class frmUniformView
     Private WithEvents btnRemove1 As Button
     Friend WithEvents ListView1 As ListView
     Friend WithEvents Item As ColumnHeader
-    Private WithEvents Category As ColumnHeader
     Friend WithEvents Level As ColumnHeader
     Friend WithEvents Gender As ColumnHeader
     Friend WithEvents Size As ColumnHeader

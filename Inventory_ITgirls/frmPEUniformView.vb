@@ -17,7 +17,6 @@ Public Class frmPEUniformView
 
         While databaseConnection.dr.Read = True
             Dim x As New ListViewItem(databaseConnection.dr("item_name").ToString())
-            x.SubItems.Add(databaseConnection.dr("category").ToString())
             x.SubItems.Add(databaseConnection.dr("level").ToString())
             x.SubItems.Add(databaseConnection.dr("gender").ToString())
             x.SubItems.Add(databaseConnection.dr("size").ToString())
@@ -38,14 +37,13 @@ Public Class frmPEUniformView
         If ListView1.SelectedItems.Count > 0 Then
             Dim selectedItem = ListView1.SelectedItems(0)
             txtItemName.Text = selectedItem.Text
-            txtCategory.Text = selectedItem.SubItems(1).Text
-            txtLevel.Text = selectedItem.SubItems(2).Text
-            txtGender.Text = selectedItem.SubItems(3).Text
-            txtSize.Text = selectedItem.SubItems(4).Text
-            txtStockQuantity.Text = selectedItem.SubItems(5).Text
-            txtPrice.Text = selectedItem.SubItems(6).Text
-            txtStatus.Text = selectedItem.SubItems(7).Text
-            txtDateAdded.Text = selectedItem.SubItems(8).Text
+            txtLevel.Text = selectedItem.SubItems(1).Text
+            txtGender.Text = selectedItem.SubItems(2).Text
+            txtSize.Text = selectedItem.SubItems(3).Text
+            txtStockQuantity.Text = selectedItem.SubItems(4).Text
+            txtPrice.Text = selectedItem.SubItems(5).Text
+            txtStatus.Text = selectedItem.SubItems(6).Text
+            txtDateAdded.Text = selectedItem.SubItems(7).Text
 
         End If
     End Sub
@@ -58,4 +56,68 @@ Public Class frmPEUniformView
         Me.Hide()
 
     End Sub
+
+    Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles btnModify.Click
+
+    End Sub
+    Private Sub btnModify_Paint(sender As Object, e As PaintEventArgs) Handles btnModify.Paint
+        Dim btn As Button = DirectCast(sender, Button)
+        Dim radius As Integer = 10
+
+        Dim path As New Drawing2D.GraphicsPath()
+        path.StartFigure()
+        path.AddArc(0, 0, radius, radius, 180, 90)
+        path.AddArc(btn.Width - radius, 0, radius, radius, 270, 90)
+        path.AddArc(btn.Width - radius, btn.Height - radius, radius, radius, 0, 90)
+        path.AddArc(0, btn.Height - radius, radius, radius, 90, 90)
+        path.CloseFigure()
+
+        btn.Region = New Region(path)
+    End Sub
+
+    Private Sub btnRemove1_Paint(sender As Object, e As PaintEventArgs) Handles btnRemove1.Paint
+        Dim btn As Button = DirectCast(sender, Button)
+        Dim radius As Integer = 10
+
+        Dim path As New Drawing2D.GraphicsPath()
+        path.StartFigure()
+        path.AddArc(0, 0, radius, radius, 180, 90)
+        path.AddArc(btn.Width - radius, 0, radius, radius, 270, 90)
+        path.AddArc(btn.Width - radius, btn.Height - radius, radius, radius, 0, 90)
+        path.AddArc(0, btn.Height - radius, radius, radius, 90, 90)
+        path.CloseFigure()
+
+        btn.Region = New Region(path)
+    End Sub
+
+    Private Sub btnSave_Paint(sender As Object, e As PaintEventArgs) Handles btnSave.Paint
+        Dim btn As Button = DirectCast(sender, Button)
+        Dim radius As Integer = 10
+
+        Dim path As New Drawing2D.GraphicsPath()
+        path.StartFigure()
+        path.AddArc(0, 0, radius, radius, 180, 90)
+        path.AddArc(btn.Width - radius, 0, radius, radius, 270, 90)
+        path.AddArc(btn.Width - radius, btn.Height - radius, radius, radius, 0, 90)
+        path.AddArc(0, btn.Height - radius, radius, radius, 90, 90)
+        path.CloseFigure()
+
+        btn.Region = New Region(path)
+    End Sub
+
+    Private Sub btnBack_Paint(sender As Object, e As PaintEventArgs) Handles btnBack.Paint
+        Dim btn As Button = DirectCast(sender, Button)
+        Dim radius As Integer = 10
+
+        Dim path As New Drawing2D.GraphicsPath()
+        path.StartFigure()
+        path.AddArc(0, 0, radius, radius, 180, 90)
+        path.AddArc(btn.Width - radius, 0, radius, radius, 270, 90)
+        path.AddArc(btn.Width - radius, btn.Height - radius, radius, radius, 0, 90)
+        path.AddArc(0, btn.Height - radius, radius, radius, 90, 90)
+        path.CloseFigure()
+
+        btn.Region = New Region(path)
+    End Sub
+
 End Class

@@ -159,15 +159,12 @@ Public Class FrmLogin
 
     End Sub
 
-    Private Sub txtUsername_TextChanged(sender As Object, e As EventArgs) Handles txtID.TextChanged
-
-    End Sub
-
     Private Sub chkShowPass_CheckedChanged(sender As Object, e As EventArgs) Handles chkShowPass.CheckedChanged
         If chkShowPass.Checked Then
-            txtPassword.UseSystemPasswordChar = False
+            txtPassword.PasswordChar = ControlChars.NullChar
         Else
-            txtPassword.UseSystemPasswordChar = True
+            txtPassword.PasswordChar = "*"c
         End If
     End Sub
+
 End Class

@@ -6,12 +6,12 @@ Partial Class frmCorpoAttireView
     Inherits Form
     Private Label2 As Label
     Private WithEvents txtSearch As TextBox
-    Private WithEvents btnModify As Button
+    Private WithEvents btnModify, btnSave1 As Button
 
 
     Private txtItemName, txtCategory, txtStockQuantity, txtPrice, txtDateAdded As TextBox
     Private Label6, Label7, Label11, Label12, Label14 As Label
-    Private btnRemove, btnSave As Button
+    Private btnRemove As Button
 
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
@@ -40,11 +40,10 @@ Partial Class frmCorpoAttireView
         Label12 = New Label()
         txtPrice = New TextBox()
         btnModify = New Button()
-        btnSave = New Button()
+        btnSave1 = New Button()
         btnBack = New Button()
         ListView1 = New ListView()
         Item = New ColumnHeader()
-        Category = New ColumnHeader()
         Level = New ColumnHeader()
         Gender = New ColumnHeader()
         Size = New ColumnHeader()
@@ -303,23 +302,23 @@ Partial Class frmCorpoAttireView
         btnModify.Text = "Modify"
         btnModify.UseVisualStyleBackColor = False
         ' 
-        ' btnSave
+        ' btnSave1
         ' 
-        btnSave.BackColor = Color.DimGray
-        btnSave.FlatAppearance.BorderSize = 0
-        btnSave.FlatStyle = FlatStyle.Flat
-        btnSave.Font = New Font("Arial Rounded MT Bold", 12F)
-        btnSave.ForeColor = Color.White
-        btnSave.Location = New Point(362, 498)
-        btnSave.Name = "btnSave"
-        btnSave.Size = New Size(128, 36)
-        btnSave.TabIndex = 7
-        btnSave.Text = "Save"
-        btnSave.UseVisualStyleBackColor = False
+        btnSave1.BackColor = Color.SeaGreen
+        btnSave1.FlatAppearance.BorderSize = 0
+        btnSave1.FlatStyle = FlatStyle.Flat
+        btnSave1.Font = New Font("Arial Rounded MT Bold", 12F)
+        btnSave1.ForeColor = Color.White
+        btnSave1.Location = New Point(362, 498)
+        btnSave1.Name = "btnSave1"
+        btnSave1.Size = New Size(128, 36)
+        btnSave1.TabIndex = 7
+        btnSave1.Text = "Save"
+        btnSave1.UseVisualStyleBackColor = False
         ' 
         ' btnBack
         ' 
-        btnBack.BackColor = Color.SeaGreen
+        btnBack.BackColor = Color.DimGray
         btnBack.FlatAppearance.BorderSize = 0
         btnBack.FlatStyle = FlatStyle.Flat
         btnBack.Font = New Font("Arial Rounded MT Bold", 12F)
@@ -333,7 +332,7 @@ Partial Class frmCorpoAttireView
         ' 
         ' ListView1
         ' 
-        ListView1.Columns.AddRange(New ColumnHeader() {Item, Category, Level, Gender, Size, stock_quantity, price, Status, Date_added})
+        ListView1.Columns.AddRange(New ColumnHeader() {Item, Level, Gender, Size, stock_quantity, price, Status, Date_added})
         ListView1.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         ListView1.GridLines = True
         ListView1.Location = New Point(12, 81)
@@ -346,11 +345,6 @@ Partial Class frmCorpoAttireView
         ' Item
         ' 
         Item.Text = "Item"
-        ' 
-        ' Category
-        ' 
-        Category.Text = "Category"
-        Category.Width = 105
         ' 
         ' Level
         ' 
@@ -421,7 +415,7 @@ Partial Class frmCorpoAttireView
         Controls.Add(txtSearch)
         Controls.Add(pnlDetails)
         Controls.Add(btnModify)
-        Controls.Add(btnSave)
+        Controls.Add(btnSave1)
         FormBorderStyle = FormBorderStyle.FixedSingle
         MaximizeBox = False
         Name = "frmCorpoAttireView"
@@ -448,7 +442,6 @@ Partial Class frmCorpoAttireView
     Private WithEvents btnBack As Button
     Friend WithEvents ListView1 As ListView
     Friend WithEvents Item As ColumnHeader
-    Private WithEvents Category As ColumnHeader
     Friend WithEvents Level As ColumnHeader
     Friend WithEvents Gender As ColumnHeader
     Friend WithEvents Size As ColumnHeader
