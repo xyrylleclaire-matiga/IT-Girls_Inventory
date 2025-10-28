@@ -31,6 +31,7 @@ Partial Class frmCorpoAttireView
         Label12 = New Label()
         txtPrice = New TextBox()
         ListView1 = New ListView()
+        uniform_id = New ColumnHeader()
         Item = New ColumnHeader()
         Level = New ColumnHeader()
         Gender = New ColumnHeader()
@@ -288,7 +289,7 @@ Partial Class frmCorpoAttireView
         ' 
         ' ListView1
         ' 
-        ListView1.Columns.AddRange(New ColumnHeader() {Item, Level, Gender, Size, stock_quantity, price, Status, Date_added})
+        ListView1.Columns.AddRange(New ColumnHeader() {uniform_id, Item, Level, Gender, Size, stock_quantity, price, Status, Date_added})
         ListView1.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         ListView1.GridLines = True
         ListView1.Location = New Point(16, 59)
@@ -297,6 +298,10 @@ Partial Class frmCorpoAttireView
         ListView1.TabIndex = 120
         ListView1.UseCompatibleStateImageBehavior = False
         ListView1.View = View.Details
+        ' 
+        ' uniform_id
+        ' 
+        uniform_id.Text = "id"
         ' 
         ' Item
         ' 
@@ -329,11 +334,11 @@ Partial Class frmCorpoAttireView
         ' Status
         ' 
         Status.Text = "Status"
-        Status.Width = 100
+        Status.Width = 80
         ' 
         ' Date_added
         ' 
-        Date_added.Text = "Date Added"
+        Date_added.Text = "Date_added"
         Date_added.Width = 120
         ' 
         ' btnRemove
@@ -401,5 +406,6 @@ Partial Class frmCorpoAttireView
     Friend WithEvents Status As ColumnHeader
     Friend WithEvents Date_added As ColumnHeader
     Private WithEvents btnRemove As Button
+    Friend WithEvents uniform_id As ColumnHeader
 
 End Class

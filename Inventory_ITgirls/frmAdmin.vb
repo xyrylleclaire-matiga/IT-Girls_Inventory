@@ -1,5 +1,32 @@
 ﻿Imports MySql.Data.MySqlClient
 Public Class frmAdmin
+
+    Private activeButton As Button = Nothing
+    Private Sub SetActiveButton(btn As Button)
+        ' Reset previous active button
+        If activeButton IsNot Nothing Then
+            ResetButtonStyle(activeButton)
+        End If
+
+        ' Set new active button
+        activeButton = btn
+        HighlightButton(activeButton)
+    End Sub
+
+    Private Sub HighlightButton(btn As Button)
+        btn.BackColor = Color.LightCyan
+        btn.ForeColor = Color.Black
+        btn.Font = New Font(btn.Font.FontFamily, CSng(btn.Font.Size + 1.5), FontStyle.Bold)
+    End Sub
+
+    Private Sub ResetButtonStyle(btn As Button)
+        btn.BackColor = Color.DarkSlateGray
+        btn.ForeColor = Color.White
+        btn.Font = New Font(btn.Font.FontFamily, CSng(btn.Font.Size - 1.5), FontStyle.Bold)
+    End Sub
+
+
+
     Private Sub btnLogOut_Click(sender As Object, e As EventArgs) Handles btnBack.Click
         If MsgBox("Are you sure you want to logout?", vbQuestion + vbYesNo) = vbYes Then
             FrmLogin.Show()
@@ -9,23 +36,18 @@ Public Class frmAdmin
 
     Private Sub btnStockManagement_Click(sender As Object, e As EventArgs) Handles btnStockManagement.Click
         openChildForm(New frmStockManagement)
+        SetActiveButton(btnStockManagement)
     End Sub
 
     Private Sub btnSalesReport_Click(sender As Object, e As EventArgs) Handles btnSalesReport.Click
         openChildForm(New frmSalesReport)
+        SetActiveButton(btnSalesReport)
     End Sub
 
     Private Sub PictureBox7_Click(sender As Object, e As EventArgs) Handles picSchoolUniform.Click
         Dim borderColor As Color = Color.Blue
         openChildForm(New frmUniformView)
     End Sub
-
-
-    'Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnPeUniform.Click, Button2.Click
-    '    frmPEUniformView.Show()
-    '    Hide()
-    'End Sub
-
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
 
     End Sub
@@ -48,6 +70,7 @@ Public Class frmAdmin
 
     Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles btnHome.Click
         openChildForm(New frmHomeAdmin)
+        SetActiveButton(btnHome)
     End Sub
 
     Private originalSizes As New Dictionary(Of PictureBox, Size)
@@ -135,6 +158,7 @@ Public Class frmAdmin
 
     Private Sub btnPullOut_Click(sender As Object, e As EventArgs) Handles btnPullOut.Click
         openChildForm(New TotalPullouts)
+        SetActiveButton(btnPullOut)
     End Sub
 
 End Class

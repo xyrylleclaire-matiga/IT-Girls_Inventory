@@ -76,42 +76,42 @@
     End Sub
 
 
-    Private Sub picPEUniform_Click(sender As Object, e As EventArgs) Handles picPEUniform.Click
+    Private Sub picPEUniform_Click(sender As Object, e As EventArgs)
         openChildForm(New frmPEUniformView)
     End Sub
 
-    Private Sub btnPeUniform_Click(sender As Object, e As EventArgs) Handles btnPeUniform.Click
+    Private Sub btnPeUniform_Click(sender As Object, e As EventArgs)
         openChildForm(New frmPEUniformView)
     End Sub
 
-    Private Sub picSchoolUniform_Click(sender As Object, e As EventArgs) Handles picSchoolUniform.Click
+    Private Sub picSchoolUniform_Click(sender As Object, e As EventArgs)
         openChildForm(New frmUniformView)
     End Sub
 
-    Private Sub btnSchoolUniform_Click(sender As Object, e As EventArgs) Handles btnSchoolUniform.Click
+    Private Sub btnSchoolUniform_Click(sender As Object, e As EventArgs)
         openChildForm(New frmUniformView)
     End Sub
 
-    Private Sub picCorpo_Click(sender As Object, e As EventArgs) Handles picCorpo.Click
+    Private Sub picCorpo_Click(sender As Object, e As EventArgs)
         openChildForm(New frmCorpoAttireView)
     End Sub
 
-    Private Sub btnCorporateAttire_Click(sender As Object, e As EventArgs) Handles btnCorporateAttire.Click
+    Private Sub btnCorporateAttire_Click(sender As Object, e As EventArgs)
 
         ' 1. Gumawa ng bagong instance ng frmCorpoAttireView. '
-        Dim viewForm As New frmCorpoAttireView()
+        Dim viewForm As New frmCorpoAttireView
 
         ' 2. I-cast ang Grandparent Form (frmAdmin) gamit ang Parent ng frmHomeAdmin. '
         '    Ito ay aasa na ang frmHomeAdmin ay direktang child ng frmAdmin's PanelMain. '
         Try
-            Dim parentAdmin As frmAdmin = DirectCast(Me.Parent.FindForm(), frmAdmin)
+            Dim parentAdmin = DirectCast(Parent.FindForm, frmAdmin)
             viewForm.parentAdminForm = parentAdmin
         Catch ex As Exception
             ' Optional: Handle error if frmAdmin is not found '
         End Try
 
         ' 3. Gamitin ang openChildForm na nasa frmHomeAdmin para i-load ito sa PanelMain. '
-        Me.openChildForm(viewForm)
+        openChildForm(viewForm)
 
     End Sub
 

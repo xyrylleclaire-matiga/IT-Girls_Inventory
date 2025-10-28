@@ -46,6 +46,7 @@ Partial Class frmPEUniformView
         Label17 = New Label()
         txtPrice = New TextBox()
         ListView2 = New ListView()
+        uniform_id = New ColumnHeader()
         ColumnHeader1 = New ColumnHeader()
         ColumnHeader2 = New ColumnHeader()
         ColumnHeader3 = New ColumnHeader()
@@ -54,7 +55,7 @@ Partial Class frmPEUniformView
         ColumnHeader6 = New ColumnHeader()
         ColumnHeader7 = New ColumnHeader()
         ColumnHeader8 = New ColumnHeader()
-        Button1 = New Button()
+        btnRemove = New Button()
         Panel2.SuspendLayout()
         txtStatus.SuspendLayout()
         SuspendLayout()
@@ -78,7 +79,7 @@ Partial Class frmPEUniformView
         Panel2.Controls.Add(btnSave)
         Panel2.Controls.Add(txtStatus)
         Panel2.Controls.Add(ListView2)
-        Panel2.Controls.Add(Button1)
+        Panel2.Controls.Add(btnRemove)
         Panel2.Location = New Point(12, 77)
         Panel2.Name = "Panel2"
         Panel2.Size = New Size(944, 576)
@@ -303,7 +304,7 @@ Partial Class frmPEUniformView
         ' 
         ' ListView2
         ' 
-        ListView2.Columns.AddRange(New ColumnHeader() {ColumnHeader1, ColumnHeader2, ColumnHeader3, ColumnHeader4, ColumnHeader5, ColumnHeader6, ColumnHeader7, ColumnHeader8})
+        ListView2.Columns.AddRange(New ColumnHeader() {uniform_id, ColumnHeader1, ColumnHeader2, ColumnHeader3, ColumnHeader4, ColumnHeader5, ColumnHeader6, ColumnHeader7, ColumnHeader8})
         ListView2.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         ListView2.FullRowSelect = True
         ListView2.GridLines = True
@@ -313,6 +314,10 @@ Partial Class frmPEUniformView
         ListView2.TabIndex = 120
         ListView2.UseCompatibleStateImageBehavior = False
         ListView2.View = View.Details
+        ' 
+        ' uniform_id
+        ' 
+        uniform_id.Text = "id"
         ' 
         ' ColumnHeader1
         ' 
@@ -352,19 +357,19 @@ Partial Class frmPEUniformView
         ColumnHeader8.Text = "Date Added"
         ColumnHeader8.Width = 120
         ' 
-        ' Button1
+        ' btnRemove
         ' 
-        Button1.BackColor = Color.Firebrick
-        Button1.FlatAppearance.BorderSize = 0
-        Button1.FlatStyle = FlatStyle.Flat
-        Button1.Font = New Font("Arial Rounded MT Bold", 12F)
-        Button1.ForeColor = Color.White
-        Button1.Location = New Point(305, 484)
-        Button1.Name = "Button1"
-        Button1.Size = New Size(137, 36)
-        Button1.TabIndex = 124
-        Button1.Text = "Remove"
-        Button1.UseVisualStyleBackColor = False
+        btnRemove.BackColor = Color.Firebrick
+        btnRemove.FlatAppearance.BorderSize = 0
+        btnRemove.FlatStyle = FlatStyle.Flat
+        btnRemove.Font = New Font("Arial Rounded MT Bold", 12F)
+        btnRemove.ForeColor = Color.White
+        btnRemove.Location = New Point(305, 484)
+        btnRemove.Name = "btnRemove"
+        btnRemove.Size = New Size(137, 36)
+        btnRemove.TabIndex = 124
+        btnRemove.Text = "Remove"
+        btnRemove.UseVisualStyleBackColor = False
         ' 
         ' frmPEUniformView
         ' 
@@ -415,6 +420,7 @@ Partial Class frmPEUniformView
     Friend WithEvents ColumnHeader6 As ColumnHeader
     Friend WithEvents ColumnHeader7 As ColumnHeader
     Friend WithEvents ColumnHeader8 As ColumnHeader
-    Private WithEvents Button1 As Button
+    Private WithEvents btnRemove As Button
     Private WithEvents txtSize1 As TextBox
+    Friend WithEvents uniform_id As ColumnHeader
 End Class

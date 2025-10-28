@@ -45,7 +45,7 @@ Public Class frmPEUniformView
         Next
     End Sub
 
-    Private Sub btnRemove1_Paint(sender As Object, e As PaintEventArgs)
+    Private Sub btnRemove_Paint(sender As Object, e As PaintEventArgs) Handles btnRemove.Paint
         Dim btn = DirectCast(sender, Button)
         Dim radius = 10
 
@@ -99,18 +99,18 @@ Public Class frmPEUniformView
         displayApplication(txtSearch.Text.Trim())
     End Sub
 
-    Private Sub ListView2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListView2.SelectedIndexChanged
+    Private Sub ListView1_SelectedIndexChanged_1(sender As Object, e As EventArgs) Handles ListView2.SelectedIndexChanged
         If ListView2.SelectedItems.Count > 0 Then
             Dim selectedItem As ListViewItem = ListView2.SelectedItems(0)
 
-            txtItemName.Text = selectedItem.Text
-            txtLevel.Text = selectedItem.SubItems(1).Text
-            txtGender.Text = selectedItem.SubItems(2).Text
-            txtSize1.Text = selectedItem.SubItems(3).Text
-            txtQuantity.Text = selectedItem.SubItems(4).Text
-            txtPrice.Text = selectedItem.SubItems(5).Text
-            txtStatus1.Text = selectedItem.SubItems(6).Text
-            txtDateAdded.Text = selectedItem.SubItems(7).Text
+            txtItemName.Text = selectedItem.SubItems(1).Text
+            txtLevel.Text = selectedItem.SubItems(2).Text
+            txtGender.Text = selectedItem.SubItems(3).Text
+            txtSize1.Text = selectedItem.SubItems(4).Text
+            txtQuantity.Text = selectedItem.SubItems(5).Text
+            txtPrice.Text = selectedItem.SubItems(6).Text
+            txtStatus1.Text = selectedItem.SubItems(7).Text
+            txtDateAdded.Text = selectedItem.SubItems(8).Text
         End If
 
         For Each item As ListViewItem In ListView2.Items
@@ -162,31 +162,32 @@ Public Class frmPEUniformView
                     statusColor = Color.Green
                 End If
 
-                Dim x As New ListViewItem(databaseConnection.dr("item_name").ToString())
+                Dim x As New ListViewItem(databaseConnection.dr("uniform_id").ToString())
+                x.SubItems.Add(databaseConnection.dr("item_name").ToString())
                 x.SubItems.Add(databaseConnection.dr("level").ToString())
                 x.SubItems.Add(databaseConnection.dr("gender").ToString())
                 x.SubItems.Add(databaseConnection.dr("size").ToString())
                 x.SubItems.Add(databaseConnection.dr("stock_quantity").ToString())
                 x.SubItems.Add(databaseConnection.dr("price").ToString())
-                x.SubItems.Add(statusText)
+                x.SubItems.Add(statusText) ' manually set the status text instead of db column
                 x.SubItems.Add(databaseConnection.dr("date_added").ToString())
 
-                ' alternate row color
+                ' alternate row colors
                 If rowIndex Mod 2 = 0 Then
                     x.BackColor = Color.White
                 Else
                     x.BackColor = Color.AliceBlue
                 End If
 
+                ' color only the "Status" subitem (index 7)
                 x.UseItemStyleForSubItems = False
-                x.SubItems(6).ForeColor = statusColor
+                x.SubItems(7).ForeColor = statusColor
 
                 ListView2.Items.Add(x)
                 rowIndex += 1
             End While
 
-            ' ✅ this should be OUTSIDE the loop
-            ListView2.OwnerDraw = True
+            ListView2.OwnerDraw = False ' no need for custom drawing here
 
         Catch ex As Exception
             MessageBox.Show("Error loading data: " & ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -195,6 +196,7 @@ Public Class frmPEUniformView
             databaseConnection.cn.Close()
         End Try
     End Sub
+
 
 
     ' ✅ Drawing logic
@@ -240,43 +242,143 @@ Public Class frmPEUniformView
         txtStatus1.Clear()
         txtDateAdded.Clear()
         txtQuantity.Clear()
+        txtSize1.Clear()
     End Sub
     Private Sub save()
-        If ListView2.SelectedItems.Count = 0 Then
-            MsgBox("Please select an item to update", MsgBoxStyle.Exclamation)
-            Exit Sub
-        End If
+        Try
+            ' 1️⃣ Make sure something is selected
+            If ListView2.SelectedItems.Count = 0 Then
+                MsgBox("Please select an item to update", MsgBoxStyle.Exclamation)
+                Exit Sub
+            End If
 
-        Dim selectedItem As ListViewItem = ListView2.SelectedItems(0)
-        Dim currentItemName As String = selectedItem.Text
-        Dim currentLevel As String = selectedItem.SubItems(1).Text
-        Dim currentGender As String = selectedItem.SubItems(2).Text
-        Dim currentSize As String = selectedItem.SubItems(3).Text
+            ' 2️⃣ Grab current item
+            Dim selectedItem As ListViewItem = ListView2.SelectedItems(0)
+            Dim currentItemName As String = selectedItem.Text
+            Dim currentLevel As String = selectedItem.SubItems(1).Text
+            Dim currentGender As String = selectedItem.SubItems(2).Text
+            Dim currentSize As String = selectedItem.SubItems(3).Text
 
-        databaseConnection.con()
+            ' 3️⃣ Confirm update EVERY time
+            Dim result As DialogResult = MessageBox.Show(
+            "Are you sure you want to update this item?",
+            "Confirm update",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Question
+        )
 
-        Dim sql As String = "UPDATE tbluniforms SET stock_quantity=@quantity, price=@price " &
-                            "WHERE item_name=@itemName AND level=@level AND gender=@gender AND size=@size"
+            If result = DialogResult.No Then
+                MessageBox.Show("Cancelled.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Exit Sub
+            End If
 
-        databaseConnection.cmd = New MySqlCommand(sql, databaseConnection.cn)
+            ' 4️⃣ Proceed with update
+            databaseConnection.con()
+            Dim sql As String =
+            "UPDATE tbluniforms SET stock_quantity=@quantity, price=@price " &
+            "WHERE item_name=@itemName AND level=@level AND gender=@gender AND size=@size"
 
-        databaseConnection.cmd.Parameters.AddWithValue("@quantity", txtQuantity.Text)
-        databaseConnection.cmd.Parameters.AddWithValue("@price", txtPrice.Text)
+            databaseConnection.cmd = New MySqlCommand(sql, databaseConnection.cn)
+            databaseConnection.cmd.Parameters.AddWithValue("@quantity", txtQuantity.Text)
+            databaseConnection.cmd.Parameters.AddWithValue("@price", txtPrice.Text)
+            databaseConnection.cmd.Parameters.AddWithValue("@itemName", txtItemName.Text)
+            databaseConnection.cmd.Parameters.AddWithValue("@level", txtLevel.Text)
+            databaseConnection.cmd.Parameters.AddWithValue("@gender", txtGender.Text)
+            databaseConnection.cmd.Parameters.AddWithValue("@size", txtSize1.Text)
 
-        databaseConnection.cmd.Parameters.AddWithValue("@itemName", txtItemName.Text)
-        databaseConnection.cmd.Parameters.AddWithValue("@level", txtLevel.Text)
-        databaseConnection.cmd.Parameters.AddWithValue("@gender", txtGender.Text)
-        databaseConnection.cmd.Parameters.AddWithValue("@size", txtSize1.Text)
+            Dim rowsAffected As Integer = databaseConnection.cmd.ExecuteNonQuery()
 
-        databaseConnection.cmd.ExecuteNonQuery()
+            If rowsAffected > 0 Then
+                MessageBox.Show("Record updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                displayApplication()
+                clearAll()
+            Else
+                MessageBox.Show("No record updated. Please check your item details.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            End If
 
-        MsgBox("Item updated successfully", MsgBoxStyle.Information)
-        displayApplication()
-        clearAll()
+        Catch ex As Exception
+            MessageBox.Show("Error updating record: " & ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Finally
+            If databaseConnection.cn IsNot Nothing AndAlso databaseConnection.cn.State = ConnectionState.Open Then
+                databaseConnection.cn.Close()
+            End If
+        End Try
+    End Sub
+
+
+    Private Sub remove()
+        Try
+            ' 1️⃣ Make sure something is selected
+            If ListView2.SelectedItems.Count = 0 Then
+                MsgBox("Please select an item to delete.", MsgBoxStyle.Exclamation)
+                Exit Sub
+            End If
+
+            ' 2️⃣ Ask for confirmation
+            Dim result As DialogResult = MessageBox.Show(
+            "Do you want to remove this record from the list?",
+            "Confirm Deletion",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Question
+        )
+
+            If result = DialogResult.No Then
+                MsgBox("Cancelled.", MsgBoxStyle.Information)
+                Exit Sub
+            End If
+
+            ' 3️⃣ Get the selected item info
+            Dim selectedItem As ListViewItem = ListView2.SelectedItems(0)
+            Dim uniformId As String = selectedItem.SubItems(0).Text ' make sure this is the correct column for uniform_id
+
+            ' 4️⃣ Delete from database
+            databaseConnection.con()
+            Dim sql As String = "DELETE FROM tbluniforms WHERE uniform_id = @uniform_id"
+            databaseConnection.cmd = New MySqlCommand(sql, databaseConnection.cn)
+            databaseConnection.cmd.Parameters.AddWithValue("@uniform_id", uniformId)
+
+            Dim rowsAffected As Integer = databaseConnection.cmd.ExecuteNonQuery()
+
+            ' 5️⃣ Remove from ListView if successful
+            If rowsAffected > 0 Then
+                ListView2.Items.Remove(selectedItem)
+                MsgBox("Item deleted successfully!", MsgBoxStyle.Information)
+                displayApplication()
+                clearAll()
+            Else
+                MsgBox("No item deleted. Check if the ID exists in the database.", MsgBoxStyle.Exclamation)
+            End If
+
+        Catch ex As Exception
+            MessageBox.Show("Error deleting record: " & ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+
+        Finally
+            ' 6️⃣ Always close the connection safely
+            If databaseConnection.cn IsNot Nothing AndAlso databaseConnection.cn.State = ConnectionState.Open Then
+                databaseConnection.cn.Close()
+            End If
+        End Try
     End Sub
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         save()
     End Sub
 
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnRemove.Click
+        remove()
+    End Sub
+
+    Private Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
+        Dim parentForm As Form = Me.ParentForm
+
+        While parentForm IsNot Nothing AndAlso Not TypeOf parentForm Is frmAdmin
+            parentForm = parentForm.ParentForm
+        End While
+
+        If parentForm IsNot Nothing Then
+            CType(parentForm, frmAdmin).openChildForm(New frmHomeAdmin)
+        Else
+            MessageBox.Show("Cannot find the Admin form.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
+    End Sub
 End Class

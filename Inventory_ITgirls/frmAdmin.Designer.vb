@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmAdmin
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class frmAdmin
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAdmin))
         Label3 = New Label()
@@ -147,7 +147,7 @@ Partial Class frmAdmin
         ' 
         Button4.BackColor = Color.DarkSlateGray
         Button4.FlatStyle = FlatStyle.Flat
-        Button4.Font = New Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Button4.Font = New Font("Yu Gothic UI", 9.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Button4.ForeColor = SystemColors.Control
         Button4.Location = New Point(5, 2)
         Button4.Name = "Button4"
@@ -202,7 +202,7 @@ Partial Class frmAdmin
         ' 
         Button3.BackColor = Color.DarkGoldenrod
         Button3.FlatStyle = FlatStyle.Flat
-        Button3.Font = New Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Button3.Font = New Font("Yu Gothic UI", 9.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Button3.ForeColor = SystemColors.Control
         Button3.Location = New Point(3, 3)
         Button3.Name = "Button3"
@@ -245,7 +245,7 @@ Partial Class frmAdmin
         ' 
         Button2.BackColor = Color.SeaGreen
         Button2.FlatStyle = FlatStyle.Flat
-        Button2.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Button2.Font = New Font("Arial Rounded MT Bold", 9.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Button2.ForeColor = SystemColors.Control
         Button2.Location = New Point(3, 4)
         Button2.Name = "Button2"
@@ -289,7 +289,7 @@ Partial Class frmAdmin
         ' 
         Button1.BackColor = Color.Brown
         Button1.FlatStyle = FlatStyle.Flat
-        Button1.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Button1.Font = New Font("Arial Rounded MT Bold", 9.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Button1.ForeColor = SystemColors.Control
         Button1.Location = New Point(4, 4)
         Button1.Name = "Button1"
@@ -313,7 +313,7 @@ Partial Class frmAdmin
         ' 
         btnCorporateAttire.BackColor = Color.DarkSlateGray
         btnCorporateAttire.FlatStyle = FlatStyle.Popup
-        btnCorporateAttire.Font = New Font("Arial Rounded MT Bold", 16F)
+        btnCorporateAttire.Font = New Font("Arial Rounded MT Bold", 16.0F)
         btnCorporateAttire.ForeColor = Color.MintCream
         btnCorporateAttire.Location = New Point(692, 552)
         btnCorporateAttire.Name = "btnCorporateAttire"
@@ -338,7 +338,7 @@ Partial Class frmAdmin
         ' 
         btnSchoolUniform.BackColor = Color.DarkSlateGray
         btnSchoolUniform.FlatStyle = FlatStyle.Popup
-        btnSchoolUniform.Font = New Font("Arial Rounded MT Bold", 16F)
+        btnSchoolUniform.Font = New Font("Arial Rounded MT Bold", 16.0F)
         btnSchoolUniform.ForeColor = Color.MintCream
         btnSchoolUniform.Location = New Point(404, 563)
         btnSchoolUniform.Name = "btnSchoolUniform"
@@ -351,7 +351,7 @@ Partial Class frmAdmin
         ' 
         btnPeUniform.BackColor = Color.DarkSlateGray
         btnPeUniform.FlatStyle = FlatStyle.Popup
-        btnPeUniform.Font = New Font("Arial Rounded MT Bold", 16F)
+        btnPeUniform.Font = New Font("Arial Rounded MT Bold", 16.0F)
         btnPeUniform.ForeColor = Color.MintCream
         btnPeUniform.Location = New Point(136, 552)
         btnPeUniform.Name = "btnPeUniform"
@@ -389,7 +389,7 @@ Partial Class frmAdmin
         btnBack.BackColor = Color.Teal
         btnBack.FlatAppearance.BorderSize = 0
         btnBack.FlatStyle = FlatStyle.Flat
-        btnBack.Font = New Font("Arial Rounded MT Bold", 10F)
+        btnBack.Font = New Font("Arial Rounded MT Bold", 10.0F)
         btnBack.ForeColor = Color.White
         btnBack.Location = New Point(11, 617)
         btnBack.Name = "btnBack"
@@ -465,7 +465,7 @@ Partial Class frmAdmin
         ' 
         ' frmAdmin
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.DarkSlateGray
         ClientSize = New Size(1257, 664)

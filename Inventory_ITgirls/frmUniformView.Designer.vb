@@ -24,6 +24,7 @@ Partial Class frmUniformView
     Private Sub InitializeComponent()
         Label2 = New Label()
         ListView2 = New ListView()
+        uniform_id = New ColumnHeader()
         ColumnHeader1 = New ColumnHeader()
         ColumnHeader2 = New ColumnHeader()
         ColumnHeader3 = New ColumnHeader()
@@ -31,7 +32,6 @@ Partial Class frmUniformView
         ColumnHeader5 = New ColumnHeader()
         ColumnHeader6 = New ColumnHeader()
         ColumnHeader7 = New ColumnHeader()
-        ColumnHeader8 = New ColumnHeader()
         Label1 = New Label()
         txtSize = New TextBox()
         Label3 = New Label()
@@ -55,6 +55,7 @@ Partial Class frmUniformView
         Panel1 = New Panel()
         Label18 = New Label()
         Panel2 = New Panel()
+        ColumnHeader8 = New ColumnHeader()
         Panel1.SuspendLayout()
         Panel2.SuspendLayout()
         SuspendLayout()
@@ -72,7 +73,7 @@ Partial Class frmUniformView
         ' 
         ' ListView2
         ' 
-        ListView2.Columns.AddRange(New ColumnHeader() {ColumnHeader1, ColumnHeader2, ColumnHeader3, ColumnHeader4, ColumnHeader5, ColumnHeader6, ColumnHeader7, ColumnHeader8})
+        ListView2.Columns.AddRange(New ColumnHeader() {uniform_id, ColumnHeader1, ColumnHeader2, ColumnHeader3, ColumnHeader4, ColumnHeader5, ColumnHeader6, ColumnHeader7, ColumnHeader8})
         ListView2.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         ListView2.GridLines = True
         ListView2.Location = New Point(16, 59)
@@ -81,6 +82,10 @@ Partial Class frmUniformView
         ListView2.TabIndex = 120
         ListView2.UseCompatibleStateImageBehavior = False
         ListView2.View = View.Details
+        ' 
+        ' uniform_id
+        ' 
+        uniform_id.Text = "id"
         ' 
         ' ColumnHeader1
         ' 
@@ -114,11 +119,6 @@ Partial Class frmUniformView
         ' 
         ColumnHeader7.Text = "Status"
         ColumnHeader7.Width = 80
-        ' 
-        ' ColumnHeader8
-        ' 
-        ColumnHeader8.Text = "Date Added"
-        ColumnHeader8.Width = 120
         ' 
         ' Label1
         ' 
@@ -365,6 +365,11 @@ Partial Class frmUniformView
         Panel2.Size = New Size(944, 576)
         Panel2.TabIndex = 120
         ' 
+        ' ColumnHeader8
+        ' 
+        ColumnHeader8.Text = "Date Added"
+        ColumnHeader8.Width = 120
+        ' 
         ' frmUniformView
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -391,7 +396,7 @@ Partial Class frmUniformView
     Friend WithEvents ColumnHeader5 As ColumnHeader
     Friend WithEvents ColumnHeader6 As ColumnHeader
     Friend WithEvents ColumnHeader7 As ColumnHeader
-    Friend WithEvents ColumnHeader8 As ColumnHeader
+    Friend WithEvents uniform_id As ColumnHeader
     Private WithEvents Label1 As Label
     Private WithEvents txtSize As TextBox
     Private WithEvents Label3 As Label
@@ -415,4 +420,5 @@ Partial Class frmUniformView
     Friend WithEvents Panel1 As Panel
     Private WithEvents Label18 As Label
     Friend WithEvents Panel2 As Panel
+    Friend WithEvents ColumnHeader8 As ColumnHeader
 End Class
