@@ -44,7 +44,7 @@ Public Class frmStockManagement
             ElseIf rdoPEUniform.Checked Then
                 sql &= " AND category = 'PE Uniform'"
             ElseIf rdoCorpo.Checked Then
-                sql &= " AND category = 'Corporate Attire'"x`
+                sql &= " AND category = 'Corporate Attire'"
             End If
 
             If cboLevel.SelectedItem = "Kindergarten" Then
