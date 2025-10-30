@@ -24,14 +24,18 @@ Partial Class frmAdmin
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAdmin))
         Label3 = New Label()
-        PanelMain = New Panel()
+        btnBack = New Button()
+        btnSalesReport = New Button()
+        btnStockManagement = New Button()
+        PictureBox1 = New PictureBox()
+        btnHome = New Button()
+        btnPullOut = New Button()
+        PictureBox2 = New PictureBox()
         Panel1 = New Panel()
-        Label1 = New Label()
         Panel17 = New Panel()
         Panel4 = New Panel()
         Button4 = New Button()
         lblPendingRequest = New Label()
-        Label2 = New Label()
         Panel16 = New Panel()
         Panel3 = New Panel()
         Button3 = New Button()
@@ -50,13 +54,13 @@ Partial Class frmAdmin
         btnPeUniform = New Button()
         picPEUniform = New PictureBox()
         picSchoolUniform = New PictureBox()
-        btnBack = New Button()
-        btnSalesReport = New Button()
-        btnStockManagement = New Button()
-        PictureBox1 = New PictureBox()
-        btnHome = New Button()
-        btnPullOut = New Button()
-        PanelMain.SuspendLayout()
+        Panel2 = New Panel()
+        Label2 = New Label()
+        PictureBox3 = New PictureBox()
+        Label4 = New Label()
+        PanelMain = New Panel()
+        CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
+        CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
         Panel1.SuspendLayout()
         Panel17.SuspendLayout()
         Panel4.SuspendLayout()
@@ -69,7 +73,9 @@ Partial Class frmAdmin
         CType(picCorpo, ComponentModel.ISupportInitialize).BeginInit()
         CType(picPEUniform, ComponentModel.ISupportInitialize).BeginInit()
         CType(picSchoolUniform, ComponentModel.ISupportInitialize).BeginInit()
-        CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
+        Panel2.SuspendLayout()
+        CType(PictureBox3, ComponentModel.ISupportInitialize).BeginInit()
+        PanelMain.SuspendLayout()
         SuspendLayout()
         ' 
         ' Label3
@@ -83,21 +89,99 @@ Partial Class frmAdmin
         Label3.Size = New Size(0, 24)
         Label3.TabIndex = 53
         ' 
-        ' PanelMain
+        ' btnBack
         ' 
-        PanelMain.BackColor = Color.LightCyan
-        PanelMain.Controls.Add(Panel1)
-        PanelMain.Location = New Point(204, -1)
-        PanelMain.Name = "PanelMain"
-        PanelMain.Size = New Size(1056, 670)
-        PanelMain.TabIndex = 58
+        btnBack.BackColor = Color.Teal
+        btnBack.FlatAppearance.BorderSize = 0
+        btnBack.FlatStyle = FlatStyle.Flat
+        btnBack.Font = New Font("Arial Rounded MT Bold", 10F)
+        btnBack.ForeColor = Color.White
+        btnBack.Location = New Point(11, 617)
+        btnBack.Name = "btnBack"
+        btnBack.Size = New Size(180, 35)
+        btnBack.TabIndex = 2
+        btnBack.Text = "LOGOUT"
+        btnBack.UseVisualStyleBackColor = False
+        ' 
+        ' btnSalesReport
+        ' 
+        btnSalesReport.BackColor = Color.DarkSlateGray
+        btnSalesReport.FlatAppearance.BorderSize = 0
+        btnSalesReport.FlatStyle = FlatStyle.Flat
+        btnSalesReport.Font = New Font("Arial Rounded MT Bold", 11.25F)
+        btnSalesReport.ForeColor = Color.White
+        btnSalesReport.Location = New Point(11, 227)
+        btnSalesReport.Name = "btnSalesReport"
+        btnSalesReport.Size = New Size(180, 40)
+        btnSalesReport.TabIndex = 1
+        btnSalesReport.Text = "REPORTS"
+        btnSalesReport.UseVisualStyleBackColor = False
+        ' 
+        ' btnStockManagement
+        ' 
+        btnStockManagement.BackColor = Color.DarkSlateGray
+        btnStockManagement.FlatAppearance.BorderSize = 0
+        btnStockManagement.FlatStyle = FlatStyle.Flat
+        btnStockManagement.Font = New Font("Arial Rounded MT Bold", 11.25F)
+        btnStockManagement.ForeColor = Color.White
+        btnStockManagement.Location = New Point(11, 177)
+        btnStockManagement.Name = "btnStockManagement"
+        btnStockManagement.Size = New Size(180, 40)
+        btnStockManagement.TabIndex = 0
+        btnStockManagement.Text = "STOCK"
+        btnStockManagement.UseVisualStyleBackColor = False
+        ' 
+        ' PictureBox1
+        ' 
+        PictureBox1.BackColor = Color.DarkSlateGray
+        PictureBox1.Location = New Point(-1, -1)
+        PictureBox1.Name = "PictureBox1"
+        PictureBox1.Size = New Size(208, 664)
+        PictureBox1.TabIndex = 0
+        PictureBox1.TabStop = False
+        ' 
+        ' btnHome
+        ' 
+        btnHome.BackColor = Color.DarkSlateGray
+        btnHome.FlatAppearance.BorderSize = 0
+        btnHome.FlatStyle = FlatStyle.Flat
+        btnHome.Font = New Font("Arial Rounded MT Bold", 11.25F)
+        btnHome.ForeColor = Color.White
+        btnHome.Location = New Point(11, 131)
+        btnHome.Name = "btnHome"
+        btnHome.Size = New Size(180, 40)
+        btnHome.TabIndex = 59
+        btnHome.Text = "HOME"
+        btnHome.UseVisualStyleBackColor = False
+        ' 
+        ' btnPullOut
+        ' 
+        btnPullOut.BackColor = Color.DarkSlateGray
+        btnPullOut.FlatAppearance.BorderSize = 0
+        btnPullOut.FlatStyle = FlatStyle.Flat
+        btnPullOut.Font = New Font("Arial Rounded MT Bold", 11.25F)
+        btnPullOut.ForeColor = Color.White
+        btnPullOut.Location = New Point(12, 273)
+        btnPullOut.Name = "btnPullOut"
+        btnPullOut.Size = New Size(180, 40)
+        btnPullOut.TabIndex = 69
+        btnPullOut.Text = "PULLOUTS"
+        btnPullOut.UseVisualStyleBackColor = False
+        ' 
+        ' PictureBox2
+        ' 
+        PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), Image)
+        PictureBox2.Location = New Point(6, -9)
+        PictureBox2.Name = "PictureBox2"
+        PictureBox2.Size = New Size(189, 132)
+        PictureBox2.SizeMode = PictureBoxSizeMode.Zoom
+        PictureBox2.TabIndex = 70
+        PictureBox2.TabStop = False
         ' 
         ' Panel1
         ' 
         Panel1.BackColor = Color.LightCyan
-        Panel1.Controls.Add(Label1)
         Panel1.Controls.Add(Panel17)
-        Panel1.Controls.Add(Label2)
         Panel1.Controls.Add(Panel16)
         Panel1.Controls.Add(Panel15)
         Panel1.Controls.Add(Panel6)
@@ -111,18 +195,6 @@ Partial Class frmAdmin
         Panel1.Name = "Panel1"
         Panel1.Size = New Size(1054, 667)
         Panel1.TabIndex = 60
-        ' 
-        ' Label1
-        ' 
-        Label1.AutoSize = True
-        Label1.BackColor = Color.Transparent
-        Label1.Font = New Font("Franklin Gothic Medium Cond", 14.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label1.ForeColor = Color.DarkSlateGray
-        Label1.Location = New Point(668, 34)
-        Label1.Name = "Label1"
-        Label1.Size = New Size(60, 24)
-        Label1.TabIndex = 67
-        Label1.Text = "ADMIN"
         ' 
         ' Panel17
         ' 
@@ -147,7 +219,7 @@ Partial Class frmAdmin
         ' 
         Button4.BackColor = Color.DarkSlateGray
         Button4.FlatStyle = FlatStyle.Flat
-        Button4.Font = New Font("Yu Gothic UI", 9.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Button4.Font = New Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Button4.ForeColor = SystemColors.Control
         Button4.Location = New Point(5, 2)
         Button4.Name = "Button4"
@@ -166,18 +238,6 @@ Partial Class frmAdmin
         lblPendingRequest.Size = New Size(20, 25)
         lblPendingRequest.TabIndex = 26
         lblPendingRequest.Text = "-"
-        ' 
-        ' Label2
-        ' 
-        Label2.AutoSize = True
-        Label2.BackColor = Color.Transparent
-        Label2.Font = New Font("Arial Rounded MT Bold", 27.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label2.ForeColor = Color.DarkSlateGray
-        Label2.Location = New Point(281, 18)
-        Label2.Name = "Label2"
-        Label2.Size = New Size(400, 43)
-        Label2.TabIndex = 66
-        Label2.Text = "INVENTORY SYSTEM"
         ' 
         ' Panel16
         ' 
@@ -202,7 +262,7 @@ Partial Class frmAdmin
         ' 
         Button3.BackColor = Color.DarkGoldenrod
         Button3.FlatStyle = FlatStyle.Flat
-        Button3.Font = New Font("Yu Gothic UI", 9.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Button3.Font = New Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Button3.ForeColor = SystemColors.Control
         Button3.Location = New Point(3, 3)
         Button3.Name = "Button3"
@@ -245,7 +305,7 @@ Partial Class frmAdmin
         ' 
         Button2.BackColor = Color.SeaGreen
         Button2.FlatStyle = FlatStyle.Flat
-        Button2.Font = New Font("Arial Rounded MT Bold", 9.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Button2.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Button2.ForeColor = SystemColors.Control
         Button2.Location = New Point(3, 4)
         Button2.Name = "Button2"
@@ -289,7 +349,7 @@ Partial Class frmAdmin
         ' 
         Button1.BackColor = Color.Brown
         Button1.FlatStyle = FlatStyle.Flat
-        Button1.Font = New Font("Arial Rounded MT Bold", 9.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Button1.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Button1.ForeColor = SystemColors.Control
         Button1.Location = New Point(4, 4)
         Button1.Name = "Button1"
@@ -313,7 +373,7 @@ Partial Class frmAdmin
         ' 
         btnCorporateAttire.BackColor = Color.DarkSlateGray
         btnCorporateAttire.FlatStyle = FlatStyle.Popup
-        btnCorporateAttire.Font = New Font("Arial Rounded MT Bold", 16.0F)
+        btnCorporateAttire.Font = New Font("Arial Rounded MT Bold", 16F)
         btnCorporateAttire.ForeColor = Color.MintCream
         btnCorporateAttire.Location = New Point(692, 552)
         btnCorporateAttire.Name = "btnCorporateAttire"
@@ -338,7 +398,7 @@ Partial Class frmAdmin
         ' 
         btnSchoolUniform.BackColor = Color.DarkSlateGray
         btnSchoolUniform.FlatStyle = FlatStyle.Popup
-        btnSchoolUniform.Font = New Font("Arial Rounded MT Bold", 16.0F)
+        btnSchoolUniform.Font = New Font("Arial Rounded MT Bold", 16F)
         btnSchoolUniform.ForeColor = Color.MintCream
         btnSchoolUniform.Location = New Point(404, 563)
         btnSchoolUniform.Name = "btnSchoolUniform"
@@ -351,7 +411,7 @@ Partial Class frmAdmin
         ' 
         btnPeUniform.BackColor = Color.DarkSlateGray
         btnPeUniform.FlatStyle = FlatStyle.Popup
-        btnPeUniform.Font = New Font("Arial Rounded MT Bold", 16.0F)
+        btnPeUniform.Font = New Font("Arial Rounded MT Bold", 16F)
         btnPeUniform.ForeColor = Color.MintCream
         btnPeUniform.Location = New Point(136, 552)
         btnPeUniform.Name = "btnPeUniform"
@@ -384,93 +444,72 @@ Partial Class frmAdmin
         picSchoolUniform.TabIndex = 47
         picSchoolUniform.TabStop = False
         ' 
-        ' btnBack
+        ' Panel2
         ' 
-        btnBack.BackColor = Color.Teal
-        btnBack.FlatAppearance.BorderSize = 0
-        btnBack.FlatStyle = FlatStyle.Flat
-        btnBack.Font = New Font("Arial Rounded MT Bold", 10.0F)
-        btnBack.ForeColor = Color.White
-        btnBack.Location = New Point(11, 617)
-        btnBack.Name = "btnBack"
-        btnBack.Size = New Size(180, 35)
-        btnBack.TabIndex = 2
-        btnBack.Text = "LOGOUT"
-        btnBack.UseVisualStyleBackColor = False
+        Panel2.BackColor = Color.DarkSlateGray
+        Panel2.Controls.Add(Label2)
+        Panel2.Controls.Add(PictureBox3)
+        Panel2.Controls.Add(Label4)
+        Panel2.Location = New Point(0, 0)
+        Panel2.Name = "Panel2"
+        Panel2.Size = New Size(1077, 72)
+        Panel2.TabIndex = 71
         ' 
-        ' btnSalesReport
+        ' Label2
         ' 
-        btnSalesReport.BackColor = Color.DarkSlateGray
-        btnSalesReport.FlatAppearance.BorderSize = 0
-        btnSalesReport.FlatStyle = FlatStyle.Flat
-        btnSalesReport.Font = New Font("Arial Rounded MT Bold", 11.25F)
-        btnSalesReport.ForeColor = Color.White
-        btnSalesReport.Location = New Point(11, 208)
-        btnSalesReport.Name = "btnSalesReport"
-        btnSalesReport.Size = New Size(180, 40)
-        btnSalesReport.TabIndex = 1
-        btnSalesReport.Text = "REPORTS"
-        btnSalesReport.UseVisualStyleBackColor = False
+        Label2.AutoSize = True
+        Label2.BackColor = Color.DarkSlateGray
+        Label2.Font = New Font("Arial Rounded MT Bold", 16F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label2.ForeColor = Color.LightCyan
+        Label2.Location = New Point(362, 40)
+        Label2.Margin = New Padding(2, 0, 2, 0)
+        Label2.Name = "Label2"
+        Label2.Size = New Size(410, 26)
+        Label2.TabIndex = 80
+        Label2.Text = "INVENTORY MANAGEMENT SYSTEM"
         ' 
-        ' btnStockManagement
+        ' PictureBox3
         ' 
-        btnStockManagement.BackColor = Color.DarkSlateGray
-        btnStockManagement.FlatAppearance.BorderSize = 0
-        btnStockManagement.FlatStyle = FlatStyle.Flat
-        btnStockManagement.Font = New Font("Arial Rounded MT Bold", 11.25F)
-        btnStockManagement.ForeColor = Color.White
-        btnStockManagement.Location = New Point(11, 158)
-        btnStockManagement.Name = "btnStockManagement"
-        btnStockManagement.Size = New Size(180, 40)
-        btnStockManagement.TabIndex = 0
-        btnStockManagement.Text = "STOCK"
-        btnStockManagement.UseVisualStyleBackColor = False
+        PictureBox3.Image = CType(resources.GetObject("PictureBox3.Image"), Image)
+        PictureBox3.Location = New Point(263, 1)
+        PictureBox3.Name = "PictureBox3"
+        PictureBox3.Size = New Size(113, 70)
+        PictureBox3.SizeMode = PictureBoxSizeMode.Zoom
+        PictureBox3.TabIndex = 71
+        PictureBox3.TabStop = False
         ' 
-        ' PictureBox1
+        ' Label4
         ' 
-        PictureBox1.BackColor = Color.DarkSlateGray
-        PictureBox1.Location = New Point(-1, -1)
-        PictureBox1.Name = "PictureBox1"
-        PictureBox1.Size = New Size(208, 664)
-        PictureBox1.TabIndex = 0
-        PictureBox1.TabStop = False
+        Label4.AutoSize = True
+        Label4.BackColor = Color.DarkSlateGray
+        Label4.Font = New Font("Perpetua", 11F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label4.ForeColor = SystemColors.ButtonHighlight
+        Label4.Location = New Point(462, 23)
+        Label4.Margin = New Padding(2, 0, 2, 0)
+        Label4.Name = "Label4"
+        Label4.Size = New Size(191, 17)
+        Label4.TabIndex = 79
+        Label4.Text = "BOOKSTORE DEPARTMENT"
         ' 
-        ' btnHome
+        ' PanelMain
         ' 
-        btnHome.BackColor = Color.DarkSlateGray
-        btnHome.FlatAppearance.BorderSize = 0
-        btnHome.FlatStyle = FlatStyle.Flat
-        btnHome.Font = New Font("Arial Rounded MT Bold", 11.25F)
-        btnHome.ForeColor = Color.White
-        btnHome.Location = New Point(11, 112)
-        btnHome.Name = "btnHome"
-        btnHome.Size = New Size(180, 40)
-        btnHome.TabIndex = 59
-        btnHome.Text = "HOME"
-        btnHome.UseVisualStyleBackColor = False
-        ' 
-        ' btnPullOut
-        ' 
-        btnPullOut.BackColor = Color.DarkSlateGray
-        btnPullOut.FlatAppearance.BorderSize = 0
-        btnPullOut.FlatStyle = FlatStyle.Flat
-        btnPullOut.Font = New Font("Arial Rounded MT Bold", 11.25F)
-        btnPullOut.ForeColor = Color.White
-        btnPullOut.Location = New Point(12, 254)
-        btnPullOut.Name = "btnPullOut"
-        btnPullOut.Size = New Size(180, 40)
-        btnPullOut.TabIndex = 69
-        btnPullOut.Text = "PULLOUTS"
-        btnPullOut.UseVisualStyleBackColor = False
+        PanelMain.BackColor = Color.LightCyan
+        PanelMain.Controls.Add(Panel2)
+        PanelMain.Controls.Add(Panel1)
+        PanelMain.Location = New Point(204, 1)
+        PanelMain.Name = "PanelMain"
+        PanelMain.Size = New Size(1056, 670)
+        PanelMain.TabIndex = 58
         ' 
         ' frmAdmin
         ' 
-        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.DarkSlateGray
         ClientSize = New Size(1257, 664)
-        Controls.Add(btnPullOut)
         Controls.Add(btnHome)
+        Controls.Add(PictureBox2)
+        Controls.Add(btnPullOut)
         Controls.Add(PanelMain)
         Controls.Add(btnSalesReport)
         Controls.Add(Label3)
@@ -480,9 +519,9 @@ Partial Class frmAdmin
         Name = "frmAdmin"
         StartPosition = FormStartPosition.CenterScreen
         Text = "Admin"
-        PanelMain.ResumeLayout(False)
+        CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
+        CType(PictureBox2, ComponentModel.ISupportInitialize).EndInit()
         Panel1.ResumeLayout(False)
-        Panel1.PerformLayout()
         Panel17.ResumeLayout(False)
         Panel4.ResumeLayout(False)
         Panel4.PerformLayout()
@@ -498,41 +537,47 @@ Partial Class frmAdmin
         CType(picCorpo, ComponentModel.ISupportInitialize).EndInit()
         CType(picPEUniform, ComponentModel.ISupportInitialize).EndInit()
         CType(picSchoolUniform, ComponentModel.ISupportInitialize).EndInit()
-        CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
+        Panel2.ResumeLayout(False)
+        Panel2.PerformLayout()
+        CType(PictureBox3, ComponentModel.ISupportInitialize).EndInit()
+        PanelMain.ResumeLayout(False)
         ResumeLayout(False)
         PerformLayout()
     End Sub
     Friend WithEvents Label3 As Label
-    Friend WithEvents PanelMain As Panel
     Friend WithEvents btnBack As Button
     Friend WithEvents btnSalesReport As Button
     Friend WithEvents btnStockManagement As Button
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents btnHome As Button
+    Friend WithEvents btnPullOut As Button
+    Friend WithEvents PictureBox2 As PictureBox
     Friend WithEvents Panel1 As Panel
+    Friend WithEvents Panel2 As Panel
+    Friend WithEvents Label2 As Label
+    Friend WithEvents Label4 As Label
+    Friend WithEvents Panel17 As Panel
+    Friend WithEvents Panel4 As Panel
+    Friend WithEvents Button4 As Button
+    Friend WithEvents lblPendingRequest As Label
+    Friend WithEvents Panel16 As Panel
+    Friend WithEvents Panel3 As Panel
+    Friend WithEvents Button3 As Button
+    Friend WithEvents lblTotalStocks As Label
+    Friend WithEvents Panel15 As Panel
+    Friend WithEvents Panel5 As Panel
+    Friend WithEvents Button2 As Button
+    Friend WithEvents lblTotalPullouts As Label
+    Friend WithEvents Panel6 As Panel
+    Friend WithEvents PanelLowStock As Panel
+    Friend WithEvents Button1 As Button
+    Friend WithEvents lblLowStockAlerts As Label
     Friend WithEvents btnCorporateAttire As Button
     Friend WithEvents picCorpo As PictureBox
     Friend WithEvents btnSchoolUniform As Button
     Friend WithEvents btnPeUniform As Button
     Friend WithEvents picPEUniform As PictureBox
     Friend WithEvents picSchoolUniform As PictureBox
-    Friend WithEvents Label1 As Label
-    Friend WithEvents Label2 As Label
-    Friend WithEvents btnPullOut As Button
-    Friend WithEvents Panel4 As Panel
-    Friend WithEvents Button4 As Button
-    Friend WithEvents lblPendingRequest As Label
-    Friend WithEvents Panel3 As Panel
-    Friend WithEvents lblTotalStocks As Label
-    Friend WithEvents Panel5 As Panel
-    Friend WithEvents Button2 As Button
-    Friend WithEvents lblTotalPullouts As Label
-    Friend WithEvents PanelLowStock As Panel
-    Friend WithEvents Button1 As Button
-    Friend WithEvents lblLowStockAlerts As Label
-    Friend WithEvents Panel6 As Panel
-    Friend WithEvents Panel15 As Panel
-    Friend WithEvents Panel16 As Panel
-    Friend WithEvents Panel17 As Panel
-    Friend WithEvents Button3 As Button
+    Friend WithEvents PanelMain As Panel
+    Friend WithEvents PictureBox3 As PictureBox
 End Class

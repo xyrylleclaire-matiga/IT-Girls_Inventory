@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class frmUserPECollegeShirtView
+Partial Class frmUserPEHSpantsView
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -23,16 +23,16 @@ Partial Class frmUserPECollegeShirtView
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         PictureBox1 = New PictureBox()
-        Label1 = New Label()
-        Label2 = New Label()
-        Label3 = New Label()
-        Label4 = New Label()
-        Label6 = New Label()
         Panel1 = New Panel()
         lblStatus = New Label()
         lblPrice = New Label()
         cmbGender = New ComboBox()
         Label8 = New Label()
+        Label6 = New Label()
+        Label4 = New Label()
+        Label3 = New Label()
+        Label2 = New Label()
+        Label1 = New Label()
         btnBack = New Button()
         cmbSizes = New ComboBox()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
@@ -44,62 +44,8 @@ Partial Class frmUserPECollegeShirtView
         PictureBox1.Location = New Point(132, 38)
         PictureBox1.Name = "PictureBox1"
         PictureBox1.Size = New Size(235, 430)
-        PictureBox1.TabIndex = 5
+        PictureBox1.TabIndex = 9
         PictureBox1.TabStop = False
-        ' 
-        ' Label1
-        ' 
-        Label1.AutoSize = True
-        Label1.ForeColor = SystemColors.Control
-        Label1.Location = New Point(62, 143)
-        Label1.Name = "Label1"
-        Label1.Size = New Size(51, 15)
-        Label1.TabIndex = 2
-        Label1.Text = "GENDER"
-        ' 
-        ' Label2
-        ' 
-        Label2.AutoSize = True
-        Label2.BackColor = Color.Transparent
-        Label2.Font = New Font("Arial Rounded MT Bold", 20.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label2.ForeColor = Color.White
-        Label2.Location = New Point(33, 20)
-        Label2.Name = "Label2"
-        Label2.Size = New Size(329, 32)
-        Label2.TabIndex = 67
-        Label2.Text = "COLLEGE PE UNIFORM "
-        ' 
-        ' Label3
-        ' 
-        Label3.AutoSize = True
-        Label3.ForeColor = SystemColors.Control
-        Label3.Location = New Point(62, 213)
-        Label3.Name = "Label3"
-        Label3.Size = New Size(35, 15)
-        Label3.TabIndex = 69
-        Label3.Text = "SIZES"
-        ' 
-        ' Label4
-        ' 
-        Label4.AutoSize = True
-        Label4.ForeColor = SystemColors.Control
-        Label4.Location = New Point(62, 279)
-        Label4.Name = "Label4"
-        Label4.Size = New Size(47, 15)
-        Label4.TabIndex = 71
-        Label4.Text = "STATUS"
-        ' 
-        ' Label6
-        ' 
-        Label6.AutoSize = True
-        Label6.BackColor = Color.Transparent
-        Label6.Font = New Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label6.ForeColor = Color.White
-        Label6.Location = New Point(40, 53)
-        Label6.Name = "Label6"
-        Label6.Size = New Size(73, 18)
-        Label6.TabIndex = 73
-        Label6.Text = "T-SHIRT"
         ' 
         ' Panel1
         ' 
@@ -117,17 +63,17 @@ Partial Class frmUserPECollegeShirtView
         Panel1.Location = New Point(395, 38)
         Panel1.Name = "Panel1"
         Panel1.Size = New Size(723, 375)
-        Panel1.TabIndex = 6
+        Panel1.TabIndex = 10
         ' 
         ' lblStatus
         ' 
         lblStatus.AutoSize = True
         lblStatus.Font = New Font("Sylfaen", 20.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         lblStatus.ForeColor = SystemColors.Control
-        lblStatus.Location = New Point(75, 304)
+        lblStatus.Location = New Point(75, 294)
         lblStatus.Name = "lblStatus"
         lblStatus.Size = New Size(43, 35)
-        lblStatus.TabIndex = 82
+        lblStatus.TabIndex = 80
         lblStatus.Text = "—"
         ' 
         ' lblPrice
@@ -136,10 +82,10 @@ Partial Class frmUserPECollegeShirtView
         lblPrice.BackColor = Color.LightCyan
         lblPrice.Font = New Font("Arial Rounded MT Bold", 20F)
         lblPrice.ForeColor = SystemColors.ActiveCaptionText
-        lblPrice.Location = New Point(408, 20)
+        lblPrice.Location = New Point(74, 91)
         lblPrice.Name = "lblPrice"
         lblPrice.Size = New Size(48, 32)
-        lblPrice.TabIndex = 81
+        lblPrice.TabIndex = 79
         lblPrice.Text = "— "
         ' 
         ' cmbGender
@@ -150,18 +96,72 @@ Partial Class frmUserPECollegeShirtView
         cmbGender.Location = New Point(75, 161)
         cmbGender.Name = "cmbGender"
         cmbGender.Size = New Size(173, 23)
-        cmbGender.TabIndex = 80
+        cmbGender.TabIndex = 78
         ' 
         ' Label8
         ' 
         Label8.AutoSize = True
         Label8.Font = New Font("Segoe UI", 15F)
         Label8.ForeColor = SystemColors.Control
-        Label8.Location = New Point(386, 27)
+        Label8.Location = New Point(54, 95)
         Label8.Name = "Label8"
         Label8.Size = New Size(24, 28)
-        Label8.TabIndex = 79
+        Label8.TabIndex = 77
         Label8.Text = "₱"
+        ' 
+        ' Label6
+        ' 
+        Label6.AutoSize = True
+        Label6.BackColor = Color.Transparent
+        Label6.Font = New Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label6.ForeColor = Color.White
+        Label6.Location = New Point(40, 53)
+        Label6.Name = "Label6"
+        Label6.Size = New Size(146, 18)
+        Label6.TabIndex = 73
+        Label6.Text = "JOGGING PANTS"
+        ' 
+        ' Label4
+        ' 
+        Label4.AutoSize = True
+        Label4.ForeColor = SystemColors.Control
+        Label4.Location = New Point(62, 279)
+        Label4.Name = "Label4"
+        Label4.Size = New Size(47, 15)
+        Label4.TabIndex = 71
+        Label4.Text = "STATUS"
+        ' 
+        ' Label3
+        ' 
+        Label3.AutoSize = True
+        Label3.ForeColor = SystemColors.Control
+        Label3.Location = New Point(62, 213)
+        Label3.Name = "Label3"
+        Label3.Size = New Size(35, 15)
+        Label3.TabIndex = 69
+        Label3.Text = "SIZES"
+        ' 
+        ' Label2
+        ' 
+        Label2.AutoSize = True
+        Label2.BackColor = Color.Transparent
+        Label2.Font = New Font("Arial Rounded MT Bold", 20.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label2.ForeColor = Color.White
+        Label2.Location = New Point(33, 20)
+        Label2.Name = "Label2"
+        Label2.Size = New Size(651, 32)
+        Label2.TabIndex = 67
+        Label2.Text = "HIGH SCHOOL AND SENIOR HIGH PE UNIFORM "
+        ' 
+        ' Label1
+        ' 
+        Label1.AutoSize = True
+        Label1.ForeColor = SystemColors.Control
+        Label1.Location = New Point(62, 143)
+        Label1.Name = "Label1"
+        Label1.Size = New Size(51, 15)
+        Label1.TabIndex = 2
+        Label1.Text = "GENDER"
         ' 
         ' btnBack
         ' 
@@ -187,7 +187,7 @@ Partial Class frmUserPECollegeShirtView
         cmbSizes.Size = New Size(173, 23)
         cmbSizes.TabIndex = 84
         ' 
-        ' frmUserPECollegeShirtView
+        ' frmUserPEHSpantsView
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
@@ -196,8 +196,8 @@ Partial Class frmUserPECollegeShirtView
         Controls.Add(btnBack)
         Controls.Add(PictureBox1)
         Controls.Add(Panel1)
-        Name = "frmUserPECollegeShirtView"
-        Text = "frmPECollege"
+        Name = "frmUserPEHSpantsView"
+        Text = "frmHSPepants"
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         Panel1.ResumeLayout(False)
         Panel1.PerformLayout()
@@ -205,12 +205,12 @@ Partial Class frmUserPECollegeShirtView
     End Sub
 
     Friend WithEvents PictureBox1 As PictureBox
-    Friend WithEvents Label1 As Label
-    Friend WithEvents Label2 As Label
-    Friend WithEvents Label3 As Label
-    Friend WithEvents Label4 As Label
-    Friend WithEvents Label6 As Label
     Friend WithEvents Panel1 As Panel
+    Friend WithEvents Label6 As Label
+    Friend WithEvents Label4 As Label
+    Friend WithEvents Label3 As Label
+    Friend WithEvents Label2 As Label
+    Friend WithEvents Label1 As Label
     Friend WithEvents Label8 As Label
     Friend WithEvents cmbGender As ComboBox
     Private WithEvents btnBack As Button

@@ -45,6 +45,7 @@ Partial Class frmUserSchoolUniform
         Label7 = New Label()
         Label5 = New Label()
         Label6 = New Label()
+        Label12 = New Label()
         CType(PictureBox3, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
@@ -277,6 +278,17 @@ Partial Class frmUserSchoolUniform
         Label6.TabIndex = 57
         Label6.Text = "BOTTOM"
         ' 
+        ' Label12
+        ' 
+        Label12.AutoSize = True
+        Label12.Font = New Font("Arial Rounded MT Bold", 16F)
+        Label12.ForeColor = Color.DarkSlateGray
+        Label12.Location = New Point(11, 11)
+        Label12.Name = "Label12"
+        Label12.Size = New Size(218, 26)
+        Label12.TabIndex = 100
+        Label12.Text = "SCHOOL UNIFORM"
+        ' 
         ' frmUserSchoolUniform
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -284,6 +296,7 @@ Partial Class frmUserSchoolUniform
         AutoScroll = True
         BackColor = Color.LightCyan
         ClientSize = New Size(1247, 714)
+        Controls.Add(Label12)
         Controls.Add(Label6)
         Controls.Add(Label5)
         Controls.Add(Label7)
@@ -341,4 +354,5 @@ Partial Class frmUserSchoolUniform
     Friend WithEvents Label7 As Label
     Friend WithEvents Label5 As Label
     Friend WithEvents Label6 As Label
+    Private WithEvents Label12 As Label
 End Class

@@ -31,13 +31,13 @@ Partial Class frmUser
         btnPeUniform = New Button()
         PanelUser = New Panel()
         picCorpo = New PictureBox()
-        picPEUniform = New PictureBox()
         picSchoolUniform = New PictureBox()
+        PictureBox1 = New PictureBox()
         Panel1.SuspendLayout()
         PanelUser.SuspendLayout()
         CType(picCorpo, ComponentModel.ISupportInitialize).BeginInit()
-        CType(picPEUniform, ComponentModel.ISupportInitialize).BeginInit()
         CType(picSchoolUniform, ComponentModel.ISupportInitialize).BeginInit()
+        CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' Panel1
@@ -71,7 +71,7 @@ Partial Class frmUser
         btnBack.BackColor = Color.Teal
         btnBack.FlatAppearance.BorderSize = 0
         btnBack.FlatStyle = FlatStyle.Flat
-        btnBack.Font = New Font("Arial Rounded MT Bold", 10.0F)
+        btnBack.Font = New Font("Arial Rounded MT Bold", 10F)
         btnBack.ForeColor = Color.White
         btnBack.Location = New Point(1035, 23)
         btnBack.Name = "btnBack"
@@ -122,8 +122,8 @@ Partial Class frmUser
         ' PanelUser
         ' 
         PanelUser.BackColor = Color.LightCyan
+        PanelUser.Controls.Add(PictureBox1)
         PanelUser.Controls.Add(picCorpo)
-        PanelUser.Controls.Add(picPEUniform)
         PanelUser.Controls.Add(picSchoolUniform)
         PanelUser.Location = New Point(-2, 85)
         PanelUser.Name = "PanelUser"
@@ -142,18 +142,6 @@ Partial Class frmUser
         picCorpo.TabIndex = 65
         picCorpo.TabStop = False
         ' 
-        ' picPEUniform
-        ' 
-        picPEUniform.BackColor = Color.LightGray
-        picPEUniform.BorderStyle = BorderStyle.Fixed3D
-        picPEUniform.Image = CType(resources.GetObject("picPEUniform.Image"), Image)
-        picPEUniform.Location = New Point(218, 57)
-        picPEUniform.Name = "picPEUniform"
-        picPEUniform.Size = New Size(275, 364)
-        picPEUniform.SizeMode = PictureBoxSizeMode.StretchImage
-        picPEUniform.TabIndex = 63
-        picPEUniform.TabStop = False
-        ' 
         ' picSchoolUniform
         ' 
         picSchoolUniform.BackColor = Color.LightGray
@@ -166,9 +154,21 @@ Partial Class frmUser
         picSchoolUniform.TabIndex = 64
         picSchoolUniform.TabStop = False
         ' 
+        ' PictureBox1
+        ' 
+        PictureBox1.BackColor = Color.LightGray
+        PictureBox1.BorderStyle = BorderStyle.Fixed3D
+        PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), Image)
+        PictureBox1.Location = New Point(218, 57)
+        PictureBox1.Name = "PictureBox1"
+        PictureBox1.Size = New Size(275, 364)
+        PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
+        PictureBox1.TabIndex = 42
+        PictureBox1.TabStop = False
+        ' 
         ' frmUser
         ' 
-        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(1257, 553)
         Controls.Add(Panel1)
@@ -178,8 +178,8 @@ Partial Class frmUser
         Panel1.ResumeLayout(False)
         PanelUser.ResumeLayout(False)
         CType(picCorpo, ComponentModel.ISupportInitialize).EndInit()
-        CType(picPEUniform, ComponentModel.ISupportInitialize).EndInit()
         CType(picSchoolUniform, ComponentModel.ISupportInitialize).EndInit()
+        CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
     End Sub
 
@@ -190,7 +190,7 @@ Partial Class frmUser
     Friend WithEvents btnCorporateAttire As Button
     Friend WithEvents btnBack As Button
     Friend WithEvents picCorpo As PictureBox
-    Friend WithEvents picPEUniform As PictureBox
     Friend WithEvents picSchoolUniform As PictureBox
     Friend WithEvents btnHome As Button
+    Friend WithEvents PictureBox1 As PictureBox
 End Class

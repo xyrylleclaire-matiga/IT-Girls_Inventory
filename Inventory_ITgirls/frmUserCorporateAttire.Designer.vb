@@ -62,6 +62,7 @@ Partial Class frmUserCorporateAttire
         Label20 = New Label()
         btnHMcorpo = New Button()
         PictureBox10 = New PictureBox()
+        Label21 = New Label()
         CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox3, ComponentModel.ISupportInitialize).BeginInit()
@@ -464,6 +465,17 @@ Partial Class frmUserCorporateAttire
         PictureBox10.TabIndex = 71
         PictureBox10.TabStop = False
         ' 
+        ' Label21
+        ' 
+        Label21.AutoSize = True
+        Label21.Font = New Font("Arial Rounded MT Bold", 16F)
+        Label21.ForeColor = Color.DarkSlateGray
+        Label21.Location = New Point(11, 11)
+        Label21.Name = "Label21"
+        Label21.Size = New Size(242, 26)
+        Label21.TabIndex = 100
+        Label21.Text = "CORPORATE ATTIRE"
+        ' 
         ' frmUserCorporateAttire
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -471,6 +483,7 @@ Partial Class frmUserCorporateAttire
         AutoScroll = True
         BackColor = Color.LightCyan
         ClientSize = New Size(1247, 714)
+        Controls.Add(Label21)
         Controls.Add(Label11)
         Controls.Add(Label12)
         Controls.Add(btnCCJcorpo)
@@ -567,4 +580,5 @@ Partial Class frmUserCorporateAttire
     Friend WithEvents Label20 As Label
     Friend WithEvents btnHMcorpo As Button
     Friend WithEvents PictureBox10 As PictureBox
+    Private WithEvents Label21 As Label
 End Class

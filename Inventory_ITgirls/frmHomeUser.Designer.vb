@@ -36,7 +36,7 @@ Partial Class frmHomeUser
         picCorpo.BackColor = Color.LightGray
         picCorpo.BorderStyle = BorderStyle.Fixed3D
         picCorpo.Image = CType(resources.GetObject("picCorpo.Image"), Image)
-        picCorpo.Location = New Point(765, 40)
+        picCorpo.Location = New Point(768, 40)
         picCorpo.Name = "picCorpo"
         picCorpo.Size = New Size(272, 364)
         picCorpo.SizeMode = PictureBoxSizeMode.StretchImage

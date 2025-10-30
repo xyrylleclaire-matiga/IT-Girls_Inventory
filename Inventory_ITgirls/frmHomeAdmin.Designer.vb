@@ -24,10 +24,10 @@ Partial Class frmHomeAdmin
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmHomeAdmin))
         PanelMain = New Panel()
-        btnCorporateAttire = New Button()
         Label2 = New Label()
+        PictureBox3 = New PictureBox()
+        btnCorporateAttire = New Button()
         picCorpo = New PictureBox()
-        PictureBox16 = New PictureBox()
         btnSchoolUniform = New Button()
         Label1 = New Label()
         btnPeUniform = New Button()
@@ -51,8 +51,8 @@ Partial Class frmHomeAdmin
         Button1 = New Button()
         lblLowStockAlerts = New Label()
         PanelMain.SuspendLayout()
+        CType(PictureBox3, ComponentModel.ISupportInitialize).BeginInit()
         CType(picCorpo, ComponentModel.ISupportInitialize).BeginInit()
-        CType(PictureBox16, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
         CType(picPEUniform, ComponentModel.ISupportInitialize).BeginInit()
         Panel17.SuspendLayout()
@@ -69,10 +69,10 @@ Partial Class frmHomeAdmin
         ' PanelMain
         ' 
         PanelMain.BackColor = Color.LightCyan
-        PanelMain.Controls.Add(btnCorporateAttire)
         PanelMain.Controls.Add(Label2)
+        PanelMain.Controls.Add(PictureBox3)
+        PanelMain.Controls.Add(btnCorporateAttire)
         PanelMain.Controls.Add(picCorpo)
-        PanelMain.Controls.Add(PictureBox16)
         PanelMain.Controls.Add(btnSchoolUniform)
         PanelMain.Controls.Add(Label1)
         PanelMain.Controls.Add(btnPeUniform)
@@ -83,23 +83,10 @@ Partial Class frmHomeAdmin
         PanelMain.Controls.Add(Panel16)
         PanelMain.Controls.Add(Panel15)
         PanelMain.Controls.Add(Panel6)
-        PanelMain.Location = New Point(-8, 0)
+        PanelMain.Location = New Point(-4, 0)
         PanelMain.Name = "PanelMain"
         PanelMain.Size = New Size(1054, 667)
         PanelMain.TabIndex = 61
-        ' 
-        ' btnCorporateAttire
-        ' 
-        btnCorporateAttire.BackColor = Color.DarkSlateGray
-        btnCorporateAttire.FlatStyle = FlatStyle.Popup
-        btnCorporateAttire.Font = New Font("Arial Rounded MT Bold", 16F)
-        btnCorporateAttire.ForeColor = Color.MintCream
-        btnCorporateAttire.Location = New Point(682, 561)
-        btnCorporateAttire.Name = "btnCorporateAttire"
-        btnCorporateAttire.Size = New Size(254, 38)
-        btnCorporateAttire.TabIndex = 69
-        btnCorporateAttire.Text = "CORPORATE ATTIRE"
-        btnCorporateAttire.UseVisualStyleBackColor = False
         ' 
         ' Label2
         ' 
@@ -107,33 +94,48 @@ Partial Class frmHomeAdmin
         Label2.BackColor = Color.DarkSlateGray
         Label2.Font = New Font("Arial Rounded MT Bold", 16F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label2.ForeColor = Color.LightCyan
-        Label2.Location = New Point(363, 35)
+        Label2.Location = New Point(367, 41)
         Label2.Margin = New Padding(2, 0, 2, 0)
         Label2.Name = "Label2"
         Label2.Size = New Size(410, 26)
         Label2.TabIndex = 78
         Label2.Text = "INVENTORY MANAGEMENT SYSTEM"
         ' 
+        ' PictureBox3
+        ' 
+        PictureBox3.BackColor = Color.DarkSlateGray
+        PictureBox3.Image = CType(resources.GetObject("PictureBox3.Image"), Image)
+        PictureBox3.Location = New Point(268, 2)
+        PictureBox3.Name = "PictureBox3"
+        PictureBox3.Size = New Size(113, 70)
+        PictureBox3.SizeMode = PictureBoxSizeMode.Zoom
+        PictureBox3.TabIndex = 80
+        PictureBox3.TabStop = False
+        ' 
+        ' btnCorporateAttire
+        ' 
+        btnCorporateAttire.BackColor = Color.DarkSlateGray
+        btnCorporateAttire.FlatStyle = FlatStyle.Popup
+        btnCorporateAttire.Font = New Font("Arial Rounded MT Bold", 16F)
+        btnCorporateAttire.ForeColor = Color.MintCream
+        btnCorporateAttire.Location = New Point(686, 561)
+        btnCorporateAttire.Name = "btnCorporateAttire"
+        btnCorporateAttire.Size = New Size(254, 38)
+        btnCorporateAttire.TabIndex = 69
+        btnCorporateAttire.Text = "CORPORATE ATTIRE"
+        btnCorporateAttire.UseVisualStyleBackColor = False
+        ' 
         ' picCorpo
         ' 
         picCorpo.BackColor = Color.LightGray
         picCorpo.BorderStyle = BorderStyle.Fixed3D
         picCorpo.Image = CType(resources.GetObject("picCorpo.Image"), Image)
-        picCorpo.Location = New Point(664, 277)
+        picCorpo.Location = New Point(668, 277)
         picCorpo.Name = "picCorpo"
         picCorpo.Size = New Size(272, 364)
         picCorpo.SizeMode = PictureBoxSizeMode.StretchImage
         picCorpo.TabIndex = 68
         picCorpo.TabStop = False
-        ' 
-        ' PictureBox16
-        ' 
-        PictureBox16.Location = New Point(0, 0)
-        PictureBox16.Margin = New Padding(2)
-        PictureBox16.Name = "PictureBox16"
-        PictureBox16.Size = New Size(70, 30)
-        PictureBox16.TabIndex = 79
-        PictureBox16.TabStop = False
         ' 
         ' btnSchoolUniform
         ' 
@@ -141,7 +143,7 @@ Partial Class frmHomeAdmin
         btnSchoolUniform.FlatStyle = FlatStyle.Popup
         btnSchoolUniform.Font = New Font("Arial Rounded MT Bold", 16F)
         btnSchoolUniform.ForeColor = Color.MintCream
-        btnSchoolUniform.Location = New Point(394, 572)
+        btnSchoolUniform.Location = New Point(398, 572)
         btnSchoolUniform.Name = "btnSchoolUniform"
         btnSchoolUniform.Size = New Size(264, 38)
         btnSchoolUniform.TabIndex = 67
@@ -154,7 +156,7 @@ Partial Class frmHomeAdmin
         Label1.BackColor = Color.DarkSlateGray
         Label1.Font = New Font("Perpetua", 11F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Label1.ForeColor = SystemColors.ButtonHighlight
-        Label1.Location = New Point(470, 20)
+        Label1.Location = New Point(471, 24)
         Label1.Margin = New Padding(2, 0, 2, 0)
         Label1.Name = "Label1"
         Label1.Size = New Size(191, 17)
@@ -167,7 +169,7 @@ Partial Class frmHomeAdmin
         btnPeUniform.FlatStyle = FlatStyle.Popup
         btnPeUniform.Font = New Font("Arial Rounded MT Bold", 16F)
         btnPeUniform.ForeColor = Color.MintCream
-        btnPeUniform.Location = New Point(126, 561)
+        btnPeUniform.Location = New Point(130, 561)
         btnPeUniform.Name = "btnPeUniform"
         btnPeUniform.Size = New Size(246, 38)
         btnPeUniform.TabIndex = 66
@@ -177,7 +179,7 @@ Partial Class frmHomeAdmin
         ' PictureBox2
         ' 
         PictureBox2.BackColor = Color.DarkSlateGray
-        PictureBox2.Location = New Point(-23, -3)
+        PictureBox2.Location = New Point(-19, 0)
         PictureBox2.Margin = New Padding(2)
         PictureBox2.Name = "PictureBox2"
         PictureBox2.Size = New Size(1077, 72)
@@ -189,7 +191,7 @@ Partial Class frmHomeAdmin
         picPEUniform.BackColor = Color.LightGray
         picPEUniform.BorderStyle = BorderStyle.Fixed3D
         picPEUniform.Image = CType(resources.GetObject("picPEUniform.Image"), Image)
-        picPEUniform.Location = New Point(109, 277)
+        picPEUniform.Location = New Point(113, 277)
         picPEUniform.Name = "picPEUniform"
         picPEUniform.Size = New Size(275, 364)
         picPEUniform.SizeMode = PictureBoxSizeMode.StretchImage
@@ -200,7 +202,7 @@ Partial Class frmHomeAdmin
         ' 
         Panel17.BackColor = Color.DarkSlateGray
         Panel17.Controls.Add(Panel4)
-        Panel17.Location = New Point(785, 86)
+        Panel17.Location = New Point(789, 86)
         Panel17.Name = "Panel17"
         Panel17.Size = New Size(224, 137)
         Panel17.TabIndex = 70
@@ -210,7 +212,7 @@ Partial Class frmHomeAdmin
         Panel4.BackColor = Color.LightCyan
         Panel4.Controls.Add(Button4)
         Panel4.Controls.Add(lblPendingRequest)
-        Panel4.Location = New Point(17, 13)
+        Panel4.Location = New Point(21, 13)
         Panel4.Name = "Panel4"
         Panel4.Size = New Size(189, 116)
         Panel4.TabIndex = 71
@@ -221,7 +223,7 @@ Partial Class frmHomeAdmin
         Button4.FlatStyle = FlatStyle.Flat
         Button4.Font = New Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Button4.ForeColor = SystemColors.Control
-        Button4.Location = New Point(5, 2)
+        Button4.Location = New Point(9, 2)
         Button4.Name = "Button4"
         Button4.Size = New Size(116, 27)
         Button4.TabIndex = 27
@@ -233,7 +235,7 @@ Partial Class frmHomeAdmin
         lblPendingRequest.AutoSize = True
         lblPendingRequest.Font = New Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblPendingRequest.ForeColor = SystemColors.ActiveCaptionText
-        lblPendingRequest.Location = New Point(133, 69)
+        lblPendingRequest.Location = New Point(137, 69)
         lblPendingRequest.Name = "lblPendingRequest"
         lblPendingRequest.Size = New Size(20, 25)
         lblPendingRequest.TabIndex = 26
@@ -244,7 +246,7 @@ Partial Class frmHomeAdmin
         picSchoolUniform.BackColor = Color.LightGray
         picSchoolUniform.BorderStyle = BorderStyle.Fixed3D
         picSchoolUniform.Image = My.Resources.Resources.Copy_of_Cenardo_application_removebg_preview
-        picSchoolUniform.Location = New Point(384, 255)
+        picSchoolUniform.Location = New Point(388, 255)
         picSchoolUniform.Name = "picSchoolUniform"
         picSchoolUniform.Size = New Size(283, 401)
         picSchoolUniform.SizeMode = PictureBoxSizeMode.StretchImage
@@ -255,7 +257,7 @@ Partial Class frmHomeAdmin
         ' 
         Panel16.BackColor = Color.DarkGoldenrod
         Panel16.Controls.Add(Panel3)
-        Panel16.Location = New Point(531, 86)
+        Panel16.Location = New Point(535, 86)
         Panel16.Name = "Panel16"
         Panel16.Size = New Size(224, 137)
         Panel16.TabIndex = 29
@@ -265,7 +267,7 @@ Partial Class frmHomeAdmin
         Panel3.BackColor = Color.Beige
         Panel3.Controls.Add(Button3)
         Panel3.Controls.Add(lblTotalStocks)
-        Panel3.Location = New Point(19, 12)
+        Panel3.Location = New Point(23, 12)
         Panel3.Name = "Panel3"
         Panel3.Size = New Size(183, 116)
         Panel3.TabIndex = 69
@@ -276,7 +278,7 @@ Partial Class frmHomeAdmin
         Button3.FlatStyle = FlatStyle.Flat
         Button3.Font = New Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Button3.ForeColor = SystemColors.Control
-        Button3.Location = New Point(3, 3)
+        Button3.Location = New Point(7, 3)
         Button3.Name = "Button3"
         Button3.Size = New Size(116, 27)
         Button3.TabIndex = 28
@@ -288,7 +290,7 @@ Partial Class frmHomeAdmin
         lblTotalStocks.AutoSize = True
         lblTotalStocks.Font = New Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblTotalStocks.ForeColor = SystemColors.ActiveCaptionText
-        lblTotalStocks.Location = New Point(131, 75)
+        lblTotalStocks.Location = New Point(135, 75)
         lblTotalStocks.Name = "lblTotalStocks"
         lblTotalStocks.Size = New Size(20, 25)
         lblTotalStocks.TabIndex = 26
@@ -298,7 +300,7 @@ Partial Class frmHomeAdmin
         ' 
         Panel15.BackColor = Color.SeaGreen
         Panel15.Controls.Add(Panel5)
-        Panel15.Location = New Point(280, 86)
+        Panel15.Location = New Point(284, 86)
         Panel15.Name = "Panel15"
         Panel15.Size = New Size(224, 137)
         Panel15.TabIndex = 73
@@ -308,7 +310,7 @@ Partial Class frmHomeAdmin
         Panel5.BackColor = Color.Honeydew
         Panel5.Controls.Add(Button2)
         Panel5.Controls.Add(lblTotalPullouts)
-        Panel5.Location = New Point(22, 11)
+        Panel5.Location = New Point(26, 11)
         Panel5.Name = "Panel5"
         Panel5.Size = New Size(183, 116)
         Panel5.TabIndex = 70
@@ -319,7 +321,7 @@ Partial Class frmHomeAdmin
         Button2.FlatStyle = FlatStyle.Flat
         Button2.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Button2.ForeColor = SystemColors.Control
-        Button2.Location = New Point(3, 4)
+        Button2.Location = New Point(7, 4)
         Button2.Name = "Button2"
         Button2.Size = New Size(138, 23)
         Button2.TabIndex = 27
@@ -331,7 +333,7 @@ Partial Class frmHomeAdmin
         lblTotalPullouts.AutoSize = True
         lblTotalPullouts.Font = New Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblTotalPullouts.ForeColor = SystemColors.ActiveCaptionText
-        lblTotalPullouts.Location = New Point(121, 80)
+        lblTotalPullouts.Location = New Point(125, 80)
         lblTotalPullouts.Name = "lblTotalPullouts"
         lblTotalPullouts.Size = New Size(20, 25)
         lblTotalPullouts.TabIndex = 26
@@ -342,7 +344,7 @@ Partial Class frmHomeAdmin
         Panel6.BackColor = Color.Brown
         Panel6.BorderStyle = BorderStyle.Fixed3D
         Panel6.Controls.Add(PanelLowStock)
-        Panel6.Location = New Point(29, 86)
+        Panel6.Location = New Point(33, 86)
         Panel6.Name = "Panel6"
         Panel6.Size = New Size(224, 137)
         Panel6.TabIndex = 72
@@ -352,7 +354,7 @@ Partial Class frmHomeAdmin
         PanelLowStock.BackColor = Color.MistyRose
         PanelLowStock.Controls.Add(Button1)
         PanelLowStock.Controls.Add(lblLowStockAlerts)
-        PanelLowStock.Location = New Point(17, 9)
+        PanelLowStock.Location = New Point(21, 9)
         PanelLowStock.Name = "PanelLowStock"
         PanelLowStock.Size = New Size(183, 116)
         PanelLowStock.TabIndex = 68
@@ -363,7 +365,7 @@ Partial Class frmHomeAdmin
         Button1.FlatStyle = FlatStyle.Flat
         Button1.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Button1.ForeColor = SystemColors.Control
-        Button1.Location = New Point(4, 4)
+        Button1.Location = New Point(8, 4)
         Button1.Name = "Button1"
         Button1.Size = New Size(80, 23)
         Button1.TabIndex = 26
@@ -375,7 +377,7 @@ Partial Class frmHomeAdmin
         lblLowStockAlerts.AutoSize = True
         lblLowStockAlerts.Font = New Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblLowStockAlerts.ForeColor = SystemColors.ActiveCaptionText
-        lblLowStockAlerts.Location = New Point(118, 79)
+        lblLowStockAlerts.Location = New Point(122, 79)
         lblLowStockAlerts.Name = "lblLowStockAlerts"
         lblLowStockAlerts.Size = New Size(20, 25)
         lblLowStockAlerts.TabIndex = 25
@@ -391,8 +393,8 @@ Partial Class frmHomeAdmin
         Text = "frmHomeAdmin"
         PanelMain.ResumeLayout(False)
         PanelMain.PerformLayout()
+        CType(PictureBox3, ComponentModel.ISupportInitialize).EndInit()
         CType(picCorpo, ComponentModel.ISupportInitialize).EndInit()
-        CType(PictureBox16, ComponentModel.ISupportInitialize).EndInit()
         CType(PictureBox2, ComponentModel.ISupportInitialize).EndInit()
         CType(picPEUniform, ComponentModel.ISupportInitialize).EndInit()
         Panel17.ResumeLayout(False)
@@ -413,7 +415,6 @@ Partial Class frmHomeAdmin
 
     Friend WithEvents PanelMain As Panel
     Friend WithEvents Label2 As Label
-    Friend WithEvents PictureBox16 As PictureBox
     Friend WithEvents Label1 As Label
     Friend WithEvents PictureBox2 As PictureBox
     Friend WithEvents Panel17 As Panel
@@ -438,4 +439,5 @@ Partial Class frmHomeAdmin
     Friend WithEvents btnPeUniform As Button
     Friend WithEvents picPEUniform As PictureBox
     Friend WithEvents picSchoolUniform As PictureBox
+    Friend WithEvents PictureBox3 As PictureBox
 End Class

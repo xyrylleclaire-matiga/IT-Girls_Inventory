@@ -43,6 +43,7 @@ Partial Class frmUserPEUniform
         PictureBox4 = New PictureBox()
         PictureBox9 = New PictureBox()
         PictureBox10 = New PictureBox()
+        Label9 = New Label()
         CType(PictureBox3, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
@@ -255,6 +256,17 @@ Partial Class frmUserPEUniform
         PictureBox10.TabIndex = 63
         PictureBox10.TabStop = False
         ' 
+        ' Label9
+        ' 
+        Label9.AutoSize = True
+        Label9.Font = New Font("Arial Rounded MT Bold", 16F)
+        Label9.ForeColor = Color.DarkSlateGray
+        Label9.Location = New Point(12, 9)
+        Label9.Name = "Label9"
+        Label9.Size = New Size(153, 26)
+        Label9.TabIndex = 99
+        Label9.Text = "PE UNIFORM"
+        ' 
         ' frmUserPEUniform
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -262,6 +274,7 @@ Partial Class frmUserPEUniform
         AutoScroll = True
         BackColor = Color.LightCyan
         ClientSize = New Size(1247, 714)
+        Controls.Add(Label9)
         Controls.Add(PictureBox4)
         Controls.Add(PictureBox9)
         Controls.Add(PictureBox10)
@@ -315,4 +328,5 @@ Partial Class frmUserPEUniform
     Friend WithEvents PictureBox4 As PictureBox
     Friend WithEvents PictureBox9 As PictureBox
     Friend WithEvents PictureBox10 As PictureBox
+    Private WithEvents Label9 As Label
 End Class
