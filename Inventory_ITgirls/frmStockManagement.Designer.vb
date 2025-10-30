@@ -63,6 +63,7 @@ Partial Class frmStockManagement
         btnRemove1 = New Button()
         btnSave = New Button()
         Panel2 = New Panel()
+        btnAdd = New Button()
         Panel1.SuspendLayout()
         pnlDetails.SuspendLayout()
         Panel2.SuspendLayout()
@@ -422,7 +423,7 @@ Partial Class frmStockManagement
         btnRemove1.FlatStyle = FlatStyle.Flat
         btnRemove1.Font = New Font("Arial Rounded MT Bold", 12F)
         btnRemove1.ForeColor = Color.White
-        btnRemove1.Location = New Point(368, 524)
+        btnRemove1.Location = New Point(430, 528)
         btnRemove1.Name = "btnRemove1"
         btnRemove1.Size = New Size(137, 36)
         btnRemove1.TabIndex = 34
@@ -431,12 +432,12 @@ Partial Class frmStockManagement
         ' 
         ' btnSave
         ' 
-        btnSave.BackColor = Color.SeaGreen
+        btnSave.BackColor = Color.Teal
         btnSave.FlatAppearance.BorderSize = 0
         btnSave.FlatStyle = FlatStyle.Flat
         btnSave.Font = New Font("Arial Rounded MT Bold", 12F)
         btnSave.ForeColor = Color.White
-        btnSave.Location = New Point(218, 524)
+        btnSave.Location = New Point(283, 528)
         btnSave.Name = "btnSave"
         btnSave.Size = New Size(128, 36)
         btnSave.TabIndex = 32
@@ -446,6 +447,7 @@ Partial Class frmStockManagement
         ' Panel2
         ' 
         Panel2.BackColor = Color.FromArgb(CByte(224), CByte(240), CByte(234))
+        Panel2.Controls.Add(btnAdd)
         Panel2.Controls.Add(Panel1)
         Panel2.Controls.Add(btnRemove1)
         Panel2.Controls.Add(pnlDetails)
@@ -456,6 +458,20 @@ Partial Class frmStockManagement
         Panel2.Name = "Panel2"
         Panel2.Size = New Size(1014, 608)
         Panel2.TabIndex = 35
+        ' 
+        ' btnAdd
+        ' 
+        btnAdd.BackColor = Color.SeaGreen
+        btnAdd.FlatAppearance.BorderSize = 0
+        btnAdd.FlatStyle = FlatStyle.Flat
+        btnAdd.Font = New Font("Arial Rounded MT Bold", 12F)
+        btnAdd.ForeColor = Color.White
+        btnAdd.Location = New Point(133, 528)
+        btnAdd.Name = "btnAdd"
+        btnAdd.Size = New Size(128, 36)
+        btnAdd.TabIndex = 35
+        btnAdd.Text = "Add Items"
+        btnAdd.UseVisualStyleBackColor = False
         ' 
         ' frmStockManagement
         ' 
@@ -519,4 +535,5 @@ Partial Class frmStockManagement
     Friend WithEvents Panel2 As Panel
     Friend WithEvents lblTitle As Label
     Friend WithEvents uniform_id As ColumnHeader
+    Private WithEvents btnAdd As Button
 End Class

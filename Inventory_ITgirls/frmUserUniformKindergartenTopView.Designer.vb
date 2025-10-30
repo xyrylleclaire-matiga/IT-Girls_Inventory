@@ -22,8 +22,10 @@ Partial Class frmUserUniformKindergartenTopView
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        PictureBox1 = New PictureBox()
         Panel1 = New Panel()
+        lblStatus = New Label()
+        lblPrice = New Label()
+        cmbGender = New ComboBox()
         Label8 = New Label()
         Label6 = New Label()
         Label4 = New Label()
@@ -31,21 +33,11 @@ Partial Class frmUserUniformKindergartenTopView
         cmbSizes = New ComboBox()
         Label2 = New Label()
         Label1 = New Label()
-        cmbGender = New ComboBox()
         btnBack = New Button()
-        lblPrice = New Label()
-        lblStatus = New Label()
-        CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
+        PictureBox1 = New PictureBox()
         Panel1.SuspendLayout()
+        CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
-        ' 
-        ' PictureBox1
-        ' 
-        PictureBox1.Location = New Point(124, 38)
-        PictureBox1.Name = "PictureBox1"
-        PictureBox1.Size = New Size(235, 430)
-        PictureBox1.TabIndex = 13
-        PictureBox1.TabStop = False
         ' 
         ' Panel1
         ' 
@@ -64,6 +56,39 @@ Partial Class frmUserUniformKindergartenTopView
         Panel1.Name = "Panel1"
         Panel1.Size = New Size(723, 348)
         Panel1.TabIndex = 14
+        ' 
+        ' lblStatus
+        ' 
+        lblStatus.AutoSize = True
+        lblStatus.Font = New Font("Sylfaen", 20.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        lblStatus.ForeColor = SystemColors.Control
+        lblStatus.Location = New Point(75, 294)
+        lblStatus.Name = "lblStatus"
+        lblStatus.Size = New Size(43, 35)
+        lblStatus.TabIndex = 82
+        lblStatus.Text = "—"
+        ' 
+        ' lblPrice
+        ' 
+        lblPrice.AutoSize = True
+        lblPrice.BackColor = Color.LightCyan
+        lblPrice.Font = New Font("Arial Rounded MT Bold", 20F)
+        lblPrice.ForeColor = SystemColors.ActiveCaptionText
+        lblPrice.Location = New Point(84, 88)
+        lblPrice.Name = "lblPrice"
+        lblPrice.Size = New Size(48, 32)
+        lblPrice.TabIndex = 81
+        lblPrice.Text = "— "
+        ' 
+        ' cmbGender
+        ' 
+        cmbGender.BackColor = Color.LightCyan
+        cmbGender.FormattingEnabled = True
+        cmbGender.Items.AddRange(New Object() {"FEMALE ", "MALE"})
+        cmbGender.Location = New Point(75, 161)
+        cmbGender.Name = "cmbGender"
+        cmbGender.Size = New Size(173, 23)
+        cmbGender.TabIndex = 80
         ' 
         ' Label8
         ' 
@@ -126,9 +151,9 @@ Partial Class frmUserUniformKindergartenTopView
         Label2.ForeColor = Color.White
         Label2.Location = New Point(33, 20)
         Label2.Name = "Label2"
-        Label2.Size = New Size(494, 32)
+        Label2.Size = New Size(449, 32)
         Label2.TabIndex = 67
-        Label2.Text = "KINDERGARTEN SCHOOL UNIFORM"
+        Label2.Text = "KINDERGARTEN / ELEMENTARY "
         ' 
         ' Label1
         ' 
@@ -139,16 +164,6 @@ Partial Class frmUserUniformKindergartenTopView
         Label1.Size = New Size(51, 15)
         Label1.TabIndex = 2
         Label1.Text = "GENDER"
-        ' 
-        ' cmbGender
-        ' 
-        cmbGender.BackColor = Color.LightCyan
-        cmbGender.FormattingEnabled = True
-        cmbGender.Items.AddRange(New Object() {"FEMALE ", "MALE"})
-        cmbGender.Location = New Point(75, 161)
-        cmbGender.Name = "cmbGender"
-        cmbGender.Size = New Size(173, 23)
-        cmbGender.TabIndex = 80
         ' 
         ' btnBack
         ' 
@@ -164,28 +179,15 @@ Partial Class frmUserUniformKindergartenTopView
         btnBack.Text = "Back"
         btnBack.UseVisualStyleBackColor = False
         ' 
-        ' lblPrice
+        ' PictureBox1
         ' 
-        lblPrice.AutoSize = True
-        lblPrice.BackColor = Color.LightCyan
-        lblPrice.Font = New Font("Arial Rounded MT Bold", 20F)
-        lblPrice.ForeColor = SystemColors.ActiveCaptionText
-        lblPrice.Location = New Point(84, 88)
-        lblPrice.Name = "lblPrice"
-        lblPrice.Size = New Size(48, 32)
-        lblPrice.TabIndex = 81
-        lblPrice.Text = "— "
-        ' 
-        ' lblStatus
-        ' 
-        lblStatus.AutoSize = True
-        lblStatus.Font = New Font("Sylfaen", 20.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lblStatus.ForeColor = SystemColors.Control
-        lblStatus.Location = New Point(75, 294)
-        lblStatus.Name = "lblStatus"
-        lblStatus.Size = New Size(43, 35)
-        lblStatus.TabIndex = 82
-        lblStatus.Text = "—"
+        PictureBox1.Image = My.Resources.Resources.photo_2025_10_30_20_22_40_removebg_preview
+        PictureBox1.Location = New Point(59, 12)
+        PictureBox1.Name = "PictureBox1"
+        PictureBox1.Size = New Size(385, 466)
+        PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
+        PictureBox1.TabIndex = 13
+        PictureBox1.TabStop = False
         ' 
         ' frmUserUniformKindergartenTopView
         ' 
@@ -194,17 +196,15 @@ Partial Class frmUserUniformKindergartenTopView
         BackColor = Color.LightCyan
         ClientSize = New Size(1247, 480)
         Controls.Add(btnBack)
-        Controls.Add(PictureBox1)
         Controls.Add(Panel1)
+        Controls.Add(PictureBox1)
         Name = "frmUserUniformKindergartenTopView"
         Text = "frmKindergartenUniform"
-        CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         Panel1.ResumeLayout(False)
         Panel1.PerformLayout()
+        CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
     End Sub
-
-    Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Label6 As Label
     Friend WithEvents Label4 As Label
@@ -217,4 +217,5 @@ Partial Class frmUserUniformKindergartenTopView
     Private WithEvents btnBack As Button
     Friend WithEvents lblPrice As Label
     Friend WithEvents lblStatus As Label
+    Friend WithEvents PictureBox1 As PictureBox
 End Class

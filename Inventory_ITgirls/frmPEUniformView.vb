@@ -169,17 +169,15 @@ Public Class frmPEUniformView
                 x.SubItems.Add(databaseConnection.dr("size").ToString())
                 x.SubItems.Add(databaseConnection.dr("stock_quantity").ToString())
                 x.SubItems.Add(databaseConnection.dr("price").ToString())
-                x.SubItems.Add(statusText) ' manually set the status text instead of db column
+                x.SubItems.Add(statusText)
                 x.SubItems.Add(databaseConnection.dr("date_added").ToString())
 
-                ' alternate row colors
                 If rowIndex Mod 2 = 0 Then
                     x.BackColor = Color.White
                 Else
                     x.BackColor = Color.AliceBlue
                 End If
 
-                ' color only the "Status" subitem (index 7)
                 x.UseItemStyleForSubItems = False
                 x.SubItems(7).ForeColor = statusColor
 
@@ -187,7 +185,7 @@ Public Class frmPEUniformView
                 rowIndex += 1
             End While
 
-            ListView2.OwnerDraw = False ' no need for custom drawing here
+            ListView2.OwnerDraw = False
 
         Catch ex As Exception
             MessageBox.Show("Error loading data: " & ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -197,9 +195,6 @@ Public Class frmPEUniformView
         End Try
     End Sub
 
-
-
-    ' ✅ Drawing logic
     Private Sub ListView2_DrawSubItem(sender As Object, e As DrawListViewSubItemEventArgs) Handles ListView2.DrawSubItem
         If e.ColumnIndex = 6 Then
             e.DrawBackground()
@@ -244,22 +239,21 @@ Public Class frmPEUniformView
         txtQuantity.Clear()
         txtSize1.Clear()
     End Sub
+
+
     Private Sub save()
         Try
-            ' 1️⃣ Make sure something is selected
             If ListView2.SelectedItems.Count = 0 Then
                 MsgBox("Please select an item to update", MsgBoxStyle.Exclamation)
                 Exit Sub
             End If
 
-            ' 2️⃣ Grab current item
             Dim selectedItem As ListViewItem = ListView2.SelectedItems(0)
             Dim currentItemName As String = selectedItem.Text
             Dim currentLevel As String = selectedItem.SubItems(1).Text
             Dim currentGender As String = selectedItem.SubItems(2).Text
             Dim currentSize As String = selectedItem.SubItems(3).Text
 
-            ' 3️⃣ Confirm update EVERY time
             Dim result As DialogResult = MessageBox.Show(
             "Are you sure you want to update this item?",
             "Confirm update",
@@ -272,7 +266,6 @@ Public Class frmPEUniformView
                 Exit Sub
             End If
 
-            ' 4️⃣ Proceed with update
             databaseConnection.con()
             Dim sql As String =
             "UPDATE tbluniforms SET stock_quantity=@quantity, price=@price " &
@@ -308,13 +301,11 @@ Public Class frmPEUniformView
 
     Private Sub remove()
         Try
-            ' 1️⃣ Make sure something is selected
             If ListView2.SelectedItems.Count = 0 Then
                 MsgBox("Please select an item to delete.", MsgBoxStyle.Exclamation)
                 Exit Sub
             End If
 
-            ' 2️⃣ Ask for confirmation
             Dim result As DialogResult = MessageBox.Show(
             "Do you want to remove this record from the list?",
             "Confirm Deletion",
@@ -327,11 +318,9 @@ Public Class frmPEUniformView
                 Exit Sub
             End If
 
-            ' 3️⃣ Get the selected item info
             Dim selectedItem As ListViewItem = ListView2.SelectedItems(0)
-            Dim uniformId As String = selectedItem.SubItems(0).Text ' make sure this is the correct column for uniform_id
+            Dim uniformId As String = selectedItem.SubItems(0).Text
 
-            ' 4️⃣ Delete from database
             databaseConnection.con()
             Dim sql As String = "DELETE FROM tbluniforms WHERE uniform_id = @uniform_id"
             databaseConnection.cmd = New MySqlCommand(sql, databaseConnection.cn)
@@ -339,7 +328,6 @@ Public Class frmPEUniformView
 
             Dim rowsAffected As Integer = databaseConnection.cmd.ExecuteNonQuery()
 
-            ' 5️⃣ Remove from ListView if successful
             If rowsAffected > 0 Then
                 ListView2.Items.Remove(selectedItem)
                 MsgBox("Item deleted successfully!", MsgBoxStyle.Information)
@@ -353,7 +341,6 @@ Public Class frmPEUniformView
             MessageBox.Show("Error deleting record: " & ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
 
         Finally
-            ' 6️⃣ Always close the connection safely
             If databaseConnection.cn IsNot Nothing AndAlso databaseConnection.cn.State = ConnectionState.Open Then
                 databaseConnection.cn.Close()
             End If

@@ -24,26 +24,28 @@ Partial Class frmUserUniformHSTopView
     Private Sub InitializeComponent()
         PictureBox1 = New PictureBox()
         Panel1 = New Panel()
+        cmbSizes = New ComboBox()
+        lblStatus = New Label()
+        lblPrice = New Label()
+        cmbGender = New ComboBox()
         Label9 = New Label()
         Label6 = New Label()
         Label4 = New Label()
         Label3 = New Label()
         Label2 = New Label()
         Label1 = New Label()
-        cmbGender = New ComboBox()
         btnBack = New Button()
-        lblPrice = New Label()
-        lblStatus = New Label()
-        cmbSizes = New ComboBox()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         Panel1.SuspendLayout()
         SuspendLayout()
         ' 
         ' PictureBox1
         ' 
-        PictureBox1.Location = New Point(103, 38)
+        PictureBox1.Image = My.Resources.Resources.photo_2025_10_30_20_22_47_removebg_preview
+        PictureBox1.Location = New Point(33, 12)
         PictureBox1.Name = "PictureBox1"
-        PictureBox1.Size = New Size(235, 430)
+        PictureBox1.Size = New Size(402, 456)
+        PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
         PictureBox1.TabIndex = 15
         PictureBox1.TabStop = False
         ' 
@@ -64,6 +66,49 @@ Partial Class frmUserUniformHSTopView
         Panel1.Name = "Panel1"
         Panel1.Size = New Size(794, 354)
         Panel1.TabIndex = 16
+        ' 
+        ' cmbSizes
+        ' 
+        cmbSizes.BackColor = Color.LightCyan
+        cmbSizes.FormattingEnabled = True
+        cmbSizes.Items.AddRange(New Object() {"EXTRA SMALL", "SMALL", "MEDIUM", "LARGE", "EXTRA LARGE", "2XL", "3XL", "4XL", "5XL", "6XL"})
+        cmbSizes.Location = New Point(75, 231)
+        cmbSizes.Name = "cmbSizes"
+        cmbSizes.Size = New Size(173, 23)
+        cmbSizes.TabIndex = 81
+        ' 
+        ' lblStatus
+        ' 
+        lblStatus.AutoSize = True
+        lblStatus.Font = New Font("Sylfaen", 20.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        lblStatus.ForeColor = SystemColors.Control
+        lblStatus.Location = New Point(75, 294)
+        lblStatus.Name = "lblStatus"
+        lblStatus.Size = New Size(43, 35)
+        lblStatus.TabIndex = 80
+        lblStatus.Text = "—"
+        ' 
+        ' lblPrice
+        ' 
+        lblPrice.AutoSize = True
+        lblPrice.BackColor = Color.LightCyan
+        lblPrice.Font = New Font("Arial Rounded MT Bold", 20F)
+        lblPrice.ForeColor = SystemColors.ActiveCaptionText
+        lblPrice.Location = New Point(89, 95)
+        lblPrice.Name = "lblPrice"
+        lblPrice.Size = New Size(48, 32)
+        lblPrice.TabIndex = 79
+        lblPrice.Text = "— "
+        ' 
+        ' cmbGender
+        ' 
+        cmbGender.BackColor = Color.LightCyan
+        cmbGender.FormattingEnabled = True
+        cmbGender.Items.AddRange(New Object() {"FEMALE ", "MALE"})
+        cmbGender.Location = New Point(75, 161)
+        cmbGender.Name = "cmbGender"
+        cmbGender.Size = New Size(173, 23)
+        cmbGender.TabIndex = 78
         ' 
         ' Label9
         ' 
@@ -130,16 +175,6 @@ Partial Class frmUserUniformHSTopView
         Label1.TabIndex = 2
         Label1.Text = "GENDER"
         ' 
-        ' cmbGender
-        ' 
-        cmbGender.BackColor = Color.LightCyan
-        cmbGender.FormattingEnabled = True
-        cmbGender.Items.AddRange(New Object() {"FEMALE ", "MALE"})
-        cmbGender.Location = New Point(75, 161)
-        cmbGender.Name = "cmbGender"
-        cmbGender.Size = New Size(173, 23)
-        cmbGender.TabIndex = 78
-        ' 
         ' btnBack
         ' 
         btnBack.BackColor = Color.DimGray
@@ -154,39 +189,6 @@ Partial Class frmUserUniformHSTopView
         btnBack.Text = "Back"
         btnBack.UseVisualStyleBackColor = False
         ' 
-        ' lblPrice
-        ' 
-        lblPrice.AutoSize = True
-        lblPrice.BackColor = Color.LightCyan
-        lblPrice.Font = New Font("Arial Rounded MT Bold", 20F)
-        lblPrice.ForeColor = SystemColors.ActiveCaptionText
-        lblPrice.Location = New Point(89, 95)
-        lblPrice.Name = "lblPrice"
-        lblPrice.Size = New Size(48, 32)
-        lblPrice.TabIndex = 79
-        lblPrice.Text = "— "
-        ' 
-        ' lblStatus
-        ' 
-        lblStatus.AutoSize = True
-        lblStatus.Font = New Font("Sylfaen", 20.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lblStatus.ForeColor = SystemColors.Control
-        lblStatus.Location = New Point(75, 294)
-        lblStatus.Name = "lblStatus"
-        lblStatus.Size = New Size(43, 35)
-        lblStatus.TabIndex = 80
-        lblStatus.Text = "—"
-        ' 
-        ' cmbSizes
-        ' 
-        cmbSizes.BackColor = Color.LightCyan
-        cmbSizes.FormattingEnabled = True
-        cmbSizes.Items.AddRange(New Object() {"EXTRA SMALL", "SMALL", "MEDIUM", "LARGE", "EXTRA LARGE", "2XL", "3XL", "4XL", "5XL", "6XL"})
-        cmbSizes.Location = New Point(75, 231)
-        cmbSizes.Name = "cmbSizes"
-        cmbSizes.Size = New Size(173, 23)
-        cmbSizes.TabIndex = 81
-        ' 
         ' frmUserUniformHSTopView
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -194,8 +196,8 @@ Partial Class frmUserUniformHSTopView
         BackColor = Color.LightCyan
         ClientSize = New Size(1247, 480)
         Controls.Add(btnBack)
-        Controls.Add(PictureBox1)
         Controls.Add(Panel1)
+        Controls.Add(PictureBox1)
         Name = "frmUserUniformHSTopView"
         Text = "frmHSUniform"
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()

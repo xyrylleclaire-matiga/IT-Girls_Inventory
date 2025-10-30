@@ -22,8 +22,8 @@ Partial Class TotalPullouts
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Button1 = New Button()
-        Button2 = New Button()
+        btnClear = New Button()
+        btnSave = New Button()
         lblTitle = New Label()
         Label6 = New Label()
         pnlDetails = New Panel()
@@ -46,51 +46,58 @@ Partial Class TotalPullouts
         price = New ColumnHeader()
         status = New ColumnHeader()
         date_added = New ColumnHeader()
+        Label1 = New Label()
+        Panel1 = New Panel()
+        Panel2 = New Panel()
+        txtSearch = New TextBox()
         pnlDetails.SuspendLayout()
+        Panel1.SuspendLayout()
+        Panel2.SuspendLayout()
         SuspendLayout()
         ' 
-        ' Button1
+        ' btnClear
         ' 
-        Button1.BackColor = Color.IndianRed
-        Button1.FlatAppearance.BorderSize = 0
-        Button1.FlatStyle = FlatStyle.Flat
-        Button1.Font = New Font("Arial Rounded MT Bold", 9.0F)
-        Button1.ForeColor = Color.White
-        Button1.Location = New Point(950, 433)
-        Button1.Name = "Button1"
-        Button1.Size = New Size(90, 35)
-        Button1.TabIndex = 14
-        Button1.Text = "Clear"
-        Button1.UseVisualStyleBackColor = False
+        btnClear.BackColor = Color.DimGray
+        btnClear.FlatAppearance.BorderSize = 0
+        btnClear.FlatStyle = FlatStyle.Flat
+        btnClear.Font = New Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        btnClear.ForeColor = Color.White
+        btnClear.Location = New Point(393, 131)
+        btnClear.Name = "btnClear"
+        btnClear.Size = New Size(100, 35)
+        btnClear.TabIndex = 14
+        btnClear.Text = "Clear"
+        btnClear.UseVisualStyleBackColor = False
         ' 
-        ' Button2
+        ' btnSave
         ' 
-        Button2.BackColor = Color.SeaGreen
-        Button2.FlatAppearance.BorderSize = 0
-        Button2.FlatStyle = FlatStyle.Flat
-        Button2.Font = New Font("Arial Rounded MT Bold", 9.0F)
-        Button2.ForeColor = Color.White
-        Button2.Location = New Point(950, 476)
-        Button2.Name = "Button2"
-        Button2.Size = New Size(90, 35)
-        Button2.TabIndex = 15
-        Button2.Text = "Save Pullout"
-        Button2.UseVisualStyleBackColor = False
+        btnSave.BackColor = Color.SeaGreen
+        btnSave.FlatAppearance.BorderSize = 0
+        btnSave.FlatStyle = FlatStyle.Flat
+        btnSave.Font = New Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        btnSave.ForeColor = Color.White
+        btnSave.Location = New Point(273, 131)
+        btnSave.Name = "btnSave"
+        btnSave.Size = New Size(100, 35)
+        btnSave.TabIndex = 15
+        btnSave.Text = "Save Pullout"
+        btnSave.UseVisualStyleBackColor = False
         ' 
         ' lblTitle
         ' 
         lblTitle.AutoSize = True
-        lblTitle.Font = New Font("Arial Rounded MT Bold", 11.0F)
+        lblTitle.Font = New Font("Arial Rounded MT Bold", 15.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblTitle.ForeColor = Color.DarkSlateGray
-        lblTitle.Location = New Point(10, 10)
+        lblTitle.Location = New Point(8, 10)
         lblTitle.Name = "lblTitle"
-        lblTitle.Size = New Size(112, 17)
+        lblTitle.Size = New Size(157, 24)
         lblTitle.TabIndex = 0
         lblTitle.Text = "Pullout Details"
         ' 
         ' Label6
         ' 
-        Label6.Location = New Point(10, 50)
+        Label6.Font = New Font("Arial Rounded MT Bold", 9.75F)
+        Label6.Location = New Point(10, 60)
         Label6.Name = "Label6"
         Label6.Size = New Size(100, 23)
         Label6.TabIndex = 1
@@ -98,34 +105,38 @@ Partial Class TotalPullouts
         ' 
         ' pnlDetails
         ' 
-        pnlDetails.BackColor = Color.White
+        pnlDetails.BackColor = Color.WhiteSmoke
         pnlDetails.BorderStyle = BorderStyle.FixedSingle
         pnlDetails.Controls.Add(cboPulloutReason)
         pnlDetails.Controls.Add(lblTitle)
+        pnlDetails.Controls.Add(btnClear)
         pnlDetails.Controls.Add(Label6)
+        pnlDetails.Controls.Add(btnSave)
         pnlDetails.Controls.Add(lblItemName)
         pnlDetails.Controls.Add(Label11)
         pnlDetails.Controls.Add(txtQuantity)
         pnlDetails.Controls.Add(Label12)
         pnlDetails.Controls.Add(Label14)
         pnlDetails.Controls.Add(lblDate)
-        pnlDetails.Location = New Point(889, 60)
+        pnlDetails.Location = New Point(95, 14)
         pnlDetails.Name = "pnlDetails"
-        pnlDetails.Size = New Size(200, 350)
+        pnlDetails.Size = New Size(816, 182)
         pnlDetails.TabIndex = 12
         ' 
         ' cboPulloutReason
         ' 
+        cboPulloutReason.Font = New Font("Arial Rounded MT Bold", 9.75F)
         cboPulloutReason.FormattingEnabled = True
         cboPulloutReason.Items.AddRange(New Object() {"Damaged", "Misprinted"})
-        cboPulloutReason.Location = New Point(10, 204)
+        cboPulloutReason.Location = New Point(412, 84)
         cboPulloutReason.Name = "cboPulloutReason"
         cboPulloutReason.Size = New Size(170, 23)
         cboPulloutReason.TabIndex = 11
         ' 
         ' lblItemName
         ' 
-        lblItemName.Location = New Point(10, 74)
+        lblItemName.Font = New Font("Arial Rounded MT Bold", 9.75F)
+        lblItemName.Location = New Point(10, 84)
         lblItemName.Name = "lblItemName"
         lblItemName.ReadOnly = True
         lblItemName.Size = New Size(170, 23)
@@ -133,7 +144,8 @@ Partial Class TotalPullouts
         ' 
         ' Label11
         ' 
-        Label11.Location = New Point(10, 114)
+        Label11.Font = New Font("Arial Rounded MT Bold", 9.75F)
+        Label11.Location = New Point(209, 59)
         Label11.Name = "Label11"
         Label11.Size = New Size(100, 23)
         Label11.TabIndex = 5
@@ -141,14 +153,16 @@ Partial Class TotalPullouts
         ' 
         ' txtQuantity
         ' 
-        txtQuantity.Location = New Point(10, 139)
+        txtQuantity.Font = New Font("Arial Rounded MT Bold", 9.75F)
+        txtQuantity.Location = New Point(209, 84)
         txtQuantity.Name = "txtQuantity"
         txtQuantity.Size = New Size(170, 23)
         txtQuantity.TabIndex = 6
         ' 
         ' Label12
         ' 
-        Label12.Location = New Point(10, 184)
+        Label12.Font = New Font("Arial Rounded MT Bold", 9.75F)
+        Label12.Location = New Point(412, 64)
         Label12.Name = "Label12"
         Label12.Size = New Size(100, 23)
         Label12.TabIndex = 7
@@ -156,7 +170,8 @@ Partial Class TotalPullouts
         ' 
         ' Label14
         ' 
-        Label14.Location = New Point(10, 245)
+        Label14.Font = New Font("Arial Rounded MT Bold", 9.75F)
+        Label14.Location = New Point(616, 61)
         Label14.Name = "Label14"
         Label14.Size = New Size(100, 23)
         Label14.TabIndex = 9
@@ -164,7 +179,8 @@ Partial Class TotalPullouts
         ' 
         ' lblDate
         ' 
-        lblDate.Location = New Point(10, 268)
+        lblDate.Font = New Font("Arial Rounded MT Bold", 9.75F)
+        lblDate.Location = New Point(616, 84)
         lblDate.Name = "lblDate"
         lblDate.ReadOnly = True
         lblDate.Size = New Size(170, 23)
@@ -173,107 +189,139 @@ Partial Class TotalPullouts
         ' Label2
         ' 
         Label2.AutoSize = True
-        Label2.Font = New Font("Arial Rounded MT Bold", 18.0F)
+        Label2.Font = New Font("Arial Rounded MT Bold", 24.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label2.ForeColor = Color.DarkSlateGray
-        Label2.Location = New Point(12, 9)
+        Label2.Location = New Point(12, 19)
         Label2.Name = "Label2"
-        Label2.Size = New Size(291, 28)
+        Label2.Size = New Size(403, 38)
         Label2.TabIndex = 9
         Label2.Text = "INVENTORY PULLOUTS"
         ' 
         ' ListView1
         ' 
         ListView1.BackColor = Color.White
-        ListView1.BorderStyle = BorderStyle.FixedSingle
         ListView1.Columns.AddRange(New ColumnHeader() {uniform_id, item_name, category, level, gender, size, stock_quantity, price, status, date_added})
+        ListView1.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         ListView1.FullRowSelect = True
         ListView1.GridLines = True
-        ListView1.Location = New Point(12, 60)
+        ListView1.Location = New Point(21, 45)
         ListView1.Name = "ListView1"
-        ListView1.Size = New Size(870, 590)
+        ListView1.Size = New Size(828, 291)
         ListView1.TabIndex = 11
         ListView1.UseCompatibleStateImageBehavior = False
         ListView1.View = View.Details
         ' 
         ' uniform_id
         ' 
-        uniform_id.DisplayIndex = 9
-        uniform_id.Text = "uniform_id"
+        uniform_id.Text = "ID"
         ' 
         ' item_name
         ' 
-        item_name.DisplayIndex = 0
         item_name.Text = "item_name"
-        item_name.Width = 90
+        item_name.Width = 82
         ' 
         ' category
         ' 
-        category.DisplayIndex = 1
         category.Text = "category"
-        category.Width = 90
+        category.Width = 100
         ' 
         ' level
         ' 
-        level.DisplayIndex = 2
         level.Text = "level"
-        level.Width = 90
+        level.Width = 75
         ' 
         ' gender
         ' 
-        gender.DisplayIndex = 3
         gender.Text = "gender"
-        gender.Width = 90
+        gender.Width = 75
         ' 
         ' size
         ' 
-        size.DisplayIndex = 4
         size.Text = "size"
-        size.Width = 90
+        size.Width = 80
         ' 
         ' stock_quantity
         ' 
-        stock_quantity.DisplayIndex = 5
         stock_quantity.Text = "stock_quantity"
-        stock_quantity.Width = 90
+        stock_quantity.Width = 100
         ' 
         ' price
         ' 
-        price.DisplayIndex = 6
         price.Text = "price"
-        price.Width = 90
         ' 
         ' status
         ' 
-        status.DisplayIndex = 7
         status.Text = "status"
-        status.Width = 90
+        status.Width = 75
         ' 
         ' date_added
         ' 
-        date_added.DisplayIndex = 8
         date_added.Text = "date_added"
-        date_added.Width = 120
+        date_added.Width = 160
+        ' 
+        ' Label1
+        ' 
+        Label1.AutoSize = True
+        Label1.BackColor = Color.Transparent
+        Label1.Font = New Font("Franklin Gothic Medium Cond", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label1.ForeColor = Color.DarkSlateGray
+        Label1.Location = New Point(405, 34)
+        Label1.Name = "Label1"
+        Label1.Size = New Size(51, 21)
+        Label1.TabIndex = 21
+        Label1.Text = "ADMIN"
+        ' 
+        ' Panel1
+        ' 
+        Panel1.BackColor = Color.FromArgb(CByte(224), CByte(240), CByte(234))
+        Panel1.Controls.Add(Panel2)
+        Panel1.Controls.Add(pnlDetails)
+        Panel1.Location = New Point(22, 71)
+        Panel1.Name = "Panel1"
+        Panel1.Size = New Size(1012, 590)
+        Panel1.TabIndex = 22
+        ' 
+        ' Panel2
+        ' 
+        Panel2.BackColor = Color.DarkSeaGreen
+        Panel2.BorderStyle = BorderStyle.FixedSingle
+        Panel2.Controls.Add(txtSearch)
+        Panel2.Controls.Add(ListView1)
+        Panel2.Location = New Point(57, 221)
+        Panel2.Name = "Panel2"
+        Panel2.Size = New Size(881, 354)
+        Panel2.TabIndex = 16
+        ' 
+        ' txtSearch
+        ' 
+        txtSearch.Font = New Font("Segoe UI", 10F)
+        txtSearch.Location = New Point(649, 14)
+        txtSearch.Name = "txtSearch"
+        txtSearch.PlaceholderText = "Search item..."
+        txtSearch.Size = New Size(200, 25)
+        txtSearch.TabIndex = 29
         ' 
         ' TotalPullouts
         ' 
-        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        BackColor = Color.FromArgb(CByte(189), CByte(237), CByte(255))
+        BackColor = Color.LightCyan
         ClientSize = New Size(1101, 687)
-        Controls.Add(Button1)
-        Controls.Add(Button2)
-        Controls.Add(pnlDetails)
+        Controls.Add(Label1)
+        Controls.Add(Panel1)
         Controls.Add(Label2)
-        Controls.Add(ListView1)
         Name = "TotalPullouts"
         Text = "TotalPullouts"
         pnlDetails.ResumeLayout(False)
         pnlDetails.PerformLayout()
+        Panel1.ResumeLayout(False)
+        Panel2.ResumeLayout(False)
+        Panel2.PerformLayout()
         ResumeLayout(False)
         PerformLayout()
     End Sub
-    Private WithEvents Button1 As Button
-    Private WithEvents Button2 As Button
+    Private WithEvents btnClear As Button
+    Private WithEvents btnSave As Button
     Friend WithEvents lblTitle As Label
     Private WithEvents Label6 As Label
     Friend WithEvents pnlDetails As Panel
@@ -296,4 +344,8 @@ Partial Class TotalPullouts
     Friend WithEvents status As ColumnHeader
     Friend WithEvents date_added As ColumnHeader
     Friend WithEvents uniform_id As ColumnHeader
+    Friend WithEvents Label1 As Label
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents Panel2 As Panel
+    Private WithEvents txtSearch As TextBox
 End Class

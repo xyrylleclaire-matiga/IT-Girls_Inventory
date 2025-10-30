@@ -75,27 +75,6 @@
 
     End Sub
 
-
-    Private Sub picPEUniform_Click(sender As Object, e As EventArgs)
-        openChildForm(New frmPEUniformView)
-    End Sub
-
-    Private Sub btnPeUniform_Click(sender As Object, e As EventArgs)
-        openChildForm(New frmPEUniformView)
-    End Sub
-
-    Private Sub picSchoolUniform_Click(sender As Object, e As EventArgs)
-        openChildForm(New frmUniformView)
-    End Sub
-
-    Private Sub btnSchoolUniform_Click(sender As Object, e As EventArgs)
-        openChildForm(New frmUniformView)
-    End Sub
-
-    Private Sub picCorpo_Click(sender As Object, e As EventArgs)
-        openChildForm(New frmCorpoAttireView)
-    End Sub
-
     Private Sub btnCorporateAttire_Click(sender As Object, e As EventArgs)
 
         ' 1. Gumawa ng bagong instance ng frmCorpoAttireView. '
@@ -115,4 +94,27 @@
 
     End Sub
 
+    Private Sub picPEUniform_Click_1(sender As Object, e As EventArgs) Handles picPEUniform.Click
+        openChildForm(frmPEUniformView)
+    End Sub
+
+    Private Sub btnPeUniform_Click(sender As Object, e As EventArgs) Handles btnPeUniform.Click
+        openChildForm(frmPEUniformView)
+    End Sub
+
+    Private Sub picSchoolUniform_Click(sender As Object, e As EventArgs) Handles picSchoolUniform.Click
+        openChildForm(frmUniformView)
+    End Sub
+
+    Private Sub btnSchoolUniform_Click(sender As Object, e As EventArgs) Handles btnSchoolUniform.Click
+        openChildForm(frmUniformView)
+    End Sub
+
+    Private Sub picCorpo_Click(sender As Object, e As EventArgs) Handles picCorpo.Click
+        openChildForm(frmCorpoAttireView)
+    End Sub
+
+    Private Sub btnCorporateAttire_Click_1(sender As Object, e As EventArgs) Handles btnCorporateAttire.Click
+        openChildForm(frmCorpoAttireView)
+    End Sub
 End Class

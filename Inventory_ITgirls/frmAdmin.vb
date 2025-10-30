@@ -3,12 +3,10 @@ Public Class frmAdmin
 
     Private activeButton As Button = Nothing
     Private Sub SetActiveButton(btn As Button)
-        ' Reset previous active button
         If activeButton IsNot Nothing Then
             ResetButtonStyle(activeButton)
         End If
 
-        ' Set new active button
         activeButton = btn
         HighlightButton(activeButton)
     End Sub

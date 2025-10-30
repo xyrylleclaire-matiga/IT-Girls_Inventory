@@ -40,9 +40,11 @@ Partial Class frmCA_ScorpoView
         ' 
         ' PictureBox1
         ' 
-        PictureBox1.Location = New Point(95, 29)
+        PictureBox1.Image = My.Resources.Resources.photo_2025_10_30_20_23_00_removebg_preview
+        PictureBox1.Location = New Point(56, 12)
         PictureBox1.Name = "PictureBox1"
-        PictureBox1.Size = New Size(235, 375)
+        PictureBox1.Size = New Size(329, 423)
+        PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
         PictureBox1.TabIndex = 15
         PictureBox1.TabStop = False
         ' 
@@ -173,8 +175,8 @@ Partial Class frmCA_ScorpoView
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.LightCyan
         ClientSize = New Size(1247, 431)
-        Controls.Add(PictureBox1)
         Controls.Add(Panel1)
+        Controls.Add(PictureBox1)
         Name = "frmCA_ScorpoView"
         Text = "frmCA_ScorpoView"
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()

@@ -25,23 +25,25 @@ Partial Class frmUserPEKindergartenView
         PictureBox1 = New PictureBox()
         ComboBox1 = New ComboBox()
         Panel1 = New Panel()
+        Label7 = New Label()
+        Label8 = New Label()
         Label6 = New Label()
         Label4 = New Label()
         Label3 = New Label()
         ComboBox2 = New ComboBox()
         Label2 = New Label()
         Label1 = New Label()
-        Label7 = New Label()
-        Label8 = New Label()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         Panel1.SuspendLayout()
         SuspendLayout()
         ' 
         ' PictureBox1
         ' 
-        PictureBox1.Location = New Point(129, 26)
+        PictureBox1.Image = My.Resources.Resources.photo_2025_10_30_20_22_54_removebg_preview
+        PictureBox1.Location = New Point(80, -4)
         PictureBox1.Name = "PictureBox1"
-        PictureBox1.Size = New Size(235, 375)
+        PictureBox1.Size = New Size(382, 457)
+        PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
         PictureBox1.TabIndex = 0
         PictureBox1.TabStop = False
         ' 
@@ -69,6 +71,28 @@ Partial Class frmUserPEKindergartenView
         Panel1.Name = "Panel1"
         Panel1.Size = New Size(723, 375)
         Panel1.TabIndex = 2
+        ' 
+        ' Label7
+        ' 
+        Label7.AutoSize = True
+        Label7.BackColor = Color.MediumTurquoise
+        Label7.Font = New Font("Arial Rounded MT Bold", 20F)
+        Label7.Location = New Point(83, 92)
+        Label7.Name = "Label7"
+        Label7.Size = New Size(118, 32)
+        Label7.TabIndex = 78
+        Label7.Text = "100,000"
+        ' 
+        ' Label8
+        ' 
+        Label8.AutoSize = True
+        Label8.Font = New Font("Segoe UI", 15F)
+        Label8.ForeColor = SystemColors.Control
+        Label8.Location = New Point(62, 99)
+        Label8.Name = "Label8"
+        Label8.Size = New Size(24, 28)
+        Label8.TabIndex = 79
+        Label8.Text = "₱"
         ' 
         ' Label6
         ' 
@@ -132,37 +156,15 @@ Partial Class frmUserPEKindergartenView
         Label1.TabIndex = 2
         Label1.Text = "GENDER"
         ' 
-        ' Label7
-        ' 
-        Label7.AutoSize = True
-        Label7.BackColor = Color.MediumTurquoise
-        Label7.Font = New Font("Arial Rounded MT Bold", 20F)
-        Label7.Location = New Point(83, 92)
-        Label7.Name = "Label7"
-        Label7.Size = New Size(118, 32)
-        Label7.TabIndex = 78
-        Label7.Text = "100,000"
-        ' 
-        ' Label8
-        ' 
-        Label8.AutoSize = True
-        Label8.Font = New Font("Segoe UI", 15F)
-        Label8.ForeColor = SystemColors.Control
-        Label8.Location = New Point(62, 99)
-        Label8.Name = "Label8"
-        Label8.Size = New Size(24, 28)
-        Label8.TabIndex = 79
-        Label8.Text = "₱"
-        ' 
-        ' frmPEKindergartenView
+        ' frmUserPEKindergartenView
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.LightCyan
-        ClientSize = New Size(1247, 431)
+        ClientSize = New Size(1247, 465)
         Controls.Add(Panel1)
         Controls.Add(PictureBox1)
-        Name = "frmPEKindergartenView"
+        Name = "frmUserPEKindergartenView"
         Text = "frmPEKindergartenView"
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         Panel1.ResumeLayout(False)

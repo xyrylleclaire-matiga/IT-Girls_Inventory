@@ -92,12 +92,12 @@ Partial Class frmHomeAdmin
         ' 
         Label2.AutoSize = True
         Label2.BackColor = Color.DarkSlateGray
-        Label2.Font = New Font("Arial Rounded MT Bold", 16F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label2.Font = New Font("Arial Rounded MT Bold", 18F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label2.ForeColor = Color.LightCyan
-        Label2.Location = New Point(367, 41)
+        Label2.Location = New Point(325, 37)
         Label2.Margin = New Padding(2, 0, 2, 0)
         Label2.Name = "Label2"
-        Label2.Size = New Size(410, 26)
+        Label2.Size = New Size(441, 28)
         Label2.TabIndex = 78
         Label2.Text = "INVENTORY MANAGEMENT SYSTEM"
         ' 
@@ -105,7 +105,7 @@ Partial Class frmHomeAdmin
         ' 
         PictureBox3.BackColor = Color.DarkSlateGray
         PictureBox3.Image = CType(resources.GetObject("PictureBox3.Image"), Image)
-        PictureBox3.Location = New Point(268, 2)
+        PictureBox3.Location = New Point(242, 2)
         PictureBox3.Name = "PictureBox3"
         PictureBox3.Size = New Size(113, 70)
         PictureBox3.SizeMode = PictureBoxSizeMode.Zoom
@@ -118,7 +118,7 @@ Partial Class frmHomeAdmin
         btnCorporateAttire.FlatStyle = FlatStyle.Popup
         btnCorporateAttire.Font = New Font("Arial Rounded MT Bold", 16F)
         btnCorporateAttire.ForeColor = Color.MintCream
-        btnCorporateAttire.Location = New Point(686, 561)
+        btnCorporateAttire.Location = New Point(696, 555)
         btnCorporateAttire.Name = "btnCorporateAttire"
         btnCorporateAttire.Size = New Size(254, 38)
         btnCorporateAttire.TabIndex = 69
@@ -130,7 +130,7 @@ Partial Class frmHomeAdmin
         picCorpo.BackColor = Color.LightGray
         picCorpo.BorderStyle = BorderStyle.Fixed3D
         picCorpo.Image = CType(resources.GetObject("picCorpo.Image"), Image)
-        picCorpo.Location = New Point(668, 277)
+        picCorpo.Location = New Point(678, 271)
         picCorpo.Name = "picCorpo"
         picCorpo.Size = New Size(272, 364)
         picCorpo.SizeMode = PictureBoxSizeMode.StretchImage
@@ -143,7 +143,7 @@ Partial Class frmHomeAdmin
         btnSchoolUniform.FlatStyle = FlatStyle.Popup
         btnSchoolUniform.Font = New Font("Arial Rounded MT Bold", 16F)
         btnSchoolUniform.ForeColor = Color.MintCream
-        btnSchoolUniform.Location = New Point(398, 572)
+        btnSchoolUniform.Location = New Point(408, 566)
         btnSchoolUniform.Name = "btnSchoolUniform"
         btnSchoolUniform.Size = New Size(264, 38)
         btnSchoolUniform.TabIndex = 67
@@ -154,12 +154,12 @@ Partial Class frmHomeAdmin
         ' 
         Label1.AutoSize = True
         Label1.BackColor = Color.DarkSlateGray
-        Label1.Font = New Font("Perpetua", 11F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label1.Font = New Font("Perpetua", 14.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Label1.ForeColor = SystemColors.ButtonHighlight
-        Label1.Location = New Point(471, 24)
+        Label1.Location = New Point(411, 15)
         Label1.Margin = New Padding(2, 0, 2, 0)
         Label1.Name = "Label1"
-        Label1.Size = New Size(191, 17)
+        Label1.Size = New Size(243, 22)
         Label1.TabIndex = 76
         Label1.Text = "BOOKSTORE DEPARTMENT"
         ' 
@@ -169,7 +169,7 @@ Partial Class frmHomeAdmin
         btnPeUniform.FlatStyle = FlatStyle.Popup
         btnPeUniform.Font = New Font("Arial Rounded MT Bold", 16F)
         btnPeUniform.ForeColor = Color.MintCream
-        btnPeUniform.Location = New Point(130, 561)
+        btnPeUniform.Location = New Point(140, 555)
         btnPeUniform.Name = "btnPeUniform"
         btnPeUniform.Size = New Size(246, 38)
         btnPeUniform.TabIndex = 66
@@ -191,7 +191,7 @@ Partial Class frmHomeAdmin
         picPEUniform.BackColor = Color.LightGray
         picPEUniform.BorderStyle = BorderStyle.Fixed3D
         picPEUniform.Image = CType(resources.GetObject("picPEUniform.Image"), Image)
-        picPEUniform.Location = New Point(113, 277)
+        picPEUniform.Location = New Point(123, 271)
         picPEUniform.Name = "picPEUniform"
         picPEUniform.Size = New Size(275, 364)
         picPEUniform.SizeMode = PictureBoxSizeMode.StretchImage
@@ -202,7 +202,7 @@ Partial Class frmHomeAdmin
         ' 
         Panel17.BackColor = Color.DarkSlateGray
         Panel17.Controls.Add(Panel4)
-        Panel17.Location = New Point(789, 86)
+        Panel17.Location = New Point(789, 88)
         Panel17.Name = "Panel17"
         Panel17.Size = New Size(224, 137)
         Panel17.TabIndex = 70
@@ -225,7 +225,7 @@ Partial Class frmHomeAdmin
         Button4.ForeColor = SystemColors.Control
         Button4.Location = New Point(9, 2)
         Button4.Name = "Button4"
-        Button4.Size = New Size(116, 27)
+        Button4.Size = New Size(116, 23)
         Button4.TabIndex = 27
         Button4.Text = "Pending Requests"
         Button4.UseVisualStyleBackColor = False
@@ -246,7 +246,7 @@ Partial Class frmHomeAdmin
         picSchoolUniform.BackColor = Color.LightGray
         picSchoolUniform.BorderStyle = BorderStyle.Fixed3D
         picSchoolUniform.Image = My.Resources.Resources.Copy_of_Cenardo_application_removebg_preview
-        picSchoolUniform.Location = New Point(388, 255)
+        picSchoolUniform.Location = New Point(398, 249)
         picSchoolUniform.Name = "picSchoolUniform"
         picSchoolUniform.Size = New Size(283, 401)
         picSchoolUniform.SizeMode = PictureBoxSizeMode.StretchImage
@@ -257,7 +257,7 @@ Partial Class frmHomeAdmin
         ' 
         Panel16.BackColor = Color.DarkGoldenrod
         Panel16.Controls.Add(Panel3)
-        Panel16.Location = New Point(535, 86)
+        Panel16.Location = New Point(535, 88)
         Panel16.Name = "Panel16"
         Panel16.Size = New Size(224, 137)
         Panel16.TabIndex = 29
@@ -280,7 +280,7 @@ Partial Class frmHomeAdmin
         Button3.ForeColor = SystemColors.Control
         Button3.Location = New Point(7, 3)
         Button3.Name = "Button3"
-        Button3.Size = New Size(116, 27)
+        Button3.Size = New Size(116, 23)
         Button3.TabIndex = 28
         Button3.Text = "Total Stocks"
         Button3.UseVisualStyleBackColor = False
@@ -300,7 +300,7 @@ Partial Class frmHomeAdmin
         ' 
         Panel15.BackColor = Color.SeaGreen
         Panel15.Controls.Add(Panel5)
-        Panel15.Location = New Point(284, 86)
+        Panel15.Location = New Point(284, 88)
         Panel15.Name = "Panel15"
         Panel15.Size = New Size(224, 137)
         Panel15.TabIndex = 73
@@ -344,7 +344,7 @@ Partial Class frmHomeAdmin
         Panel6.BackColor = Color.Brown
         Panel6.BorderStyle = BorderStyle.Fixed3D
         Panel6.Controls.Add(PanelLowStock)
-        Panel6.Location = New Point(33, 86)
+        Panel6.Location = New Point(33, 88)
         Panel6.Name = "Panel6"
         Panel6.Size = New Size(224, 137)
         Panel6.TabIndex = 72
@@ -416,7 +416,6 @@ Partial Class frmHomeAdmin
     Friend WithEvents PanelMain As Panel
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
-    Friend WithEvents PictureBox2 As PictureBox
     Friend WithEvents Panel17 As Panel
     Friend WithEvents Panel4 As Panel
     Friend WithEvents Button4 As Button
@@ -440,4 +439,5 @@ Partial Class frmHomeAdmin
     Friend WithEvents picPEUniform As PictureBox
     Friend WithEvents picSchoolUniform As PictureBox
     Friend WithEvents PictureBox3 As PictureBox
+    Friend WithEvents PictureBox2 As PictureBox
 End Class

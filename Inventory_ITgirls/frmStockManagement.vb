@@ -61,12 +61,11 @@ Public Class frmStockManagement
 
 
     'DISPLAYYYY
-    Private Sub displayApplication(Optional searchQuery As String = "")
+    Public Sub displayApplication(Optional searchQuery As String = "")
         Try
             databaseConnection.con()
             ListView1.Items.Clear()
 
-            ' Define columns if not already set
             If ListView1.Columns.Count = 0 Then
                 ListView1.Columns.Add("Uniform ID", 0) ' hidden
                 ListView1.Columns.Add("Item Name", 120)
@@ -159,6 +158,7 @@ Public Class frmStockManagement
             txtPrice.Text = selectedItem.SubItems(6).Text
             txtStatus.Text = selectedItem.SubItems(7).Text
             txtDateAdded.Text = selectedItem.SubItems(8).Text
+            'txtDateAdded.Text = Date.Now.ToString("yyyy-MM-dd-H-m-s")
 
         End If
 
@@ -341,6 +341,21 @@ Public Class frmStockManagement
         btn.Region = New Region(path)
     End Sub
 
+    Private Sub btnAdd_Paint(sender As Object, e As PaintEventArgs) Handles btnAdd.Paint
+        Dim btn As Button = DirectCast(sender, Button)
+        Dim radius As Integer = 10
+
+        Dim path As New Drawing2D.GraphicsPath()
+        path.StartFigure()
+        path.AddArc(0, 0, radius, radius, 180, 90)
+        path.AddArc(btn.Width - radius, 0, radius, radius, 270, 90)
+        path.AddArc(btn.Width - radius, btn.Height - radius, radius, radius, 0, 90)
+        path.AddArc(0, btn.Height - radius, radius, radius, 90, 90)
+        path.CloseFigure()
+
+        btn.Region = New Region(path)
+    End Sub
+
     Private Sub btnBack_Paint(sender As Object, e As PaintEventArgs)
         Dim btn = DirectCast(sender, Button)
         Dim radius = 10
@@ -430,6 +445,13 @@ Public Class frmStockManagement
         Else
             MsgBox("Cancel Processed", MsgBoxStyle.Information)
         End If
+    End Sub
+
+
+    Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
+        Dim popup As New frmAddItems()
+        popup.StartPosition = FormStartPosition.CenterParent
+        popup.ShowDialog(Me)
     End Sub
 
 End Class
