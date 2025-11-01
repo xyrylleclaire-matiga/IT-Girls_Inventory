@@ -159,4 +159,9 @@ Public Class frmAdmin
         SetActiveButton(btnPullOut)
     End Sub
 
+    Private Sub btnHistory_Click(sender As Object, e As EventArgs) Handles btnHistory.Click
+        openChildForm(New frmHistory)
+        SetActiveButton(btnHistory)
+
+    End Sub
 End Class

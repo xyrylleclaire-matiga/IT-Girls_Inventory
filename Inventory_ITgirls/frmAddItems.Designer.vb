@@ -96,9 +96,9 @@ Partial Class frmAddItems
         lblDateAdded.Font = New Font("Bookman Old Style", 9.75F, FontStyle.Bold)
         lblDateAdded.Location = New Point(149, 334)
         lblDateAdded.Name = "lblDateAdded"
-        lblDateAdded.Size = New Size(84, 16)
+        lblDateAdded.Size = New Size(11, 16)
         lblDateAdded.TabIndex = 18
-        lblDateAdded.Text = "Date Added"
+        lblDateAdded.Text = " "
         ' 
         ' Label10
         ' 
@@ -167,6 +167,7 @@ Partial Class frmAddItems
         ' 
         ' cboGender
         ' 
+        cboGender.DropDownStyle = ComboBoxStyle.DropDownList
         cboGender.Font = New Font("Bookman Old Style", 9.75F, FontStyle.Bold)
         cboGender.FormattingEnabled = True
         cboGender.Items.AddRange(New Object() {"Female", "Male", "Unisex"})
@@ -187,6 +188,7 @@ Partial Class frmAddItems
         ' 
         ' cboSize
         ' 
+        cboSize.DropDownStyle = ComboBoxStyle.DropDownList
         cboSize.Font = New Font("Bookman Old Style", 9.75F, FontStyle.Bold)
         cboSize.FormattingEnabled = True
         cboSize.Items.AddRange(New Object() {"Extra Small", "Small", "Medium", "Large", "Extra Large", "2XL", "3XL", "4XL", "5XL", "6XL"})
@@ -207,6 +209,7 @@ Partial Class frmAddItems
         ' 
         ' cboCategory
         ' 
+        cboCategory.DropDownStyle = ComboBoxStyle.DropDownList
         cboCategory.Font = New Font("Bookman Old Style", 9.75F, FontStyle.Bold)
         cboCategory.FormattingEnabled = True
         cboCategory.Items.AddRange(New Object() {"School Uniform", "Corporate Attire", "PE Uniform"})
@@ -227,6 +230,7 @@ Partial Class frmAddItems
         ' 
         ' cboLevel
         ' 
+        cboLevel.DropDownStyle = ComboBoxStyle.DropDownList
         cboLevel.Font = New Font("Bookman Old Style", 9.75F, FontStyle.Bold)
         cboLevel.FormattingEnabled = True
         cboLevel.Items.AddRange(New Object() {"College", "Elementary", "Junior High", "Kindergarten", "Senior High"})
@@ -268,11 +272,11 @@ Partial Class frmAddItems
         btnAdd.BackColor = Color.SeaGreen
         btnAdd.FlatAppearance.BorderSize = 0
         btnAdd.FlatStyle = FlatStyle.Flat
-        btnAdd.Font = New Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        btnAdd.Font = New Font("Arial Rounded MT Bold", 9.75F)
         btnAdd.ForeColor = Color.White
-        btnAdd.Location = New Point(24, 13)
+        btnAdd.Location = New Point(20, 13)
         btnAdd.Name = "btnAdd"
-        btnAdd.Size = New Size(95, 24)
+        btnAdd.Size = New Size(94, 35)
         btnAdd.TabIndex = 7
         btnAdd.Text = "Add Items"
         btnAdd.UseVisualStyleBackColor = False
@@ -283,9 +287,9 @@ Partial Class frmAddItems
         Panel2.Controls.Add(btnBack)
         Panel2.Controls.Add(btnClear)
         Panel2.Controls.Add(btnAdd)
-        Panel2.Location = New Point(31, 400)
+        Panel2.Location = New Point(30, 384)
         Panel2.Name = "Panel2"
-        Panel2.Size = New Size(351, 51)
+        Panel2.Size = New Size(352, 67)
         Panel2.TabIndex = 37
         ' 
         ' btnBack
@@ -293,11 +297,11 @@ Partial Class frmAddItems
         btnBack.BackColor = Color.DimGray
         btnBack.FlatAppearance.BorderSize = 0
         btnBack.FlatStyle = FlatStyle.Flat
-        btnBack.Font = New Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        btnBack.Font = New Font("Arial Rounded MT Bold", 9.75F)
         btnBack.ForeColor = Color.White
-        btnBack.Location = New Point(229, 13)
+        btnBack.Location = New Point(237, 13)
         btnBack.Name = "btnBack"
-        btnBack.Size = New Size(95, 24)
+        btnBack.Size = New Size(95, 35)
         btnBack.TabIndex = 9
         btnBack.Text = "Back"
         btnBack.UseVisualStyleBackColor = False
@@ -307,11 +311,11 @@ Partial Class frmAddItems
         btnClear.BackColor = Color.Brown
         btnClear.FlatAppearance.BorderSize = 0
         btnClear.FlatStyle = FlatStyle.Flat
-        btnClear.Font = New Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        btnClear.Font = New Font("Arial Rounded MT Bold", 9.75F)
         btnClear.ForeColor = Color.White
-        btnClear.Location = New Point(127, 13)
+        btnClear.Location = New Point(128, 13)
         btnClear.Name = "btnClear"
-        btnClear.Size = New Size(95, 24)
+        btnClear.Size = New Size(95, 35)
         btnClear.TabIndex = 8
         btnClear.Text = "Clear"
         btnClear.UseVisualStyleBackColor = False

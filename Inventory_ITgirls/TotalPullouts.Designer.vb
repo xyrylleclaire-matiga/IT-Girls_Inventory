@@ -65,7 +65,7 @@ Partial Class TotalPullouts
         btnClear.Location = New Point(393, 131)
         btnClear.Name = "btnClear"
         btnClear.Size = New Size(100, 35)
-        btnClear.TabIndex = 14
+        btnClear.TabIndex = 6
         btnClear.Text = "Clear"
         btnClear.UseVisualStyleBackColor = False
         ' 
@@ -79,7 +79,7 @@ Partial Class TotalPullouts
         btnSave.Location = New Point(273, 131)
         btnSave.Name = "btnSave"
         btnSave.Size = New Size(100, 35)
-        btnSave.TabIndex = 15
+        btnSave.TabIndex = 5
         btnSave.Text = "Save Pullout"
         btnSave.UseVisualStyleBackColor = False
         ' 
@@ -125,13 +125,14 @@ Partial Class TotalPullouts
         ' 
         ' cboPulloutReason
         ' 
+        cboPulloutReason.DropDownStyle = ComboBoxStyle.DropDownList
         cboPulloutReason.Font = New Font("Arial Rounded MT Bold", 9.75F)
         cboPulloutReason.FormattingEnabled = True
         cboPulloutReason.Items.AddRange(New Object() {"Damaged", "Misprinted"})
         cboPulloutReason.Location = New Point(412, 84)
         cboPulloutReason.Name = "cboPulloutReason"
         cboPulloutReason.Size = New Size(170, 23)
-        cboPulloutReason.TabIndex = 11
+        cboPulloutReason.TabIndex = 4
         ' 
         ' lblItemName
         ' 
@@ -157,7 +158,7 @@ Partial Class TotalPullouts
         txtQuantity.Location = New Point(209, 84)
         txtQuantity.Name = "txtQuantity"
         txtQuantity.Size = New Size(170, 23)
-        txtQuantity.TabIndex = 6
+        txtQuantity.TabIndex = 3
         ' 
         ' Label12
         ' 

@@ -4,6 +4,13 @@ Module databaseConnection
     Public cmd As MySqlCommand
     Public dr As MySqlDataReader
 
+    Public currentAdminId As Integer = 0
+    Public currentUserId As Integer = 0
+    Public currentUsername As String = ""
+    Public currentFullName As String = ""
+    Public currentUserRole As String = "" ' "Admin" or "User"
+    Public isLoggedIn As Boolean = False
+
     Public sql As String
     Public Sub con()
         cn.Close()

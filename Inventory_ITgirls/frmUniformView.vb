@@ -1,9 +1,25 @@
 ﻿Imports System.Drawing
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 Imports MySql.Data.MySqlClient
 
 Public Class frmUniformView
 
-    'FOR DESIGNNNNN ---------------------------------
+    'DESIGNNN ----------------------------------------
+    Private Sub CustomizeListView()
+        ListView2.FullRowSelect = True
+        ListView2.GridLines = True
+        ListView2.HideSelection = False
+        ListView2.MultiSelect = False
+        ListView2.BackColor = Color.White
+        ListView2.ForeColor = Color.Black
+        ListView2.Font = New Font("Arial Rounded MT Bold", 9.0F)
+        ListView2.View = View.Details
+
+        For Each col As ColumnHeader In ListView2.Columns
+            col.Width = -2
+        Next
+    End Sub
+
     Private Sub ListView1_DrawColumnHeader(sender As Object, e As DrawListViewColumnHeaderEventArgs) Handles ListView2.DrawColumnHeader
         Dim headerColor As Color = Color.FromArgb(0, 150, 136)
         Dim textColor As Color = Color.White
@@ -12,90 +28,23 @@ Public Class frmUniformView
             e.Graphics.FillRectangle(brush, e.Bounds)
         End Using
 
-        TextRenderer.DrawText(e.Graphics, e.Header.Text, e.Font, e.Bounds, textColor, TextFormatFlags.VerticalCenter Or TextFormatFlags.Left)
+        Using pen As New Pen(Color.FromArgb(0, 120, 110))
+            e.Graphics.DrawRectangle(pen, New Rectangle(e.Bounds.X, e.Bounds.Y, e.Bounds.Width - 1, e.Bounds.Height - 1))
+        End Using
+
+        TextRenderer.DrawText(e.Graphics, e.Header.Text, ListView2.Font, e.Bounds, textColor, TextFormatFlags.VerticalCenter Or TextFormatFlags.Left Or TextFormatFlags.SingleLine)
     End Sub
 
     Private Sub ListView1_DrawItem(sender As Object, e As DrawListViewItemEventArgs) Handles ListView2.DrawItem
-        Dim bgColor As Color = If(e.Item.Index Mod 2 = 0, Color.White, Color.FromArgb(245, 249, 255))
-
-        If e.Item.Selected Then
-            bgColor = Color.LightSeaGreen
-        End If
-
-        Using brush As New SolidBrush(bgColor)
-            e.Graphics.FillRectangle(brush, e.Bounds)
-        End Using
+        e.DrawDefault = True
     End Sub
 
     Private Sub ListView1_DrawSubItem(sender As Object, e As DrawListViewSubItemEventArgs) Handles ListView2.DrawSubItem
-        Dim textColor As Color = If(e.Item.Selected, Color.White, Color.Black)
-        TextRenderer.DrawText(e.Graphics, e.SubItem.Text, e.SubItem.Font, e.Bounds, textColor, TextFormatFlags.VerticalCenter Or TextFormatFlags.Left)
+        e.DrawDefault = True
     End Sub
-
-
-    Private Sub btnRemove1_Paint(sender As Object, e As PaintEventArgs) Handles btnRemove1.Paint
-        Dim btn As Button = DirectCast(sender, Button)
-        Dim radius As Integer = 10
-
-        Dim path As New Drawing2D.GraphicsPath()
-        path.StartFigure()
-        path.AddArc(0, 0, radius, radius, 180, 90)
-        path.AddArc(btn.Width - radius, 0, radius, radius, 270, 90)
-        path.AddArc(btn.Width - radius, btn.Height - radius, radius, radius, 0, 90)
-        path.AddArc(0, btn.Height - radius, radius, radius, 90, 90)
-        path.CloseFigure()
-
-        btn.Region = New Region(path)
-    End Sub
-
-    Private Sub btnSave_Paint(sender As Object, e As PaintEventArgs) Handles btnSave.Paint
-        Dim btn = DirectCast(sender, Button)
-        Dim radius = 10
-
-        Dim path As New Drawing2D.GraphicsPath
-        path.StartFigure()
-        path.AddArc(0, 0, radius, radius, 180, 90)
-        path.AddArc(btn.Width - radius, 0, radius, radius, 270, 90)
-        path.AddArc(btn.Width - radius, btn.Height - radius, radius, radius, 0, 90)
-        path.AddArc(0, btn.Height - radius, radius, radius, 90, 90)
-        path.CloseFigure()
-
-        btn.Region = New Region(path)
-    End Sub
-
-    Private Sub btnBack_Paint(sender As Object, e As PaintEventArgs) Handles btnBack.Paint
-        Dim btn = DirectCast(sender, Button)
-        Dim radius = 10
-
-        Dim path As New Drawing2D.GraphicsPath
-        path.StartFigure()
-        path.AddArc(0, 0, radius, radius, 180, 90)
-        path.AddArc(btn.Width - radius, 0, radius, radius, 270, 90)
-        path.AddArc(btn.Width - radius, btn.Height - radius, radius, radius, 0, 90)
-        path.AddArc(0, btn.Height - radius, radius, radius, 90, 90)
-        path.CloseFigure()
-
-        btn.Region = New Region(path)
-
-    End Sub
-
-    Private Sub CustomizeListView()
-        ' ✨ Make ListView prettier
-        ListView2.FullRowSelect = True
-        ListView2.GridLines = True
-        ListView2.HideSelection = False
-        ListView2.MultiSelect = False
-        ListView2.BackColor = Color.White
-        ListView2.ForeColor = Color.Black
-        ListView2.Font = New Font("Arial Rounded MT Bold", 9.0F)
-
-        ' Auto resize columns after data load
-        For Each col As ColumnHeader In ListView2.Columns
-            col.Width = -2
-        Next
-    End Sub
-
     '----------------------------------------------------
+
+
 
     'BACKENDDDDDDDDDDDDDDDDDDDDD-----------------------------
     Private Sub txtSearch_TextChanged_1(sender As Object, e As EventArgs) Handles txtSearch.TextChanged
@@ -105,6 +54,7 @@ Public Class frmUniformView
     Private Sub frmUniformView_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         displayApplication()
         CustomizeListView()
+        ListView2.OwnerDraw = True
     End Sub
 
     Private Sub displayApplication(Optional searchQuery As String = "")
@@ -150,17 +100,15 @@ Public Class frmUniformView
                 x.SubItems.Add(databaseConnection.dr("size").ToString())
                 x.SubItems.Add(databaseConnection.dr("stock_quantity").ToString())
                 x.SubItems.Add(databaseConnection.dr("price").ToString())
-                x.SubItems.Add(statusText) ' manually set the status text instead of db column
+                x.SubItems.Add(statusText)
                 x.SubItems.Add(databaseConnection.dr("date_added").ToString())
 
-                ' alternate row colors
                 If rowIndex Mod 2 = 0 Then
                     x.BackColor = Color.White
                 Else
                     x.BackColor = Color.AliceBlue
                 End If
 
-                ' color only the "Status" subitem (index 7)
                 x.UseItemStyleForSubItems = False
                 x.SubItems(7).ForeColor = statusColor
 
@@ -168,7 +116,7 @@ Public Class frmUniformView
                 rowIndex += 1
             End While
 
-            ListView2.OwnerDraw = False ' no need for custom drawing here
+            ListView2.OwnerDraw = False
 
         Catch ex As Exception
             MessageBox.Show("Error loading data: " & ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -178,9 +126,6 @@ Public Class frmUniformView
         End Try
     End Sub
 
-
-
-    ' ✅ Drawing logic
     Private Sub ListView2_DrawSubItem(sender As Object, e As DrawListViewSubItemEventArgs) Handles ListView2.DrawSubItem
         If e.ColumnIndex = 6 Then
             e.DrawBackground()
@@ -259,20 +204,17 @@ Public Class frmUniformView
 
     Private Sub save()
         Try
-            ' 1️⃣ Make sure something is selected
             If ListView2.SelectedItems.Count = 0 Then
                 MsgBox("Please select an item to update", MsgBoxStyle.Exclamation)
                 Exit Sub
             End If
 
-            ' 2️⃣ Grab current item
             Dim selectedItem As ListViewItem = ListView2.SelectedItems(0)
             Dim currentItemName As String = selectedItem.Text
             Dim currentLevel As String = selectedItem.SubItems(1).Text
             Dim currentGender As String = selectedItem.SubItems(2).Text
             Dim currentSize As String = selectedItem.SubItems(3).Text
 
-            ' 3️⃣ Confirm update EVERY time
             Dim result As DialogResult = MessageBox.Show(
             "Are you sure you want to update this item?",
             "Confirm update",
@@ -285,7 +227,6 @@ Public Class frmUniformView
                 Exit Sub
             End If
 
-            ' 4️⃣ Proceed with update
             databaseConnection.con()
             Dim sql As String =
             "UPDATE tbluniforms SET stock_quantity=@quantity, price=@price " &
@@ -321,13 +262,11 @@ Public Class frmUniformView
 
     Private Sub remove()
         Try
-            ' 1️⃣ Make sure something is selected
             If ListView2.SelectedItems.Count = 0 Then
                 MsgBox("Please select an item to delete.", MsgBoxStyle.Exclamation)
                 Exit Sub
             End If
 
-            ' 2️⃣ Ask for confirmation
             Dim result As DialogResult = MessageBox.Show(
             "Do you want to remove this record from the list?",
             "Confirm Deletion",
@@ -340,11 +279,9 @@ Public Class frmUniformView
                 Exit Sub
             End If
 
-            ' 3️⃣ Get the selected item info
             Dim selectedItem As ListViewItem = ListView2.SelectedItems(0)
-            Dim uniformId As String = selectedItem.SubItems(0).Text ' make sure this is the correct column for uniform_id
+            Dim uniformId As String = selectedItem.SubItems(0).Text
 
-            ' 4️⃣ Delete from database
             databaseConnection.con()
             Dim sql As String = "DELETE FROM tbluniforms WHERE uniform_id = @uniform_id"
             databaseConnection.cmd = New MySqlCommand(sql, databaseConnection.cn)
@@ -352,7 +289,6 @@ Public Class frmUniformView
 
             Dim rowsAffected As Integer = databaseConnection.cmd.ExecuteNonQuery()
 
-            ' 5️⃣ Remove from ListView if successful
             If rowsAffected > 0 Then
                 ListView2.Items.Remove(selectedItem)
                 MsgBox("Item deleted successfully!", MsgBoxStyle.Information)
@@ -366,7 +302,6 @@ Public Class frmUniformView
             MessageBox.Show("Error deleting record: " & ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
 
         Finally
-            ' 6️⃣ Always close the connection safely
             If databaseConnection.cn IsNot Nothing AndAlso databaseConnection.cn.State = ConnectionState.Open Then
                 databaseConnection.cn.Close()
             End If

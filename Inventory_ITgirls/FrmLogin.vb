@@ -6,22 +6,24 @@ Public Class FrmLogin
     End Sub
 
     Private Sub userLogin()
-
         databaseConnection.con()
         sql = "SELECT * FROM tblusers WHERE user_id = @user_id AND password = @password AND status = 'Active' AND attempts > 0"
         databaseConnection.cmd = New MySqlCommand(sql, databaseConnection.cn)
         databaseConnection.cmd.Parameters.AddWithValue("@user_id", txtID.Text)
         databaseConnection.cmd.Parameters.AddWithValue("@password", txtPassword.Text)
-
         databaseConnection.dr = databaseConnection.cmd.ExecuteReader()
 
         If databaseConnection.dr.Read = True Then
             Dim role As String = databaseConnection.dr("role").ToString()
+
+            databaseConnection.currentUserId = Convert.ToInt32(databaseConnection.dr("user_id"))
+            databaseConnection.currentUsername = databaseConnection.dr("user_id").ToString()
+            databaseConnection.currentUserRole = role
+            databaseConnection.isLoggedIn = True
+
             databaseConnection.dr.Close()
             databaseConnection.cn.Close()
             Call getAttempts()
-
-
             frmUser.Show()
             Me.Hide()
             txtID.Clear()
@@ -37,20 +39,31 @@ Public Class FrmLogin
         databaseConnection.cmd = New MySqlCommand(sql, databaseConnection.cn)
         databaseConnection.cmd.Parameters.AddWithValue("@user_id", txtID.Text)
         databaseConnection.cmd.Parameters.AddWithValue("@password", txtPassword.Text)
-
         databaseConnection.dr = databaseConnection.cmd.ExecuteReader()
 
         If databaseConnection.dr.Read() Then
             Dim role As String = "Admin"
+
+            databaseConnection.currentAdminId = Convert.ToInt32(databaseConnection.dr("admin_id"))
+            databaseConnection.currentUsername = databaseConnection.dr("username").ToString()
+
+            Dim firstName As String = If(IsDBNull(databaseConnection.dr("FirstName")), "", databaseConnection.dr("FirstName").ToString())
+            Dim middleName As String = If(IsDBNull(databaseConnection.dr("Middle_Name")), "", databaseConnection.dr("Middle_Name").ToString())
+            Dim lastName As String = If(IsDBNull(databaseConnection.dr("LastName")), "", databaseConnection.dr("LastName").ToString())
+            databaseConnection.currentFullName = (firstName & " " & middleName & " " & lastName).Trim()
+
+            databaseConnection.currentUserRole = role
+            databaseConnection.isLoggedIn = True
+
             databaseConnection.dr.Close()
             databaseConnection.cn.Close()
+
             frmAdmin.Show()
             Me.Hide()
             txtID.Clear()
             txtPassword.Clear()
             Exit Sub
         End If
-
 
         databaseConnection.dr.Close()
         databaseConnection.cn.Close()
@@ -71,7 +84,6 @@ Public Class FrmLogin
 
         MsgBox("Login Failed, Invalid user ID or password", MsgBoxStyle.Exclamation)
 
-
         If isUser > 0 Then
             databaseConnection.con()
             sql = "SELECT attempts FROM tblusers WHERE user_id=@user_id"
@@ -81,14 +93,13 @@ Public Class FrmLogin
             databaseConnection.cn.Close()
 
             If currAttempts > 0 Then
-                callAttempts() ' deduct attempt here
+                callAttempts()
                 getAttempts()
                 MsgBox("Attempts remaining: " & lblAttempts.Text, MsgBoxStyle.Information)
             Else
                 MsgBox("Account already deactivated or no attempts left.", MsgBoxStyle.Critical)
             End If
         ElseIf isAdmin > 0 Then
-            ' Skip attempt system for admin
             Exit Sub
         End If
     End Sub

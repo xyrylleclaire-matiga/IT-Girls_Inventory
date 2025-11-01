@@ -2,35 +2,7 @@
 
 Public Class frmPEUniformView
 
-    'FOR DESIGNNNNN ---------------------------------
-    Private Sub ListView1_DrawColumnHeader(sender As Object, e As DrawListViewColumnHeaderEventArgs) Handles ListView2.DrawColumnHeader
-        Dim headerColor As Color = Color.FromArgb(0, 150, 136)
-        Dim textColor As Color = Color.White
-
-        Using brush As New SolidBrush(headerColor)
-            e.Graphics.FillRectangle(brush, e.Bounds)
-        End Using
-
-        TextRenderer.DrawText(e.Graphics, e.Header.Text, e.Font, e.Bounds, textColor, TextFormatFlags.VerticalCenter Or TextFormatFlags.Left)
-    End Sub
-
-    Private Sub ListView1_DrawItem(sender As Object, e As DrawListViewItemEventArgs) Handles ListView2.DrawItem
-        Dim bgColor As Color = If(e.Item.Index Mod 2 = 0, Color.White, Color.FromArgb(245, 249, 255))
-
-        If e.Item.Selected Then
-            bgColor = Color.LightSeaGreen
-        End If
-
-        Using brush As New SolidBrush(bgColor)
-            e.Graphics.FillRectangle(brush, e.Bounds)
-        End Using
-    End Sub
-
-    Private Sub ListView1_DrawSubItem(sender As Object, e As DrawListViewSubItemEventArgs) Handles ListView2.DrawSubItem
-        Dim textColor As Color = If(e.Item.Selected, Color.White, Color.Black)
-        TextRenderer.DrawText(e.Graphics, e.SubItem.Text, e.SubItem.Font, e.Bounds, textColor, TextFormatFlags.VerticalCenter Or TextFormatFlags.Left)
-    End Sub
-
+    'DESIGNNN ----------------------------------------
     Private Sub CustomizeListView()
         ListView2.FullRowSelect = True
         ListView2.GridLines = True
@@ -39,58 +11,36 @@ Public Class frmPEUniformView
         ListView2.BackColor = Color.White
         ListView2.ForeColor = Color.Black
         ListView2.Font = New Font("Arial Rounded MT Bold", 9.0F)
+        ListView2.View = View.Details
 
         For Each col As ColumnHeader In ListView2.Columns
             col.Width = -2
         Next
     End Sub
 
-    Private Sub btnRemove_Paint(sender As Object, e As PaintEventArgs) Handles btnRemove.Paint
-        Dim btn = DirectCast(sender, Button)
-        Dim radius = 10
+    Private Sub ListView1_DrawColumnHeader(sender As Object, e As DrawListViewColumnHeaderEventArgs) Handles ListView2.DrawColumnHeader
+        Dim headerColor As Color = Color.FromArgb(0, 150, 136)
+        Dim textColor As Color = Color.White
 
-        Dim path As New Drawing2D.GraphicsPath
-        path.StartFigure()
-        path.AddArc(0, 0, radius, radius, 180, 90)
-        path.AddArc(btn.Width - radius, 0, radius, radius, 270, 90)
-        path.AddArc(btn.Width - radius, btn.Height - radius, radius, radius, 0, 90)
-        path.AddArc(0, btn.Height - radius, radius, radius, 90, 90)
-        path.CloseFigure()
+        Using brush As New SolidBrush(headerColor)
+            e.Graphics.FillRectangle(brush, e.Bounds)
+        End Using
 
-        btn.Region = New Region(path)
+        Using pen As New Pen(Color.FromArgb(0, 120, 110))
+            e.Graphics.DrawRectangle(pen, New Rectangle(e.Bounds.X, e.Bounds.Y, e.Bounds.Width - 1, e.Bounds.Height - 1))
+        End Using
+
+        TextRenderer.DrawText(e.Graphics, e.Header.Text, ListView2.Font, e.Bounds, textColor, TextFormatFlags.VerticalCenter Or TextFormatFlags.Left Or TextFormatFlags.SingleLine)
     End Sub
 
-    Private Sub btnSave_Paint(sender As Object, e As PaintEventArgs) Handles btnSave.Paint
-        Dim btn = DirectCast(sender, Button)
-        Dim radius = 10
-
-        Dim path As New Drawing2D.GraphicsPath
-        path.StartFigure()
-        path.AddArc(0, 0, radius, radius, 180, 90)
-        path.AddArc(btn.Width - radius, 0, radius, radius, 270, 90)
-        path.AddArc(btn.Width - radius, btn.Height - radius, radius, radius, 0, 90)
-        path.AddArc(0, btn.Height - radius, radius, radius, 90, 90)
-        path.CloseFigure()
-
-        btn.Region = New Region(path)
+    Private Sub ListView1_DrawItem(sender As Object, e As DrawListViewItemEventArgs) Handles ListView2.DrawItem
+        e.DrawDefault = True
     End Sub
 
-    Private Sub btnBack_Paint(sender As Object, e As PaintEventArgs) Handles btnBack.Paint
-        Dim btn = DirectCast(sender, Button)
-        Dim radius = 10
-
-        Dim path As New Drawing2D.GraphicsPath
-        path.StartFigure()
-        path.AddArc(0, 0, radius, radius, 180, 90)
-        path.AddArc(btn.Width - radius, 0, radius, radius, 270, 90)
-        path.AddArc(btn.Width - radius, btn.Height - radius, radius, radius, 0, 90)
-        path.AddArc(0, btn.Height - radius, radius, radius, 90, 90)
-        path.CloseFigure()
-
-        btn.Region = New Region(path)
+    Private Sub ListView1_DrawSubItem(sender As Object, e As DrawListViewSubItemEventArgs) Handles ListView2.DrawSubItem
+        e.DrawDefault = True
     End Sub
-
-    '---------------------------------------------------------------------
+    '----------------------------------------------------
 
 
 
@@ -225,7 +175,7 @@ Public Class frmPEUniformView
     Private Sub PEUniformView_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         displayApplication()
         CustomizeListView()
-        'ListView2.OwnerDraw = True
+        ListView2.OwnerDraw = True
     End Sub
 
     Private Sub clearAll()

@@ -2,35 +2,20 @@
 
 Public Class TotalPullouts
 
-    'FOR DESIGNNNNNN --------------------------------------------
-    Private Sub btnSave_Paint(sender As Object, e As PaintEventArgs) Handles btnSave.Paint
-        Dim btn = DirectCast(sender, Button)
-        Dim radius = 10
+    'DESIGNNN ----------------------------------------
+    Private Sub CustomizeListView()
+        ListView1.FullRowSelect = True
+        ListView1.GridLines = True
+        ListView1.HideSelection = False
+        ListView1.MultiSelect = False
+        ListView1.BackColor = Color.White
+        ListView1.ForeColor = Color.Black
+        ListView1.Font = New Font("Arial Rounded MT Bold", 9.0F)
+        ListView1.View = View.Details
 
-        Dim path As New Drawing2D.GraphicsPath
-        path.StartFigure()
-        path.AddArc(0, 0, radius, radius, 180, 90)
-        path.AddArc(btn.Width - radius, 0, radius, radius, 270, 90)
-        path.AddArc(btn.Width - radius, btn.Height - radius, radius, radius, 0, 90)
-        path.AddArc(0, btn.Height - radius, radius, radius, 90, 90)
-        path.CloseFigure()
-
-        btn.Region = New Region(path)
-    End Sub
-
-    Private Sub btnClear_Paint(sender As Object, e As PaintEventArgs) Handles btnClear.Paint
-        Dim btn = DirectCast(sender, Button)
-        Dim radius = 10
-
-        Dim path As New Drawing2D.GraphicsPath
-        path.StartFigure()
-        path.AddArc(0, 0, radius, radius, 180, 90)
-        path.AddArc(btn.Width - radius, 0, radius, radius, 270, 90)
-        path.AddArc(btn.Width - radius, btn.Height - radius, radius, radius, 0, 90)
-        path.AddArc(0, btn.Height - radius, radius, radius, 90, 90)
-        path.CloseFigure()
-
-        btn.Region = New Region(path)
+        For Each col As ColumnHeader In ListView1.Columns
+            col.Width = -2
+        Next
     End Sub
 
     Private Sub ListView1_DrawColumnHeader(sender As Object, e As DrawListViewColumnHeaderEventArgs) Handles ListView1.DrawColumnHeader
@@ -41,45 +26,53 @@ Public Class TotalPullouts
             e.Graphics.FillRectangle(brush, e.Bounds)
         End Using
 
-        TextRenderer.DrawText(e.Graphics, e.Header.Text, e.Font, e.Bounds, textColor, TextFormatFlags.VerticalCenter Or TextFormatFlags.Left)
+        Using pen As New Pen(Color.FromArgb(0, 120, 110))
+            e.Graphics.DrawRectangle(pen, New Rectangle(e.Bounds.X, e.Bounds.Y, e.Bounds.Width - 1, e.Bounds.Height - 1))
+        End Using
+
+        TextRenderer.DrawText(e.Graphics, e.Header.Text, ListView1.Font, e.Bounds, textColor, TextFormatFlags.VerticalCenter Or TextFormatFlags.Left Or TextFormatFlags.SingleLine)
     End Sub
 
     Private Sub ListView1_DrawItem(sender As Object, e As DrawListViewItemEventArgs) Handles ListView1.DrawItem
-        Dim bgColor As Color = If(e.Item.Index Mod 2 = 0, Color.White, Color.FromArgb(245, 249, 255))
-
-        If e.Item.Selected Then
-            bgColor = Color.LightSeaGreen
-        End If
-
-        Using brush As New SolidBrush(bgColor)
-            e.Graphics.FillRectangle(brush, e.Bounds)
-        End Using
+        e.DrawDefault = True
     End Sub
-
-
 
     Private Sub ListView1_DrawSubItem(sender As Object, e As DrawListViewSubItemEventArgs) Handles ListView1.DrawSubItem
-        Dim textColor As Color = If(e.Item.Selected, Color.White, Color.Black)
-        TextRenderer.DrawText(e.Graphics, e.SubItem.Text, e.SubItem.Font, e.Bounds, textColor, TextFormatFlags.VerticalCenter Or TextFormatFlags.Left)
+        e.DrawDefault = True
     End Sub
 
-    Private Sub CustomizeListView()
-        ListView1.FullRowSelect = True
-        ListView1.GridLines = True
-        ListView1.HideSelection = False
-        ListView1.MultiSelect = False
-        ListView1.BackColor = Color.White
-        ListView1.ForeColor = Color.Black
-        ListView1.Font = New Font("Arial Rounded MT Bold", 9.0F)
+    Private Sub btnClear_Paint(sender As Object, e As PaintEventArgs) Handles btnClear.Paint
+        Dim btn As Button = DirectCast(sender, Button)
+        Dim radius As Integer = 10
 
-        For Each col As ColumnHeader In ListView1.Columns
-            col.Width = -2
-        Next
+        Dim path As New Drawing2D.GraphicsPath()
+        path.StartFigure()
+        path.AddArc(0, 0, radius, radius, 180, 90)
+        path.AddArc(btn.Width - radius, 0, radius, radius, 270, 90)
+        path.AddArc(btn.Width - radius, btn.Height - radius, radius, radius, 0, 90)
+        path.AddArc(0, btn.Height - radius, radius, radius, 90, 90)
+        path.CloseFigure()
+
+        btn.Region = New Region(path)
     End Sub
 
+    Private Sub btnSave_Paint(sender As Object, e As PaintEventArgs) Handles btnSave.Paint
+        Dim btn As Button = DirectCast(sender, Button)
+        Dim radius As Integer = 10
 
+        Dim path As New Drawing2D.GraphicsPath()
+        path.StartFigure()
+        path.AddArc(0, 0, radius, radius, 180, 90)
+        path.AddArc(btn.Width - radius, 0, radius, radius, 270, 90)
+        path.AddArc(btn.Width - radius, btn.Height - radius, radius, radius, 0, 90)
+        path.AddArc(0, btn.Height - radius, radius, radius, 90, 90)
+        path.CloseFigure()
 
-    '-------------------------------------------------------------
+        btn.Region = New Region(path)
+    End Sub
+
+    '--------------------------------------
+
     'BACKENDDD
     Private selectedUniformID As Integer
     'Private Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
@@ -185,67 +178,142 @@ Public Class TotalPullouts
     End Sub
 
     Private Sub Save_Click(sender As Object, e As EventArgs) Handles btnSave.Click
+        savePullout()
+    End Sub
+
+    Private Sub savePullout()
+        If ListView1.SelectedItems.Count = 0 Then
+            MsgBox("Please select an item from the list first.", MsgBoxStyle.Exclamation)
+            Exit Sub
+        End If
+
         If String.IsNullOrWhiteSpace(lblDate.Text) OrElse
-            String.IsNullOrWhiteSpace(cboPulloutReason.Text) OrElse
-            String.IsNullOrWhiteSpace(lblItemName.Text) OrElse
-            String.IsNullOrWhiteSpace(txtQuantity.Text) Then
+           String.IsNullOrWhiteSpace(cboPulloutReason.Text) OrElse
+           String.IsNullOrWhiteSpace(lblItemName.Text) OrElse
+           String.IsNullOrWhiteSpace(txtQuantity.Text) Then
             MessageBox.Show("Please fill out all the fields.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Exit Sub
-        ElseIf Not IsNumeric(txtQuantity.Text) Then
-            MsgBox("Please enter a numeric number.", MsgBoxStyle.Exclamation)
-            Exit Sub
-        ElseIf CInt(txtQuantity.Text) <= 0 Then
-            MsgBox("Please enter a valid number, the enter quantity must be greater than 0.", MsgBoxStyle.Exclamation)
-            Exit Sub
         End If
 
-        Dim pulloutQty As Integer = CInt(txtQuantity.Text)
-
-        databaseConnection.con()
-
-        Dim sqlCheck As String = "SELECT stock_quantity FROM tbluniforms WHERE uniform_id = @uniform_id"
-        Dim currentStock As Integer
-        databaseConnection.cmd = New MySqlCommand(sqlCheck, databaseConnection.cn)
-        databaseConnection.cmd.Parameters.AddWithValue("@uniform_id", selectedUniformID)
-
-        Dim resultObj = databaseConnection.cmd.ExecuteScalar()
-        currentStock = If(IsDBNull(resultObj), 0, CInt(resultObj))
-        If pulloutQty > currentStock Then
-            MessageBox.Show("You exceed the total number of stocks.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            databaseConnection.cn.Close()
-            Exit Sub
-        End If
-
-        Dim result As DialogResult = MessageBox.Show("Are you sure you want to pull out this item?", "Confirm Pullout", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-
-        If result = DialogResult.Yes Then
-
-            Dim sqlInsert As String = "INSERT INTO tbl_pullouts (uniform_id, Date, Quantity, PulloutReason) VALUES (@uniform_id, @Date, @Quantity, @PulloutReason)"
-
-            databaseConnection.cmd = New MySqlCommand(sqlInsert, databaseConnection.cn)
-            databaseConnection.cmd.Parameters.AddWithValue("@uniform_id", selectedUniformID)
-            databaseConnection.cmd.Parameters.AddWithValue("@Date", lblDate.Text)
-            databaseConnection.cmd.Parameters.AddWithValue("@Quantity", pulloutQty)
-            databaseConnection.cmd.Parameters.AddWithValue("@PulloutReason", cboPulloutReason.Text)
-            databaseConnection.cmd.ExecuteNonQuery()
-
-            Dim sqlUpdate As String = "UPDATE tbluniforms SET stock_quantity = stock_quantity - @Quantity WHERE uniform_id = @uniform_id"
-
-            databaseConnection.cmd = New MySqlCommand(sqlUpdate, databaseConnection.cn)
-            databaseConnection.cmd.Parameters.AddWithValue("@Quantity", pulloutQty)
-            databaseConnection.cmd.Parameters.AddWithValue("@uniform_id", selectedUniformID)
-            databaseConnection.cmd.ExecuteNonQuery()
-
-            MessageBox.Show("Pullout recorded and stock updated.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-
-            lblItemName.Text = ""
-            lblDate.Text = ""
+        Dim pulloutQty As Integer
+        If Not Integer.TryParse(txtQuantity.Text.Trim(), pulloutQty) Then
+            MsgBox("Please enter a valid numeric quantity.", MsgBoxStyle.Exclamation)
             txtQuantity.Clear()
-            cboPulloutReason.Text = ""
-        Else
-            MessageBox.Show("Cancelled.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            txtQuantity.Focus()
+            Exit Sub
         End If
-        databaseConnection.cn.Close()
+
+        If pulloutQty <= 0 Then
+            MsgBox("Quantity must be greater than 0.", MsgBoxStyle.Exclamation)
+            txtQuantity.Clear()
+            txtQuantity.Focus()
+            Exit Sub
+        End If
+
+        If pulloutQty > 9999 Then
+            MsgBox("Quantity is too high. Maximum is 9999.", MsgBoxStyle.Exclamation)
+            txtQuantity.Clear()
+            txtQuantity.Focus()
+            Exit Sub
+        End If
+
+        Try
+            databaseConnection.con()
+
+            Dim sqlCheck As String = "SELECT stock_quantity FROM tbluniforms WHERE uniform_id = @uniform_id"
+            databaseConnection.cmd = New MySqlCommand(sqlCheck, databaseConnection.cn)
+            databaseConnection.cmd.Parameters.AddWithValue("@uniform_id", selectedUniformID)
+
+            Dim resultObj = databaseConnection.cmd.ExecuteScalar()
+
+            If resultObj Is Nothing OrElse IsDBNull(resultObj) Then
+                MessageBox.Show("Item not found in database.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Exit Sub
+            End If
+
+            Dim currentStock As Integer = CInt(resultObj)
+
+            If pulloutQty > currentStock Then
+                MessageBox.Show($"Insufficient stock. Available: {currentStock}, Requested: {pulloutQty}", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                txtQuantity.Clear()
+                txtQuantity.Focus()
+                Exit Sub
+            End If
+
+            Dim result As DialogResult = MessageBox.Show(
+            $"Are you sure you want to pull out {pulloutQty} item(s)?{vbCrLf}" &
+            $"Item: {lblItemName.Text}{vbCrLf}" &
+            $"Reason: {cboPulloutReason.Text}",
+            "Confirm Pullout",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Question)
+
+            If result = DialogResult.Yes Then
+                Dim sqlInsert As String = "INSERT INTO tbl_pullouts (uniform_id, Date, Quantity, PulloutReason) VALUES (@uniform_id, @Date, @Quantity, @PulloutReason)"
+                databaseConnection.cmd = New MySqlCommand(sqlInsert, databaseConnection.cn)
+                databaseConnection.cmd.Parameters.AddWithValue("@uniform_id", selectedUniformID)
+                databaseConnection.cmd.Parameters.AddWithValue("@Date", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"))
+                databaseConnection.cmd.Parameters.AddWithValue("@Quantity", pulloutQty)
+                databaseConnection.cmd.Parameters.AddWithValue("@PulloutReason", cboPulloutReason.Text.Trim())
+                databaseConnection.cmd.ExecuteNonQuery()
+
+                Dim sqlUpdate As String = "UPDATE tbluniforms SET stock_quantity = stock_quantity - @Quantity WHERE uniform_id = @uniform_id"
+                databaseConnection.cmd = New MySqlCommand(sqlUpdate, databaseConnection.cn)
+                databaseConnection.cmd.Parameters.AddWithValue("@Quantity", pulloutQty)
+                databaseConnection.cmd.Parameters.AddWithValue("@uniform_id", selectedUniformID)
+                Dim rowsAffected As Integer = databaseConnection.cmd.ExecuteNonQuery()
+
+                If rowsAffected > 0 Then
+                    If databaseConnection.currentAdminId > 0 AndAlso databaseConnection.isLoggedIn Then
+                        Dim newStock As Integer = currentStock - pulloutQty
+                        Dim changeStr As String = "-" & pulloutQty.ToString()
+
+                        Dim logSql As String = "INSERT INTO tbluniformlogs(uniform_id, action, Reason, changed_quantity, previous_quantity, new_quantity, admin_id, action_date) VALUES (@uniform_id, @action, @reason, @quantity_change, @previous_qty, @new_qty, @admin_id, @action_date)"
+                        databaseConnection.cmd = New MySqlCommand(logSql, databaseConnection.cn)
+                        databaseConnection.cmd.Parameters.AddWithValue("@uniform_id", selectedUniformID)
+                        databaseConnection.cmd.Parameters.AddWithValue("@action", "Pullout")
+                        databaseConnection.cmd.Parameters.AddWithValue("@reason", cboPulloutReason.Text)
+                        databaseConnection.cmd.Parameters.AddWithValue("@quantity_change", changeStr)  ' "-10"
+                        databaseConnection.cmd.Parameters.AddWithValue("@previous_qty", currentStock)  ' 50
+                        databaseConnection.cmd.Parameters.AddWithValue("@new_qty", newStock)  ' 40
+                        databaseConnection.cmd.Parameters.AddWithValue("@admin_id", databaseConnection.currentAdminId)
+                        databaseConnection.cmd.Parameters.AddWithValue("@action_date", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"))
+                        databaseConnection.cmd.ExecuteNonQuery()
+                    End If
+
+                    MessageBox.Show("Pullout recorded and stock updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+                    lblItemName.Text = ""
+                    lblDate.Text = DateTime.Now.ToString("MMMM dd, yyyy")
+                    txtQuantity.Clear()
+                    cboPulloutReason.SelectedIndex = -1
+
+                    displayApplication()
+
+                    If Me.Owner IsNot Nothing Then
+                        Dim parentForm As frmStockManagement = TryCast(Me.Owner, frmStockManagement)
+                        If parentForm IsNot Nothing Then
+                            parentForm.displayApplication()
+                        End If
+                    End If
+                Else
+                    MessageBox.Show("Failed to update stock. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End If
+            Else
+                MessageBox.Show("Pullout cancelled.", "Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
+
+        Catch ex As MySqlException
+            MessageBox.Show("Database error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Catch ex As InvalidCastException
+            MessageBox.Show("Invalid data type encountered.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Catch ex As Exception
+            MessageBox.Show("An error occurred: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Finally
+            If databaseConnection.cn IsNot Nothing AndAlso databaseConnection.cn.State = ConnectionState.Open Then
+                databaseConnection.cn.Close()
+            End If
+        End Try
     End Sub
 
     Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click

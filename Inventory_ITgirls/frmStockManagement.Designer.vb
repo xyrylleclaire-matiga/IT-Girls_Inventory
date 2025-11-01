@@ -43,11 +43,11 @@ Partial Class frmStockManagement
         Status = New ColumnHeader()
         Date_added = New ColumnHeader()
         pnlDetails = New Panel()
+        txtLevel = New TextBox()
+        Label8 = New Label()
         Label5 = New Label()
         txtSize = New TextBox()
-        Label4 = New Label()
         lblTitle = New Label()
-        txtLevel = New TextBox()
         Label9 = New Label()
         Label6 = New Label()
         txtStatus = New TextBox()
@@ -61,8 +61,8 @@ Partial Class frmStockManagement
         Label12 = New Label()
         txtPrice = New TextBox()
         btnRemove1 = New Button()
-        btnSave = New Button()
         Panel2 = New Panel()
+        btnEditItems = New Button()
         btnAdd = New Button()
         Panel1.SuspendLayout()
         pnlDetails.SuspendLayout()
@@ -152,14 +152,14 @@ Partial Class frmStockManagement
         Panel1.Controls.Add(rdoSchoolUniform)
         Panel1.Location = New Point(18, 14)
         Panel1.Name = "Panel1"
-        Panel1.Size = New Size(948, 48)
+        Panel1.Size = New Size(977, 48)
         Panel1.TabIndex = 26
         ' 
         ' Label3
         ' 
         Label3.AutoSize = True
         Label3.Font = New Font("Segoe UI", 9.75F, FontStyle.Bold)
-        Label3.Location = New Point(715, 17)
+        Label3.Location = New Point(719, 17)
         Label3.Name = "Label3"
         Label3.Size = New Size(86, 17)
         Label3.TabIndex = 27
@@ -167,12 +167,13 @@ Partial Class frmStockManagement
         ' 
         ' cboLevel
         ' 
+        cboLevel.DropDownStyle = ComboBoxStyle.DropDownList
         cboLevel.Font = New Font("Segoe UI", 9.75F, FontStyle.Bold)
         cboLevel.FormattingEnabled = True
         cboLevel.Items.AddRange(New Object() {"Kindergarten", "Elementary", "Junior High", "Senior High", "College"})
-        cboLevel.Location = New Point(806, 13)
+        cboLevel.Location = New Point(807, 13)
         cboLevel.Name = "cboLevel"
-        cboLevel.Size = New Size(121, 25)
+        cboLevel.Size = New Size(159, 25)
         cboLevel.TabIndex = 26
         ' 
         ' txtSearch
@@ -181,7 +182,7 @@ Partial Class frmStockManagement
         txtSearch.Location = New Point(515, 81)
         txtSearch.Name = "txtSearch"
         txtSearch.PlaceholderText = "Search item..."
-        txtSearch.Size = New Size(200, 25)
+        txtSearch.Size = New Size(214, 25)
         txtSearch.TabIndex = 28
         ' 
         ' ListView1
@@ -191,7 +192,7 @@ Partial Class frmStockManagement
         ListView1.GridLines = True
         ListView1.Location = New Point(19, 112)
         ListView1.Name = "ListView1"
-        ListView1.Size = New Size(696, 401)
+        ListView1.Size = New Size(710, 352)
         ListView1.TabIndex = 29
         ListView1.UseCompatibleStateImageBehavior = False
         ListView1.View = View.Details
@@ -240,11 +241,11 @@ Partial Class frmStockManagement
         ' 
         pnlDetails.BackColor = Color.White
         pnlDetails.BorderStyle = BorderStyle.FixedSingle
+        pnlDetails.Controls.Add(txtLevel)
+        pnlDetails.Controls.Add(Label8)
         pnlDetails.Controls.Add(Label5)
         pnlDetails.Controls.Add(txtSize)
-        pnlDetails.Controls.Add(Label4)
         pnlDetails.Controls.Add(lblTitle)
-        pnlDetails.Controls.Add(txtLevel)
         pnlDetails.Controls.Add(Label9)
         pnlDetails.Controls.Add(Label6)
         pnlDetails.Controls.Add(txtStatus)
@@ -259,8 +260,26 @@ Partial Class frmStockManagement
         pnlDetails.Controls.Add(txtPrice)
         pnlDetails.Location = New Point(759, 90)
         pnlDetails.Name = "pnlDetails"
-        pnlDetails.Size = New Size(200, 423)
+        pnlDetails.Size = New Size(225, 423)
         pnlDetails.TabIndex = 30
+        ' 
+        ' txtLevel
+        ' 
+        txtLevel.Font = New Font("Arial Rounded MT Bold", 9F)
+        txtLevel.Location = New Point(10, 199)
+        txtLevel.Name = "txtLevel"
+        txtLevel.ReadOnly = True
+        txtLevel.Size = New Size(200, 21)
+        txtLevel.TabIndex = 2
+        ' 
+        ' Label8
+        ' 
+        Label8.Font = New Font("Arial Rounded MT Bold", 9F)
+        Label8.Location = New Point(10, 184)
+        Label8.Name = "Label8"
+        Label8.Size = New Size(100, 23)
+        Label8.TabIndex = 11
+        Label8.Text = "Level:"
         ' 
         ' Label5
         ' 
@@ -277,18 +296,8 @@ Partial Class frmStockManagement
         txtSize.Location = New Point(10, 291)
         txtSize.Name = "txtSize"
         txtSize.ReadOnly = True
-        txtSize.Size = New Size(170, 21)
+        txtSize.Size = New Size(200, 21)
         txtSize.TabIndex = 6
-        ' 
-        ' Label4
-        ' 
-        Label4.Font = New Font("Arial Rounded MT Bold", 9F)
-        Label4.Location = New Point(10, 181)
-        Label4.Name = "Label4"
-        Label4.Size = New Size(100, 23)
-        Label4.TabIndex = 1
-        Label4.Text = "Level:"
-        Label4.Visible = False
         ' 
         ' lblTitle
         ' 
@@ -300,15 +309,6 @@ Partial Class frmStockManagement
         lblTitle.Size = New Size(94, 17)
         lblTitle.TabIndex = 0
         lblTitle.Text = "Item Details"
-        ' 
-        ' txtLevel
-        ' 
-        txtLevel.Font = New Font("Arial Rounded MT Bold", 9F)
-        txtLevel.Location = New Point(10, 199)
-        txtLevel.Name = "txtLevel"
-        txtLevel.ReadOnly = True
-        txtLevel.Size = New Size(170, 21)
-        txtLevel.TabIndex = 2
         ' 
         ' Label9
         ' 
@@ -334,7 +334,7 @@ Partial Class frmStockManagement
         txtStatus.Location = New Point(10, 337)
         txtStatus.Name = "txtStatus"
         txtStatus.ReadOnly = True
-        txtStatus.Size = New Size(170, 21)
+        txtStatus.Size = New Size(200, 21)
         txtStatus.TabIndex = 10
         ' 
         ' Label14
@@ -352,7 +352,7 @@ Partial Class frmStockManagement
         txtDateAdded.Location = New Point(10, 385)
         txtDateAdded.Name = "txtDateAdded"
         txtDateAdded.ReadOnly = True
-        txtDateAdded.Size = New Size(170, 21)
+        txtDateAdded.Size = New Size(200, 21)
         txtDateAdded.TabIndex = 10
         ' 
         ' Label7
@@ -370,7 +370,7 @@ Partial Class frmStockManagement
         txtGender.Location = New Point(10, 245)
         txtGender.Name = "txtGender"
         txtGender.ReadOnly = True
-        txtGender.Size = New Size(170, 21)
+        txtGender.Size = New Size(200, 21)
         txtGender.TabIndex = 4
         ' 
         ' txtItemName
@@ -379,7 +379,7 @@ Partial Class frmStockManagement
         txtItemName.Location = New Point(10, 55)
         txtItemName.Name = "txtItemName"
         txtItemName.ReadOnly = True
-        txtItemName.Size = New Size(170, 21)
+        txtItemName.Size = New Size(200, 21)
         txtItemName.TabIndex = 2
         ' 
         ' Label11
@@ -396,7 +396,8 @@ Partial Class frmStockManagement
         txtQuantity.Font = New Font("Arial Rounded MT Bold", 9F)
         txtQuantity.Location = New Point(10, 107)
         txtQuantity.Name = "txtQuantity"
-        txtQuantity.Size = New Size(170, 21)
+        txtQuantity.ReadOnly = True
+        txtQuantity.Size = New Size(200, 21)
         txtQuantity.TabIndex = 6
         ' 
         ' Label12
@@ -413,7 +414,8 @@ Partial Class frmStockManagement
         txtPrice.Font = New Font("Arial Rounded MT Bold", 9F)
         txtPrice.Location = New Point(10, 154)
         txtPrice.Name = "txtPrice"
-        txtPrice.Size = New Size(170, 21)
+        txtPrice.ReadOnly = True
+        txtPrice.Size = New Size(200, 21)
         txtPrice.TabIndex = 8
         ' 
         ' btnRemove1
@@ -423,41 +425,41 @@ Partial Class frmStockManagement
         btnRemove1.FlatStyle = FlatStyle.Flat
         btnRemove1.Font = New Font("Arial Rounded MT Bold", 12F)
         btnRemove1.ForeColor = Color.White
-        btnRemove1.Location = New Point(430, 528)
+        btnRemove1.Location = New Point(439, 477)
         btnRemove1.Name = "btnRemove1"
         btnRemove1.Size = New Size(137, 36)
         btnRemove1.TabIndex = 34
         btnRemove1.Text = "Remove"
         btnRemove1.UseVisualStyleBackColor = False
         ' 
-        ' btnSave
-        ' 
-        btnSave.BackColor = Color.Teal
-        btnSave.FlatAppearance.BorderSize = 0
-        btnSave.FlatStyle = FlatStyle.Flat
-        btnSave.Font = New Font("Arial Rounded MT Bold", 12F)
-        btnSave.ForeColor = Color.White
-        btnSave.Location = New Point(283, 528)
-        btnSave.Name = "btnSave"
-        btnSave.Size = New Size(128, 36)
-        btnSave.TabIndex = 32
-        btnSave.Text = "Save"
-        btnSave.UseVisualStyleBackColor = False
-        ' 
         ' Panel2
         ' 
         Panel2.BackColor = Color.FromArgb(CByte(224), CByte(240), CByte(234))
+        Panel2.Controls.Add(btnEditItems)
         Panel2.Controls.Add(btnAdd)
         Panel2.Controls.Add(Panel1)
         Panel2.Controls.Add(btnRemove1)
         Panel2.Controls.Add(pnlDetails)
         Panel2.Controls.Add(txtSearch)
-        Panel2.Controls.Add(btnSave)
         Panel2.Controls.Add(ListView1)
         Panel2.Location = New Point(12, 83)
         Panel2.Name = "Panel2"
         Panel2.Size = New Size(1014, 608)
         Panel2.TabIndex = 35
+        ' 
+        ' btnEditItems
+        ' 
+        btnEditItems.BackColor = Color.SaddleBrown
+        btnEditItems.FlatAppearance.BorderSize = 0
+        btnEditItems.FlatStyle = FlatStyle.Flat
+        btnEditItems.Font = New Font("Arial Rounded MT Bold", 12F)
+        btnEditItems.ForeColor = Color.White
+        btnEditItems.Location = New Point(290, 477)
+        btnEditItems.Name = "btnEditItems"
+        btnEditItems.Size = New Size(128, 36)
+        btnEditItems.TabIndex = 36
+        btnEditItems.Text = "Edit Items"
+        btnEditItems.UseVisualStyleBackColor = False
         ' 
         ' btnAdd
         ' 
@@ -466,7 +468,7 @@ Partial Class frmStockManagement
         btnAdd.FlatStyle = FlatStyle.Flat
         btnAdd.Font = New Font("Arial Rounded MT Bold", 12F)
         btnAdd.ForeColor = Color.White
-        btnAdd.Location = New Point(133, 528)
+        btnAdd.Location = New Point(142, 477)
         btnAdd.Name = "btnAdd"
         btnAdd.Size = New Size(128, 36)
         btnAdd.TabIndex = 35
@@ -516,7 +518,6 @@ Partial Class frmStockManagement
     Friend WithEvents pnlDetails As Panel
     Private WithEvents Label5 As Label
     Private WithEvents txtSize As TextBox
-    Private WithEvents Label4 As Label
     Private WithEvents txtLevel As TextBox
     Private WithEvents Label9 As Label
     Private WithEvents Label6 As Label
@@ -531,9 +532,10 @@ Partial Class frmStockManagement
     Private WithEvents Label12 As Label
     Private WithEvents txtPrice As TextBox
     Private WithEvents btnRemove1 As Button
-    Private WithEvents btnSave As Button
     Friend WithEvents Panel2 As Panel
     Friend WithEvents lblTitle As Label
     Friend WithEvents uniform_id As ColumnHeader
     Private WithEvents btnAdd As Button
+    Private WithEvents btnEditItems As Button
+    Private WithEvents Label8 As Label
 End Class

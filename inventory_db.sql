@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 23, 2025 at 05:55 AM
+-- Generation Time: Nov 01, 2025 at 04:58 PM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -42,8 +42,8 @@ CREATE TABLE `tbladmin_users` (
 --
 
 INSERT INTO `tbladmin_users` (`admin_id`, `username`, `LastName`, `FirstName`, `Middle_Name`, `Password`, `assigned_department`) VALUES
-(67899876, 'Morales', 'Morales', 'Maria Dionesia', 'L', 'DIONESIA', 'Bookstore Department'),
-(12344321, 'Marasigan', 'Morales', 'Reynaldo', 'M', 'REYNALDO', 'Property Department');
+(12344321, 'Marasigan', 'Morales', 'Reynaldo', 'M', 'REYNALDO', 'Property Department'),
+(67899876, 'Morales', 'Morales', 'Maria Dionesia', 'L', 'DIONESIA', 'Bookstore Department');
 
 -- --------------------------------------------------------
 
@@ -72,11 +72,34 @@ CREATE TABLE `tblstockrequests` (
 CREATE TABLE `tbluniformlogs` (
   `log_id` int(11) NOT NULL,
   `uniform_id` int(50) NOT NULL,
-  `action` enum('added','updated','sold','restocked') NOT NULL,
-  `quantity_change` int(50) NOT NULL,
-  `user_id` varchar(50) NOT NULL,
-  `action_date` datetime NOT NULL
+  `action` enum('Add Item','Update Item','Pullout','Delete Item') NOT NULL,
+  `Reason` varchar(100) NOT NULL,
+  `changed_quantity` varchar(50) NOT NULL,
+  `previous_quantity` varchar(11) DEFAULT NULL,
+  `new_quantity` varchar(11) DEFAULT NULL,
+  `admin_id` int(50) NOT NULL,
+  `action_date` datetime NOT NULL,
+  `item_name` varchar(100) DEFAULT NULL,
+  `level` varchar(50) DEFAULT NULL,
+  `gender` varchar(20) DEFAULT NULL,
+  `size` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbluniformlogs`
+--
+
+INSERT INTO `tbluniformlogs` (`log_id`, `uniform_id`, `action`, `Reason`, `changed_quantity`, `previous_quantity`, `new_quantity`, `admin_id`, `action_date`, `item_name`, `level`, `gender`, `size`) VALUES
+(1, 1, 'Update Item', '', '-25', '50', '25', 12344321, '2025-11-01 21:41:00', NULL, NULL, NULL, NULL),
+(2, 312, 'Add Item', '', '12', '0', '12', 12344321, '2025-11-01 21:41:47', NULL, NULL, NULL, NULL),
+(3, 1, 'Pullout', 'Damaged', '-10', '25', '15', 12344321, '2025-11-01 21:42:26', NULL, NULL, NULL, NULL),
+(4, 312, 'Delete Item', '', '-12', '12', '0', 12344321, '2025-11-01 21:42:51', NULL, NULL, NULL, NULL),
+(5, 313, 'Add Item', '', '90', '0', '90', 12344321, '2025-11-01 21:45:23', NULL, NULL, NULL, NULL),
+(6, 313, 'Delete Item', '', '-90', '90', '0', 12344321, '2025-11-01 21:45:36', NULL, NULL, NULL, NULL),
+(7, 314, 'Add Item', '', '1221', '0', '1221', 12344321, '2025-11-01 21:48:51', NULL, NULL, NULL, NULL),
+(8, 314, 'Delete Item', '', '-1221', '1221', '0', 12344321, '2025-11-01 21:49:02', 'hahahah', 'Elementary', 'Unisex', 'Small'),
+(9, 4, 'Pullout', 'Misprinted', '-5', '20', '15', 12344321, '2025-11-01 22:53:58', NULL, NULL, NULL, NULL),
+(10, 3, 'Update Item', '', '-15', '20', '5', 12344321, '2025-11-01 22:54:31', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -102,22 +125,22 @@ CREATE TABLE `tbluniforms` (
 --
 
 INSERT INTO `tbluniforms` (`uniform_id`, `item_name`, `category`, `level`, `gender`, `size`, `stock_quantity`, `price`, `status`, `date_added`) VALUES
-(1, 'Slacks', 'School Uniform', 'College', 'Male', 'Extra Small', 0, 470, 'Available', '2025-10-07 11:28:08'),
-(2, 'Polo', 'School Uniform', 'College', 'Male', 'Extra Small', 8, 470, 'Available', '2025-10-07 11:29:07'),
-(3, 'Skirt', 'School Uniform', 'College', 'Female', 'Extra Small', 14, 470, 'Available', '2025-10-07 11:30:01'),
-(4, 'Polo', 'School Uniform', 'College', 'Female', 'Extra Small', 10, 470, 'Available', '2025-10-07 11:30:31'),
+(1, 'Slacks', 'School Uniform', 'College', 'Male', 'Extra Small', 15, 450, 'Available', '2025-10-07 11:28:08'),
+(2, 'Polo', 'School Uniform', 'College', 'Male', 'Extra Small', 10, 450, 'Available', '2025-10-07 11:29:07'),
+(3, 'Skirt', 'School Uniform', 'College', 'Female', 'Extra Small', 5, 470, '', '2025-10-07 11:30:01'),
+(4, 'Polo', 'School Uniform', 'College', 'Female', 'Extra Small', 15, 420, 'Available', '2025-10-07 11:30:31'),
 (5, 'Slacks', 'School Uniform', 'College', 'Male', 'Small', 10, 470, 'Available', '2025-10-07 11:30:31'),
 (6, 'Polo', 'School Uniform', 'College', 'Male', 'Small', 10, 470, 'Available', '2025-10-07 11:31:23'),
-(7, 'Skirt', 'School Uniform', 'College', 'Female', 'Small', 10, 470, 'Available', '2025-10-07 11:31:23'),
-(8, 'Polo', 'School Uniform', 'College', 'Female', 'Small', 10, 470, 'Available', '2025-10-07 11:31:23'),
+(7, 'Skirt', 'School Uniform', 'College', 'Female', 'Small', 10, 450, 'Available', '2025-10-07 11:31:23'),
+(8, 'Polo', 'School Uniform', 'College', 'Female', 'Small', 12, 470, 'Available', '2025-10-07 11:31:23'),
 (9, 'Slacks', 'School Uniform', 'College', 'Male', 'Medium', 10, 470, 'Available', '2025-10-07 11:31:23'),
 (10, 'Polo', 'School Uniform', 'College', 'Male', 'Medium', 10, 470, 'Available', '2025-10-07 11:31:23'),
 (11, 'Skirt', 'School Uniform', 'College', 'Female', 'Medium', 10, 470, 'Available', '2025-10-07 11:31:23'),
 (12, 'Polo', 'School Uniform', 'College', 'Female', 'Medium', 10, 470, 'Available', '2025-10-07 11:31:23'),
 (13, 'Slacks', 'School Uniform', 'College', 'Male', 'Large', 10, 470, 'Available', '2025-10-07 11:31:23'),
-(14, 'Polo', 'School Uniform', 'College', 'Male', 'Large', 10, 470, 'Available', '2025-10-07 11:31:23'),
+(14, 'Polo', 'School Uniform', 'College', 'Male', 'Large', 12, 470, 'Available', '2025-10-07 11:31:23'),
 (15, 'Skirt', 'School Uniform', 'College', 'Female', 'Large', 10, 470, 'Available', '2025-10-07 11:31:23'),
-(16, 'Polo', 'School Uniform', 'College', 'Female', 'Large', 10, 470, 'Available', '2025-10-07 11:31:23'),
+(16, 'Polo', 'School Uniform', 'College', 'Female', 'Large', 11, 450, 'Available', '2025-10-07 11:31:23'),
 (17, 'Slacks', 'School Uniform', 'College', 'Male', 'Extra Large', 10, 470, 'Available', '2025-10-07 11:31:23'),
 (18, 'Polo', 'School Uniform', 'College', 'Male', 'Extra Large', 10, 470, 'Available', '2025-10-07 11:31:23'),
 (19, 'Skirt', 'School Uniform', 'College', 'Female', 'Extra Large', 10, 470, 'Available', '2025-10-07 11:31:23'),
@@ -402,7 +425,8 @@ INSERT INTO `tbluniforms` (`uniform_id`, `item_name`, `category`, `level`, `gend
 (300, 'Blouse', 'School Uniform', 'Kindergarten', 'Female', '6XL', 10, 450, 'Available', '2025-10-07 12:46:08'),
 (301, 'Jumper', 'School Uniform', 'Kindergarten', 'Female', '6XL', 10, 470, 'Available', '2025-10-07 12:46:08'),
 (302, 'Polo', 'School Uniform', 'Kindergarten', '', '6XL', 10, 450, 'Available', '2025-10-07 12:46:08'),
-(303, 'Pants', 'School Uniform', 'Kindergarten', 'Male', '6XL', 10, 470, 'Available', '2025-10-07 12:46:08');
+(303, 'Pants', 'School Uniform', 'Kindergarten', 'Male', '6XL', 10, 470, 'Available', '2025-10-07 12:46:08'),
+(305, 'HSHS', 'PE Uniform', 'Junior High', 'Male', 'Medium', 12, 123, 'Available', '2025-11-01 17:19:47');
 
 -- --------------------------------------------------------
 
@@ -496,11 +520,26 @@ INSERT INTO `tbl_pullouts` (`PulloutId`, `uniform_id`, `PulloutReason`, `Date`, 
 (30, 3, 'Damaged', '2025-10-22 21:03:03', -2),
 (31, 3, 'Damaged', '2025-10-22 21:03:27', 0),
 (32, 1, 'Damaged', '2025-10-23 11:17:19', 1),
-(33, 1, 'Misprinted', '2025-10-23 11:18:07', 2);
+(33, 1, 'Misprinted', '2025-10-23 11:18:07', 2),
+(34, 1, '', '2025-11-01 16:48:10', 1),
+(35, 1, 'Damaged', '2025-11-01 16:55:49', 1),
+(36, 1, 'Misprinted', '2025-11-01 19:56:20', 11),
+(37, 4, 'Misprinted', '2025-11-01 19:57:07', 9),
+(38, 1, 'Damaged', '2025-11-01 19:58:14', 9),
+(39, 2, 'Damaged', '2025-11-01 20:00:47', 5),
+(40, 1, 'Misprinted', '2025-11-01 20:01:42', 50),
+(41, 1, 'Damaged', '2025-11-01 21:42:26', 10),
+(42, 4, 'Misprinted', '2025-11-01 22:53:58', 5);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `tbladmin_users`
+--
+ALTER TABLE `tbladmin_users`
+  ADD PRIMARY KEY (`admin_id`);
 
 --
 -- Indexes for table `tblstockrequests`
@@ -512,7 +551,8 @@ ALTER TABLE `tblstockrequests`
 -- Indexes for table `tbluniformlogs`
 --
 ALTER TABLE `tbluniformlogs`
-  ADD PRIMARY KEY (`log_id`);
+  ADD PRIMARY KEY (`log_id`),
+  ADD KEY `admin_id` (`admin_id`);
 
 --
 -- Indexes for table `tbluniforms`
@@ -543,6 +583,12 @@ ALTER TABLE `tbl_pullouts`
 --
 
 --
+-- AUTO_INCREMENT for table `tbladmin_users`
+--
+ALTER TABLE `tbladmin_users`
+  MODIFY `admin_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67899877;
+
+--
 -- AUTO_INCREMENT for table `tblstockrequests`
 --
 ALTER TABLE `tblstockrequests`
@@ -552,13 +598,13 @@ ALTER TABLE `tblstockrequests`
 -- AUTO_INCREMENT for table `tbluniformlogs`
 --
 ALTER TABLE `tbluniformlogs`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tbluniforms`
 --
 ALTER TABLE `tbluniforms`
-  MODIFY `uniform_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=304;
+  MODIFY `uniform_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=315;
 
 --
 -- AUTO_INCREMENT for table `tbluniformsales`
@@ -570,7 +616,17 @@ ALTER TABLE `tbluniformsales`
 -- AUTO_INCREMENT for table `tbl_pullouts`
 --
 ALTER TABLE `tbl_pullouts`
-  MODIFY `PulloutId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `PulloutId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `tbluniformlogs`
+--
+ALTER TABLE `tbluniformlogs`
+  ADD CONSTRAINT `tbluniformlogs_ibfk_1` FOREIGN KEY (`admin_id`) REFERENCES `tbladmin_users` (`admin_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

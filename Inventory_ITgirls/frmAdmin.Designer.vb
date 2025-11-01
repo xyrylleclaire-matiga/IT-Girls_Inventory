@@ -59,6 +59,7 @@ Partial Class frmAdmin
         Label1 = New Label()
         PictureBox3 = New PictureBox()
         PanelMain = New Panel()
+        btnHistory = New Button()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
         Panel1.SuspendLayout()
@@ -110,9 +111,9 @@ Partial Class frmAdmin
         btnSalesReport.FlatStyle = FlatStyle.Flat
         btnSalesReport.Font = New Font("Arial Rounded MT Bold", 11.25F)
         btnSalesReport.ForeColor = Color.White
-        btnSalesReport.Location = New Point(-6, 227)
+        btnSalesReport.Location = New Point(-6, 237)
         btnSalesReport.Name = "btnSalesReport"
-        btnSalesReport.Size = New Size(213, 40)
+        btnSalesReport.Size = New Size(213, 49)
         btnSalesReport.TabIndex = 1
         btnSalesReport.Text = "REPORTS"
         btnSalesReport.UseVisualStyleBackColor = False
@@ -124,9 +125,9 @@ Partial Class frmAdmin
         btnStockManagement.FlatStyle = FlatStyle.Flat
         btnStockManagement.Font = New Font("Arial Rounded MT Bold", 11.25F)
         btnStockManagement.ForeColor = Color.White
-        btnStockManagement.Location = New Point(-6, 177)
+        btnStockManagement.Location = New Point(-6, 184)
         btnStockManagement.Name = "btnStockManagement"
-        btnStockManagement.Size = New Size(213, 40)
+        btnStockManagement.Size = New Size(213, 49)
         btnStockManagement.TabIndex = 0
         btnStockManagement.Text = "MANAGE STOCK"
         btnStockManagement.UseVisualStyleBackColor = False
@@ -147,9 +148,9 @@ Partial Class frmAdmin
         btnHome.FlatStyle = FlatStyle.Flat
         btnHome.Font = New Font("Arial Rounded MT Bold", 11.25F)
         btnHome.ForeColor = Color.White
-        btnHome.Location = New Point(-4, 131)
+        btnHome.Location = New Point(-8, 131)
         btnHome.Name = "btnHome"
-        btnHome.Size = New Size(208, 40)
+        btnHome.Size = New Size(211, 49)
         btnHome.TabIndex = 59
         btnHome.Text = "HOME"
         btnHome.UseVisualStyleBackColor = False
@@ -161,9 +162,9 @@ Partial Class frmAdmin
         btnPullOut.FlatStyle = FlatStyle.Flat
         btnPullOut.Font = New Font("Arial Rounded MT Bold", 11.25F)
         btnPullOut.ForeColor = Color.White
-        btnPullOut.Location = New Point(-2, 273)
+        btnPullOut.Location = New Point(-2, 290)
         btnPullOut.Name = "btnPullOut"
-        btnPullOut.Size = New Size(206, 40)
+        btnPullOut.Size = New Size(206, 49)
         btnPullOut.TabIndex = 69
         btnPullOut.Text = "PULLOUTS"
         btnPullOut.UseVisualStyleBackColor = False
@@ -501,12 +502,27 @@ Partial Class frmAdmin
         PanelMain.Size = New Size(1056, 670)
         PanelMain.TabIndex = 58
         ' 
+        ' btnHistory
+        ' 
+        btnHistory.BackColor = Color.DarkSlateGray
+        btnHistory.FlatAppearance.BorderSize = 0
+        btnHistory.FlatStyle = FlatStyle.Flat
+        btnHistory.Font = New Font("Arial Rounded MT Bold", 11.25F)
+        btnHistory.ForeColor = Color.White
+        btnHistory.Location = New Point(-2, 343)
+        btnHistory.Name = "btnHistory"
+        btnHistory.Size = New Size(206, 49)
+        btnHistory.TabIndex = 71
+        btnHistory.Text = "HISTORY"
+        btnHistory.UseVisualStyleBackColor = False
+        ' 
         ' frmAdmin
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.DarkSlateGray
         ClientSize = New Size(1257, 664)
+        Controls.Add(btnHistory)
         Controls.Add(btnHome)
         Controls.Add(PictureBox2)
         Controls.Add(btnPullOut)
@@ -580,4 +596,5 @@ Partial Class frmAdmin
     Friend WithEvents PictureBox3 As PictureBox
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
+    Friend WithEvents btnHistory As Button
 End Class
