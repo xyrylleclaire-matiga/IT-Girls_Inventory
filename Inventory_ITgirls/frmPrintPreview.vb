@@ -220,4 +220,20 @@ Public Class frmPrintPreview
         borderPen.Dispose()
         linePen.Dispose()
     End Sub
+
+    Private Sub PaneL4_Paint(sender As Object, e As PaintEventArgs) Handles Panel4.Paint
+        Dim pnl As Panel = DirectCast(sender, Panel)
+        Dim radius As Integer = 10
+        e.Graphics.SmoothingMode = Drawing2D.SmoothingMode.AntiAlias
+
+        Dim path As New Drawing2D.GraphicsPath()
+        path.StartFigure()
+        path.AddArc(0, 0, radius, radius, 180, 90)
+        path.AddArc(pnl.Width - radius, 0, radius, radius, 270, 90)
+        path.AddArc(pnl.Width - radius, pnl.Height - radius, radius, radius, 0, 90)
+        path.AddArc(0, pnl.Height - radius, radius, radius, 90, 90)
+        path.CloseFigure()
+
+        pnl.Region = New Region(path)
+    End Sub
 End Class

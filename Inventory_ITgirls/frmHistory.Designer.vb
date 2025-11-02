@@ -25,8 +25,8 @@ Partial Class frmHistory
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmHistory))
         Label2 = New Label()
         Panel1 = New Panel()
-        lblDeleted = New Label()
         btnPrint = New Button()
+        lblDeleted = New Label()
         lblPullout = New Label()
         lblUpdated = New Label()
         lblAdded = New Label()
@@ -77,8 +77,8 @@ Partial Class frmHistory
         ' Panel1
         ' 
         Panel1.BackColor = Color.FromArgb(CByte(224), CByte(240), CByte(234))
-        Panel1.Controls.Add(lblDeleted)
         Panel1.Controls.Add(btnPrint)
+        Panel1.Controls.Add(lblDeleted)
         Panel1.Controls.Add(lblPullout)
         Panel1.Controls.Add(lblUpdated)
         Panel1.Controls.Add(lblAdded)
@@ -99,6 +99,19 @@ Partial Class frmHistory
         Panel1.Size = New Size(1014, 153)
         Panel1.TabIndex = 11
         ' 
+        ' btnPrint
+        ' 
+        btnPrint.BackColor = Color.IndianRed
+        btnPrint.FlatStyle = FlatStyle.Flat
+        btnPrint.Font = New Font("Arial Rounded MT Bold", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        btnPrint.ForeColor = Color.White
+        btnPrint.Location = New Point(857, 11)
+        btnPrint.Name = "btnPrint"
+        btnPrint.Size = New Size(108, 25)
+        btnPrint.TabIndex = 30
+        btnPrint.Text = "Print"
+        btnPrint.UseVisualStyleBackColor = False
+        ' 
         ' lblDeleted
         ' 
         lblDeleted.AutoSize = True
@@ -110,19 +123,6 @@ Partial Class frmHistory
         lblDeleted.Size = New Size(25, 37)
         lblDeleted.TabIndex = 24
         lblDeleted.Text = " "
-        ' 
-        ' btnPrint
-        ' 
-        btnPrint.BackColor = Color.SteelBlue
-        btnPrint.FlatStyle = FlatStyle.Flat
-        btnPrint.Font = New Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        btnPrint.ForeColor = SystemColors.ControlLightLight
-        btnPrint.Location = New Point(851, 8)
-        btnPrint.Name = "btnPrint"
-        btnPrint.Size = New Size(110, 32)
-        btnPrint.TabIndex = 25
-        btnPrint.Text = " PRINT"
-        btnPrint.UseVisualStyleBackColor = False
         ' 
         ' lblPullout
         ' 
@@ -459,7 +459,6 @@ Partial Class frmHistory
     Friend WithEvents lblUpdated As Label
     Friend WithEvents lblPullout As Label
     Friend WithEvents lblDeleted As Label
-    Friend WithEvents btnPrint As Button
     Friend WithEvents Button5 As Button
     Friend WithEvents btnPreview As Button
     Friend WithEvents Button6 As Button
@@ -468,4 +467,5 @@ Partial Class frmHistory
     Friend WithEvents ColumnHeader10 As ColumnHeader
     Friend WithEvents PrintDocument1 As Printing.PrintDocument
     Friend WithEvents PrintPreviewDialog1 As PrintPreviewDialog
+    Friend WithEvents btnPrint As Button
 End Class

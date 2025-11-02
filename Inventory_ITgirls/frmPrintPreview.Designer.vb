@@ -24,6 +24,7 @@ Partial Class frmPrintPreview
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPrintPreview))
         Panel3 = New Panel()
+        Label21 = New Label()
         lblPrintDate = New Label()
         Label20 = New Label()
         Label18 = New Label()
@@ -73,7 +74,6 @@ Partial Class frmPrintPreview
         btnPrint = New Button()
         PrintDocument1 = New Printing.PrintDocument()
         PrintPreviewDialog1 = New PrintPreviewDialog()
-        Label21 = New Label()
         Panel3.SuspendLayout()
         Panel8.SuspendLayout()
         Panel7.SuspendLayout()
@@ -100,6 +100,17 @@ Partial Class frmPrintPreview
         Panel3.Name = "Panel3"
         Panel3.Size = New Size(456, 584)
         Panel3.TabIndex = 114
+        ' 
+        ' Label21
+        ' 
+        Label21.AutoSize = True
+        Label21.Font = New Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label21.ForeColor = Color.Firebrick
+        Label21.Location = New Point(122, 535)
+        Label21.Name = "Label21"
+        Label21.Size = New Size(206, 15)
+        Label21.TabIndex = 19
+        Label21.Text = "Inventory Management System"
         ' 
         ' lblPrintDate
         ' 
@@ -626,17 +637,6 @@ Partial Class frmPrintPreview
         PrintPreviewDialog1.Icon = CType(resources.GetObject("PrintPreviewDialog1.Icon"), Icon)
         PrintPreviewDialog1.Name = "PrintPreviewDialog1"
         PrintPreviewDialog1.Visible = False
-        ' 
-        ' Label21
-        ' 
-        Label21.AutoSize = True
-        Label21.Font = New Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label21.ForeColor = Color.Firebrick
-        Label21.Location = New Point(122, 535)
-        Label21.Name = "Label21"
-        Label21.Size = New Size(206, 15)
-        Label21.TabIndex = 19
-        Label21.Text = "Inventory Management System"
         ' 
         ' frmPrintPreview
         ' 

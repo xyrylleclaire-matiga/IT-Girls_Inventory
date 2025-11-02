@@ -33,15 +33,15 @@ Partial Class frmAdmin
         PictureBox2 = New PictureBox()
         Panel1 = New Panel()
         Panel17 = New Panel()
-        Panel4 = New Panel()
+        PanelPendingRequests = New Panel()
         Button4 = New Button()
         lblPendingRequest = New Label()
         Panel16 = New Panel()
-        Panel3 = New Panel()
+        PanelTotalStocks = New Panel()
         Button3 = New Button()
         lblTotalStocks = New Label()
         Panel15 = New Panel()
-        Panel5 = New Panel()
+        PanelTotalPullouts = New Panel()
         Button2 = New Button()
         lblTotalPullouts = New Label()
         Panel6 = New Panel()
@@ -64,11 +64,11 @@ Partial Class frmAdmin
         CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
         Panel1.SuspendLayout()
         Panel17.SuspendLayout()
-        Panel4.SuspendLayout()
+        PanelPendingRequests.SuspendLayout()
         Panel16.SuspendLayout()
-        Panel3.SuspendLayout()
+        PanelTotalStocks.SuspendLayout()
         Panel15.SuspendLayout()
-        Panel5.SuspendLayout()
+        PanelTotalPullouts.SuspendLayout()
         Panel6.SuspendLayout()
         PanelLowStock.SuspendLayout()
         CType(picCorpo, ComponentModel.ISupportInitialize).BeginInit()
@@ -200,31 +200,31 @@ Partial Class frmAdmin
         ' Panel17
         ' 
         Panel17.BackColor = Color.DarkSlateGray
-        Panel17.Controls.Add(Panel4)
+        Panel17.Controls.Add(PanelPendingRequests)
         Panel17.Location = New Point(785, 86)
         Panel17.Name = "Panel17"
         Panel17.Size = New Size(224, 137)
         Panel17.TabIndex = 70
         ' 
-        ' Panel4
+        ' PanelPendingRequests
         ' 
-        Panel4.BackColor = Color.LightCyan
-        Panel4.Controls.Add(Button4)
-        Panel4.Controls.Add(lblPendingRequest)
-        Panel4.Location = New Point(17, 13)
-        Panel4.Name = "Panel4"
-        Panel4.Size = New Size(189, 116)
-        Panel4.TabIndex = 71
+        PanelPendingRequests.BackColor = Color.LightCyan
+        PanelPendingRequests.Controls.Add(Button4)
+        PanelPendingRequests.Controls.Add(lblPendingRequest)
+        PanelPendingRequests.Location = New Point(17, 13)
+        PanelPendingRequests.Name = "PanelPendingRequests"
+        PanelPendingRequests.Size = New Size(189, 116)
+        PanelPendingRequests.TabIndex = 71
         ' 
         ' Button4
         ' 
         Button4.BackColor = Color.DarkSlateGray
         Button4.FlatStyle = FlatStyle.Flat
-        Button4.Font = New Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Button4.Font = New Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Button4.ForeColor = SystemColors.Control
         Button4.Location = New Point(5, 2)
         Button4.Name = "Button4"
-        Button4.Size = New Size(116, 27)
+        Button4.Size = New Size(181, 27)
         Button4.TabIndex = 27
         Button4.Text = "Pending Requests"
         Button4.UseVisualStyleBackColor = False
@@ -232,42 +232,42 @@ Partial Class frmAdmin
         ' lblPendingRequest
         ' 
         lblPendingRequest.AutoSize = True
-        lblPendingRequest.Font = New Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lblPendingRequest.Font = New Font("Arial Rounded MT Bold", 18F)
         lblPendingRequest.ForeColor = SystemColors.ActiveCaptionText
-        lblPendingRequest.Location = New Point(133, 69)
+        lblPendingRequest.Location = New Point(85, 58)
         lblPendingRequest.Name = "lblPendingRequest"
-        lblPendingRequest.Size = New Size(20, 25)
+        lblPendingRequest.Size = New Size(20, 28)
         lblPendingRequest.TabIndex = 26
         lblPendingRequest.Text = "-"
         ' 
         ' Panel16
         ' 
         Panel16.BackColor = Color.DarkGoldenrod
-        Panel16.Controls.Add(Panel3)
+        Panel16.Controls.Add(PanelTotalStocks)
         Panel16.Location = New Point(531, 86)
         Panel16.Name = "Panel16"
         Panel16.Size = New Size(224, 137)
         Panel16.TabIndex = 29
         ' 
-        ' Panel3
+        ' PanelTotalStocks
         ' 
-        Panel3.BackColor = Color.Beige
-        Panel3.Controls.Add(Button3)
-        Panel3.Controls.Add(lblTotalStocks)
-        Panel3.Location = New Point(19, 12)
-        Panel3.Name = "Panel3"
-        Panel3.Size = New Size(183, 116)
-        Panel3.TabIndex = 69
+        PanelTotalStocks.BackColor = Color.Beige
+        PanelTotalStocks.Controls.Add(Button3)
+        PanelTotalStocks.Controls.Add(lblTotalStocks)
+        PanelTotalStocks.Location = New Point(19, 12)
+        PanelTotalStocks.Name = "PanelTotalStocks"
+        PanelTotalStocks.Size = New Size(183, 116)
+        PanelTotalStocks.TabIndex = 69
         ' 
         ' Button3
         ' 
         Button3.BackColor = Color.DarkGoldenrod
         Button3.FlatStyle = FlatStyle.Flat
-        Button3.Font = New Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Button3.Font = New Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Button3.ForeColor = SystemColors.Control
         Button3.Location = New Point(3, 3)
         Button3.Name = "Button3"
-        Button3.Size = New Size(116, 27)
+        Button3.Size = New Size(177, 27)
         Button3.TabIndex = 28
         Button3.Text = "Total Stocks"
         Button3.UseVisualStyleBackColor = False
@@ -275,42 +275,42 @@ Partial Class frmAdmin
         ' lblTotalStocks
         ' 
         lblTotalStocks.AutoSize = True
-        lblTotalStocks.Font = New Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lblTotalStocks.Font = New Font("Arial Rounded MT Bold", 18F)
         lblTotalStocks.ForeColor = SystemColors.ActiveCaptionText
-        lblTotalStocks.Location = New Point(131, 75)
+        lblTotalStocks.Location = New Point(81, 59)
         lblTotalStocks.Name = "lblTotalStocks"
-        lblTotalStocks.Size = New Size(20, 25)
+        lblTotalStocks.Size = New Size(20, 28)
         lblTotalStocks.TabIndex = 26
         lblTotalStocks.Text = "-"
         ' 
         ' Panel15
         ' 
         Panel15.BackColor = Color.SeaGreen
-        Panel15.Controls.Add(Panel5)
+        Panel15.Controls.Add(PanelTotalPullouts)
         Panel15.Location = New Point(280, 86)
         Panel15.Name = "Panel15"
         Panel15.Size = New Size(224, 137)
         Panel15.TabIndex = 73
         ' 
-        ' Panel5
+        ' PanelTotalPullouts
         ' 
-        Panel5.BackColor = Color.Honeydew
-        Panel5.Controls.Add(Button2)
-        Panel5.Controls.Add(lblTotalPullouts)
-        Panel5.Location = New Point(22, 11)
-        Panel5.Name = "Panel5"
-        Panel5.Size = New Size(183, 116)
-        Panel5.TabIndex = 70
+        PanelTotalPullouts.BackColor = Color.Honeydew
+        PanelTotalPullouts.Controls.Add(Button2)
+        PanelTotalPullouts.Controls.Add(lblTotalPullouts)
+        PanelTotalPullouts.Location = New Point(22, 11)
+        PanelTotalPullouts.Name = "PanelTotalPullouts"
+        PanelTotalPullouts.Size = New Size(183, 116)
+        PanelTotalPullouts.TabIndex = 70
         ' 
         ' Button2
         ' 
         Button2.BackColor = Color.SeaGreen
         Button2.FlatStyle = FlatStyle.Flat
-        Button2.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Button2.Font = New Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Button2.ForeColor = SystemColors.Control
         Button2.Location = New Point(3, 4)
         Button2.Name = "Button2"
-        Button2.Size = New Size(138, 23)
+        Button2.Size = New Size(177, 27)
         Button2.TabIndex = 27
         Button2.Text = "Total Pullouts"
         Button2.UseVisualStyleBackColor = False
@@ -318,11 +318,11 @@ Partial Class frmAdmin
         ' lblTotalPullouts
         ' 
         lblTotalPullouts.AutoSize = True
-        lblTotalPullouts.Font = New Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lblTotalPullouts.Font = New Font("Arial Rounded MT Bold", 18F)
         lblTotalPullouts.ForeColor = SystemColors.ActiveCaptionText
-        lblTotalPullouts.Location = New Point(121, 80)
+        lblTotalPullouts.Location = New Point(75, 60)
         lblTotalPullouts.Name = "lblTotalPullouts"
-        lblTotalPullouts.Size = New Size(20, 25)
+        lblTotalPullouts.Size = New Size(20, 28)
         lblTotalPullouts.TabIndex = 26
         lblTotalPullouts.Text = "-"
         ' 
@@ -350,11 +350,11 @@ Partial Class frmAdmin
         ' 
         Button1.BackColor = Color.Brown
         Button1.FlatStyle = FlatStyle.Flat
-        Button1.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Button1.Font = New Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Button1.ForeColor = SystemColors.Control
         Button1.Location = New Point(4, 4)
         Button1.Name = "Button1"
-        Button1.Size = New Size(80, 23)
+        Button1.Size = New Size(176, 27)
         Button1.TabIndex = 26
         Button1.Text = "Low Stock Alerts"
         Button1.UseVisualStyleBackColor = False
@@ -362,11 +362,11 @@ Partial Class frmAdmin
         ' lblLowStockAlerts
         ' 
         lblLowStockAlerts.AutoSize = True
-        lblLowStockAlerts.Font = New Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lblLowStockAlerts.Font = New Font("Arial Rounded MT Bold", 18F)
         lblLowStockAlerts.ForeColor = SystemColors.ActiveCaptionText
-        lblLowStockAlerts.Location = New Point(118, 68)
+        lblLowStockAlerts.Location = New Point(77, 60)
         lblLowStockAlerts.Name = "lblLowStockAlerts"
-        lblLowStockAlerts.Size = New Size(20, 25)
+        lblLowStockAlerts.Size = New Size(20, 28)
         lblLowStockAlerts.TabIndex = 25
         lblLowStockAlerts.Text = "-"
         ' 
@@ -539,14 +539,14 @@ Partial Class frmAdmin
         CType(PictureBox2, ComponentModel.ISupportInitialize).EndInit()
         Panel1.ResumeLayout(False)
         Panel17.ResumeLayout(False)
-        Panel4.ResumeLayout(False)
-        Panel4.PerformLayout()
+        PanelPendingRequests.ResumeLayout(False)
+        PanelPendingRequests.PerformLayout()
         Panel16.ResumeLayout(False)
-        Panel3.ResumeLayout(False)
-        Panel3.PerformLayout()
+        PanelTotalStocks.ResumeLayout(False)
+        PanelTotalStocks.PerformLayout()
         Panel15.ResumeLayout(False)
-        Panel5.ResumeLayout(False)
-        Panel5.PerformLayout()
+        PanelTotalPullouts.ResumeLayout(False)
+        PanelTotalPullouts.PerformLayout()
         Panel6.ResumeLayout(False)
         PanelLowStock.ResumeLayout(False)
         PanelLowStock.PerformLayout()
@@ -571,15 +571,15 @@ Partial Class frmAdmin
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Panel2 As Panel
     Friend WithEvents Panel17 As Panel
-    Friend WithEvents Panel4 As Panel
+    Friend WithEvents PanelPendingRequests As Panel
     Friend WithEvents Button4 As Button
     Friend WithEvents lblPendingRequest As Label
     Friend WithEvents Panel16 As Panel
-    Friend WithEvents Panel3 As Panel
+    Friend WithEvents PanelTotalStocks As Panel
     Friend WithEvents Button3 As Button
     Friend WithEvents lblTotalStocks As Label
     Friend WithEvents Panel15 As Panel
-    Friend WithEvents Panel5 As Panel
+    Friend WithEvents PanelTotalPullouts As Panel
     Friend WithEvents Button2 As Button
     Friend WithEvents lblTotalPullouts As Label
     Friend WithEvents Panel6 As Panel

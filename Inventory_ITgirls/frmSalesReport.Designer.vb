@@ -22,9 +22,10 @@ Partial Class frmSalesReport
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New DataVisualization.Charting.ChartArea()
-        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New DataVisualization.Charting.Legend()
-        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New DataVisualization.Charting.Series()
+        Dim ChartArea4 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New DataVisualization.Charting.ChartArea()
+        Dim Legend4 As System.Windows.Forms.DataVisualization.Charting.Legend = New DataVisualization.Charting.Legend()
+        Dim Series4 As System.Windows.Forms.DataVisualization.Charting.Series = New DataVisualization.Charting.Series()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSalesReport))
         Label1 = New Label()
         Label2 = New Label()
         Label11 = New Label()
@@ -39,10 +40,18 @@ Partial Class frmSalesReport
         FromDateTimePicker = New DateTimePicker()
         Label3 = New Label()
         Label4 = New Label()
-        btnApply = New Button()
         btnClear = New Button()
         chart1 = New DataVisualization.Charting.Chart()
         btnExport = New Button()
+        txtSearch = New TextBox()
+        rdoAllCategory = New RadioButton()
+        rdoPE = New RadioButton()
+        rdoUniform = New RadioButton()
+        rdoCorporateAttire = New RadioButton()
+        Button1 = New Button()
+        Button2 = New Button()
+        PrintDocument1 = New Printing.PrintDocument()
+        PrintPreviewDialog1 = New PrintPreviewDialog()
         CType(dgvRecentTransactions, ComponentModel.ISupportInitialize).BeginInit()
         CType(chart1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
@@ -51,9 +60,9 @@ Partial Class frmSalesReport
         ' 
         Label1.AutoSize = True
         Label1.BackColor = Color.Transparent
-        Label1.Font = New Font("Franklin Gothic Medium Cond", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label1.Font = New Font("Franklin Gothic Medium Cond", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label1.ForeColor = Color.DarkSlateGray
-        Label1.Location = New Point(151, 35)
+        Label1.Location = New Point(151, 31)
         Label1.Name = "Label1"
         Label1.Size = New Size(51, 21)
         Label1.TabIndex = 21
@@ -65,7 +74,7 @@ Partial Class frmSalesReport
         Label2.BackColor = Color.Transparent
         Label2.Font = New Font("Arial Rounded MT Bold", 24.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label2.ForeColor = Color.DarkSlateGray
-        Label2.Location = New Point(12, 20)
+        Label2.Location = New Point(12, 16)
         Label2.Name = "Label2"
         Label2.Size = New Size(156, 38)
         Label2.TabIndex = 16
@@ -77,7 +86,7 @@ Partial Class frmSalesReport
         Label11.BackColor = Color.Transparent
         Label11.Font = New Font("Arial Rounded MT Bold", 15.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label11.ForeColor = Color.DarkSlateGray
-        Label11.Location = New Point(375, 93)
+        Label11.Location = New Point(372, 124)
         Label11.Name = "Label11"
         Label11.Size = New Size(274, 24)
         Label11.TabIndex = 25
@@ -87,20 +96,20 @@ Partial Class frmSalesReport
         ' 
         dgvRecentTransactions.BackgroundColor = Color.DarkSeaGreen
         dgvRecentTransactions.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        dgvRecentTransactions.Location = New Point(16, 93)
+        dgvRecentTransactions.Location = New Point(13, 129)
         dgvRecentTransactions.Name = "dgvRecentTransactions"
-        dgvRecentTransactions.Size = New Size(1010, 322)
+        dgvRecentTransactions.Size = New Size(1010, 295)
         dgvRecentTransactions.TabIndex = 26
         ' 
         ' ListView2
         ' 
         ListView2.Columns.AddRange(New ColumnHeader() {category, Total_Items, Low_Stocks, Size, Pulled, Last_Update})
-        ListView2.Font = New Font("Arial Rounded MT Bold", 9.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        ListView2.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         ListView2.FullRowSelect = True
         ListView2.GridLines = True
-        ListView2.Location = New Point(42, 127)
+        ListView2.Location = New Point(39, 159)
         ListView2.Name = "ListView2"
-        ListView2.Size = New Size(960, 246)
+        ListView2.Size = New Size(960, 223)
         ListView2.TabIndex = 121
         ListView2.UseCompatibleStateImageBehavior = False
         ListView2.View = View.Details
@@ -137,15 +146,16 @@ Partial Class frmSalesReport
         ' FromDateTimePicker
         ' 
         FromDateTimePicker.CalendarMonthBackground = Color.DarkSeaGreen
-        FromDateTimePicker.Location = New Point(826, 35)
+        FromDateTimePicker.Font = New Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        FromDateTimePicker.Location = New Point(843, 86)
         FromDateTimePicker.Name = "FromDateTimePicker"
-        FromDateTimePicker.Size = New Size(200, 23)
+        FromDateTimePicker.Size = New Size(166, 23)
         FromDateTimePicker.TabIndex = 123
         ' 
         ' Label3
         ' 
         Label3.AutoSize = True
-        Label3.Font = New Font("Segoe UI Semibold", 9.0F, FontStyle.Bold)
+        Label3.Font = New Font("Segoe UI Semibold", 9F, FontStyle.Bold)
         Label3.Location = New Point(999, 176)
         Label3.Name = "Label3"
         Label3.Size = New Size(0, 15)
@@ -154,30 +164,24 @@ Partial Class frmSalesReport
         ' Label4
         ' 
         Label4.AutoSize = True
-        Label4.Font = New Font("Segoe UI Semibold", 9.0F, FontStyle.Bold)
-        Label4.Location = New Point(789, 38)
+        Label4.BackColor = Color.DarkSlateGray
+        Label4.Font = New Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label4.ForeColor = Color.White
+        Label4.Location = New Point(797, 90)
         Label4.Name = "Label4"
-        Label4.Size = New Size(38, 15)
+        Label4.Size = New Size(45, 15)
         Label4.TabIndex = 126
-        Label4.Text = "From:"
-        ' 
-        ' btnApply
-        ' 
-        btnApply.BackColor = Color.SeaGreen
-        btnApply.Location = New Point(842, 64)
-        btnApply.Name = "btnApply"
-        btnApply.Size = New Size(75, 23)
-        btnApply.TabIndex = 127
-        btnApply.Text = "Apply"
-        btnApply.UseVisualStyleBackColor = False
+        Label4.Text = "Date: "
         ' 
         ' btnClear
         ' 
-        btnClear.BackColor = Color.DarkRed
+        btnClear.BackColor = Color.Brown
+        btnClear.FlatStyle = FlatStyle.Flat
+        btnClear.Font = New Font("Arial Rounded MT Bold", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         btnClear.ForeColor = SystemColors.ControlLightLight
-        btnClear.Location = New Point(927, 64)
+        btnClear.Location = New Point(903, 388)
         btnClear.Name = "btnClear"
-        btnClear.Size = New Size(75, 23)
+        btnClear.Size = New Size(96, 28)
         btnClear.TabIndex = 128
         btnClear.Text = "Clear"
         btnClear.UseVisualStyleBackColor = False
@@ -189,50 +193,153 @@ Partial Class frmSalesReport
         chart1.BackSecondaryColor = Color.Transparent
         chart1.BorderlineColor = Color.RosyBrown
         chart1.BorderlineDashStyle = DataVisualization.Charting.ChartDashStyle.DashDotDot
-        ChartArea1.Name = "ChartArea1"
-        chart1.ChartAreas.Add(ChartArea1)
-        Legend1.Name = "Legend1"
-        chart1.Legends.Add(Legend1)
+        ChartArea4.Name = "ChartArea1"
+        chart1.ChartAreas.Add(ChartArea4)
+        Legend4.Name = "Legend1"
+        chart1.Legends.Add(Legend4)
         chart1.Location = New Point(16, 435)
         chart1.Name = "chart1"
         chart1.Palette = DataVisualization.Charting.ChartColorPalette.SeaGreen
-        Series1.ChartArea = "ChartArea1"
-        Series1.Legend = "Legend1"
-        Series1.Name = "Series1"
-        chart1.Series.Add(Series1)
+        Series4.ChartArea = "ChartArea1"
+        Series4.Legend = "Legend1"
+        Series4.Name = "Series1"
+        chart1.Series.Add(Series4)
         chart1.Size = New Size(1010, 216)
         chart1.TabIndex = 129
         chart1.Text = "Chart1"
         ' 
         ' btnExport
         ' 
-        btnExport.BackColor = Color.DarkCyan
-        btnExport.Font = New Font("Segoe UI Semibold", 12.0F, FontStyle.Bold)
-        btnExport.ForeColor = SystemColors.ControlLightLight
-        btnExport.Location = New Point(924, 379)
+        btnExport.BackColor = Color.DarkSlateGray
+        btnExport.FlatStyle = FlatStyle.Flat
+        btnExport.Font = New Font("Arial Rounded MT Bold", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        btnExport.ForeColor = Color.White
+        btnExport.Location = New Point(797, 388)
         btnExport.Name = "btnExport"
-        btnExport.Size = New Size(79, 28)
+        btnExport.Size = New Size(100, 28)
         btnExport.TabIndex = 130
-        btnExport.Text = "PRINT"
+        btnExport.Text = "Print"
         btnExport.UseVisualStyleBackColor = False
+        ' 
+        ' txtSearch
+        ' 
+        txtSearch.Font = New Font("Segoe UI", 10F)
+        txtSearch.Location = New Point(22, 85)
+        txtSearch.Name = "txtSearch"
+        txtSearch.PlaceholderText = "Search item..."
+        txtSearch.Size = New Size(201, 25)
+        txtSearch.TabIndex = 131
+        txtSearch.Text = "🔍 Search..."
+        ' 
+        ' rdoAllCategory
+        ' 
+        rdoAllCategory.AutoSize = True
+        rdoAllCategory.BackColor = Color.LightCyan
+        rdoAllCategory.Font = New Font("Arial Rounded MT Bold", 9.75F)
+        rdoAllCategory.ForeColor = Color.Black
+        rdoAllCategory.Location = New Point(261, 87)
+        rdoAllCategory.Name = "rdoAllCategory"
+        rdoAllCategory.Size = New Size(105, 19)
+        rdoAllCategory.TabIndex = 132
+        rdoAllCategory.TabStop = True
+        rdoAllCategory.Text = "All Category"
+        rdoAllCategory.UseVisualStyleBackColor = False
+        ' 
+        ' rdoPE
+        ' 
+        rdoPE.AutoSize = True
+        rdoPE.BackColor = Color.LightCyan
+        rdoPE.Font = New Font("Arial Rounded MT Bold", 9.75F)
+        rdoPE.ForeColor = Color.Black
+        rdoPE.Location = New Point(641, 88)
+        rdoPE.Name = "rdoPE"
+        rdoPE.Size = New Size(98, 19)
+        rdoPE.TabIndex = 133
+        rdoPE.TabStop = True
+        rdoPE.Text = "PE Uniform"
+        rdoPE.UseVisualStyleBackColor = False
+        ' 
+        ' rdoUniform
+        ' 
+        rdoUniform.AutoSize = True
+        rdoUniform.BackColor = Color.LightCyan
+        rdoUniform.Font = New Font("Arial Rounded MT Bold", 9.75F)
+        rdoUniform.ForeColor = Color.Black
+        rdoUniform.Location = New Point(372, 88)
+        rdoUniform.Name = "rdoUniform"
+        rdoUniform.Size = New Size(125, 19)
+        rdoUniform.TabIndex = 134
+        rdoUniform.TabStop = True
+        rdoUniform.Text = "School Uniform"
+        rdoUniform.UseVisualStyleBackColor = False
+        ' 
+        ' rdoCorporateAttire
+        ' 
+        rdoCorporateAttire.AutoSize = True
+        rdoCorporateAttire.BackColor = Color.LightCyan
+        rdoCorporateAttire.Font = New Font("Arial Rounded MT Bold", 9.75F)
+        rdoCorporateAttire.ForeColor = Color.Black
+        rdoCorporateAttire.Location = New Point(503, 88)
+        rdoCorporateAttire.Name = "rdoCorporateAttire"
+        rdoCorporateAttire.Size = New Size(132, 19)
+        rdoCorporateAttire.TabIndex = 135
+        rdoCorporateAttire.TabStop = True
+        rdoCorporateAttire.Text = "Corporate Attire"
+        rdoCorporateAttire.UseVisualStyleBackColor = False
+        ' 
+        ' Button1
+        ' 
+        Button1.BackColor = Color.DarkSlateGray
+        Button1.FlatStyle = FlatStyle.Flat
+        Button1.Location = New Point(12, 66)
+        Button1.Name = "Button1"
+        Button1.Size = New Size(1011, 67)
+        Button1.TabIndex = 136
+        Button1.UseVisualStyleBackColor = False
+        ' 
+        ' Button2
+        ' 
+        Button2.FlatStyle = FlatStyle.Flat
+        Button2.ForeColor = Color.LightCyan
+        Button2.Location = New Point(247, 81)
+        Button2.Name = "Button2"
+        Button2.Size = New Size(509, 31)
+        Button2.TabIndex = 137
+        Button2.UseVisualStyleBackColor = True
+        ' 
+        ' PrintPreviewDialog1
+        ' 
+        PrintPreviewDialog1.AutoScrollMargin = New Size(0, 0)
+        PrintPreviewDialog1.AutoScrollMinSize = New Size(0, 0)
+        PrintPreviewDialog1.ClientSize = New Size(400, 300)
+        PrintPreviewDialog1.Enabled = True
+        PrintPreviewDialog1.Icon = CType(resources.GetObject("PrintPreviewDialog1.Icon"), Icon)
+        PrintPreviewDialog1.Name = "PrintPreviewDialog1"
+        PrintPreviewDialog1.Visible = False
         ' 
         ' frmSalesReport
         ' 
-        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.LightCyan
         ClientSize = New Size(1038, 551)
+        Controls.Add(rdoCorporateAttire)
+        Controls.Add(rdoUniform)
+        Controls.Add(rdoPE)
+        Controls.Add(rdoAllCategory)
+        Controls.Add(Button2)
+        Controls.Add(txtSearch)
+        Controls.Add(FromDateTimePicker)
+        Controls.Add(Label4)
+        Controls.Add(Label11)
+        Controls.Add(Button1)
         Controls.Add(btnExport)
         Controls.Add(chart1)
         Controls.Add(btnClear)
-        Controls.Add(btnApply)
-        Controls.Add(FromDateTimePicker)
         Controls.Add(ListView2)
         Controls.Add(Label1)
-        Controls.Add(Label11)
         Controls.Add(dgvRecentTransactions)
         Controls.Add(Label2)
-        Controls.Add(Label4)
         Controls.Add(Label3)
         Name = "frmSalesReport"
         Text = "SalesReport"
@@ -256,9 +363,17 @@ Partial Class frmSalesReport
     Friend WithEvents FromDateTimePicker As DateTimePicker
     Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
-    Friend WithEvents btnApply As Button
     Friend WithEvents btnClear As Button
     Friend WithEvents chart1 As DataVisualization.Charting.Chart
     Friend WithEvents btnExport As Button
+    Private WithEvents txtSearch As TextBox
+    Friend WithEvents rdoAllCategory As RadioButton
+    Friend WithEvents rdoPE As RadioButton
+    Friend WithEvents rdoUniform As RadioButton
+    Friend WithEvents rdoCorporateAttire As RadioButton
+    Friend WithEvents Button1 As Button
+    Friend WithEvents Button2 As Button
+    Friend WithEvents PrintDocument1 As Printing.PrintDocument
+    Friend WithEvents PrintPreviewDialog1 As PrintPreviewDialog
 
 End Class

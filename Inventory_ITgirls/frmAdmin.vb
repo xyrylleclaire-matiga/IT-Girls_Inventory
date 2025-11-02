@@ -1,6 +1,77 @@
 ﻿Imports MySql.Data.MySqlClient
 Public Class frmAdmin
 
+    'FOR DESIGNNNN
+    Private Sub PanelLowStock_Paint(sender As Object, e As PaintEventArgs) Handles PanelLowStock.Paint
+        Dim pnl As Panel = DirectCast(sender, Panel)
+        Dim radius As Integer = 10
+        e.Graphics.SmoothingMode = Drawing2D.SmoothingMode.AntiAlias
+
+        Dim path As New Drawing2D.GraphicsPath()
+        path.StartFigure()
+        path.AddArc(0, 0, radius, radius, 180, 90)
+        path.AddArc(pnl.Width - radius, 0, radius, radius, 270, 90)
+        path.AddArc(pnl.Width - radius, pnl.Height - radius, radius, radius, 0, 90)
+        path.AddArc(0, pnl.Height - radius, radius, radius, 90, 90)
+        path.CloseFigure()
+
+        pnl.Region = New Region(path)
+    End Sub
+
+    Private Sub PanelTotalPullouts_Paint(sender As Object, e As PaintEventArgs) Handles PanelTotalPullouts.Paint
+        Dim pnl As Panel = DirectCast(sender, Panel)
+        Dim radius As Integer = 10
+        e.Graphics.SmoothingMode = Drawing2D.SmoothingMode.AntiAlias
+
+        Dim path As New Drawing2D.GraphicsPath()
+        path.StartFigure()
+        path.AddArc(0, 0, radius, radius, 180, 90)
+        path.AddArc(pnl.Width - radius, 0, radius, radius, 270, 90)
+        path.AddArc(pnl.Width - radius, pnl.Height - radius, radius, radius, 0, 90)
+        path.AddArc(0, pnl.Height - radius, radius, radius, 90, 90)
+        path.CloseFigure()
+
+        pnl.Region = New Region(path)
+    End Sub
+
+    Private Sub PanelTotalStocks_Paint(sender As Object, e As PaintEventArgs) Handles PanelTotalStocks.Paint
+        Dim pnl As Panel = DirectCast(sender, Panel)
+        Dim radius As Integer = 10
+        e.Graphics.SmoothingMode = Drawing2D.SmoothingMode.AntiAlias
+
+        Dim path As New Drawing2D.GraphicsPath()
+        path.StartFigure()
+        path.AddArc(0, 0, radius, radius, 180, 90)
+        path.AddArc(pnl.Width - radius, 0, radius, radius, 270, 90)
+        path.AddArc(pnl.Width - radius, pnl.Height - radius, radius, radius, 0, 90)
+        path.AddArc(0, pnl.Height - radius, radius, radius, 90, 90)
+        path.CloseFigure()
+
+        pnl.Region = New Region(path)
+    End Sub
+
+    Private Sub PanelPendingRequests_Paint(sender As Object, e As PaintEventArgs) Handles PanelPendingRequests.Paint
+        Dim pnl As Panel = DirectCast(sender, Panel)
+        Dim radius As Integer = 10
+        e.Graphics.SmoothingMode = Drawing2D.SmoothingMode.AntiAlias
+
+        Dim path As New Drawing2D.GraphicsPath()
+        path.StartFigure()
+        path.AddArc(0, 0, radius, radius, 180, 90)
+        path.AddArc(pnl.Width - radius, 0, radius, radius, 270, 90)
+        path.AddArc(pnl.Width - radius, pnl.Height - radius, radius, radius, 0, 90)
+        path.AddArc(0, pnl.Height - radius, radius, radius, 90, 90)
+        path.CloseFigure()
+
+        pnl.Region = New Region(path)
+    End Sub
+
+
+
+
+
+
+
     Private activeButton As Button = Nothing
     Private Sub SetActiveButton(btn As Button)
         If activeButton IsNot Nothing Then
@@ -164,4 +235,5 @@ Public Class frmAdmin
         SetActiveButton(btnHistory)
 
     End Sub
+
 End Class

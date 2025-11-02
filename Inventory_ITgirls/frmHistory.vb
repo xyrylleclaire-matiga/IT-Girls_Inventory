@@ -47,20 +47,20 @@ Public Class frmHistory
         e.DrawDefault = True
     End Sub
 
-    Private Sub btnPrint_Paint(sender As Object, e As PaintEventArgs) Handles btnPrint.Paint
-        Dim btn As Button = DirectCast(sender, Button)
-        Dim radius As Integer = 10
+    'Private Sub btnPrint_Paint(sender As Object, e As PaintEventArgs) Handles btnPrint.Paint
+    '    Dim btn As Button = DirectCast(sender, Button)
+    '    Dim radius As Integer = 10
 
-        Dim path As New Drawing2D.GraphicsPath()
-        path.StartFigure()
-        path.AddArc(0, 0, radius, radius, 180, 90)
-        path.AddArc(btn.Width - radius, 0, radius, radius, 270, 90)
-        path.AddArc(btn.Width - radius, btn.Height - radius, radius, radius, 0, 90)
-        path.AddArc(0, btn.Height - radius, radius, radius, 90, 90)
-        path.CloseFigure()
+    '    Dim path As New Drawing2D.GraphicsPath()
+    '    path.StartFigure()
+    '    path.AddArc(0, 0, radius, radius, 180, 90)
+    '    path.AddArc(btn.Width - radius, 0, radius, radius, 270, 90)
+    '    path.AddArc(btn.Width - radius, btn.Height - radius, radius, radius, 0, 90)
+    '    path.AddArc(0, btn.Height - radius, radius, radius, 90, 90)
+    '    path.CloseFigure()
 
-        btn.Region = New Region(path)
-    End Sub
+    '    btn.Region = New Region(path)
+    'End Sub
 
     'END OF DESIGN -----------------------------------
 
@@ -627,4 +627,5 @@ Public Class frmHistory
             e.HasMorePages = False
         End Try
     End Sub
+
 End Class
