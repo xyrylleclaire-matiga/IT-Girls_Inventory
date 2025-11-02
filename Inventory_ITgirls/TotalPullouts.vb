@@ -257,9 +257,15 @@ Public Class TotalPullouts
                 databaseConnection.cmd.Parameters.AddWithValue("@PulloutReason", cboPulloutReason.Text.Trim())
                 databaseConnection.cmd.ExecuteNonQuery()
 
-                Dim sqlUpdate As String = "UPDATE tbluniforms SET stock_quantity = stock_quantity - @Quantity WHERE uniform_id = @uniform_id"
+                Dim newStockQuan As Integer = currentStock - pulloutQty
+                Dim newStatus As String = If(newStockQuan <= 5, "Critical", "Available")
+
+                Dim sqlUpdate As String = "UPDATE tbluniforms 
+                           SET stock_quantity = @newStock, status = @status 
+                           WHERE uniform_id = @uniform_id"
                 databaseConnection.cmd = New MySqlCommand(sqlUpdate, databaseConnection.cn)
-                databaseConnection.cmd.Parameters.AddWithValue("@Quantity", pulloutQty)
+                databaseConnection.cmd.Parameters.AddWithValue("@newStock", newStockQuan)
+                databaseConnection.cmd.Parameters.AddWithValue("@status", newStatus)
                 databaseConnection.cmd.Parameters.AddWithValue("@uniform_id", selectedUniformID)
                 Dim rowsAffected As Integer = databaseConnection.cmd.ExecuteNonQuery()
 

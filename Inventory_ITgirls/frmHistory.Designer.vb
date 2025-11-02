@@ -22,7 +22,7 @@ Partial Class frmHistory
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        components = New ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmHistory))
         Label2 = New Label()
         Panel1 = New Panel()
         lblDeleted = New Label()
@@ -52,12 +52,14 @@ Partial Class frmHistory
         ColumnHeader7 = New ColumnHeader()
         ColumnHeader8 = New ColumnHeader()
         ColumnHeader9 = New ColumnHeader()
-        ContextMenuStrip1 = New ContextMenuStrip(components)
+        ColumnHeader10 = New ColumnHeader()
         Button5 = New Button()
         btnPreview = New Button()
         Button6 = New Button()
         Label6 = New Label()
         lblTotalRecords = New Label()
+        PrintDocument1 = New Printing.PrintDocument()
+        PrintPreviewDialog1 = New PrintPreviewDialog()
         Panel1.SuspendLayout()
         SuspendLayout()
         ' 
@@ -163,7 +165,7 @@ Partial Class frmHistory
         cboAction.DropDownStyle = ComboBoxStyle.DropDownList
         cboAction.Font = New Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         cboAction.FormattingEnabled = True
-        cboAction.Items.AddRange(New Object() {"Pullout", "Add Item", "Delete Item", "Update Item"})
+        cboAction.Items.AddRange(New Object() {"Add Item", "Update Item", "Pullout", "Delete Item"})
         cboAction.Location = New Point(551, 14)
         cboAction.Name = "cboAction"
         cboAction.Size = New Size(192, 23)
@@ -287,7 +289,7 @@ Partial Class frmHistory
         ' 
         ' ListView1
         ' 
-        ListView1.Columns.AddRange(New ColumnHeader() {ColumnHeader1, ColumnHeader2, ColumnHeader3, ColumnHeader4, ColumnHeader5, ColumnHeader6, ColumnHeader7, ColumnHeader8, ColumnHeader9})
+        ListView1.Columns.AddRange(New ColumnHeader() {ColumnHeader1, ColumnHeader2, ColumnHeader3, ColumnHeader4, ColumnHeader5, ColumnHeader6, ColumnHeader7, ColumnHeader8, ColumnHeader9, ColumnHeader10})
         ListView1.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         ListView1.Location = New Point(12, 231)
         ListView1.Name = "ListView1"
@@ -322,28 +324,28 @@ Partial Class frmHistory
         ' 
         ' ColumnHeader6
         ' 
-        ColumnHeader6.Text = "Changed Quantity"
+        ColumnHeader6.Text = "Previous Quantity"
         ColumnHeader6.Width = 100
         ' 
         ' ColumnHeader7
         ' 
-        ColumnHeader7.Text = "Previous -> New"
+        ColumnHeader7.Text = "Changed Quantity"
         ColumnHeader7.Width = 100
         ' 
         ' ColumnHeader8
         ' 
-        ColumnHeader8.Text = "Admin"
+        ColumnHeader8.Text = "New Quantity"
         ColumnHeader8.Width = 90
         ' 
         ' ColumnHeader9
         ' 
-        ColumnHeader9.Text = "Reason"
+        ColumnHeader9.Text = "Admin"
         ColumnHeader9.Width = 90
         ' 
-        ' ContextMenuStrip1
+        ' ColumnHeader10
         ' 
-        ContextMenuStrip1.Name = "ContextMenuStrip1"
-        ContextMenuStrip1.Size = New Size(61, 4)
+        ColumnHeader10.Text = "Reason"
+        ColumnHeader10.Width = 90
         ' 
         ' Button5
         ' 
@@ -397,6 +399,16 @@ Partial Class frmHistory
         lblTotalRecords.TabIndex = 29
         lblTotalRecords.Text = "  "
         ' 
+        ' PrintPreviewDialog1
+        ' 
+        PrintPreviewDialog1.AutoScrollMargin = New Size(0, 0)
+        PrintPreviewDialog1.AutoScrollMinSize = New Size(0, 0)
+        PrintPreviewDialog1.ClientSize = New Size(400, 300)
+        PrintPreviewDialog1.Enabled = True
+        PrintPreviewDialog1.Icon = CType(resources.GetObject("PrintPreviewDialog1.Icon"), Icon)
+        PrintPreviewDialog1.Name = "PrintPreviewDialog1"
+        PrintPreviewDialog1.Visible = False
+        ' 
         ' frmHistory
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -447,11 +459,13 @@ Partial Class frmHistory
     Friend WithEvents lblUpdated As Label
     Friend WithEvents lblPullout As Label
     Friend WithEvents lblDeleted As Label
-    Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
     Friend WithEvents btnPrint As Button
     Friend WithEvents Button5 As Button
     Friend WithEvents btnPreview As Button
     Friend WithEvents Button6 As Button
     Friend WithEvents Label6 As Label
     Friend WithEvents lblTotalRecords As Label
+    Friend WithEvents ColumnHeader10 As ColumnHeader
+    Friend WithEvents PrintDocument1 As Printing.PrintDocument
+    Friend WithEvents PrintPreviewDialog1 As PrintPreviewDialog
 End Class

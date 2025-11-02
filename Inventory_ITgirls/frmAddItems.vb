@@ -173,16 +173,38 @@ Public Class frmAddItems
             If rowsAffected > 0 Then
                 Dim lastInsertedId As Long = databaseConnection.cmd.LastInsertedId
                 If databaseConnection.currentAdminId > 0 AndAlso databaseConnection.isLoggedIn Then
-                    Dim currentStockQty As Integer = 0
+                    ' Fetch the item details of the newly added uniform
+                    Dim fetchSql As String = "SELECT item_name, level, gender, size FROM tbluniforms WHERE uniform_id = @id"
+                    Dim itemName As String = "N/A"
+                    Dim level As String = "N/A"
+                    Dim gender As String = "N/A"
+                    Dim size As String = "N/A"
 
-                    Dim logSql As String = "INSERT INTO tbluniformlogs(uniform_id, action, changed_quantity, previous_quantity, new_quantity, admin_id, action_date) VALUES (@uniform_id, @action, @changed_quantity, @previous_qty, @new_qty, @admin_id, @action_date)"
+                    Using fetchCmd As New MySqlCommand(fetchSql, databaseConnection.cn)
+                        fetchCmd.Parameters.AddWithValue("@id", lastInsertedId)
+                        Using reader As MySqlDataReader = fetchCmd.ExecuteReader()
+                            If reader.Read() Then
+                                itemName = reader("item_name").ToString()
+                                level = reader("level").ToString()
+                                gender = reader("gender").ToString()
+                                size = reader("size").ToString()
+                            End If
+                        End Using
+                    End Using
+
+                    ' Insert log with proper item details
+                    Dim logSql As String = "INSERT INTO tbluniformlogs(uniform_id, action, item_name, level, gender, size, changed_quantity, previous_quantity, new_quantity, admin_id, action_date) " &
+                           "VALUES (@uniform_id, @action, @item_name, @level, @gender, @size, @changed_quantity, @previous_qty, @new_qty, @admin_id, @action_date)"
 
                     databaseConnection.cmd = New MySqlCommand(logSql, databaseConnection.cn)
-
                     databaseConnection.cmd.Parameters.AddWithValue("@uniform_id", lastInsertedId)
                     databaseConnection.cmd.Parameters.AddWithValue("@action", "Add Item")
+                    databaseConnection.cmd.Parameters.AddWithValue("@item_name", itemName)
+                    databaseConnection.cmd.Parameters.AddWithValue("@level", level)
+                    databaseConnection.cmd.Parameters.AddWithValue("@gender", gender)
+                    databaseConnection.cmd.Parameters.AddWithValue("@size", size)
                     databaseConnection.cmd.Parameters.AddWithValue("@changed_quantity", stock)
-                    databaseConnection.cmd.Parameters.AddWithValue("@previous_qty", currentStockQty)
+                    databaseConnection.cmd.Parameters.AddWithValue("@previous_qty", 0)
                     databaseConnection.cmd.Parameters.AddWithValue("@new_qty", stock)
                     databaseConnection.cmd.Parameters.AddWithValue("@admin_id", databaseConnection.currentAdminId)
                     databaseConnection.cmd.Parameters.AddWithValue("@action_date", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"))
@@ -190,6 +212,7 @@ Public Class frmAddItems
                 Else
                     Console.WriteLine("Warning: No admin logged in, log entry skipped")
                 End If
+
 
                 MsgBox("Item added successfully!", MsgBoxStyle.Information)
                 txtItemName.Clear()
@@ -216,6 +239,7 @@ Public Class frmAddItems
         Catch ex As MySqlException
             If ex.Number = 1062 Then
                 MsgBox("This item already exists in the database.", MsgBoxStyle.Exclamation)
+                txtItemName.Focus()
             Else
                 MsgBox("Database error: " & ex.Message, MsgBoxStyle.Critical)
             End If
@@ -280,6 +304,10 @@ Public Class frmAddItems
         Else
             txtPrice.Text = "₱ 0.00"
         End If
+    End Sub
+
+    Private Sub Panel2_Paint(sender As Object, e As PaintEventArgs) Handles Panel2.Paint
+
     End Sub
     'for PRICEEE --------------
 

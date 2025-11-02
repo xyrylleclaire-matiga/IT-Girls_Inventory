@@ -187,19 +187,20 @@ Public Class frmStockManagement
                 Dim statusText As String = databaseConnection.dr("status").ToString()
                 Dim statusSubItem As New ListViewItem.ListViewSubItem(item, statusText)
 
-                Select Case statusText.ToLower().Trim()
-                    Case "available"
-                        statusSubItem.ForeColor = Color.Green
-                        statusSubItem.BackColor = rowBgColor
-                    Case "low stock"
-                        statusSubItem.ForeColor = Color.OrangeRed
-                        statusSubItem.BackColor = Color.LightYellow
-                    Case "out of stock"
-                        statusSubItem.ForeColor = Color.Red
-                        statusSubItem.BackColor = Color.MistyRose
-                    Case Else
-                        statusSubItem.BackColor = rowBgColor
-                End Select
+                'Select Case statusText.ToLower().Trim()
+                '    Case "available"
+                '        statusSubItem.ForeColor = Color.Green
+                '        statusSubItem.BackColor = rowBgColor
+                '    Case "critical"
+                '        statusSubItem.ForeColor = Color.OrangeRed
+                '        statusSubItem.BackColor = Color.LightYellow
+                '    Case "out of stock"
+                '        statusSubItem.ForeColor = Color.Red
+                '        statusSubItem.BackColor = Color.MistyRose
+                '    Case Else
+                '        statusSubItem.BackColor = rowBgColor
+                'End Select
+
 
                 item.SubItems.Add(statusSubItem)
                 item.SubItems.Add(databaseConnection.dr("date_added").ToString())
@@ -214,6 +215,35 @@ Public Class frmStockManagement
                 rowIndex += 1
             End While
 
+            databaseConnection.dr.Close()
+
+            For Each item As ListViewItem In ListView1.Items
+                Dim stockQty As Integer = CInt(item.SubItems(5).Text)
+                Dim currentStatus As String = item.SubItems(7).Text
+                Dim newStatus As String = currentStatus
+
+                If stockQty <= 0 Then
+                    newStatus = "Out of Stock"
+                ElseIf stockQty <= 5 Then
+                    newStatus = "Critical"
+                Else
+                    newStatus = "Available"
+                End If
+
+                If newStatus <> currentStatus Then
+                    Dim updateQuery As String = "UPDATE tbluniforms SET status=@status WHERE uniform_id=@id"
+                    Using cmd As New MySqlCommand(updateQuery, databaseConnection.cn)
+                        cmd.Parameters.AddWithValue("@status", newStatus)
+                        cmd.Parameters.AddWithValue("@id", item.SubItems(0).Text) ' id col = 0
+                        cmd.ExecuteNonQuery()
+                    End Using
+                End If
+
+                item.SubItems(7).Text = newStatus
+                ApplyStatusColor(item.SubItems(7))
+
+            Next
+
         Catch ex As Exception
             MessageBox.Show("Error loading data: " & ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Finally
@@ -221,6 +251,25 @@ Public Class frmStockManagement
             databaseConnection.cn.Close()
         End Try
     End Sub
+
+
+    Private Sub ApplyStatusColor(subItem As ListViewItem.ListViewSubItem)
+        Select Case subItem.Text.ToLower().Trim()
+            Case "available"
+                subItem.ForeColor = Color.Green
+                subItem.BackColor = Color.White
+            Case "critical"
+                subItem.ForeColor = Color.OrangeRed
+                subItem.BackColor = Color.LightYellow
+            Case "out of stock"
+                subItem.ForeColor = Color.Red
+                subItem.BackColor = Color.MistyRose
+            Case Else
+                subItem.ForeColor = Color.Black
+                subItem.BackColor = Color.White
+        End Select
+    End Sub
+
 
     Private Sub ListView1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListView1.SelectedIndexChanged
         If ListView1.SelectedItems.Count > 0 Then

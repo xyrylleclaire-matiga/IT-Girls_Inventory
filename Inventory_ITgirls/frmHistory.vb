@@ -5,7 +5,14 @@ Imports iTextSharp.text
 Imports iTextSharp.text.pdf
 Imports MySql.Data.MySqlClient
 
+
 Public Class frmHistory
+
+    Private printDoc As New PrintDocument()
+    Private itemsToPrint As List(Of ListViewItem)
+    Private currentPage As Integer = 0
+    Private rowsPerPage As Integer = 0
+
     'DESIGNNN ----------------------------------------
     Private Sub CustomizeListView()
         ListView1.FullRowSelect = True
@@ -28,10 +35,6 @@ Public Class frmHistory
         Using brush As New SolidBrush(headerColor)
             e.Graphics.FillRectangle(brush, e.Bounds)
         End Using
-
-        'Using pen As New Pen(Color.FromArgb(0, 120, 110))
-        '    e.Graphics.DrawRectangle(pen, New Rectangle(e.Bounds.X, e.Bounds.Y, e.Bounds.Width - 1, e.Bounds.Height - 1))
-        'End Using
 
         TextRenderer.DrawText(e.Graphics, e.Header.Text, ListView1.Font, e.Bounds, textColor, TextFormatFlags.VerticalCenter Or TextFormatFlags.Left Or TextFormatFlags.SingleLine)
     End Sub
@@ -71,31 +74,34 @@ Public Class frmHistory
             ListView1.Items.Clear()
 
             Dim sql As String = "SELECT 
-                                l.log_id,
-                                l.uniform_id,
-                                l.action_date,
-                                l.action,
-                                COALESCE(l.item_name, u.item_name) as item_name,
-                                COALESCE(l.level, u.level) as level,
-                                COALESCE(l.gender, u.gender) as gender,
-                                COALESCE(l.size, u.size) as size,
-                                l.changed_quantity,
-                                l.previous_quantity,
-                                l.new_quantity,
-                                a.username,
-                                l.Reason
-                                FROM tbluniformlogs l
-                                LEFT JOIN tbluniforms u ON l.uniform_id = u.uniform_id
-                                LEFT JOIN tbladmin_users a ON l.admin_id = a.admin_id
-                                WHERE 1=1"
+                            l.log_id,
+                            l.uniform_id,
+                            l.action_date,
+                            l.action,
+                            COALESCE(l.item_name, u.item_name) as item_name,
+                            COALESCE(l.level, u.level) as level,
+                            COALESCE(l.gender, u.gender) as gender,
+                            COALESCE(l.size, u.size) as size,
+                            l.changed_quantity,
+                            l.previous_quantity,
+                            l.new_quantity,
+                            a.username,
+                            l.Reason
+                            FROM tbluniformlogs l
+                            LEFT JOIN tbluniforms u ON l.uniform_id = u.uniform_id
+                            LEFT JOIN tbladmin_users a ON l.admin_id = a.admin_id
+                            WHERE 1=1"
 
             If filterByDate Then
                 sql &= " AND DATE(l.action_date) = @selectedDate"
             End If
 
+            Dim selectedAction As String = ""
             If cboAction.SelectedItem IsNot Nothing AndAlso cboAction.SelectedItem.ToString() <> "All" Then
-                sql &= " AND l.action = @action"
+                selectedAction = cboAction.SelectedItem.ToString().Trim()
+                sql &= " AND TRIM(LOWER(l.action)) = @action"
             End If
+
 
             If Not String.IsNullOrEmpty(searchQuery) Then
                 sql &= " AND (COALESCE(l.item_name, u.item_name) LIKE @search OR a.username LIKE @search OR l.action LIKE @search)"
@@ -110,7 +116,8 @@ Public Class frmHistory
             End If
 
             If cboAction.SelectedItem IsNot Nothing AndAlso cboAction.SelectedItem.ToString() <> "All" Then
-                databaseConnection.cmd.Parameters.AddWithValue("@action", cboAction.SelectedItem.ToString())
+                databaseConnection.cmd.Parameters.AddWithValue("@action", selectedAction.ToLower())
+
             End If
 
             If Not String.IsNullOrEmpty(searchQuery) Then
@@ -159,22 +166,28 @@ Public Class frmHistory
                 End If
                 item.SubItems.Add(details.TrimEnd(" /".ToCharArray()))
 
-                Dim changedQty As String = databaseConnection.dr("changed_quantity").ToString()
-                Dim changedQtySubItem As New ListViewItem.ListViewSubItem(item, changedQty)
+                Dim prevQty As String = databaseConnection.dr("previous_quantity").ToString()
+                Dim newQty As String = databaseConnection.dr("new_quantity").ToString()
 
-                If changedQty.StartsWith("+") Then
+                Dim prevQtyInt As Integer = 0
+                Integer.TryParse(prevQty, prevQtyInt)
+                Dim newQtyInt As Integer = If(Integer.TryParse(newQty, Nothing), CInt(newQty), 0)
+                Dim changedQtyInt As Integer = newQtyInt - prevQtyInt
+
+                Dim changedQtyDisplay As String = If(changedQtyInt > 0, "+" & changedQtyInt.ToString(), changedQtyInt.ToString())
+                Dim changedQtySubItem As New ListViewItem.ListViewSubItem(item, changedQtyDisplay)
+
+                If changedQtyDisplay.StartsWith("+") Then
                     changedQtySubItem.ForeColor = Color.Green
-                    'changedQtySubItem.Font = New Font(ListView1.Font, FontStyle.Bold)
-                ElseIf changedQty.StartsWith("-") Then
+                ElseIf changedQtyDisplay.StartsWith("-") Then
                     changedQtySubItem.ForeColor = Color.Red
-                    'changedQtySubItem.Font = New Font(ListView1.Font, FontStyle.Bold)
                 End If
+
+                item.SubItems.Add(prevQty)
 
                 item.SubItems.Add(changedQtySubItem)
 
-                Dim prevQty As String = databaseConnection.dr("previous_quantity").ToString()
-                Dim newQty As String = databaseConnection.dr("new_quantity").ToString()
-                item.SubItems.Add($"{prevQty} → {newQty}")
+                item.SubItems.Add(newQty)
 
                 item.SubItems.Add(If(IsDBNull(databaseConnection.dr("username")), "N/A", databaseConnection.dr("username").ToString()))
 
@@ -253,10 +266,12 @@ Public Class frmHistory
         Dim Action As String = selectedItem.SubItems(2).Text
         Dim itemName As String = selectedItem.SubItems(3).Text
         Dim levGenSize As String = selectedItem.SubItems(4).Text
-        Dim changedQuan As String = selectedItem.SubItems(5).Text
-        Dim prevNew As String = selectedItem.SubItems(6).Text
-        Dim admin As String = selectedItem.SubItems(7).Text
-        Dim reason As String = selectedItem.SubItems(8).Text
+        Dim prevNew As String = selectedItem.SubItems(5).Text
+        Dim changedQuan As String = selectedItem.SubItems(6).Text
+        Dim newQuan As String = selectedItem.SubItems(7).Text
+        Dim admin As String = selectedItem.SubItems(8).Text
+        Dim reason As String = selectedItem.SubItems(9).Text
+
 
         Dim uniformID As String = ""
         Dim adminID As String = ""
@@ -300,5 +315,316 @@ Public Class frmHistory
 
     Private Sub DateTimePicker1_ValueChanged(sender As Object, e As EventArgs) Handles DateTimePicker1.ValueChanged
         displayHistoryLogs(txtSearch.Text.Trim(), True)
+    End Sub
+
+
+
+    'FOR PRINTINGGGGGGGGGGGGG --------------------------------------------
+    ' -------------------------------------------------
+    Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnPrint.Click
+        Dim result As DialogResult = MessageBox.Show(
+        "Do you want to print ALL records?" & vbCrLf & vbCrLf &
+        "YES - Print all records" & vbCrLf &
+        "NO - Choose specific records" & vbCrLf &
+        "CANCEL - Cancel printing",
+        "Print Options",
+        MessageBoxButtons.YesNoCancel,
+        MessageBoxIcon.Question)
+
+        Select Case result
+            Case DialogResult.Yes
+                PrintAllRecords()
+            Case DialogResult.No
+                PrintCustomRecords()
+            Case DialogResult.Cancel
+        End Select
+    End Sub
+
+    Private Sub PrintCustomRecords()
+        Try
+            Dim inputForm As New Form()
+            inputForm.Text = "Select Records to Print"
+            inputForm.Size = New System.Drawing.Size(500, 250)
+            inputForm.StartPosition = FormStartPosition.CenterParent
+            inputForm.FormBorderStyle = FormBorderStyle.FixedDialog
+            inputForm.MaximizeBox = False
+            inputForm.MinimizeBox = False
+
+            Dim lblInstructions As New Label()
+            lblInstructions.Text = "Enter Log IDs to print (separate with commas):" & vbCrLf &
+                              "Example: 1, 4, 7, 10"
+            lblInstructions.Location = New System.Drawing.Point(20, 20)
+            lblInstructions.Size = New System.Drawing.Size(450, 40)
+            lblInstructions.Font = New System.Drawing.Font("Arial", 10)
+
+            Dim txtLogIds As New TextBox()
+            txtLogIds.Location = New System.Drawing.Point(20, 70)
+            txtLogIds.Size = New System.Drawing.Size(450, 30)
+            txtLogIds.Font = New System.Drawing.Font("Arial", 11)
+
+            Dim lblAvailable As New Label()
+            lblAvailable.Text = "Available Log IDs: " & GetAvailableLogIds()
+            lblAvailable.Location = New System.Drawing.Point(20, 110)
+            lblAvailable.Size = New System.Drawing.Size(450, 40)
+            lblAvailable.Font = New System.Drawing.Font("Arial", 9)
+            lblAvailable.ForeColor = System.Drawing.Color.Gray
+
+            Dim btnOK As New Button()
+            btnOK.Text = "Print"
+            btnOK.Location = New System.Drawing.Point(290, 160)
+            btnOK.Size = New System.Drawing.Size(80, 35)
+            btnOK.DialogResult = DialogResult.OK
+
+            Dim btnCancel As New Button()
+            btnCancel.Text = "Cancel"
+            btnCancel.Location = New System.Drawing.Point(390, 160)
+            btnCancel.Size = New System.Drawing.Size(80, 35)
+            btnCancel.DialogResult = DialogResult.Cancel
+
+            inputForm.Controls.Add(lblInstructions)
+            inputForm.Controls.Add(txtLogIds)
+            inputForm.Controls.Add(lblAvailable)
+            inputForm.Controls.Add(btnOK)
+            inputForm.Controls.Add(btnCancel)
+
+            inputForm.AcceptButton = btnOK
+            inputForm.CancelButton = btnCancel
+
+            If inputForm.ShowDialog() = DialogResult.OK Then
+                Dim logIdsInput As String = txtLogIds.Text.Trim()
+
+                If String.IsNullOrEmpty(logIdsInput) Then
+                    MessageBox.Show("Please enter at least one Log ID!", "Invalid Input",
+                              MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                    Return
+                End If
+
+                Dim logIds As New List(Of String)
+                Dim invalidIds As New List(Of String)
+
+                For Each id As String In logIdsInput.Split(","c)
+                    Dim trimmedId As String = id.Trim()
+                    If Not String.IsNullOrEmpty(trimmedId) Then
+                        Dim found As Boolean = False
+                        For Each item As ListViewItem In ListView1.Items
+                            If item.SubItems(0).Text = trimmedId Then
+                                found = True
+                                Exit For
+                            End If
+                        Next
+
+                        If found Then
+                            logIds.Add(trimmedId)
+                        Else
+                            invalidIds.Add(trimmedId)
+                        End If
+                    End If
+                Next
+
+                If invalidIds.Count > 0 Then
+                    Dim warningMsg As String = "The following Log IDs were not found and will be skipped:" & vbCrLf &
+                                          String.Join(", ", invalidIds)
+                    MessageBox.Show(warningMsg, "Invalid Log IDs", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                End If
+
+                If logIds.Count = 0 Then
+                    MessageBox.Show("No valid Log IDs to print!", "Error",
+                              MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Return
+                End If
+
+                itemsToPrint = New List(Of ListViewItem)
+                For Each logId As String In logIds
+                    For Each item As ListViewItem In ListView1.Items
+                        If item.SubItems(0).Text = logId Then
+                            itemsToPrint.Add(item)
+                            Exit For
+                        End If
+                    Next
+                Next
+
+                ShowPrintPreview()
+            End If
+
+        Catch ex As Exception
+            MessageBox.Show("Error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Function GetAvailableLogIds() As String
+        Dim logIds As New List(Of String)
+
+        Dim count As Integer = 0
+        For Each item As ListViewItem In ListView1.Items
+            If count >= 10 Then Exit For
+            logIds.Add(item.SubItems(0).Text)
+            count += 1
+        Next
+
+        Dim result As String = String.Join(", ", logIds)
+        If ListView1.Items.Count > 10 Then
+            result &= "..."
+        End If
+
+        Return result
+    End Function
+
+    Private Sub PrintAllRecords()
+        Try
+            If ListView1.Items.Count = 0 Then
+                MessageBox.Show("No records to print!", "Print", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Return
+            End If
+
+            itemsToPrint = New List(Of ListViewItem)
+            For Each item As ListViewItem In ListView1.Items
+                itemsToPrint.Add(item)
+            Next
+
+            ShowPrintPreview()
+
+        Catch ex As Exception
+            MessageBox.Show("Error printing: " & ex.Message, "Print Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub PrintSelectedRecords()
+        Try
+            If ListView1.SelectedItems.Count = 0 Then
+                MessageBox.Show("Please select at least one record to print!", "Print", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Return
+            End If
+
+            itemsToPrint = New List(Of ListViewItem)
+            For Each item As ListViewItem In ListView1.SelectedItems
+                itemsToPrint.Add(item)
+            Next
+
+            ShowPrintPreview()
+
+        Catch ex As Exception
+            MessageBox.Show("Error printing: " & ex.Message, "Print Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub ShowPrintPreview()
+        currentPage = 0
+        rowsPerPage = 0
+
+        printDoc.DefaultPageSettings.Landscape = True
+
+        AddHandler printDoc.PrintPage, AddressOf PrintDocument_PrintPage
+
+        Dim previewDialog As New PrintPreviewDialog()
+        previewDialog.Document = printDoc
+        previewDialog.Width = 1000
+        previewDialog.Height = 700
+        previewDialog.StartPosition = FormStartPosition.CenterParent
+
+        previewDialog.ShowDialog()
+
+        RemoveHandler printDoc.PrintPage, AddressOf PrintDocument_PrintPage
+    End Sub
+
+    Private Sub PrintDocument_PrintPage(sender As Object, e As PrintPageEventArgs)
+        Try
+            Dim startX As Integer = 50
+            Dim startY As Integer = 50
+            Dim offsetY As Integer = 0
+
+            Dim titleFont As New System.Drawing.Font("Arial", 16, System.Drawing.FontStyle.Bold)
+            Dim headerFont As New System.Drawing.Font("Arial", 9, System.Drawing.FontStyle.Bold)
+            Dim cellFont As New System.Drawing.Font("Arial", 8, System.Drawing.FontStyle.Regular)
+            Dim dateFont As New System.Drawing.Font("Arial", 8, System.Drawing.FontStyle.Italic)
+
+            Dim title As String = "Uniform History Report"
+            Dim titleSize As System.Drawing.SizeF = e.Graphics.MeasureString(title, titleFont)
+            e.Graphics.DrawString(title, titleFont, System.Drawing.Brushes.Black,
+                            CSng((e.PageBounds.Width - titleSize.Width) / 2), CSng(startY))
+            offsetY += CInt(titleSize.Height) + 10
+
+            Dim dateGenerated As String = "Generated: " & DateTime.Now.ToString("MMMM dd, yyyy hh:mm tt")
+            e.Graphics.DrawString(dateGenerated, dateFont, System.Drawing.Brushes.Gray,
+                            CSng(startX), CSng(startY + offsetY))
+            offsetY += 30
+
+            Dim headers() As String = {"ID", "Date/Time", "Action", "Item", "Details",
+                                   "Prev", "Changed", "New", "Admin", "Reason"}
+            Dim columnWidths() As Integer = {40, 120, 80, 100, 120, 50, 60, 50, 80, 100}
+
+            Dim headerRect As New System.Drawing.Rectangle(startX, startY + offsetY, 800, 25)
+            e.Graphics.FillRectangle(New System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(0, 150, 136)), headerRect)
+
+            Dim xPos As Integer = startX
+            For i As Integer = 0 To headers.Length - 1
+                e.Graphics.DrawString(headers(i), headerFont, System.Drawing.Brushes.White,
+                                CSng(xPos + 5), CSng(startY + offsetY + 5))
+
+                e.Graphics.DrawLine(System.Drawing.Pens.White, xPos, startY + offsetY,
+                              xPos, startY + offsetY + 25)
+                xPos += columnWidths(i)
+            Next
+            offsetY += 30
+
+            If rowsPerPage = 0 Then
+                Dim availableHeight As Integer = e.PageBounds.Height - startY - offsetY - 50
+                rowsPerPage = availableHeight \ 20
+            End If
+
+            Dim startIndex As Integer = currentPage * rowsPerPage
+            Dim endIndex As Integer = Math.Min(startIndex + rowsPerPage, itemsToPrint.Count)
+
+            For idx As Integer = startIndex To endIndex - 1
+                Dim item As ListViewItem = itemsToPrint(idx)
+                xPos = startX
+
+                If idx Mod 2 = 0 Then
+                    Dim rowRect As New System.Drawing.Rectangle(startX, startY + offsetY, 800, 20)
+                    e.Graphics.FillRectangle(New System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(240, 240, 240)), rowRect)
+                End If
+
+                For i As Integer = 0 To 9
+                    Dim cellText As String = If(i < item.SubItems.Count, item.SubItems(i).Text, "")
+                    Dim textBrush As System.Drawing.Brush = System.Drawing.Brushes.Black
+
+                    If i = 6 Then
+                        If cellText.StartsWith("+") Then
+                            textBrush = System.Drawing.Brushes.Green
+                        ElseIf cellText.StartsWith("-") Then
+                            textBrush = System.Drawing.Brushes.Red
+                        End If
+                    End If
+
+                    If cellText.Length > 15 Then
+                        cellText = cellText.Substring(0, 12) & "..."
+                    End If
+
+                    e.Graphics.DrawString(cellText, cellFont, textBrush,
+                                    CSng(xPos + 5), CSng(startY + offsetY + 2))
+                    xPos += columnWidths(i)
+                Next
+
+                offsetY += 20
+            Next
+
+            Dim pageNumber As String = $"Page {currentPage + 1}"
+            Dim pageNumSize As System.Drawing.SizeF = e.Graphics.MeasureString(pageNumber, dateFont)
+            e.Graphics.DrawString(pageNumber, dateFont, System.Drawing.Brushes.Gray,
+                            CSng((e.PageBounds.Width - pageNumSize.Width) / 2),
+                            CSng(e.PageBounds.Height - 40))
+
+            currentPage += 1
+            e.HasMorePages = (endIndex < itemsToPrint.Count)
+
+            If Not e.HasMorePages Then
+                currentPage = 0
+                rowsPerPage = 0
+            End If
+
+        Catch ex As Exception
+            MessageBox.Show("Error during printing: " & ex.Message, "Print Error",
+                       MessageBoxButtons.OK, MessageBoxIcon.Error)
+            e.HasMorePages = False
+        End Try
     End Sub
 End Class
