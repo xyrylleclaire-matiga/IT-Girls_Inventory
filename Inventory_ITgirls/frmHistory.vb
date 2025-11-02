@@ -1,7 +1,6 @@
 ﻿Imports System.Drawing.Printing
 Imports System.IO
 Imports System.Reflection.Metadata
-Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 Imports iTextSharp.text
 Imports iTextSharp.text.pdf
 Imports MySql.Data.MySqlClient
@@ -45,12 +44,27 @@ Public Class frmHistory
         e.DrawDefault = True
     End Sub
 
+    Private Sub btnPrint_Paint(sender As Object, e As PaintEventArgs) Handles btnPrint.Paint
+        Dim btn As Button = DirectCast(sender, Button)
+        Dim radius As Integer = 10
+
+        Dim path As New Drawing2D.GraphicsPath()
+        path.StartFigure()
+        path.AddArc(0, 0, radius, radius, 180, 90)
+        path.AddArc(btn.Width - radius, 0, radius, radius, 270, 90)
+        path.AddArc(btn.Width - radius, btn.Height - radius, radius, radius, 0, 90)
+        path.AddArc(0, btn.Height - radius, radius, radius, 90, 90)
+        path.CloseFigure()
+
+        btn.Region = New Region(path)
+    End Sub
+
     'END OF DESIGN -----------------------------------
 
     Private Sub ListView1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListView1.SelectedIndexChanged
     End Sub
 
-    Public Sub displayHistoryLogs(Optional searchQuery As String = "")
+    Public Sub displayHistoryLogs(Optional searchQuery As String = "", Optional filterByDate As Boolean = False)
         Try
             databaseConnection.con()
             ListView1.BeginUpdate()
@@ -58,6 +72,7 @@ Public Class frmHistory
 
             Dim sql As String = "SELECT 
                                 l.log_id,
+                                l.uniform_id,
                                 l.action_date,
                                 l.action,
                                 COALESCE(l.item_name, u.item_name) as item_name,
@@ -74,6 +89,10 @@ Public Class frmHistory
                                 LEFT JOIN tbladmin_users a ON l.admin_id = a.admin_id
                                 WHERE 1=1"
 
+            If filterByDate Then
+                sql &= " AND DATE(l.action_date) = @selectedDate"
+            End If
+
             If cboAction.SelectedItem IsNot Nothing AndAlso cboAction.SelectedItem.ToString() <> "All" Then
                 sql &= " AND l.action = @action"
             End If
@@ -85,6 +104,10 @@ Public Class frmHistory
             sql &= " ORDER BY l.action_date DESC"
 
             databaseConnection.cmd = New MySqlCommand(sql, databaseConnection.cn)
+
+            If filterByDate Then
+                databaseConnection.cmd.Parameters.AddWithValue("@selectedDate", DateTimePicker1.Value.Date)
+            End If
 
             If cboAction.SelectedItem IsNot Nothing AndAlso cboAction.SelectedItem.ToString() <> "All" Then
                 databaseConnection.cmd.Parameters.AddWithValue("@action", cboAction.SelectedItem.ToString())
@@ -174,6 +197,7 @@ Public Class frmHistory
         displayHistoryLogs()
         CustomizeListView()
         countDisplay()
+        lblTotalRecords.Text = ListView1.Items.Count.ToString()
     End Sub
 
     Private Sub cboAction_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboAction.SelectedIndexChanged
@@ -214,12 +238,13 @@ Public Class frmHistory
     End Sub
 
     Private Sub btnPreview_Click(sender As Object, e As EventArgs) Handles btnPreview.Click
-
+        preview()
     End Sub
 
     Private Sub preview()
         If ListView1.SelectedItems.Count = 0 Then
             MsgBox("Please select a record to view", MsgBoxStyle.Exclamation)
+            Return
         End If
 
         Dim selectedItem As ListViewItem = ListView1.SelectedItems(0)
@@ -233,7 +258,31 @@ Public Class frmHistory
         Dim admin As String = selectedItem.SubItems(7).Text
         Dim reason As String = selectedItem.SubItems(8).Text
 
-        Dim previewForm As New frmPreview(log_id, itemName, DateTime, Action, levGenSize, changedQuan, prevNew, admin, reason)
+        Dim uniformID As String = ""
+        Dim adminID As String = ""
+
+        Try
+            databaseConnection.con()
+            Dim sql As String = "SELECT l.uniform_id, l.admin_id 
+                             FROM tbluniformlogs l 
+                             WHERE l.log_id = @log_id"
+            databaseConnection.cmd = New MySqlCommand(sql, databaseConnection.cn)
+            databaseConnection.cmd.Parameters.AddWithValue("@log_id", log_id)
+            databaseConnection.dr = databaseConnection.cmd.ExecuteReader()
+
+            If databaseConnection.dr.Read() Then
+                uniformID = If(IsDBNull(databaseConnection.dr("uniform_id")), "", databaseConnection.dr("uniform_id").ToString())
+                adminID = If(IsDBNull(databaseConnection.dr("admin_id")), "", databaseConnection.dr("admin_id").ToString())
+            End If
+
+            databaseConnection.dr.Close()
+            databaseConnection.cn.Close()
+        Catch ex As Exception
+            MessageBox.Show("Error retrieving details: " & ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return
+        End Try
+
+        Dim previewForm As New frmPrintPreview(log_id, itemName, DateTime, Action, levGenSize, changedQuan, prevNew, admin, reason, adminID, uniformID)
 
         previewForm.StartPosition = FormStartPosition.CenterParent
         If previewForm.ShowDialog(Me) = DialogResult.OK Then
@@ -249,112 +298,7 @@ Public Class frmHistory
 
     End Sub
 
-    'Private Sub btnExport_Click(sender As Object, e As EventArgs) Handles btnExport.Click
-    '    Dim menu As New ContextMenuStrip()
-    '    AddHandler menu.ItemClicked, AddressOf ExportMenu_ItemClicked
-    '    menu.Items.Add("📄 Export to PDF")
-    '    menu.Items.Add("📊 Export to Excel")
-    '    menu.Items.Add("📝 Export to CSV")
-    '    menu.Show(btnExport, New Point(0, btnExport.Height))
-    'End Sub
-
-    'Private Sub ExportMenu_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs)
-    '    Select Case e.ClickedItem.Text
-    '        Case "📄 Export to PDF"
-    '            ExportToPDF_FromListView()
-    '        Case "📊 Export to Excel"
-    '            MessageBox.Show("Coming soon 😎")
-    '        Case "📝 Export to CSV"
-    '            MessageBox.Show("Coming soon 😎")
-    '    End Select
-    'End Sub
-
-
-    'Private Sub ExportToPDF_FromListView()
-    '    Try
-    '        If ListView1.Items.Count = 0 Then
-    '            MessageBox.Show("No data to export.", "Export", MessageBoxButtons.OK, MessageBoxIcon.Information)
-    '            Return
-    '        End If
-
-    '        Dim saveDialog As New SaveFileDialog()
-    '        saveDialog.Filter = "PDF File|*.pdf"
-    '        saveDialog.Title = "Save Inventory History Log"
-    '        saveDialog.FileName = "Inventory_History.pdf"
-
-    '        If saveDialog.ShowDialog() <> DialogResult.OK Then
-    '            Return
-    '        End If
-
-    '        Dim doc As New iTextSharp.text.Document(PageSize.A4.Rotate(), 40, 40, 40, 40)
-
-    '        Dim writer = PdfWriter.GetInstance(doc, New FileStream(saveDialog.FileName, FileMode.Create))
-    '        doc.Open()
-
-    '        ' --- TITLE ---
-    '        Dim titleFont = FontFactory.GetFont("Segoe UI", 16, Font.Bold, New BaseColor(0, 137, 123))
-    '        doc.Add(New Paragraph("📦 Inventory History Log", titleFont))
-    '        doc.Add(New Paragraph("Generated on: " & DateTime.Now.ToString("MMMM dd, yyyy hh:mm tt")))
-    '        doc.Add(New Paragraph(" "))
-
-    '        ' --- TABLE SETUP ---
-    '        Dim table As New PdfPTable(ListView1.Columns.Count)
-    '        table.WidthPercentage = 100
-
-    '        ' --- HEADER CELLS ---
-    '        For Each col As ColumnHeader In ListView1.Columns
-    '            Dim headerCell As New PdfPCell(New Phrase(col.Text, FontFactory.GetFont("Segoe UI", 10, Font.Bold, BaseColor.WHITE)))
-    '            headerCell.BackgroundColor = New BaseColor(0, 105, 92) ' Teal header
-    '            headerCell.HorizontalAlignment = Element.ALIGN_CENTER
-    '            headerCell.Padding = 5
-    '            table.AddCell(headerCell)
-    '        Next
-
-    '        ' --- DATA ROWS ---
-    '        For Each item As ListViewItem In ListView1.Items
-    '            For i As Integer = 0 To item.SubItems.Count - 1
-    '                Dim cellText As String = item.SubItems(i).Text
-    '                Dim cellFont As Font = FontFactory.GetFont("Segoe UI", 9)
-
-    '                ' Apply color per action
-    '                If ListView1.Columns(i).Text.ToLower().Contains("action") Then
-    '                    Select Case cellText.ToLower()
-    '                        Case "add item"
-    '                            table.AddCell(CreateColoredCell(cellText, New BaseColor(220, 252, 231), New BaseColor(22, 163, 74)))
-    '                        Case "update item"
-    '                            table.AddCell(CreateColoredCell(cellText, New BaseColor(219, 234, 254), New BaseColor(37, 99, 235)))
-    '                        Case "pullout"
-    '                            table.AddCell(CreateColoredCell(cellText, New BaseColor(254, 243, 199), New BaseColor(234, 88, 12)))
-    '                        Case "delete item"
-    '                            table.AddCell(CreateColoredCell(cellText, New BaseColor(254, 226, 226), New BaseColor(220, 38, 38)))
-    '                        Case Else
-    '                            table.AddCell(New Phrase(cellText, cellFont))
-    '                    End Select
-    '                Else
-    '                    table.AddCell(New Phrase(cellText, cellFont))
-    '                End If
-    '            Next
-    '        Next
-
-    '        doc.Add(table)
-    '        doc.Close()
-
-    '        MessageBox.Show("Export successful! File saved at:" & vbCrLf & saveDialog.FileName,
-    '                        "Export to PDF", MessageBoxButtons.OK, MessageBoxIcon.Information)
-
-    '        Process.Start(saveDialog.FileName)
-
-    '    Catch ex As Exception
-    '        MessageBox.Show("Error exporting to PDF: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-    '    End Try
-    'End Sub
-
-    'Private Function CreateColoredCell(text As String, bgColor As BaseColor, textColor As BaseColor) As PdfPCell
-    '    Dim phrase As New Phrase(text, FontFactory.GetFont("Segoe UI", 9, Font.Bold, textColor))
-    '    Dim cell As New PdfPCell(phrase)
-    '    cell.BackgroundColor = bgColor
-    '    cell.HorizontalAlignment = Element.ALIGN_CENTER
-    '    cell.Padding = 4
-    '    Return cell
-    'End Function
+    Private Sub DateTimePicker1_ValueChanged(sender As Object, e As EventArgs) Handles DateTimePicker1.ValueChanged
+        displayHistoryLogs(txtSearch.Text.Trim(), True)
+    End Sub
 End Class

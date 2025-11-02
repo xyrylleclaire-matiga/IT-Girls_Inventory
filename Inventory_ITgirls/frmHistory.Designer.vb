@@ -55,6 +55,9 @@ Partial Class frmHistory
         ContextMenuStrip1 = New ContextMenuStrip(components)
         Button5 = New Button()
         btnPreview = New Button()
+        Button6 = New Button()
+        Label6 = New Label()
+        lblTotalRecords = New Label()
         Panel1.SuspendLayout()
         SuspendLayout()
         ' 
@@ -108,9 +111,11 @@ Partial Class frmHistory
         ' 
         ' btnPrint
         ' 
-        btnPrint.BackColor = Color.FromArgb(CByte(255), CByte(192), CByte(192))
+        btnPrint.BackColor = Color.SteelBlue
+        btnPrint.FlatStyle = FlatStyle.Flat
         btnPrint.Font = New Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        btnPrint.Location = New Point(781, 8)
+        btnPrint.ForeColor = SystemColors.ControlLightLight
+        btnPrint.Location = New Point(851, 8)
         btnPrint.Name = "btnPrint"
         btnPrint.Size = New Size(110, 32)
         btnPrint.TabIndex = 25
@@ -352,16 +357,45 @@ Partial Class frmHistory
         ' 
         ' btnPreview
         ' 
-        btnPreview.BackColor = Color.DimGray
+        btnPreview.BackColor = Color.Maroon
         btnPreview.FlatStyle = FlatStyle.Flat
-        btnPreview.Font = New Font("Arial Rounded MT Bold", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        btnPreview.Font = New Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         btnPreview.ForeColor = Color.White
-        btnPreview.Location = New Point(66, 530)
+        btnPreview.Location = New Point(895, 533)
         btnPreview.Name = "btnPreview"
-        btnPreview.Size = New Size(108, 33)
+        btnPreview.Size = New Size(108, 25)
         btnPreview.TabIndex = 27
         btnPreview.Text = "Preview"
         btnPreview.UseVisualStyleBackColor = False
+        ' 
+        ' Button6
+        ' 
+        Button6.FlatStyle = FlatStyle.Flat
+        Button6.Location = New Point(21, 528)
+        Button6.Name = "Button6"
+        Button6.Size = New Size(994, 35)
+        Button6.TabIndex = 28
+        Button6.UseVisualStyleBackColor = True
+        ' 
+        ' Label6
+        ' 
+        Label6.AutoSize = True
+        Label6.Font = New Font("Arial Rounded MT Bold", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label6.Location = New Point(36, 538)
+        Label6.Name = "Label6"
+        Label6.Size = New Size(139, 17)
+        Label6.TabIndex = 26
+        Label6.Text = " 📊 Total Records:"
+        ' 
+        ' lblTotalRecords
+        ' 
+        lblTotalRecords.AutoSize = True
+        lblTotalRecords.Font = New Font("Arial Rounded MT Bold", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lblTotalRecords.Location = New Point(173, 538)
+        lblTotalRecords.Name = "lblTotalRecords"
+        lblTotalRecords.Size = New Size(16, 17)
+        lblTotalRecords.TabIndex = 29
+        lblTotalRecords.Text = "  "
         ' 
         ' frmHistory
         ' 
@@ -370,6 +404,9 @@ Partial Class frmHistory
         BackColor = Color.LightCyan
         ClientSize = New Size(1101, 687)
         Controls.Add(btnPreview)
+        Controls.Add(lblTotalRecords)
+        Controls.Add(Label6)
+        Controls.Add(Button6)
         Controls.Add(Button5)
         Controls.Add(ListView1)
         Controls.Add(Panel1)
@@ -414,4 +451,7 @@ Partial Class frmHistory
     Friend WithEvents btnPrint As Button
     Friend WithEvents Button5 As Button
     Friend WithEvents btnPreview As Button
+    Friend WithEvents Button6 As Button
+    Friend WithEvents Label6 As Label
+    Friend WithEvents lblTotalRecords As Label
 End Class
