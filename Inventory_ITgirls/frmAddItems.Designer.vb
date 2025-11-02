@@ -23,6 +23,8 @@ Partial Class frmAddItems
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Panel1 = New Panel()
+        cboReason = New ComboBox()
+        Label1 = New Label()
         TextBox2 = New TextBox()
         lblDateAdded = New Label()
         Label10 = New Label()
@@ -53,6 +55,8 @@ Partial Class frmAddItems
         ' Panel1
         ' 
         Panel1.BackColor = Color.Azure
+        Panel1.Controls.Add(cboReason)
+        Panel1.Controls.Add(Label1)
         Panel1.Controls.Add(TextBox2)
         Panel1.Controls.Add(lblDateAdded)
         Panel1.Controls.Add(Label10)
@@ -77,6 +81,28 @@ Partial Class frmAddItems
         Panel1.Size = New Size(351, 431)
         Panel1.TabIndex = 0
         ' 
+        ' cboReason
+        ' 
+        cboReason.DropDownStyle = ComboBoxStyle.DropDownList
+        cboReason.DropDownWidth = 190
+        cboReason.Font = New Font("Bookman Old Style", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        cboReason.FormattingEnabled = True
+        cboReason.Items.AddRange(New Object() {"New Uniform Design", "Initial Stock Entry", "New Supplier Item"})
+        cboReason.Location = New Point(149, 121)
+        cboReason.Name = "cboReason"
+        cboReason.Size = New Size(175, 22)
+        cboReason.TabIndex = 2
+        ' 
+        ' Label1
+        ' 
+        Label1.AutoSize = True
+        Label1.Font = New Font("Bookman Old Style", 9.75F, FontStyle.Bold)
+        Label1.Location = New Point(21, 123)
+        Label1.Name = "Label1"
+        Label1.Size = New Size(65, 16)
+        Label1.TabIndex = 1001
+        Label1.Text = "Reason: "
+        ' 
         ' TextBox2
         ' 
         TextBox2.BackColor = Color.DarkSlateGray
@@ -87,14 +113,14 @@ Partial Class frmAddItems
         TextBox2.Name = "TextBox2"
         TextBox2.Size = New Size(366, 27)
         TextBox2.TabIndex = 1000
-        TextBox2.Text = "Add New Items"
+        TextBox2.Text = "Add New Item"
         TextBox2.TextAlign = HorizontalAlignment.Center
         ' 
         ' lblDateAdded
         ' 
         lblDateAdded.AutoSize = True
         lblDateAdded.Font = New Font("Bookman Old Style", 9.75F, FontStyle.Bold)
-        lblDateAdded.Location = New Point(149, 334)
+        lblDateAdded.Location = New Point(149, 367)
         lblDateAdded.Name = "lblDateAdded"
         lblDateAdded.Size = New Size(11, 16)
         lblDateAdded.TabIndex = 18
@@ -104,7 +130,7 @@ Partial Class frmAddItems
         ' 
         Label10.AutoSize = True
         Label10.Font = New Font("Bookman Old Style", 9.75F, FontStyle.Bold)
-        Label10.Location = New Point(21, 334)
+        Label10.Location = New Point(21, 367)
         Label10.Name = "Label10"
         Label10.Size = New Size(96, 16)
         Label10.TabIndex = 17
@@ -114,7 +140,7 @@ Partial Class frmAddItems
         ' 
         lblStatus.AutoSize = True
         lblStatus.Font = New Font("Bookman Old Style", 9.75F, FontStyle.Bold)
-        lblStatus.Location = New Point(149, 302)
+        lblStatus.Location = New Point(149, 335)
         lblStatus.Name = "lblStatus"
         lblStatus.Size = New Size(0, 16)
         lblStatus.TabIndex = 16
@@ -123,7 +149,7 @@ Partial Class frmAddItems
         ' 
         Label9.AutoSize = True
         Label9.Font = New Font("Bookman Old Style", 9.75F, FontStyle.Bold)
-        Label9.Location = New Point(21, 302)
+        Label9.Location = New Point(21, 335)
         Label9.Name = "Label9"
         Label9.Size = New Size(64, 16)
         Label9.TabIndex = 15
@@ -132,16 +158,16 @@ Partial Class frmAddItems
         ' txtPrice
         ' 
         txtPrice.Font = New Font("Bookman Old Style", 9.75F, FontStyle.Bold)
-        txtPrice.Location = New Point(149, 156)
+        txtPrice.Location = New Point(149, 189)
         txtPrice.Name = "txtPrice"
         txtPrice.Size = New Size(175, 23)
-        txtPrice.TabIndex = 3
+        txtPrice.TabIndex = 4
         ' 
         ' Label8
         ' 
         Label8.AutoSize = True
         Label8.Font = New Font("Bookman Old Style", 9.75F, FontStyle.Bold)
-        Label8.Location = New Point(24, 159)
+        Label8.Location = New Point(24, 192)
         Label8.Name = "Label8"
         Label8.Size = New Size(54, 16)
         Label8.TabIndex = 13
@@ -150,16 +176,16 @@ Partial Class frmAddItems
         ' txtStock
         ' 
         txtStock.Font = New Font("Bookman Old Style", 9.75F, FontStyle.Bold)
-        txtStock.Location = New Point(149, 121)
+        txtStock.Location = New Point(149, 154)
         txtStock.Name = "txtStock"
         txtStock.Size = New Size(175, 23)
-        txtStock.TabIndex = 2
+        txtStock.TabIndex = 3
         ' 
         ' Label7
         ' 
         Label7.AutoSize = True
         Label7.Font = New Font("Bookman Old Style", 9.75F, FontStyle.Bold)
-        Label7.Location = New Point(20, 124)
+        Label7.Location = New Point(20, 157)
         Label7.Name = "Label7"
         Label7.Size = New Size(123, 16)
         Label7.TabIndex = 11
@@ -171,16 +197,16 @@ Partial Class frmAddItems
         cboGender.Font = New Font("Bookman Old Style", 9.75F, FontStyle.Bold)
         cboGender.FormattingEnabled = True
         cboGender.Items.AddRange(New Object() {"Female", "Male", "Unisex"})
-        cboGender.Location = New Point(149, 191)
+        cboGender.Location = New Point(149, 224)
         cboGender.Name = "cboGender"
         cboGender.Size = New Size(175, 24)
-        cboGender.TabIndex = 4
+        cboGender.TabIndex = 5
         ' 
         ' Label6
         ' 
         Label6.AutoSize = True
         Label6.Font = New Font("Bookman Old Style", 9.75F, FontStyle.Bold)
-        Label6.Location = New Point(24, 193)
+        Label6.Location = New Point(24, 226)
         Label6.Name = "Label6"
         Label6.Size = New Size(68, 16)
         Label6.TabIndex = 9
@@ -192,16 +218,16 @@ Partial Class frmAddItems
         cboSize.Font = New Font("Bookman Old Style", 9.75F, FontStyle.Bold)
         cboSize.FormattingEnabled = True
         cboSize.Items.AddRange(New Object() {"Extra Small", "Small", "Medium", "Large", "Extra Large", "2XL", "3XL", "4XL", "5XL", "6XL"})
-        cboSize.Location = New Point(149, 229)
+        cboSize.Location = New Point(149, 262)
         cboSize.Name = "cboSize"
         cboSize.Size = New Size(175, 24)
-        cboSize.TabIndex = 5
+        cboSize.TabIndex = 6
         ' 
         ' Label5
         ' 
         Label5.AutoSize = True
         Label5.Font = New Font("Bookman Old Style", 9.75F, FontStyle.Bold)
-        Label5.Location = New Point(24, 232)
+        Label5.Location = New Point(24, 265)
         Label5.Name = "Label5"
         Label5.Size = New Size(48, 16)
         Label5.TabIndex = 7
@@ -234,16 +260,16 @@ Partial Class frmAddItems
         cboLevel.Font = New Font("Bookman Old Style", 9.75F, FontStyle.Bold)
         cboLevel.FormattingEnabled = True
         cboLevel.Items.AddRange(New Object() {"College", "Elementary", "Junior High", "Kindergarten", "Senior High"})
-        cboLevel.Location = New Point(149, 264)
+        cboLevel.Location = New Point(149, 297)
         cboLevel.Name = "cboLevel"
         cboLevel.Size = New Size(175, 24)
-        cboLevel.TabIndex = 6
+        cboLevel.TabIndex = 7
         ' 
         ' Label3
         ' 
         Label3.AutoSize = True
         Label3.Font = New Font("Bookman Old Style", 9.75F, FontStyle.Bold)
-        Label3.Location = New Point(21, 272)
+        Label3.Location = New Point(21, 305)
         Label3.Name = "Label3"
         Label3.Size = New Size(57, 16)
         Label3.TabIndex = 3
@@ -277,7 +303,7 @@ Partial Class frmAddItems
         btnAdd.Location = New Point(20, 13)
         btnAdd.Name = "btnAdd"
         btnAdd.Size = New Size(94, 35)
-        btnAdd.TabIndex = 7
+        btnAdd.TabIndex = 8
         btnAdd.Text = "Add Items"
         btnAdd.UseVisualStyleBackColor = False
         ' 
@@ -287,7 +313,7 @@ Partial Class frmAddItems
         Panel2.Controls.Add(btnBack)
         Panel2.Controls.Add(btnClear)
         Panel2.Controls.Add(btnAdd)
-        Panel2.Location = New Point(30, 384)
+        Panel2.Location = New Point(30, 438)
         Panel2.Name = "Panel2"
         Panel2.Size = New Size(352, 67)
         Panel2.TabIndex = 37
@@ -302,7 +328,7 @@ Partial Class frmAddItems
         btnBack.Location = New Point(237, 13)
         btnBack.Name = "btnBack"
         btnBack.Size = New Size(95, 35)
-        btnBack.TabIndex = 9
+        btnBack.TabIndex = 10
         btnBack.Text = "Back"
         btnBack.UseVisualStyleBackColor = False
         ' 
@@ -316,7 +342,7 @@ Partial Class frmAddItems
         btnClear.Location = New Point(128, 13)
         btnClear.Name = "btnClear"
         btnClear.Size = New Size(95, 35)
-        btnClear.TabIndex = 8
+        btnClear.TabIndex = 9
         btnClear.Text = "Clear"
         btnClear.UseVisualStyleBackColor = False
         ' 
@@ -325,7 +351,7 @@ Partial Class frmAddItems
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.DarkSlateGray
-        ClientSize = New Size(412, 474)
+        ClientSize = New Size(412, 540)
         Controls.Add(Panel2)
         Controls.Add(Panel1)
         Name = "frmAddItems"
@@ -360,4 +386,6 @@ Partial Class frmAddItems
     Friend WithEvents TextBox2 As TextBox
     Private WithEvents btnClear As Button
     Private WithEvents btnBack As Button
+    Friend WithEvents cboReason As ComboBox
+    Friend WithEvents Label1 As Label
 End Class

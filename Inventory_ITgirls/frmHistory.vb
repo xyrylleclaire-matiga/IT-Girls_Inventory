@@ -74,34 +74,37 @@ Public Class frmHistory
             ListView1.Items.Clear()
 
             Dim sql As String = "SELECT 
-                            l.log_id,
-                            l.uniform_id,
-                            l.action_date,
-                            l.action,
-                            COALESCE(l.item_name, u.item_name) as item_name,
-                            COALESCE(l.level, u.level) as level,
-                            COALESCE(l.gender, u.gender) as gender,
-                            COALESCE(l.size, u.size) as size,
-                            l.changed_quantity,
-                            l.previous_quantity,
-                            l.new_quantity,
-                            a.username,
-                            l.Reason
-                            FROM tbluniformlogs l
-                            LEFT JOIN tbluniforms u ON l.uniform_id = u.uniform_id
-                            LEFT JOIN tbladmin_users a ON l.admin_id = a.admin_id
-                            WHERE 1=1"
+                l.log_id,
+                l.uniform_id,
+                l.action_date,
+                l.action,
+                COALESCE(l.item_name, u.item_name) as item_name,
+                COALESCE(l.level, u.level) as level,
+                COALESCE(l.gender, u.gender) as gender,
+                COALESCE(l.size, u.size) as size,
+                l.changed_quantity,
+                l.previous_quantity,
+                l.new_quantity,
+                a.username,
+                l.Reason
+                FROM tbluniformlogs l
+                LEFT JOIN tbluniforms u ON l.uniform_id = u.uniform_id
+                LEFT JOIN tbladmin_users a ON l.admin_id = a.admin_id
+                WHERE 1=1"
 
             If filterByDate Then
                 sql &= " AND DATE(l.action_date) = @selectedDate"
             End If
 
-            Dim selectedAction As String = ""
-            If cboAction.SelectedItem IsNot Nothing AndAlso cboAction.SelectedItem.ToString() <> "All" Then
-                selectedAction = cboAction.SelectedItem.ToString().Trim()
-                sql &= " AND TRIM(LOWER(l.action)) = @action"
+            If rdoAdd.Checked Then
+                sql &= " AND LOWER(TRIM(l.action)) = 'add item'"
+            ElseIf rdoUpdate.Checked Then
+                sql &= " AND LOWER(TRIM(l.action)) = 'update item'"
+            ElseIf rdoPullout.Checked Then
+                sql &= " AND LOWER(TRIM(l.action)) = 'pullout'"
+            ElseIf rdoDelete.Checked Then
+                sql &= " AND LOWER(TRIM(l.action)) = 'delete item'"
             End If
-
 
             If Not String.IsNullOrEmpty(searchQuery) Then
                 sql &= " AND (COALESCE(l.item_name, u.item_name) LIKE @search OR a.username LIKE @search OR l.action LIKE @search)"
@@ -112,12 +115,7 @@ Public Class frmHistory
             databaseConnection.cmd = New MySqlCommand(sql, databaseConnection.cn)
 
             If filterByDate Then
-                databaseConnection.cmd.Parameters.AddWithValue("@selectedDate", DateTimePicker1.Value.Date)
-            End If
-
-            If cboAction.SelectedItem IsNot Nothing AndAlso cboAction.SelectedItem.ToString() <> "All" Then
-                databaseConnection.cmd.Parameters.AddWithValue("@action", selectedAction.ToLower())
-
+                databaseConnection.cmd.Parameters.AddWithValue("@selectedDate", dtDate.Value.Date)
             End If
 
             If Not String.IsNullOrEmpty(searchQuery) Then
@@ -135,7 +133,7 @@ Public Class frmHistory
                 Dim actionText As String = databaseConnection.dr("action").ToString()
                 Dim actionSubItem As New ListViewItem.ListViewSubItem(item, actionText)
 
-                Select Case actionText.ToLower()
+                Select Case actionText.ToLower().Trim()
                     Case "add item"
                         actionSubItem.ForeColor = Color.FromArgb(22, 163, 74)
                         actionSubItem.BackColor = Color.FromArgb(220, 252, 231)
@@ -184,37 +182,70 @@ Public Class frmHistory
                 End If
 
                 item.SubItems.Add(prevQty)
-
                 item.SubItems.Add(changedQtySubItem)
-
                 item.SubItems.Add(newQty)
 
                 item.SubItems.Add(If(IsDBNull(databaseConnection.dr("username")), "N/A", databaseConnection.dr("username").ToString()))
-
                 item.SubItems.Add(If(IsDBNull(databaseConnection.dr("reason")), "", databaseConnection.dr("reason").ToString()))
 
                 ListView1.Items.Add(item)
             End While
 
+            If lblTotalRecords IsNot Nothing Then
+                lblTotalRecords.Text = ListView1.Items.Count.ToString()
+            End If
+
         Catch ex As Exception
             MessageBox.Show("Error loading history: " & ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Finally
             ListView1.EndUpdate()
-            If databaseConnection.dr IsNot Nothing Then databaseConnection.dr.Close()
-            databaseConnection.cn.Close()
+            If databaseConnection.dr IsNot Nothing AndAlso Not databaseConnection.dr.IsClosed Then
+                databaseConnection.dr.Close()
+            End If
+            If databaseConnection.cn.State = ConnectionState.Open Then
+                databaseConnection.cn.Close()
+            End If
         End Try
     End Sub
 
     Private Sub frmHistory_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ListView1.OwnerDraw = True
         displayHistoryLogs()
+        rdoAllRecord.Checked = True
         CustomizeListView()
         countDisplay()
         lblTotalRecords.Text = ListView1.Items.Count.ToString()
+        dtDate.CustomFormat = "MM/dd/yyyy"
     End Sub
 
-    Private Sub cboAction_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboAction.SelectedIndexChanged
-        displayHistoryLogs(txtSearch.Text.Trim())
+    Private Sub rdoAllRecord_CheckedChanged(sender As Object, e As EventArgs) Handles rdoAllRecord.CheckedChanged
+        If rdoAllRecord.Checked Then
+            displayHistoryLogs()
+        End If
+    End Sub
+
+    Private Sub rdoAdd_CheckedChanged(sender As Object, e As EventArgs) Handles rdoAdd.CheckedChanged
+        If rdoAdd.Checked Then
+            displayHistoryLogs()
+        End If
+    End Sub
+
+    Private Sub rdoUpdate_CheckedChanged(sender As Object, e As EventArgs) Handles rdoUpdate.CheckedChanged
+        If rdoUpdate.Checked Then
+            displayHistoryLogs()
+        End If
+    End Sub
+
+    Private Sub rdoPullout_CheckedChanged(sender As Object, e As EventArgs) Handles rdoPullout.CheckedChanged
+        If rdoPullout.Checked Then
+            displayHistoryLogs()
+        End If
+    End Sub
+
+    Private Sub rdoDelete_CheckedChanged(sender As Object, e As EventArgs) Handles rdoDelete.CheckedChanged
+        If rdoDelete.Checked Then
+            displayHistoryLogs()
+        End If
     End Sub
 
     Private Sub txtSearch_TextChanged(sender As Object, e As EventArgs) Handles txtSearch.TextChanged
@@ -313,8 +344,8 @@ Public Class frmHistory
 
     End Sub
 
-    Private Sub DateTimePicker1_ValueChanged(sender As Object, e As EventArgs) Handles DateTimePicker1.ValueChanged
-        displayHistoryLogs(txtSearch.Text.Trim(), True)
+    Private Sub DateTimePicker1_ValueChanged(sender As Object, e As EventArgs) Handles dtDate.ValueChanged
+        displayHistoryLogs("", True)
     End Sub
 
 
@@ -323,128 +354,319 @@ Public Class frmHistory
     ' -------------------------------------------------
     Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnPrint.Click
         Dim result As DialogResult = MessageBox.Show(
-        "Do you want to print ALL records?" & vbCrLf & vbCrLf &
-        "YES - Print all records" & vbCrLf &
-        "NO - Choose specific records" & vbCrLf &
-        "CANCEL - Cancel printing",
-        "Print Options",
-        MessageBoxButtons.YesNoCancel,
-        MessageBoxIcon.Question)
+    "Do you want to print ALL records?" & vbCrLf & vbCrLf &
+    "YES - Print all records" & vbCrLf &
+    "NO - Choose specific records/filters" & vbCrLf &
+    "CANCEL - Cancel printing",
+    "Print Options",
+    MessageBoxButtons.YesNoCancel,
+    MessageBoxIcon.Question)
 
         Select Case result
             Case DialogResult.Yes
                 PrintAllRecords()
             Case DialogResult.No
-                PrintCustomRecords()
+                ShowCustomPrintOptions()
             Case DialogResult.Cancel
         End Select
     End Sub
 
-    Private Sub PrintCustomRecords()
+    Private Sub ShowCustomPrintOptions()
+        Dim optionsForm As New Form()
+        optionsForm.Text = "Custom Print Options"
+        optionsForm.Size = New System.Drawing.Size(500, 400)
+        optionsForm.StartPosition = FormStartPosition.CenterParent
+        optionsForm.FormBorderStyle = FormBorderStyle.FixedDialog
+        optionsForm.MaximizeBox = False
+        optionsForm.MinimizeBox = False
+
+        Dim lblTitle As New Label()
+        lblTitle.Text = "Select what you want to print:"
+        lblTitle.Location = New System.Drawing.Point(20, 20)
+        lblTitle.Size = New System.Drawing.Size(450, 25)
+        lblTitle.Font = New System.Drawing.Font("Arial", 11, FontStyle.Bold)
+
+        Dim rdoPrintByAction As New RadioButton()
+        rdoPrintByAction.Text = "Print by Action Type (Add, Update, Pullout, Delete)"
+        rdoPrintByAction.Location = New System.Drawing.Point(30, 60)
+        rdoPrintByAction.Size = New System.Drawing.Size(440, 25)
+        rdoPrintByAction.Checked = True
+        rdoPrintByAction.Font = New System.Drawing.Font("Arial", 10)
+
+        Dim rdoPrintByIds As New RadioButton()
+        rdoPrintByIds.Text = "Print by specific Log IDs"
+        rdoPrintByIds.Location = New System.Drawing.Point(30, 90)
+        rdoPrintByIds.Size = New System.Drawing.Size(440, 25)
+        rdoPrintByIds.Font = New System.Drawing.Font("Arial", 10)
+
+        Dim rdoPrintByDateRange As New RadioButton()
+        rdoPrintByDateRange.Text = "Print by Date Range"
+        rdoPrintByDateRange.Location = New System.Drawing.Point(30, 120)
+        rdoPrintByDateRange.Size = New System.Drawing.Size(440, 25)
+        rdoPrintByDateRange.Font = New System.Drawing.Font("Arial", 10)
+
+        Dim pnlActionType As New Panel()
+        pnlActionType.Location = New System.Drawing.Point(50, 155)
+        pnlActionType.Size = New System.Drawing.Size(420, 120)
+        pnlActionType.BorderStyle = BorderStyle.FixedSingle
+
+        Dim lblActionType As New Label()
+        lblActionType.Text = "Select Action Type:"
+        lblActionType.Location = New System.Drawing.Point(10, 10)
+        lblActionType.Size = New System.Drawing.Size(200, 20)
+        lblActionType.Font = New System.Drawing.Font("Arial", 9, FontStyle.Bold)
+
+        Dim chkAdd As New CheckBox()
+        chkAdd.Text = "Add Items"
+        chkAdd.Location = New System.Drawing.Point(20, 35)
+        chkAdd.Size = New System.Drawing.Size(180, 20)
+        chkAdd.Checked = True
+
+        Dim chkUpdate As New CheckBox()
+        chkUpdate.Text = "Update Items"
+        chkUpdate.Location = New System.Drawing.Point(20, 60)
+        chkUpdate.Size = New System.Drawing.Size(180, 20)
+        chkUpdate.Checked = True
+
+        Dim chkPullout As New CheckBox()
+        chkPullout.Text = "Pullout"
+        chkPullout.Location = New System.Drawing.Point(220, 35)
+        chkPullout.Size = New System.Drawing.Size(180, 20)
+        chkPullout.Checked = True
+
+        Dim chkDelete As New CheckBox()
+        chkDelete.Text = "Delete Items"
+        chkDelete.Location = New System.Drawing.Point(220, 60)
+        chkDelete.Size = New System.Drawing.Size(180, 20)
+        chkDelete.Checked = True
+
+        pnlActionType.Controls.AddRange({lblActionType, chkAdd, chkUpdate, chkPullout, chkDelete})
+
+        Dim pnlLogIds As New Panel()
+        pnlLogIds.Location = New System.Drawing.Point(50, 155)
+        pnlLogIds.Size = New System.Drawing.Size(420, 120)
+        pnlLogIds.BorderStyle = BorderStyle.FixedSingle
+        pnlLogIds.Visible = False
+
+        Dim lblLogIds As New Label()
+        lblLogIds.Text = "Enter Log IDs (comma-separated):"
+        lblLogIds.Location = New System.Drawing.Point(10, 10)
+        lblLogIds.Size = New System.Drawing.Size(400, 20)
+        lblLogIds.Font = New System.Drawing.Font("Arial", 9, FontStyle.Bold)
+
+        Dim txtLogIds As New TextBox()
+        txtLogIds.Location = New System.Drawing.Point(10, 35)
+        txtLogIds.Size = New System.Drawing.Size(400, 25)
+        txtLogIds.Font = New System.Drawing.Font("Arial", 10)
+
+        Dim lblAvailableIds As New Label()
+        lblAvailableIds.Text = "Available: " & GetAvailableLogIds()
+        lblAvailableIds.Location = New System.Drawing.Point(10, 70)
+        lblAvailableIds.Size = New System.Drawing.Size(400, 40)
+        lblAvailableIds.Font = New System.Drawing.Font("Arial", 8)
+        lblAvailableIds.ForeColor = Color.Gray
+
+        pnlLogIds.Controls.AddRange({lblLogIds, txtLogIds, lblAvailableIds})
+
+        Dim pnlDateRange As New Panel()
+        pnlDateRange.Location = New System.Drawing.Point(50, 155)
+        pnlDateRange.Size = New System.Drawing.Size(420, 120)
+        pnlDateRange.BorderStyle = BorderStyle.FixedSingle
+        pnlDateRange.Visible = False
+
+        Dim lblDateFrom As New Label()
+        lblDateFrom.Text = "From Date:"
+        lblDateFrom.Location = New System.Drawing.Point(10, 15)
+        lblDateFrom.Size = New System.Drawing.Size(80, 20)
+
+        Dim dtpFrom As New DateTimePicker()
+        dtpFrom.Location = New System.Drawing.Point(100, 12)
+        dtpFrom.Size = New System.Drawing.Size(300, 25)
+        dtpFrom.Format = DateTimePickerFormat.Short
+
+        Dim lblDateTo As New Label()
+        lblDateTo.Text = "To Date:"
+        lblDateTo.Location = New System.Drawing.Point(10, 50)
+        lblDateTo.Size = New System.Drawing.Size(80, 20)
+
+        Dim dtpTo As New DateTimePicker()
+        dtpTo.Location = New System.Drawing.Point(100, 47)
+        dtpTo.Size = New System.Drawing.Size(300, 25)
+        dtpTo.Format = DateTimePickerFormat.Short
+
+        pnlDateRange.Controls.AddRange({lblDateFrom, dtpFrom, lblDateTo, dtpTo})
+
+        AddHandler rdoPrintByAction.CheckedChanged, Sub(s, ev)
+                                                        pnlActionType.Visible = rdoPrintByAction.Checked
+                                                        pnlLogIds.Visible = False
+                                                        pnlDateRange.Visible = False
+                                                    End Sub
+
+        AddHandler rdoPrintByIds.CheckedChanged, Sub(s, ev)
+                                                     pnlActionType.Visible = False
+                                                     pnlLogIds.Visible = rdoPrintByIds.Checked
+                                                     pnlDateRange.Visible = False
+                                                 End Sub
+
+        AddHandler rdoPrintByDateRange.CheckedChanged, Sub(s, ev)
+                                                           pnlActionType.Visible = False
+                                                           pnlLogIds.Visible = False
+                                                           pnlDateRange.Visible = rdoPrintByDateRange.Checked
+                                                       End Sub
+
+        Dim btnPrint As New Button()
+        btnPrint.Text = "Print"
+        btnPrint.Location = New System.Drawing.Point(290, 310)
+        btnPrint.Size = New System.Drawing.Size(90, 35)
+        btnPrint.DialogResult = DialogResult.OK
+
+        Dim btnCancel As New Button()
+        btnCancel.Text = "Cancel"
+        btnCancel.Location = New System.Drawing.Point(390, 310)
+        btnCancel.Size = New System.Drawing.Size(90, 35)
+        btnCancel.DialogResult = DialogResult.Cancel
+
+        optionsForm.Controls.AddRange({lblTitle, rdoPrintByAction, rdoPrintByIds, rdoPrintByDateRange,
+                                   pnlActionType, pnlLogIds, pnlDateRange, btnPrint, btnCancel})
+
+        optionsForm.AcceptButton = btnPrint
+        optionsForm.CancelButton = btnCancel
+
+        If optionsForm.ShowDialog() = DialogResult.OK Then
+            If rdoPrintByAction.Checked Then
+                PrintByActionType(chkAdd.Checked, chkUpdate.Checked, chkPullout.Checked, chkDelete.Checked)
+            ElseIf rdoPrintByIds.Checked Then
+                PrintByLogIds(txtLogIds.Text.Trim())
+            ElseIf rdoPrintByDateRange.Checked Then
+                PrintByDateRange(dtpFrom.Value, dtpTo.Value)
+            End If
+        End If
+    End Sub
+
+    Private Sub PrintByActionType(includeAdd As Boolean, includeUpdate As Boolean, includePullout As Boolean, includeDelete As Boolean)
         Try
-            Dim inputForm As New Form()
-            inputForm.Text = "Select Records to Print"
-            inputForm.Size = New System.Drawing.Size(500, 250)
-            inputForm.StartPosition = FormStartPosition.CenterParent
-            inputForm.FormBorderStyle = FormBorderStyle.FixedDialog
-            inputForm.MaximizeBox = False
-            inputForm.MinimizeBox = False
+            If Not (includeAdd Or includeUpdate Or includePullout Or includeDelete) Then
+                MessageBox.Show("Please select at least one action type!", "Invalid Selection",
+                          MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Return
+            End If
 
-            Dim lblInstructions As New Label()
-            lblInstructions.Text = "Enter Log IDs to print (separate with commas):" & vbCrLf &
-                              "Example: 1, 4, 7, 10"
-            lblInstructions.Location = New System.Drawing.Point(20, 20)
-            lblInstructions.Size = New System.Drawing.Size(450, 40)
-            lblInstructions.Font = New System.Drawing.Font("Arial", 10)
+            itemsToPrint = New List(Of ListViewItem)
 
-            Dim txtLogIds As New TextBox()
-            txtLogIds.Location = New System.Drawing.Point(20, 70)
-            txtLogIds.Size = New System.Drawing.Size(450, 30)
-            txtLogIds.Font = New System.Drawing.Font("Arial", 11)
+            For Each item As ListViewItem In ListView1.Items
+                Dim action As String = item.SubItems(2).Text.ToLower().Trim()
 
-            Dim lblAvailable As New Label()
-            lblAvailable.Text = "Available Log IDs: " & GetAvailableLogIds()
-            lblAvailable.Location = New System.Drawing.Point(20, 110)
-            lblAvailable.Size = New System.Drawing.Size(450, 40)
-            lblAvailable.Font = New System.Drawing.Font("Arial", 9)
-            lblAvailable.ForeColor = System.Drawing.Color.Gray
+                Dim shouldInclude As Boolean = False
+                If includeAdd AndAlso action = "add item" Then shouldInclude = True
+                If includeUpdate AndAlso action = "update item" Then shouldInclude = True
+                If includePullout AndAlso action = "pullout" Then shouldInclude = True
+                If includeDelete AndAlso action = "delete item" Then shouldInclude = True
 
-            Dim btnOK As New Button()
-            btnOK.Text = "Print"
-            btnOK.Location = New System.Drawing.Point(290, 160)
-            btnOK.Size = New System.Drawing.Size(80, 35)
-            btnOK.DialogResult = DialogResult.OK
-
-            Dim btnCancel As New Button()
-            btnCancel.Text = "Cancel"
-            btnCancel.Location = New System.Drawing.Point(390, 160)
-            btnCancel.Size = New System.Drawing.Size(80, 35)
-            btnCancel.DialogResult = DialogResult.Cancel
-
-            inputForm.Controls.Add(lblInstructions)
-            inputForm.Controls.Add(txtLogIds)
-            inputForm.Controls.Add(lblAvailable)
-            inputForm.Controls.Add(btnOK)
-            inputForm.Controls.Add(btnCancel)
-
-            inputForm.AcceptButton = btnOK
-            inputForm.CancelButton = btnCancel
-
-            If inputForm.ShowDialog() = DialogResult.OK Then
-                Dim logIdsInput As String = txtLogIds.Text.Trim()
-
-                If String.IsNullOrEmpty(logIdsInput) Then
-                    MessageBox.Show("Please enter at least one Log ID!", "Invalid Input",
-                              MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                    Return
+                If shouldInclude Then
+                    itemsToPrint.Add(item)
                 End If
+            Next
 
-                Dim logIds As New List(Of String)
-                Dim invalidIds As New List(Of String)
+            If itemsToPrint.Count = 0 Then
+                MessageBox.Show("No records found matching the selected action types!", "No Records",
+                          MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Return
+            End If
 
-                For Each id As String In logIdsInput.Split(","c)
-                    Dim trimmedId As String = id.Trim()
-                    If Not String.IsNullOrEmpty(trimmedId) Then
-                        Dim found As Boolean = False
-                        For Each item As ListViewItem In ListView1.Items
-                            If item.SubItems(0).Text = trimmedId Then
-                                found = True
-                                Exit For
-                            End If
-                        Next
+            ShowPrintPreview()
 
-                        If found Then
-                            logIds.Add(trimmedId)
-                        Else
-                            invalidIds.Add(trimmedId)
-                        End If
-                    End If
-                Next
+        Catch ex As Exception
+            MessageBox.Show("Error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
 
-                If invalidIds.Count > 0 Then
-                    Dim warningMsg As String = "The following Log IDs were not found and will be skipped:" & vbCrLf &
-                                          String.Join(", ", invalidIds)
-                    MessageBox.Show(warningMsg, "Invalid Log IDs", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                End If
+    Private Sub PrintByLogIds(logIdsInput As String)
+        Try
+            If String.IsNullOrEmpty(logIdsInput) Then
+                MessageBox.Show("Please enter at least one Log ID!", "Invalid Input",
+                          MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Return
+            End If
 
-                If logIds.Count = 0 Then
-                    MessageBox.Show("No valid Log IDs to print!", "Error",
-                              MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    Return
-                End If
+            Dim logIds As New List(Of String)
+            Dim invalidIds As New List(Of String)
 
-                itemsToPrint = New List(Of ListViewItem)
-                For Each logId As String In logIds
+            For Each id As String In logIdsInput.Split(","c)
+                Dim trimmedId As String = id.Trim()
+                If Not String.IsNullOrEmpty(trimmedId) Then
+                    Dim found As Boolean = False
                     For Each item As ListViewItem In ListView1.Items
-                        If item.SubItems(0).Text = logId Then
-                            itemsToPrint.Add(item)
+                        If item.SubItems(0).Text = trimmedId Then
+                            found = True
                             Exit For
                         End If
                     Next
-                Next
 
-                ShowPrintPreview()
+                    If found Then
+                        logIds.Add(trimmedId)
+                    Else
+                        invalidIds.Add(trimmedId)
+                    End If
+                End If
+            Next
+
+            If invalidIds.Count > 0 Then
+                Dim warningMsg As String = "The following Log IDs were not found:" & vbCrLf &
+                                  String.Join(", ", invalidIds)
+                MessageBox.Show(warningMsg, "Invalid Log IDs", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             End If
+
+            If logIds.Count = 0 Then
+                MessageBox.Show("No valid Log IDs to print!", "Error",
+                          MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Return
+            End If
+
+            itemsToPrint = New List(Of ListViewItem)
+            For Each logId As String In logIds
+                For Each item As ListViewItem In ListView1.Items
+                    If item.SubItems(0).Text = logId Then
+                        itemsToPrint.Add(item)
+                        Exit For
+                    End If
+                Next
+            Next
+
+            ShowPrintPreview()
+
+        Catch ex As Exception
+            MessageBox.Show("Error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub PrintByDateRange(dateFrom As Date, dateTo As Date)
+        Try
+            If dateFrom > dateTo Then
+                MessageBox.Show("'From Date' cannot be later than 'To Date'!", "Invalid Date Range",
+                          MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Return
+            End If
+
+            itemsToPrint = New List(Of ListViewItem)
+
+            For Each item As ListViewItem In ListView1.Items
+                Dim dateText As String = item.SubItems(1).Text
+                Dim itemDate As Date
+
+                If Date.TryParse(dateText, itemDate) Then
+                    If itemDate.Date >= dateFrom.Date AndAlso itemDate.Date <= dateTo.Date Then
+                        itemsToPrint.Add(item)
+                    End If
+                End If
+            Next
+
+            If itemsToPrint.Count = 0 Then
+                MessageBox.Show("No records found in the selected date range!", "No Records",
+                          MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Return
+            End If
+
+            ShowPrintPreview()
 
         Catch ex As Exception
             MessageBox.Show("Error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -488,25 +710,6 @@ Public Class frmHistory
         End Try
     End Sub
 
-    Private Sub PrintSelectedRecords()
-        Try
-            If ListView1.SelectedItems.Count = 0 Then
-                MessageBox.Show("Please select at least one record to print!", "Print", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                Return
-            End If
-
-            itemsToPrint = New List(Of ListViewItem)
-            For Each item As ListViewItem In ListView1.SelectedItems
-                itemsToPrint.Add(item)
-            Next
-
-            ShowPrintPreview()
-
-        Catch ex As Exception
-            MessageBox.Show("Error printing: " & ex.Message, "Print Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
-    End Sub
-
     Private Sub ShowPrintPreview()
         currentPage = 0
         rowsPerPage = 0
@@ -525,6 +728,7 @@ Public Class frmHistory
 
         RemoveHandler printDoc.PrintPage, AddressOf PrintDocument_PrintPage
     End Sub
+
 
     Private Sub PrintDocument_PrintPage(sender As Object, e As PrintPageEventArgs)
         Try
@@ -628,4 +832,11 @@ Public Class frmHistory
         End Try
     End Sub
 
+    Private Sub chkFilterByDate_CheckedChanged(sender As Object, e As EventArgs) Handles chkFilterByDate.CheckedChanged
+        If chkFilterByDate.Checked Then
+            displayHistoryLogs("", True)
+        Else
+            displayHistoryLogs()
+        End If
+    End Sub
 End Class

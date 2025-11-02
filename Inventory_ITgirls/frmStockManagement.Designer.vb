@@ -429,7 +429,7 @@ Partial Class frmStockManagement
         btnRemove1.Name = "btnRemove1"
         btnRemove1.Size = New Size(137, 36)
         btnRemove1.TabIndex = 34
-        btnRemove1.Text = "Remove"
+        btnRemove1.Text = "Remove Item"
         btnRemove1.UseVisualStyleBackColor = False
         ' 
         ' Panel2

@@ -59,8 +59,9 @@ Public Class frmEditItems
     Private stockQuantity As String
     Private price As String
     Private status As String
+    Private reason As String
 
-    Public Sub New(id As String, name As String, lvl As String, gen As String, sz As String, qty As String, prc As String, stat As String)
+    Public Sub New(id As String, name As String, lvl As String, gen As String, sz As String, qty As String, prc As String, stat As String, reason As String)
         InitializeComponent()
 
         Me.id = id
@@ -71,6 +72,7 @@ Public Class frmEditItems
         Me.stockQuantity = qty
         Me.price = prc
         Me.status = stat
+        Me.reason = reason
 
         txtItemName.Text = Me.itemName
         txtLevel.Text = Me.level
@@ -79,26 +81,74 @@ Public Class frmEditItems
         txtStock.Text = Me.stockQuantity
         txtPrice.Text = Me.price
         lblStatus.Text = Me.status
+        cboReason.Text = Me.reason
     End Sub
 
     Private Sub saveChanges()
-        If txtStock.Text.Trim() = "" Or txtPrice.Text.Trim() = "" Then
+        If String.IsNullOrWhiteSpace(txtStock.Text) Or
+       String.IsNullOrWhiteSpace(txtPrice.Text) Or
+       String.IsNullOrWhiteSpace(txtGender.Text) Or
+       String.IsNullOrWhiteSpace(txtItemName.Text) Or
+       String.IsNullOrWhiteSpace(txtLevel.Text) Or
+       String.IsNullOrWhiteSpace(txtSize.Text) Or
+       cboReason.SelectedIndex = -1 Then
             MsgBox("Please fill out all fields.", MsgBoxStyle.Exclamation)
+            Exit Sub
+        End If
+
+        If txtItemName.Text.Trim().Length < 3 Then
+            MsgBox("Item name must be at least 3 characters long.", vbExclamation)
+            txtItemName.Focus()
+            Exit Sub
+        End If
+
+        If txtItemName.Text.Trim().Length > 100 Then
+            MsgBox("Item name is too long. Maximum 100 characters.", vbExclamation)
+            txtItemName.Focus()
             Exit Sub
         End If
 
         Dim stock As Integer
         If Not Integer.TryParse(txtStock.Text.Trim(), stock) Then
-            MsgBox("Invalid stock quantity.", vbExclamation)
+            MsgBox("Invalid stock quantity. Please enter a valid number.", vbExclamation)
             txtStock.Clear()
             txtStock.Focus()
             Exit Sub
         End If
 
-        Dim priceInput As String = txtPrice.Text.Replace("₱", "").Trim()
+        If stock < 0 Then
+            MsgBox("Stock quantity cannot be negative.", vbExclamation)
+            txtStock.Clear()
+            txtStock.Focus()
+            Exit Sub
+        End If
+
+        If stock > 9999 Then
+            MsgBox("Stock quantity is too high. Maximum is 9999.", vbExclamation)
+            txtStock.Clear()
+            txtStock.Focus()
+            Exit Sub
+        End If
+
+        Dim priceInput As String = txtPrice.Text.Replace("₱", "").Replace(",", "").Trim()
         Dim price As Decimal
         If Not Decimal.TryParse(priceInput, price) Then
-            MsgBox("Invalid price value.", vbExclamation)
+            MsgBox("Invalid price value. Please enter a valid amount.", vbExclamation)
+            txtPrice.Clear()
+            txtPrice.Focus()
+            Exit Sub
+        End If
+
+        If price <= 0 Then
+            MsgBox("Price must be greater than zero.", vbExclamation)
+            txtPrice.Clear()
+            txtPrice.Focus()
+            Exit Sub
+        End If
+
+
+        If price > 99999.99 Then
+            MsgBox("Price is too high. Maximum is ₱99,999.99.", vbExclamation)
             txtPrice.Clear()
             txtPrice.Focus()
             Exit Sub
@@ -134,16 +184,31 @@ Public Class frmEditItems
                 Dim updated_quantity = oldStock + change
                 Dim changeStr As String = If(change >= 0, "+" & change.ToString(), change.ToString())
 
-                Dim sql As String = "UPDATE tbluniforms SET stock_quantity=@quantity, price=@price, status=@status WHERE uniform_id=@uniform_id"
+                Dim sql As String = "UPDATE tbluniforms SET 
+                        item_name = @item_name, 
+                        level = @level, 
+                        gender = @gender, 
+                        size = @size, 
+                        stock_quantity = @quantity, 
+                        price = @price, 
+                        status = @status
+                     WHERE uniform_id = @uniform_id"
+
                 databaseConnection.cmd = New MySqlCommand(sql, databaseConnection.cn)
-                databaseConnection.cmd.Parameters.AddWithValue("@quantity", stock)
+                databaseConnection.cmd.Parameters.AddWithValue("@item_name", itemName)
+                databaseConnection.cmd.Parameters.AddWithValue("@level", level)
+                databaseConnection.cmd.Parameters.AddWithValue("@gender", gender)
+                databaseConnection.cmd.Parameters.AddWithValue("@size", size)
+                databaseConnection.cmd.Parameters.AddWithValue("@quantity", stockQuantity)
                 databaseConnection.cmd.Parameters.AddWithValue("@price", price)
                 databaseConnection.cmd.Parameters.AddWithValue("@status", status)
                 databaseConnection.cmd.Parameters.AddWithValue("@uniform_id", id)
+
                 Dim rowsAffected As Integer = databaseConnection.cmd.ExecuteNonQuery()
 
+
                 If rowsAffected > 0 Then
-                    Dim logSql As String = "INSERT INTO tbluniformlogs(uniform_id, action, changed_quantity, previous_quantity, new_quantity, admin_id, action_date) VALUES (@uniform_id, @action, @changed_quantity, @previous_qty, @new_qty, @admin_id, @action_date)"
+                    Dim logSql As String = "INSERT INTO tbluniformlogs(uniform_id, action, changed_quantity, previous_quantity, new_quantity, admin_id, action_date, Reason) VALUES (@uniform_id, @action, @changed_quantity, @previous_qty, @new_qty, @admin_id, @action_date, @reason)"
                     databaseConnection.cmd = New MySqlCommand(logSql, databaseConnection.cn)
                     databaseConnection.cmd.Parameters.AddWithValue("@uniform_id", id)
                     databaseConnection.cmd.Parameters.AddWithValue("@action", "Update Item")
@@ -151,6 +216,7 @@ Public Class frmEditItems
                     databaseConnection.cmd.Parameters.AddWithValue("@previous_qty", oldStock)
                     databaseConnection.cmd.Parameters.AddWithValue("@new_qty", stock)
                     databaseConnection.cmd.Parameters.AddWithValue("@admin_id", databaseConnection.currentAdminId)
+                    databaseConnection.cmd.Parameters.AddWithValue("@reason", cboReason.SelectedItem.ToString())
                     databaseConnection.cmd.Parameters.AddWithValue("@action_date", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"))
                     databaseConnection.cmd.ExecuteNonQuery()
 
@@ -159,13 +225,30 @@ Public Class frmEditItems
                     MsgBox("No matching record found to update!", MsgBoxStyle.Exclamation)
                 End If
             Else
-                Dim sql As String = "UPDATE tbluniforms SET stock_quantity=@quantity, price=@price, status=@status WHERE uniform_id=@uniform_id"
+                Dim sql As String = "UPDATE tbluniforms SET 
+                        item_name = @item_name, 
+                        level = @level, 
+                        gender = @gender, 
+                        size = @size, 
+                        stock_quantity = @quantity, 
+                        price = @price, 
+                        status = @status, 
+                        reason = @reason 
+                     WHERE uniform_id = @uniform_id"
+
                 databaseConnection.cmd = New MySqlCommand(sql, databaseConnection.cn)
-                databaseConnection.cmd.Parameters.AddWithValue("@quantity", stock)
+                databaseConnection.cmd.Parameters.AddWithValue("@item_name", itemName)
+                databaseConnection.cmd.Parameters.AddWithValue("@level", level)
+                databaseConnection.cmd.Parameters.AddWithValue("@gender", gender)
+                databaseConnection.cmd.Parameters.AddWithValue("@size", size)
+                databaseConnection.cmd.Parameters.AddWithValue("@quantity", stockQuantity)
                 databaseConnection.cmd.Parameters.AddWithValue("@price", price)
                 databaseConnection.cmd.Parameters.AddWithValue("@status", status)
+                databaseConnection.cmd.Parameters.AddWithValue("@reason", reason)
                 databaseConnection.cmd.Parameters.AddWithValue("@uniform_id", id)
+
                 Dim rowsAffected As Integer = databaseConnection.cmd.ExecuteNonQuery()
+
 
                 If rowsAffected > 0 Then
                     MsgBox("Item updated successfully!", MsgBoxStyle.Information)
@@ -224,12 +307,7 @@ Public Class frmEditItems
     End Sub
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-        'If MsgBox("Are you sure you want to save changes?", vbQuestion + vbYesNo) = vbYes Then
         saveChanges()
-        'Me.DialogResult = DialogResult.OK
-        'Me.Close()
-        'Else
-        'End If
     End Sub
 
     Private Sub txtStock_TextChanged(sender As Object, e As EventArgs) Handles txtStock.TextChanged

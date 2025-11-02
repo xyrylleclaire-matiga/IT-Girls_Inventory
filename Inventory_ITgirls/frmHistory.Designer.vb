@@ -25,14 +25,18 @@ Partial Class frmHistory
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmHistory))
         Label2 = New Label()
         Panel1 = New Panel()
+        rdoDelete = New RadioButton()
+        rdoPullout = New RadioButton()
+        rdoAdd = New RadioButton()
+        rdoUpdate = New RadioButton()
+        rdoAllRecord = New RadioButton()
         btnPrint = New Button()
         lblDeleted = New Label()
         lblPullout = New Label()
+        dtDate = New DateTimePicker()
+        txtSearch = New TextBox()
         lblUpdated = New Label()
         lblAdded = New Label()
-        cboAction = New ComboBox()
-        DateTimePicker1 = New DateTimePicker()
-        txtSearch = New TextBox()
         Button4 = New Button()
         Label5 = New Label()
         Button3 = New Button()
@@ -60,6 +64,7 @@ Partial Class frmHistory
         lblTotalRecords = New Label()
         PrintDocument1 = New Printing.PrintDocument()
         PrintPreviewDialog1 = New PrintPreviewDialog()
+        chkFilterByDate = New CheckBox()
         Panel1.SuspendLayout()
         SuspendLayout()
         ' 
@@ -77,14 +82,19 @@ Partial Class frmHistory
         ' Panel1
         ' 
         Panel1.BackColor = Color.FromArgb(CByte(224), CByte(240), CByte(234))
+        Panel1.Controls.Add(chkFilterByDate)
+        Panel1.Controls.Add(rdoDelete)
+        Panel1.Controls.Add(rdoPullout)
+        Panel1.Controls.Add(rdoAdd)
+        Panel1.Controls.Add(rdoUpdate)
+        Panel1.Controls.Add(rdoAllRecord)
         Panel1.Controls.Add(btnPrint)
         Panel1.Controls.Add(lblDeleted)
         Panel1.Controls.Add(lblPullout)
+        Panel1.Controls.Add(dtDate)
+        Panel1.Controls.Add(txtSearch)
         Panel1.Controls.Add(lblUpdated)
         Panel1.Controls.Add(lblAdded)
-        Panel1.Controls.Add(cboAction)
-        Panel1.Controls.Add(DateTimePicker1)
-        Panel1.Controls.Add(txtSearch)
         Panel1.Controls.Add(Button4)
         Panel1.Controls.Add(Label5)
         Panel1.Controls.Add(Button3)
@@ -96,18 +106,88 @@ Partial Class frmHistory
         Panel1.Controls.Add(btnAdded)
         Panel1.Location = New Point(12, 68)
         Panel1.Name = "Panel1"
-        Panel1.Size = New Size(1014, 153)
+        Panel1.Size = New Size(1014, 194)
         Panel1.TabIndex = 11
+        ' 
+        ' rdoDelete
+        ' 
+        rdoDelete.AutoSize = True
+        rdoDelete.BackColor = Color.DarkSlateGray
+        rdoDelete.Font = New Font("Arial Rounded MT Bold", 11.25F)
+        rdoDelete.ForeColor = Color.White
+        rdoDelete.Location = New Point(699, 54)
+        rdoDelete.Name = "rdoDelete"
+        rdoDelete.Size = New Size(117, 21)
+        rdoDelete.TabIndex = 35
+        rdoDelete.TabStop = True
+        rdoDelete.Text = "Delete Items"
+        rdoDelete.UseVisualStyleBackColor = False
+        ' 
+        ' rdoPullout
+        ' 
+        rdoPullout.AutoSize = True
+        rdoPullout.BackColor = Color.DarkSlateGray
+        rdoPullout.Font = New Font("Arial Rounded MT Bold", 11.25F)
+        rdoPullout.ForeColor = Color.White
+        rdoPullout.Location = New Point(551, 54)
+        rdoPullout.Name = "rdoPullout"
+        rdoPullout.Size = New Size(76, 21)
+        rdoPullout.TabIndex = 34
+        rdoPullout.TabStop = True
+        rdoPullout.Text = "Pullout"
+        rdoPullout.UseVisualStyleBackColor = False
+        ' 
+        ' rdoAdd
+        ' 
+        rdoAdd.AutoSize = True
+        rdoAdd.BackColor = Color.DarkSlateGray
+        rdoAdd.Font = New Font("Arial Rounded MT Bold", 11.25F)
+        rdoAdd.ForeColor = Color.White
+        rdoAdd.Location = New Point(220, 54)
+        rdoAdd.Name = "rdoAdd"
+        rdoAdd.Size = New Size(99, 21)
+        rdoAdd.TabIndex = 33
+        rdoAdd.TabStop = True
+        rdoAdd.Text = "Add Items"
+        rdoAdd.UseVisualStyleBackColor = False
+        ' 
+        ' rdoUpdate
+        ' 
+        rdoUpdate.AutoSize = True
+        rdoUpdate.BackColor = Color.DarkSlateGray
+        rdoUpdate.Font = New Font("Arial Rounded MT Bold", 11.25F)
+        rdoUpdate.ForeColor = Color.White
+        rdoUpdate.Location = New Point(374, 54)
+        rdoUpdate.Name = "rdoUpdate"
+        rdoUpdate.Size = New Size(114, 21)
+        rdoUpdate.TabIndex = 32
+        rdoUpdate.TabStop = True
+        rdoUpdate.Text = "Update Item"
+        rdoUpdate.UseVisualStyleBackColor = False
+        ' 
+        ' rdoAllRecord
+        ' 
+        rdoAllRecord.AutoSize = True
+        rdoAllRecord.BackColor = Color.DarkSlateGray
+        rdoAllRecord.Font = New Font("Arial Rounded MT Bold", 11.25F)
+        rdoAllRecord.ForeColor = Color.White
+        rdoAllRecord.Location = New Point(64, 53)
+        rdoAllRecord.Name = "rdoAllRecord"
+        rdoAllRecord.Size = New Size(111, 21)
+        rdoAllRecord.TabIndex = 31
+        rdoAllRecord.TabStop = True
+        rdoAllRecord.Text = "All Records"
+        rdoAllRecord.UseVisualStyleBackColor = False
         ' 
         ' btnPrint
         ' 
-        btnPrint.BackColor = Color.IndianRed
+        btnPrint.BackColor = Color.SeaGreen
         btnPrint.FlatStyle = FlatStyle.Flat
         btnPrint.Font = New Font("Arial Rounded MT Bold", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         btnPrint.ForeColor = Color.White
-        btnPrint.Location = New Point(857, 11)
+        btnPrint.Location = New Point(897, 49)
         btnPrint.Name = "btnPrint"
-        btnPrint.Size = New Size(108, 25)
+        btnPrint.Size = New Size(94, 32)
         btnPrint.TabIndex = 30
         btnPrint.Text = "Print"
         btnPrint.UseVisualStyleBackColor = False
@@ -118,7 +198,7 @@ Partial Class frmHistory
         lblDeleted.BackColor = Color.Firebrick
         lblDeleted.Font = New Font("Arial Rounded MT Bold", 24F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblDeleted.ForeColor = Color.White
-        lblDeleted.Location = New Point(913, 84)
+        lblDeleted.Location = New Point(913, 123)
         lblDeleted.Name = "lblDeleted"
         lblDeleted.Size = New Size(25, 37)
         lblDeleted.TabIndex = 24
@@ -130,11 +210,29 @@ Partial Class frmHistory
         lblPullout.BackColor = Color.SteelBlue
         lblPullout.Font = New Font("Arial Rounded MT Bold", 24F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblPullout.ForeColor = Color.White
-        lblPullout.Location = New Point(660, 84)
+        lblPullout.Location = New Point(660, 123)
         lblPullout.Name = "lblPullout"
         lblPullout.Size = New Size(25, 37)
         lblPullout.TabIndex = 23
         lblPullout.Text = " "
+        ' 
+        ' dtDate
+        ' 
+        dtDate.CalendarFont = New Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        dtDate.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        dtDate.Location = New Point(786, 11)
+        dtDate.Name = "dtDate"
+        dtDate.Size = New Size(217, 21)
+        dtDate.TabIndex = 12
+        ' 
+        ' txtSearch
+        ' 
+        txtSearch.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        txtSearch.Location = New Point(34, 11)
+        txtSearch.Name = "txtSearch"
+        txtSearch.Size = New Size(171, 21)
+        txtSearch.TabIndex = 20
+        txtSearch.Text = "🔍 Search..."
         ' 
         ' lblUpdated
         ' 
@@ -142,7 +240,7 @@ Partial Class frmHistory
         lblUpdated.BackColor = Color.DarkGoldenrod
         lblUpdated.Font = New Font("Arial Rounded MT Bold", 24F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblUpdated.ForeColor = Color.White
-        lblUpdated.Location = New Point(421, 83)
+        lblUpdated.Location = New Point(421, 122)
         lblUpdated.Name = "lblUpdated"
         lblUpdated.Size = New Size(25, 37)
         lblUpdated.TabIndex = 22
@@ -154,48 +252,19 @@ Partial Class frmHistory
         lblAdded.BackColor = Color.DarkOliveGreen
         lblAdded.Font = New Font("Arial Rounded MT Bold", 24F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblAdded.ForeColor = Color.White
-        lblAdded.Location = New Point(150, 83)
+        lblAdded.Location = New Point(150, 122)
         lblAdded.Name = "lblAdded"
         lblAdded.Size = New Size(25, 37)
         lblAdded.TabIndex = 21
         lblAdded.Text = " "
         ' 
-        ' cboAction
-        ' 
-        cboAction.DropDownStyle = ComboBoxStyle.DropDownList
-        cboAction.Font = New Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        cboAction.FormattingEnabled = True
-        cboAction.Items.AddRange(New Object() {"Add Item", "Update Item", "Pullout", "Delete Item"})
-        cboAction.Location = New Point(551, 14)
-        cboAction.Name = "cboAction"
-        cboAction.Size = New Size(192, 23)
-        cboAction.TabIndex = 12
-        ' 
-        ' DateTimePicker1
-        ' 
-        DateTimePicker1.CalendarFont = New Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        DateTimePicker1.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        DateTimePicker1.Location = New Point(271, 14)
-        DateTimePicker1.Name = "DateTimePicker1"
-        DateTimePicker1.Size = New Size(217, 21)
-        DateTimePicker1.TabIndex = 12
-        ' 
-        ' txtSearch
-        ' 
-        txtSearch.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        txtSearch.Location = New Point(28, 15)
-        txtSearch.Name = "txtSearch"
-        txtSearch.Size = New Size(171, 21)
-        txtSearch.TabIndex = 20
-        txtSearch.Text = "🔍 Search..."
-        ' 
         ' Button4
         ' 
         Button4.BackColor = Color.DarkSlateGray
         Button4.FlatStyle = FlatStyle.Popup
-        Button4.Location = New Point(0, 0)
+        Button4.Location = New Point(0, 40)
         Button4.Name = "Button4"
-        Button4.Size = New Size(1014, 51)
+        Button4.Size = New Size(1014, 50)
         Button4.TabIndex = 12
         Button4.UseVisualStyleBackColor = False
         ' 
@@ -204,7 +273,7 @@ Partial Class frmHistory
         Label5.BackColor = Color.Firebrick
         Label5.Font = New Font("Arial Rounded MT Bold", 12.75F)
         Label5.ForeColor = Color.White
-        Label5.Location = New Point(799, 90)
+        Label5.Location = New Point(799, 129)
         Label5.Name = "Label5"
         Label5.Size = New Size(111, 23)
         Label5.TabIndex = 19
@@ -214,7 +283,7 @@ Partial Class frmHistory
         ' Button3
         ' 
         Button3.BackColor = Color.Firebrick
-        Button3.Location = New Point(793, 64)
+        Button3.Location = New Point(793, 103)
         Button3.Name = "Button3"
         Button3.Size = New Size(193, 77)
         Button3.TabIndex = 18
@@ -226,7 +295,7 @@ Partial Class frmHistory
         Label4.BackColor = Color.SteelBlue
         Label4.Font = New Font("Arial Rounded MT Bold", 12.75F)
         Label4.ForeColor = Color.White
-        Label4.Location = New Point(559, 90)
+        Label4.Location = New Point(559, 129)
         Label4.Name = "Label4"
         Label4.Size = New Size(97, 23)
         Label4.TabIndex = 17
@@ -236,7 +305,7 @@ Partial Class frmHistory
         ' Button2
         ' 
         Button2.BackColor = Color.SteelBlue
-        Button2.Location = New Point(551, 64)
+        Button2.Location = New Point(551, 103)
         Button2.Name = "Button2"
         Button2.Size = New Size(193, 77)
         Button2.TabIndex = 16
@@ -248,7 +317,7 @@ Partial Class frmHistory
         Label1.BackColor = Color.DarkOliveGreen
         Label1.Font = New Font("Arial Rounded MT Bold", 12.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label1.ForeColor = Color.White
-        Label1.Location = New Point(54, 90)
+        Label1.Location = New Point(54, 129)
         Label1.Name = "Label1"
         Label1.Size = New Size(95, 23)
         Label1.TabIndex = 15
@@ -260,7 +329,7 @@ Partial Class frmHistory
         Label3.BackColor = Color.DarkGoldenrod
         Label3.Font = New Font("Arial Rounded MT Bold", 12.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label3.ForeColor = Color.White
-        Label3.Location = New Point(307, 90)
+        Label3.Location = New Point(307, 129)
         Label3.Name = "Label3"
         Label3.Size = New Size(110, 23)
         Label3.TabIndex = 14
@@ -270,7 +339,7 @@ Partial Class frmHistory
         ' Button1
         ' 
         Button1.BackColor = Color.DarkGoldenrod
-        Button1.Location = New Point(295, 64)
+        Button1.Location = New Point(295, 103)
         Button1.Name = "Button1"
         Button1.Size = New Size(193, 77)
         Button1.TabIndex = 13
@@ -280,7 +349,7 @@ Partial Class frmHistory
         ' btnAdded
         ' 
         btnAdded.BackColor = Color.DarkOliveGreen
-        btnAdded.Location = New Point(34, 64)
+        btnAdded.Location = New Point(34, 103)
         btnAdded.Name = "btnAdded"
         btnAdded.Size = New Size(193, 77)
         btnAdded.TabIndex = 12
@@ -291,7 +360,7 @@ Partial Class frmHistory
         ' 
         ListView1.Columns.AddRange(New ColumnHeader() {ColumnHeader1, ColumnHeader2, ColumnHeader3, ColumnHeader4, ColumnHeader5, ColumnHeader6, ColumnHeader7, ColumnHeader8, ColumnHeader9, ColumnHeader10})
         ListView1.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        ListView1.Location = New Point(12, 231)
+        ListView1.Location = New Point(12, 275)
         ListView1.Name = "ListView1"
         ListView1.Size = New Size(1014, 265)
         ListView1.TabIndex = 12
@@ -351,7 +420,7 @@ Partial Class frmHistory
         ' 
         Button5.BackColor = Color.DarkSlateGray
         Button5.FlatStyle = FlatStyle.Popup
-        Button5.Location = New Point(12, 521)
+        Button5.Location = New Point(12, 558)
         Button5.Name = "Button5"
         Button5.Size = New Size(1014, 51)
         Button5.TabIndex = 26
@@ -363,7 +432,7 @@ Partial Class frmHistory
         btnPreview.FlatStyle = FlatStyle.Flat
         btnPreview.Font = New Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         btnPreview.ForeColor = Color.White
-        btnPreview.Location = New Point(895, 533)
+        btnPreview.Location = New Point(895, 570)
         btnPreview.Name = "btnPreview"
         btnPreview.Size = New Size(108, 25)
         btnPreview.TabIndex = 27
@@ -373,7 +442,7 @@ Partial Class frmHistory
         ' Button6
         ' 
         Button6.FlatStyle = FlatStyle.Flat
-        Button6.Location = New Point(21, 528)
+        Button6.Location = New Point(21, 565)
         Button6.Name = "Button6"
         Button6.Size = New Size(994, 35)
         Button6.TabIndex = 28
@@ -383,7 +452,7 @@ Partial Class frmHistory
         ' 
         Label6.AutoSize = True
         Label6.Font = New Font("Arial Rounded MT Bold", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label6.Location = New Point(36, 538)
+        Label6.Location = New Point(36, 575)
         Label6.Name = "Label6"
         Label6.Size = New Size(139, 17)
         Label6.TabIndex = 26
@@ -393,7 +462,7 @@ Partial Class frmHistory
         ' 
         lblTotalRecords.AutoSize = True
         lblTotalRecords.Font = New Font("Arial Rounded MT Bold", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        lblTotalRecords.Location = New Point(173, 538)
+        lblTotalRecords.Location = New Point(173, 575)
         lblTotalRecords.Name = "lblTotalRecords"
         lblTotalRecords.Size = New Size(16, 17)
         lblTotalRecords.TabIndex = 29
@@ -408,6 +477,15 @@ Partial Class frmHistory
         PrintPreviewDialog1.Icon = CType(resources.GetObject("PrintPreviewDialog1.Icon"), Icon)
         PrintPreviewDialog1.Name = "PrintPreviewDialog1"
         PrintPreviewDialog1.Visible = False
+        ' 
+        ' chkFilterByDate
+        ' 
+        chkFilterByDate.AutoSize = True
+        chkFilterByDate.Location = New Point(765, 14)
+        chkFilterByDate.Name = "chkFilterByDate"
+        chkFilterByDate.Size = New Size(15, 14)
+        chkFilterByDate.TabIndex = 36
+        chkFilterByDate.UseVisualStyleBackColor = True
         ' 
         ' frmHistory
         ' 
@@ -442,9 +520,8 @@ Partial Class frmHistory
     Friend WithEvents Button2 As Button
     Friend WithEvents Label1 As Label
     Friend WithEvents Button4 As Button
-    Friend WithEvents DateTimePicker1 As DateTimePicker
+    Friend WithEvents dtDate As DateTimePicker
     Friend WithEvents txtSearch As TextBox
-    Friend WithEvents cboAction As ComboBox
     Friend WithEvents ListView1 As ListView
     Friend WithEvents ColumnHeader1 As ColumnHeader
     Friend WithEvents ColumnHeader2 As ColumnHeader
@@ -468,4 +545,10 @@ Partial Class frmHistory
     Friend WithEvents PrintDocument1 As Printing.PrintDocument
     Friend WithEvents PrintPreviewDialog1 As PrintPreviewDialog
     Friend WithEvents btnPrint As Button
+    Friend WithEvents rdoUpdate As RadioButton
+    Friend WithEvents rdoAllRecord As RadioButton
+    Friend WithEvents rdoAdd As RadioButton
+    Friend WithEvents rdoDelete As RadioButton
+    Friend WithEvents rdoPullout As RadioButton
+    Friend WithEvents chkFilterByDate As CheckBox
 End Class

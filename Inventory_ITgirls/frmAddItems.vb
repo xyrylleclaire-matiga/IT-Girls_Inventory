@@ -79,7 +79,7 @@ Public Class frmAddItems
 
     'ADDDDDDDDDDDDDDDD
     Private Sub addItems()
-        If txtItemName.Text.Trim() = "" Or txtStock.Text.Trim() = "" Or txtPrice.Text.Trim() = "" Or cboCategory.SelectedIndex = -1 Or cboGender.SelectedIndex = -1 Or cboLevel.SelectedIndex = -1 Or cboSize.SelectedIndex = -1 Then
+        If txtItemName.Text.Trim() = "" Or txtStock.Text.Trim() = "" Or txtPrice.Text.Trim() = "" Or cboCategory.SelectedIndex = -1 Or cboGender.SelectedIndex = -1 Or cboLevel.SelectedIndex = -1 Or cboSize.SelectedIndex = -1 Or cboReason.SelectedIndex =- 1 Then
             MsgBox("Please fill out all required fields.", vbExclamation)
             Exit Sub
         End If
@@ -133,6 +133,7 @@ Public Class frmAddItems
             txtPrice.Focus()
             Exit Sub
         End If
+
 
         If price > 99999.99 Then
             MsgBox("Price is too high. Maximum is ₱99,999.99.", vbExclamation)
@@ -193,8 +194,8 @@ Public Class frmAddItems
                     End Using
 
                     ' Insert log with proper item details
-                    Dim logSql As String = "INSERT INTO tbluniformlogs(uniform_id, action, item_name, level, gender, size, changed_quantity, previous_quantity, new_quantity, admin_id, action_date) " &
-                           "VALUES (@uniform_id, @action, @item_name, @level, @gender, @size, @changed_quantity, @previous_qty, @new_qty, @admin_id, @action_date)"
+                    Dim logSql As String = "INSERT INTO tbluniformlogs(uniform_id, action, item_name, level, gender, size, changed_quantity, previous_quantity, new_quantity, admin_id, action_date, Reason) " &
+                           "VALUES (@uniform_id, @action, @item_name, @level, @gender, @size, @changed_quantity, @previous_qty, @new_qty, @admin_id, @action_date, @reason)"
 
                     databaseConnection.cmd = New MySqlCommand(logSql, databaseConnection.cn)
                     databaseConnection.cmd.Parameters.AddWithValue("@uniform_id", lastInsertedId)
@@ -205,6 +206,7 @@ Public Class frmAddItems
                     databaseConnection.cmd.Parameters.AddWithValue("@size", size)
                     databaseConnection.cmd.Parameters.AddWithValue("@changed_quantity", stock)
                     databaseConnection.cmd.Parameters.AddWithValue("@previous_qty", 0)
+                    databaseConnection.cmd.Parameters.AddWithValue("reason", cboReason.SelectedItem.ToString())
                     databaseConnection.cmd.Parameters.AddWithValue("@new_qty", stock)
                     databaseConnection.cmd.Parameters.AddWithValue("@admin_id", databaseConnection.currentAdminId)
                     databaseConnection.cmd.Parameters.AddWithValue("@action_date", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"))
@@ -222,6 +224,7 @@ Public Class frmAddItems
                 cboLevel.SelectedIndex = -1
                 cboGender.SelectedIndex = -1
                 cboSize.SelectedIndex = -1
+                cboReason.SelectedIndex = -1
 
                 If Me.Owner IsNot Nothing Then
                     Dim parentForm As frmStockManagement = TryCast(Me.Owner, frmStockManagement)

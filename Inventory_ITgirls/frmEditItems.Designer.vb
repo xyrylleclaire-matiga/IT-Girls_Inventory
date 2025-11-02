@@ -41,6 +41,8 @@ Partial Class frmEditItems
         Label2 = New Label()
         Label5 = New Label()
         Panel1 = New Panel()
+        cboReason = New ComboBox()
+        Label1 = New Label()
         txtLevel = New TextBox()
         txtSize = New TextBox()
         txtGender = New TextBox()
@@ -64,7 +66,7 @@ Partial Class frmEditItems
         ' 
         ' TextBox2
         ' 
-        TextBox2.BackColor = Color.DarkSlateGray
+        TextBox2.BackColor = Color.SaddleBrown
         TextBox2.BorderStyle = BorderStyle.FixedSingle
         TextBox2.Font = New Font("Bookman Old Style", 12.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         TextBox2.ForeColor = Color.White
@@ -72,14 +74,14 @@ Partial Class frmEditItems
         TextBox2.Name = "TextBox2"
         TextBox2.Size = New Size(366, 27)
         TextBox2.TabIndex = 1000
-        TextBox2.Text = "Edit Items"
+        TextBox2.Text = "Edit Item"
         TextBox2.TextAlign = HorizontalAlignment.Center
         ' 
         ' lblDateAdded
         ' 
         lblDateAdded.AutoSize = True
         lblDateAdded.Font = New Font("Bookman Old Style", 9.75F, FontStyle.Bold)
-        lblDateAdded.Location = New Point(149, 309)
+        lblDateAdded.Location = New Point(149, 347)
         lblDateAdded.Name = "lblDateAdded"
         lblDateAdded.Size = New Size(11, 16)
         lblDateAdded.TabIndex = 18
@@ -89,7 +91,7 @@ Partial Class frmEditItems
         ' 
         Label10.AutoSize = True
         Label10.Font = New Font("Bookman Old Style", 9.75F, FontStyle.Bold)
-        Label10.Location = New Point(21, 309)
+        Label10.Location = New Point(21, 347)
         Label10.Name = "Label10"
         Label10.Size = New Size(109, 16)
         Label10.TabIndex = 17
@@ -99,7 +101,7 @@ Partial Class frmEditItems
         ' 
         lblStatus.AutoSize = True
         lblStatus.Font = New Font("Bookman Old Style", 9.75F, FontStyle.Bold)
-        lblStatus.Location = New Point(149, 276)
+        lblStatus.Location = New Point(149, 314)
         lblStatus.Name = "lblStatus"
         lblStatus.Size = New Size(0, 16)
         lblStatus.TabIndex = 16
@@ -108,7 +110,7 @@ Partial Class frmEditItems
         ' 
         Label9.AutoSize = True
         Label9.Font = New Font("Bookman Old Style", 9.75F, FontStyle.Bold)
-        Label9.Location = New Point(21, 276)
+        Label9.Location = New Point(21, 314)
         Label9.Name = "Label9"
         Label9.Size = New Size(64, 16)
         Label9.TabIndex = 15
@@ -117,7 +119,7 @@ Partial Class frmEditItems
         ' txtPrice
         ' 
         txtPrice.Font = New Font("Bookman Old Style", 9.75F, FontStyle.Bold)
-        txtPrice.Location = New Point(149, 126)
+        txtPrice.Location = New Point(149, 164)
         txtPrice.Name = "txtPrice"
         txtPrice.Size = New Size(175, 23)
         txtPrice.TabIndex = 3
@@ -126,7 +128,7 @@ Partial Class frmEditItems
         ' 
         Label8.AutoSize = True
         Label8.Font = New Font("Bookman Old Style", 9.75F, FontStyle.Bold)
-        Label8.Location = New Point(24, 129)
+        Label8.Location = New Point(24, 165)
         Label8.Name = "Label8"
         Label8.Size = New Size(54, 16)
         Label8.TabIndex = 13
@@ -156,7 +158,7 @@ Partial Class frmEditItems
         Panel2.Controls.Add(btnBack)
         Panel2.Controls.Add(btnClear)
         Panel2.Controls.Add(btnSave)
-        Panel2.Location = New Point(31, 377)
+        Panel2.Location = New Point(31, 414)
         Panel2.Name = "Panel2"
         Panel2.Size = New Size(351, 76)
         Panel2.TabIndex = 39
@@ -193,7 +195,7 @@ Partial Class frmEditItems
         ' 
         Label6.AutoSize = True
         Label6.Font = New Font("Bookman Old Style", 9.75F, FontStyle.Bold)
-        Label6.Location = New Point(24, 163)
+        Label6.Location = New Point(24, 201)
         Label6.Name = "Label6"
         Label6.Size = New Size(68, 16)
         Label6.TabIndex = 9
@@ -203,7 +205,7 @@ Partial Class frmEditItems
         ' 
         Label3.AutoSize = True
         Label3.Font = New Font("Bookman Old Style", 9.75F, FontStyle.Bold)
-        Label3.Location = New Point(21, 242)
+        Label3.Location = New Point(21, 280)
         Label3.Name = "Label3"
         Label3.Size = New Size(57, 16)
         Label3.TabIndex = 3
@@ -214,7 +216,6 @@ Partial Class frmEditItems
         txtItemName.Font = New Font("Bookman Old Style", 9.75F, FontStyle.Bold)
         txtItemName.Location = New Point(149, 51)
         txtItemName.Name = "txtItemName"
-        txtItemName.ReadOnly = True
         txtItemName.Size = New Size(175, 23)
         txtItemName.TabIndex = 0
         ' 
@@ -232,7 +233,7 @@ Partial Class frmEditItems
         ' 
         Label5.AutoSize = True
         Label5.Font = New Font("Bookman Old Style", 9.75F, FontStyle.Bold)
-        Label5.Location = New Point(24, 202)
+        Label5.Location = New Point(24, 240)
         Label5.Name = "Label5"
         Label5.Size = New Size(48, 16)
         Label5.TabIndex = 7
@@ -241,6 +242,8 @@ Partial Class frmEditItems
         ' Panel1
         ' 
         Panel1.BackColor = Color.Azure
+        Panel1.Controls.Add(cboReason)
+        Panel1.Controls.Add(Label1)
         Panel1.Controls.Add(txtLevel)
         Panel1.Controls.Add(txtSize)
         Panel1.Controls.Add(txtGender)
@@ -263,36 +266,58 @@ Partial Class frmEditItems
         Panel1.Size = New Size(351, 431)
         Panel1.TabIndex = 38
         ' 
+        ' cboReason
+        ' 
+        cboReason.DropDownStyle = ComboBoxStyle.DropDownList
+        cboReason.DropDownWidth = 190
+        cboReason.Font = New Font("Bookman Old Style", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        cboReason.FormattingEnabled = True
+        cboReason.Items.AddRange(New Object() {"Correction of Typographical Error", "Price Adjustment", "Size or Category Update"})
+        cboReason.Location = New Point(149, 130)
+        cboReason.Name = "cboReason"
+        cboReason.Size = New Size(175, 22)
+        cboReason.TabIndex = 2
+        ' 
+        ' Label1
+        ' 
+        Label1.AutoSize = True
+        Label1.Font = New Font("Bookman Old Style", 9.75F, FontStyle.Bold)
+        Label1.Location = New Point(24, 129)
+        Label1.Name = "Label1"
+        Label1.Size = New Size(69, 16)
+        Label1.TabIndex = 1004
+        Label1.Text = "Reason : "
+        ' 
         ' txtLevel
         ' 
         txtLevel.Font = New Font("Bookman Old Style", 9.75F, FontStyle.Bold)
-        txtLevel.Location = New Point(149, 235)
+        txtLevel.Location = New Point(149, 273)
         txtLevel.Name = "txtLevel"
         txtLevel.Size = New Size(175, 23)
-        txtLevel.TabIndex = 1003
+        txtLevel.TabIndex = 6
         ' 
         ' txtSize
         ' 
         txtSize.Font = New Font("Bookman Old Style", 9.75F, FontStyle.Bold)
-        txtSize.Location = New Point(149, 199)
+        txtSize.Location = New Point(149, 237)
         txtSize.Name = "txtSize"
         txtSize.Size = New Size(175, 23)
-        txtSize.TabIndex = 1002
+        txtSize.TabIndex = 5
         ' 
         ' txtGender
         ' 
         txtGender.Font = New Font("Bookman Old Style", 9.75F, FontStyle.Bold)
-        txtGender.Location = New Point(149, 163)
+        txtGender.Location = New Point(149, 201)
         txtGender.Name = "txtGender"
         txtGender.Size = New Size(175, 23)
-        txtGender.TabIndex = 1001
+        txtGender.TabIndex = 4
         ' 
         ' frmEditItems
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.DarkSlateGray
-        ClientSize = New Size(412, 474)
+        ClientSize = New Size(412, 505)
         Controls.Add(Panel2)
         Controls.Add(Panel1)
         Name = "frmEditItems"
@@ -325,4 +350,6 @@ Partial Class frmEditItems
     Friend WithEvents txtGender As TextBox
     Friend WithEvents txtSize As TextBox
     Friend WithEvents txtLevel As TextBox
+    Friend WithEvents Label1 As Label
+    Friend WithEvents cboReason As ComboBox
 End Class

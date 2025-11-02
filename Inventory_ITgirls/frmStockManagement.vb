@@ -350,7 +350,7 @@ Public Class frmStockManagement
         Dim price As String = selectedItem.SubItems(6).Text
         Dim status As String = selectedItem.SubItems(7).Text
 
-        Dim editForm As New frmEditItems(id, itemName, level, gender, size, stockQuantity, price, status)
+        Dim editForm As New frmEditItems(id, itemName, level, gender, size, stockQuantity, price, status, "")
         editForm.StartPosition = FormStartPosition.CenterParent
         If editForm.ShowDialog(Me) = DialogResult.OK Then
             displayApplication()
@@ -364,8 +364,40 @@ Public Class frmStockManagement
         End If
     End Sub
 
+    Private Sub removeItem()
+        If ListView1.SelectedItems.Count = 0 Then
+            MsgBox("Please select an item to edit", MsgBoxStyle.Exclamation)
+            Exit Sub
+        End If
+
+        Dim selectedItem As ListViewItem = ListView1.SelectedItems(0)
+
+        Dim id As String = selectedItem.SubItems(0).Text
+        Dim itemName As String = selectedItem.SubItems(1).Text
+        Dim level As String = selectedItem.SubItems(2).Text
+        Dim gender As String = selectedItem.SubItems(3).Text
+        Dim size As String = selectedItem.SubItems(4).Text
+        Dim stockQuantity As String = selectedItem.SubItems(5).Text
+        Dim price As String = selectedItem.SubItems(6).Text
+        Dim status As String = selectedItem.SubItems(7).Text
+
+        Dim removeForm As New frmRemove(id, itemName, level, gender, size, stockQuantity, price, status, "")
+        removeForm.StartPosition = FormStartPosition.CenterParent
+        If removeForm.ShowDialog(Me) = DialogResult.OK Then
+            displayApplication()
+            For Each item As ListViewItem In ListView1.Items
+                If item.SubItems(0).Text = id Then
+                    item.Selected = True
+                    item.EnsureVisible()
+                    Exit For
+                End If
+            Next
+        End If
+    End Sub
+
+
     Private Sub btnRemove1_Click(sender As Object, e As EventArgs) Handles btnRemove1.Click
-        remove()
+        removeItem()
     End Sub
 
     Private Sub remove()
@@ -405,8 +437,8 @@ Public Class frmStockManagement
                     If rowsAffected > 0 AndAlso databaseConnection.currentAdminId > 0 AndAlso databaseConnection.isLoggedIn Then
                         Dim changeStr As String = "-" & stockQty.ToString()
 
-                        Dim logSql As String = "INSERT INTO tbluniformlogs(uniform_id, action, changed_quantity, previous_quantity, new_quantity, admin_id, action_date, item_name, level, gender, size) " &
-                                          "VALUES (@uniform_id, @action, @changed_qty, @previous_qty, @new_qty, @admin_id, @action_date, @item_name, @level, @gender, @size)"
+                        Dim logSql As String = "INSERT INTO tbluniformlogs(uniform_id, action, changed_quantity, previous_quantity, new_quantity, admin_id, action_date, reason, item_name, level, gender, size) " &
+                                   "VALUES (@uniform_id, @action, @changed_quantity, @previous_qty, @new_qty, @admin_id, @action_date, @reason, @item_name, @level, @gender, @size)"
 
                         databaseConnection.cmd = New MySqlCommand(logSql, databaseConnection.cn)
                         databaseConnection.cmd.Parameters.AddWithValue("@uniform_id", uniformId)
