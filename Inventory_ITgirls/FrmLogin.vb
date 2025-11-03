@@ -16,7 +16,7 @@ Public Class FrmLogin
         If databaseConnection.dr.Read = True Then
             Dim role As String = databaseConnection.dr("role").ToString()
 
-            databaseConnection.currentUserId = Convert.ToInt32(databaseConnection.dr("user_id"))
+            databaseConnection.currentUserId = databaseConnection.dr("user_id").ToString()
             databaseConnection.currentUsername = databaseConnection.dr("user_id").ToString()
             databaseConnection.currentUserRole = role
             databaseConnection.isLoggedIn = True

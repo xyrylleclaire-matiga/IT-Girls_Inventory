@@ -24,19 +24,24 @@ Partial Class frmUserCorpoCCSView
     Private Sub InitializeComponent()
         PictureBox1 = New PictureBox()
         Panel1 = New Panel()
-        cmbGender = New ComboBox()
-        lblPrice = New Label()
-        lblStatus = New Label()
+        Panel2 = New Panel()
+        rdoF = New RadioButton()
+        rdoM = New RadioButton()
+        Label5 = New Label()
         Label6 = New Label()
-        Label4 = New Label()
-        Label3 = New Label()
+        lblPrice = New Label()
         Label2 = New Label()
-        Label1 = New Label()
+        cmbItemName = New ComboBox()
         Label8 = New Label()
-        btnBack = New Button()
+        Label1 = New Label()
+        Label4 = New Label()
         cmbSizes = New ComboBox()
+        lblStatus = New Label()
+        Label3 = New Label()
+        btnBack = New Button()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         Panel1.SuspendLayout()
+        Panel2.SuspendLayout()
         SuspendLayout()
         ' 
         ' PictureBox1
@@ -50,53 +55,67 @@ Partial Class frmUserCorpoCCSView
         ' Panel1
         ' 
         Panel1.BackColor = Color.DarkSlateGray
-        Panel1.Controls.Add(cmbSizes)
-        Panel1.Controls.Add(cmbGender)
-        Panel1.Controls.Add(lblPrice)
-        Panel1.Controls.Add(lblStatus)
+        Panel1.Controls.Add(Panel2)
+        Panel1.Controls.Add(Label5)
         Panel1.Controls.Add(Label6)
-        Panel1.Controls.Add(Label4)
-        Panel1.Controls.Add(Label3)
+        Panel1.Controls.Add(lblPrice)
         Panel1.Controls.Add(Label2)
-        Panel1.Controls.Add(Label1)
+        Panel1.Controls.Add(cmbItemName)
         Panel1.Controls.Add(Label8)
+        Panel1.Controls.Add(Label1)
+        Panel1.Controls.Add(Label4)
+        Panel1.Controls.Add(cmbSizes)
+        Panel1.Controls.Add(lblStatus)
+        Panel1.Controls.Add(Label3)
         Panel1.Location = New Point(385, 28)
         Panel1.Name = "Panel1"
         Panel1.Size = New Size(723, 375)
         Panel1.TabIndex = 16
         ' 
-        ' cmbGender
+        ' Panel2
         ' 
-        cmbGender.BackColor = Color.LightCyan
-        cmbGender.FormattingEnabled = True
-        cmbGender.Items.AddRange(New Object() {"FEMALE ", "MALE"})
-        cmbGender.Location = New Point(62, 127)
-        cmbGender.Name = "cmbGender"
-        cmbGender.Size = New Size(173, 23)
-        cmbGender.TabIndex = 77
+        Panel2.BackColor = Color.LightCyan
+        Panel2.Controls.Add(rdoF)
+        Panel2.Controls.Add(rdoM)
+        Panel2.Location = New Point(440, 191)
+        Panel2.Name = "Panel2"
+        Panel2.Size = New Size(186, 23)
+        Panel2.TabIndex = 106
         ' 
-        ' lblPrice
+        ' rdoF
         ' 
-        lblPrice.AutoSize = True
-        lblPrice.BackColor = Color.LightCyan
-        lblPrice.Font = New Font("Arial Rounded MT Bold", 20F)
-        lblPrice.ForeColor = SystemColors.ActiveCaptionText
-        lblPrice.Location = New Point(373, 17)
-        lblPrice.Name = "lblPrice"
-        lblPrice.Size = New Size(48, 32)
-        lblPrice.TabIndex = 76
-        lblPrice.Text = "— "
+        rdoF.AutoSize = True
+        rdoF.BackColor = Color.LightCyan
+        rdoF.ForeColor = SystemColors.ActiveCaptionText
+        rdoF.Location = New Point(18, 2)
+        rdoF.Name = "rdoF"
+        rdoF.Size = New Size(68, 19)
+        rdoF.TabIndex = 84
+        rdoF.TabStop = True
+        rdoF.Text = "FEMALE"
+        rdoF.UseVisualStyleBackColor = False
         ' 
-        ' lblStatus
+        ' rdoM
         ' 
-        lblStatus.AutoSize = True
-        lblStatus.Font = New Font("Sylfaen", 20.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lblStatus.ForeColor = SystemColors.Control
-        lblStatus.Location = New Point(87, 264)
-        lblStatus.Name = "lblStatus"
-        lblStatus.Size = New Size(43, 35)
-        lblStatus.TabIndex = 74
-        lblStatus.Text = "—"
+        rdoM.AutoSize = True
+        rdoM.ForeColor = SystemColors.ActiveCaptionText
+        rdoM.Location = New Point(114, 3)
+        rdoM.Name = "rdoM"
+        rdoM.Size = New Size(56, 19)
+        rdoM.TabIndex = 85
+        rdoM.TabStop = True
+        rdoM.Text = "MALE"
+        rdoM.UseVisualStyleBackColor = True
+        ' 
+        ' Label5
+        ' 
+        Label5.AutoSize = True
+        Label5.ForeColor = SystemColors.Control
+        Label5.Location = New Point(56, 173)
+        Label5.Name = "Label5"
+        Label5.Size = New Size(34, 15)
+        Label5.TabIndex = 105
+        Label5.Text = "ITEM"
         ' 
         ' Label6
         ' 
@@ -110,25 +129,17 @@ Partial Class frmUserCorpoCCSView
         Label6.TabIndex = 73
         Label6.Text = "CORPORATE ATTIRE"
         ' 
-        ' Label4
+        ' lblPrice
         ' 
-        Label4.AutoSize = True
-        Label4.ForeColor = SystemColors.Control
-        Label4.Location = New Point(49, 249)
-        Label4.Name = "Label4"
-        Label4.Size = New Size(50, 15)
-        Label4.TabIndex = 71
-        Label4.Text = "STATUS:"
-        ' 
-        ' Label3
-        ' 
-        Label3.AutoSize = True
-        Label3.ForeColor = SystemColors.Control
-        Label3.Location = New Point(49, 179)
-        Label3.Name = "Label3"
-        Label3.Size = New Size(35, 15)
-        Label3.TabIndex = 69
-        Label3.Text = "SIZES"
+        lblPrice.AutoSize = True
+        lblPrice.BackColor = Color.LightCyan
+        lblPrice.Font = New Font("Arial Rounded MT Bold", 20F)
+        lblPrice.ForeColor = SystemColors.ActiveCaptionText
+        lblPrice.Location = New Point(89, 105)
+        lblPrice.Name = "lblPrice"
+        lblPrice.Size = New Size(48, 32)
+        lblPrice.TabIndex = 101
+        lblPrice.Text = "— "
         ' 
         ' Label2
         ' 
@@ -142,26 +153,77 @@ Partial Class frmUserCorpoCCSView
         Label2.TabIndex = 67
         Label2.Text = "COMPUTER STUDIES"
         ' 
-        ' Label1
+        ' cmbItemName
         ' 
-        Label1.AutoSize = True
-        Label1.ForeColor = SystemColors.Control
-        Label1.Location = New Point(49, 109)
-        Label1.Name = "Label1"
-        Label1.Size = New Size(51, 15)
-        Label1.TabIndex = 2
-        Label1.Text = "GENDER"
+        cmbItemName.BackColor = Color.LightCyan
+        cmbItemName.FormattingEnabled = True
+        cmbItemName.Items.AddRange(New Object() {"Slacks", "Skirt", "Blazer"})
+        cmbItemName.Location = New Point(71, 191)
+        cmbItemName.Name = "cmbItemName"
+        cmbItemName.Size = New Size(173, 23)
+        cmbItemName.TabIndex = 104
         ' 
         ' Label8
         ' 
         Label8.AutoSize = True
         Label8.Font = New Font("Segoe UI", 15F)
         Label8.ForeColor = SystemColors.Control
-        Label8.Location = New Point(352, 24)
+        Label8.Location = New Point(63, 109)
         Label8.Name = "Label8"
         Label8.Size = New Size(24, 28)
-        Label8.TabIndex = 75
+        Label8.TabIndex = 100
         Label8.Text = "₱"
+        ' 
+        ' Label1
+        ' 
+        Label1.AutoSize = True
+        Label1.ForeColor = SystemColors.Control
+        Label1.Location = New Point(440, 174)
+        Label1.Name = "Label1"
+        Label1.Size = New Size(51, 15)
+        Label1.TabIndex = 97
+        Label1.Text = "GENDER"
+        ' 
+        ' Label4
+        ' 
+        Label4.AutoSize = True
+        Label4.ForeColor = SystemColors.Control
+        Label4.Location = New Point(449, 264)
+        Label4.Name = "Label4"
+        Label4.Size = New Size(47, 15)
+        Label4.TabIndex = 99
+        Label4.Text = "STATUS"
+        ' 
+        ' cmbSizes
+        ' 
+        cmbSizes.BackColor = Color.LightCyan
+        cmbSizes.FormattingEnabled = True
+        cmbSizes.Items.AddRange(New Object() {"EXTRA SMALL", "SMALL", "MEDIUM", "LARGE", "EXTRA LARGE", "2XL", "3XL", "4XL", "5XL", "6XL"})
+        cmbSizes.Location = New Point(71, 279)
+        cmbSizes.Name = "cmbSizes"
+        cmbSizes.Size = New Size(173, 23)
+        cmbSizes.TabIndex = 103
+        ' 
+        ' lblStatus
+        ' 
+        lblStatus.AutoSize = True
+        lblStatus.Font = New Font("Sylfaen", 20.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        lblStatus.ForeColor = SystemColors.Control
+        lblStatus.Location = New Point(471, 279)
+        lblStatus.Name = "lblStatus"
+        lblStatus.Size = New Size(43, 35)
+        lblStatus.TabIndex = 102
+        lblStatus.Text = "—"
+        ' 
+        ' Label3
+        ' 
+        Label3.AutoSize = True
+        Label3.ForeColor = SystemColors.Control
+        Label3.Location = New Point(58, 261)
+        Label3.Name = "Label3"
+        Label3.Size = New Size(35, 15)
+        Label3.TabIndex = 98
+        Label3.Text = "SIZES"
         ' 
         ' btnBack
         ' 
@@ -170,22 +232,12 @@ Partial Class frmUserCorpoCCSView
         btnBack.FlatStyle = FlatStyle.Flat
         btnBack.Font = New Font("Arial Rounded MT Bold", 12F)
         btnBack.ForeColor = Color.White
-        btnBack.Location = New Point(971, 432)
+        btnBack.Location = New Point(971, 420)
         btnBack.Name = "btnBack"
         btnBack.Size = New Size(137, 36)
         btnBack.TabIndex = 35
         btnBack.Text = "Back"
         btnBack.UseVisualStyleBackColor = False
-        ' 
-        ' cmbSizes
-        ' 
-        cmbSizes.BackColor = Color.LightCyan
-        cmbSizes.FormattingEnabled = True
-        cmbSizes.Items.AddRange(New Object() {"EXTRA SMALL", "SMALL", "MEDIUM", "LARGE", "EXTRA LARGE", "2XL", "3XL", "4XL", "5XL", "6XL"})
-        cmbSizes.Location = New Point(62, 197)
-        cmbSizes.Name = "cmbSizes"
-        cmbSizes.Size = New Size(173, 23)
-        cmbSizes.TabIndex = 84
         ' 
         ' frmUserCorpoCCSView
         ' 
@@ -201,20 +253,26 @@ Partial Class frmUserCorpoCCSView
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         Panel1.ResumeLayout(False)
         Panel1.PerformLayout()
+        Panel2.ResumeLayout(False)
+        Panel2.PerformLayout()
         ResumeLayout(False)
     End Sub
 
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents lblStatus As Label
     Friend WithEvents Label6 As Label
-    Friend WithEvents Label4 As Label
-    Friend WithEvents Label3 As Label
     Friend WithEvents Label2 As Label
-    Friend WithEvents Label1 As Label
-    Friend WithEvents Label8 As Label
     Private WithEvents btnBack As Button
+    Friend WithEvents Panel2 As Panel
+    Friend WithEvents rdoF As RadioButton
+    Friend WithEvents rdoM As RadioButton
+    Friend WithEvents Label5 As Label
     Friend WithEvents lblPrice As Label
-    Friend WithEvents cmbGender As ComboBox
+    Friend WithEvents cmbItemName As ComboBox
+    Friend WithEvents Label8 As Label
+    Friend WithEvents Label1 As Label
+    Friend WithEvents Label4 As Label
     Friend WithEvents cmbSizes As ComboBox
+    Friend WithEvents lblStatus As Label
+    Friend WithEvents Label3 As Label
 End Class

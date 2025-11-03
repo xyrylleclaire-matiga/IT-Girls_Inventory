@@ -23,6 +23,11 @@ Partial Class frmUserUniformHSPantsView
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Panel1 = New Panel()
+        Panel2 = New Panel()
+        rdoF = New RadioButton()
+        rdoM = New RadioButton()
+        Label5 = New Label()
+        cmbItemName = New ComboBox()
         cmbSizes = New ComboBox()
         lblStatus = New Label()
         lblPrice = New Label()
@@ -33,14 +38,9 @@ Partial Class frmUserUniformHSPantsView
         Label1 = New Label()
         btnBack = New Button()
         PictureBox1 = New PictureBox()
-        ComboBox1 = New ComboBox()
-        Label5 = New Label()
-        RadioButton1 = New RadioButton()
-        RadioButton2 = New RadioButton()
-        Panel2 = New Panel()
         Panel1.SuspendLayout()
-        CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         Panel2.SuspendLayout()
+        CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' Panel1
@@ -48,7 +48,7 @@ Partial Class frmUserUniformHSPantsView
         Panel1.BackColor = Color.DarkSlateGray
         Panel1.Controls.Add(Panel2)
         Panel1.Controls.Add(Label5)
-        Panel1.Controls.Add(ComboBox1)
+        Panel1.Controls.Add(cmbItemName)
         Panel1.Controls.Add(cmbSizes)
         Panel1.Controls.Add(lblStatus)
         Panel1.Controls.Add(lblPrice)
@@ -61,6 +61,61 @@ Partial Class frmUserUniformHSPantsView
         Panel1.Name = "Panel1"
         Panel1.Size = New Size(794, 358)
         Panel1.TabIndex = 22
+        ' 
+        ' Panel2
+        ' 
+        Panel2.BackColor = Color.LightCyan
+        Panel2.Controls.Add(rdoF)
+        Panel2.Controls.Add(rdoM)
+        Panel2.Location = New Point(386, 167)
+        Panel2.Name = "Panel2"
+        Panel2.Size = New Size(200, 23)
+        Panel2.TabIndex = 86
+        ' 
+        ' rdoF
+        ' 
+        rdoF.AutoSize = True
+        rdoF.BackColor = Color.LightCyan
+        rdoF.ForeColor = SystemColors.ActiveCaptionText
+        rdoF.Location = New Point(23, 4)
+        rdoF.Name = "rdoF"
+        rdoF.Size = New Size(68, 19)
+        rdoF.TabIndex = 84
+        rdoF.TabStop = True
+        rdoF.Text = "FEMALE"
+        rdoF.UseVisualStyleBackColor = False
+        ' 
+        ' rdoM
+        ' 
+        rdoM.AutoSize = True
+        rdoM.ForeColor = SystemColors.ActiveCaptionText
+        rdoM.Location = New Point(123, 3)
+        rdoM.Name = "rdoM"
+        rdoM.Size = New Size(56, 19)
+        rdoM.TabIndex = 85
+        rdoM.TabStop = True
+        rdoM.Text = "MALE"
+        rdoM.UseVisualStyleBackColor = True
+        ' 
+        ' Label5
+        ' 
+        Label5.AutoSize = True
+        Label5.ForeColor = SystemColors.Control
+        Label5.Location = New Point(60, 149)
+        Label5.Name = "Label5"
+        Label5.Size = New Size(34, 15)
+        Label5.TabIndex = 83
+        Label5.Text = "ITEM"
+        ' 
+        ' cmbItemName
+        ' 
+        cmbItemName.BackColor = Color.LightCyan
+        cmbItemName.FormattingEnabled = True
+        cmbItemName.Items.AddRange(New Object() {"POLO", "Slacks", "SKIRT"})
+        cmbItemName.Location = New Point(75, 167)
+        cmbItemName.Name = "cmbItemName"
+        cmbItemName.Size = New Size(173, 23)
+        cmbItemName.TabIndex = 82
         ' 
         ' cmbSizes
         ' 
@@ -155,7 +210,7 @@ Partial Class frmUserUniformHSPantsView
         btnBack.FlatStyle = FlatStyle.Flat
         btnBack.Font = New Font("Arial Rounded MT Bold", 12F)
         btnBack.ForeColor = Color.White
-        btnBack.Location = New Point(1025, 432)
+        btnBack.Location = New Point(1025, 419)
         btnBack.Name = "btnBack"
         btnBack.Size = New Size(137, 36)
         btnBack.TabIndex = 35
@@ -172,61 +227,6 @@ Partial Class frmUserUniformHSPantsView
         PictureBox1.TabIndex = 36
         PictureBox1.TabStop = False
         ' 
-        ' ComboBox1
-        ' 
-        ComboBox1.BackColor = Color.LightCyan
-        ComboBox1.FormattingEnabled = True
-        ComboBox1.Items.AddRange(New Object() {"POLO", "BLOUSE", "TROUSERS", "SKIRT"})
-        ComboBox1.Location = New Point(75, 167)
-        ComboBox1.Name = "ComboBox1"
-        ComboBox1.Size = New Size(173, 23)
-        ComboBox1.TabIndex = 82
-        ' 
-        ' Label5
-        ' 
-        Label5.AutoSize = True
-        Label5.ForeColor = SystemColors.Control
-        Label5.Location = New Point(60, 149)
-        Label5.Name = "Label5"
-        Label5.Size = New Size(34, 15)
-        Label5.TabIndex = 83
-        Label5.Text = "ITEM"
-        ' 
-        ' RadioButton1
-        ' 
-        RadioButton1.AutoSize = True
-        RadioButton1.BackColor = Color.LightCyan
-        RadioButton1.ForeColor = SystemColors.ActiveCaptionText
-        RadioButton1.Location = New Point(23, 4)
-        RadioButton1.Name = "RadioButton1"
-        RadioButton1.Size = New Size(68, 19)
-        RadioButton1.TabIndex = 84
-        RadioButton1.TabStop = True
-        RadioButton1.Text = "FEMALE"
-        RadioButton1.UseVisualStyleBackColor = False
-        ' 
-        ' RadioButton2
-        ' 
-        RadioButton2.AutoSize = True
-        RadioButton2.ForeColor = SystemColors.ActiveCaptionText
-        RadioButton2.Location = New Point(123, 3)
-        RadioButton2.Name = "RadioButton2"
-        RadioButton2.Size = New Size(56, 19)
-        RadioButton2.TabIndex = 85
-        RadioButton2.TabStop = True
-        RadioButton2.Text = "MALE"
-        RadioButton2.UseVisualStyleBackColor = True
-        ' 
-        ' Panel2
-        ' 
-        Panel2.BackColor = Color.LightCyan
-        Panel2.Controls.Add(RadioButton1)
-        Panel2.Controls.Add(RadioButton2)
-        Panel2.Location = New Point(386, 167)
-        Panel2.Name = "Panel2"
-        Panel2.Size = New Size(200, 23)
-        Panel2.TabIndex = 86
-        ' 
         ' frmUserUniformHSPantsView
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -240,9 +240,9 @@ Partial Class frmUserUniformHSPantsView
         Text = "frmHSUnifPants"
         Panel1.ResumeLayout(False)
         Panel1.PerformLayout()
-        CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         Panel2.ResumeLayout(False)
         Panel2.PerformLayout()
+        CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
     End Sub
     Friend WithEvents Panel1 As Panel
@@ -257,8 +257,8 @@ Partial Class frmUserUniformHSPantsView
     Friend WithEvents cmbSizes As ComboBox
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Label5 As Label
-    Friend WithEvents ComboBox1 As ComboBox
-    Friend WithEvents RadioButton1 As RadioButton
-    Friend WithEvents RadioButton2 As RadioButton
+    Friend WithEvents cmbItemName As ComboBox
+    Friend WithEvents rdoF As RadioButton
+    Friend WithEvents rdoM As RadioButton
     Friend WithEvents Panel2 As Panel
 End Class

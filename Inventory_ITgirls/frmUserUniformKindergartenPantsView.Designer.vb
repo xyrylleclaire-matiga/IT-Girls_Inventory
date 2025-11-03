@@ -172,7 +172,7 @@ Partial Class frmUserUniformKindergartenPantsView
         btnBack.FlatStyle = FlatStyle.Flat
         btnBack.Font = New Font("Arial Rounded MT Bold", 12F)
         btnBack.ForeColor = Color.White
-        btnBack.Location = New Point(983, 432)
+        btnBack.Location = New Point(983, 413)
         btnBack.Name = "btnBack"
         btnBack.Size = New Size(137, 36)
         btnBack.TabIndex = 81

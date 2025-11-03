@@ -22,6 +22,7 @@ Partial Class frmUserCorporateAttire
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmUserCorporateAttire))
         Label1 = New Label()
         btnCCScorpo = New Button()
         PictureBox2 = New PictureBox()
@@ -147,9 +148,11 @@ Partial Class frmUserCorporateAttire
         ' 
         ' PictureBox1
         ' 
+        PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), Image)
         PictureBox1.Location = New Point(302, 60)
         PictureBox1.Name = "PictureBox1"
-        PictureBox1.Size = New Size(177, 163)
+        PictureBox1.Size = New Size(177, 186)
+        PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
         PictureBox1.TabIndex = 55
         PictureBox1.TabStop = False
         ' 
@@ -483,6 +486,7 @@ Partial Class frmUserCorporateAttire
         AutoScroll = True
         BackColor = Color.LightCyan
         ClientSize = New Size(1247, 714)
+        Controls.Add(Label4)
         Controls.Add(Label21)
         Controls.Add(Label11)
         Controls.Add(Label12)
@@ -517,7 +521,6 @@ Partial Class frmUserCorporateAttire
         Controls.Add(btnBusinessAdCorpo)
         Controls.Add(PictureBox3)
         Controls.Add(Label3)
-        Controls.Add(Label4)
         Controls.Add(btnCOAcorpo)
         Controls.Add(PictureBox1)
         Controls.Add(Label2)

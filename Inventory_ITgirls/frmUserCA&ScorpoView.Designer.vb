@@ -24,18 +24,24 @@ Partial Class frmCA_ScorpoView
     Private Sub InitializeComponent()
         PictureBox1 = New PictureBox()
         Panel1 = New Panel()
-        Label7 = New Label()
+        rdoU = New RadioButton()
+        Panel2 = New Panel()
+        rdoF = New RadioButton()
+        rdoM = New RadioButton()
         Label6 = New Label()
         Label5 = New Label()
-        Label4 = New Label()
-        Label3 = New Label()
-        ComboBox2 = New ComboBox()
         Label2 = New Label()
+        cmbItemName = New ComboBox()
+        lblPrice = New Label()
+        cmbSizes = New ComboBox()
         Label1 = New Label()
-        ComboBox1 = New ComboBox()
+        lblStatus = New Label()
+        Label3 = New Label()
+        Label4 = New Label()
         Label8 = New Label()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         Panel1.SuspendLayout()
+        Panel2.SuspendLayout()
         SuspendLayout()
         ' 
         ' PictureBox1
@@ -51,31 +57,71 @@ Partial Class frmCA_ScorpoView
         ' Panel1
         ' 
         Panel1.BackColor = Color.DarkSlateGray
-        Panel1.Controls.Add(Label7)
+        Panel1.Controls.Add(rdoU)
+        Panel1.Controls.Add(Panel2)
         Panel1.Controls.Add(Label6)
         Panel1.Controls.Add(Label5)
-        Panel1.Controls.Add(Label4)
-        Panel1.Controls.Add(Label3)
-        Panel1.Controls.Add(ComboBox2)
         Panel1.Controls.Add(Label2)
+        Panel1.Controls.Add(cmbItemName)
+        Panel1.Controls.Add(lblPrice)
+        Panel1.Controls.Add(cmbSizes)
         Panel1.Controls.Add(Label1)
-        Panel1.Controls.Add(ComboBox1)
+        Panel1.Controls.Add(lblStatus)
+        Panel1.Controls.Add(Label3)
+        Panel1.Controls.Add(Label4)
         Panel1.Controls.Add(Label8)
         Panel1.Location = New Point(358, 29)
         Panel1.Name = "Panel1"
         Panel1.Size = New Size(723, 375)
         Panel1.TabIndex = 16
         ' 
-        ' Label7
+        ' rdoU
         ' 
-        Label7.AutoSize = True
-        Label7.Font = New Font("Sylfaen", 20.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label7.ForeColor = SystemColors.Control
-        Label7.Location = New Point(87, 264)
-        Label7.Name = "Label7"
-        Label7.Size = New Size(26, 35)
-        Label7.TabIndex = 74
-        Label7.Text = "-"
+        rdoU.AutoSize = True
+        rdoU.BackColor = Color.LightCyan
+        rdoU.ForeColor = SystemColors.ActiveCaptionText
+        rdoU.Location = New Point(544, 178)
+        rdoU.Name = "rdoU"
+        rdoU.Size = New Size(64, 19)
+        rdoU.TabIndex = 86
+        rdoU.TabStop = True
+        rdoU.Text = "UNISEX"
+        rdoU.UseVisualStyleBackColor = False
+        ' 
+        ' Panel2
+        ' 
+        Panel2.BackColor = Color.LightCyan
+        Panel2.Controls.Add(rdoF)
+        Panel2.Controls.Add(rdoM)
+        Panel2.Location = New Point(391, 176)
+        Panel2.Name = "Panel2"
+        Panel2.Size = New Size(221, 23)
+        Panel2.TabIndex = 96
+        ' 
+        ' rdoF
+        ' 
+        rdoF.AutoSize = True
+        rdoF.BackColor = Color.LightCyan
+        rdoF.ForeColor = SystemColors.ActiveCaptionText
+        rdoF.Location = New Point(11, 2)
+        rdoF.Name = "rdoF"
+        rdoF.Size = New Size(68, 19)
+        rdoF.TabIndex = 84
+        rdoF.TabStop = True
+        rdoF.Text = "FEMALE"
+        rdoF.UseVisualStyleBackColor = False
+        ' 
+        ' rdoM
+        ' 
+        rdoM.AutoSize = True
+        rdoM.ForeColor = SystemColors.ActiveCaptionText
+        rdoM.Location = New Point(85, 2)
+        rdoM.Name = "rdoM"
+        rdoM.Size = New Size(56, 19)
+        rdoM.TabIndex = 85
+        rdoM.TabStop = True
+        rdoM.Text = "MALE"
+        rdoM.UseVisualStyleBackColor = True
         ' 
         ' Label6
         ' 
@@ -92,41 +138,12 @@ Partial Class frmCA_ScorpoView
         ' Label5
         ' 
         Label5.AutoSize = True
-        Label5.BackColor = Color.MediumTurquoise
-        Label5.Font = New Font("Arial Rounded MT Bold", 20F)
-        Label5.Location = New Point(369, 17)
+        Label5.ForeColor = SystemColors.Control
+        Label5.Location = New Point(65, 158)
         Label5.Name = "Label5"
-        Label5.Size = New Size(118, 32)
-        Label5.TabIndex = 72
-        Label5.Text = "100,000"
-        ' 
-        ' Label4
-        ' 
-        Label4.AutoSize = True
-        Label4.ForeColor = SystemColors.Control
-        Label4.Location = New Point(49, 249)
-        Label4.Name = "Label4"
-        Label4.Size = New Size(50, 15)
-        Label4.TabIndex = 71
-        Label4.Text = "STATUS:"
-        ' 
-        ' Label3
-        ' 
-        Label3.AutoSize = True
-        Label3.ForeColor = SystemColors.Control
-        Label3.Location = New Point(49, 179)
-        Label3.Name = "Label3"
-        Label3.Size = New Size(35, 15)
-        Label3.TabIndex = 69
-        Label3.Text = "SIZES"
-        ' 
-        ' ComboBox2
-        ' 
-        ComboBox2.FormattingEnabled = True
-        ComboBox2.Location = New Point(62, 201)
-        ComboBox2.Name = "ComboBox2"
-        ComboBox2.Size = New Size(173, 23)
-        ComboBox2.TabIndex = 68
+        Label5.Size = New Size(34, 15)
+        Label5.TabIndex = 95
+        Label5.Text = "ITEM"
         ' 
         ' Label2
         ' 
@@ -140,33 +157,88 @@ Partial Class frmCA_ScorpoView
         Label2.TabIndex = 67
         Label2.Text = "ARTS  AND  SCIENCE"
         ' 
+        ' cmbItemName
+        ' 
+        cmbItemName.BackColor = Color.LightCyan
+        cmbItemName.FormattingEnabled = True
+        cmbItemName.Items.AddRange(New Object() {"Blouse", "Skirt", "Slacks"})
+        cmbItemName.Location = New Point(80, 176)
+        cmbItemName.Name = "cmbItemName"
+        cmbItemName.Size = New Size(173, 23)
+        cmbItemName.TabIndex = 94
+        ' 
+        ' lblPrice
+        ' 
+        lblPrice.AutoSize = True
+        lblPrice.BackColor = Color.LightCyan
+        lblPrice.Font = New Font("Arial Rounded MT Bold", 20F)
+        lblPrice.ForeColor = SystemColors.ActiveCaptionText
+        lblPrice.Location = New Point(98, 90)
+        lblPrice.Name = "lblPrice"
+        lblPrice.Size = New Size(48, 32)
+        lblPrice.TabIndex = 91
+        lblPrice.Text = "— "
+        ' 
+        ' cmbSizes
+        ' 
+        cmbSizes.BackColor = Color.LightCyan
+        cmbSizes.FormattingEnabled = True
+        cmbSizes.Items.AddRange(New Object() {"EXTRA SMALL", "SMALL", "MEDIUM", "LARGE", "EXTRA LARGE", "2XL", "3XL", "4XL", "5XL", "6XL"})
+        cmbSizes.Location = New Point(80, 264)
+        cmbSizes.Name = "cmbSizes"
+        cmbSizes.Size = New Size(173, 23)
+        cmbSizes.TabIndex = 93
+        ' 
         ' Label1
         ' 
         Label1.AutoSize = True
         Label1.ForeColor = SystemColors.Control
-        Label1.Location = New Point(49, 109)
+        Label1.Location = New Point(391, 159)
         Label1.Name = "Label1"
         Label1.Size = New Size(51, 15)
-        Label1.TabIndex = 2
+        Label1.TabIndex = 87
         Label1.Text = "GENDER"
         ' 
-        ' ComboBox1
+        ' lblStatus
         ' 
-        ComboBox1.FormattingEnabled = True
-        ComboBox1.Location = New Point(62, 131)
-        ComboBox1.Name = "ComboBox1"
-        ComboBox1.Size = New Size(173, 23)
-        ComboBox1.TabIndex = 1
+        lblStatus.AutoSize = True
+        lblStatus.Font = New Font("Sylfaen", 20.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        lblStatus.ForeColor = SystemColors.Control
+        lblStatus.Location = New Point(422, 264)
+        lblStatus.Name = "lblStatus"
+        lblStatus.Size = New Size(43, 35)
+        lblStatus.TabIndex = 92
+        lblStatus.Text = "—"
+        ' 
+        ' Label3
+        ' 
+        Label3.AutoSize = True
+        Label3.ForeColor = SystemColors.Control
+        Label3.Location = New Point(67, 246)
+        Label3.Name = "Label3"
+        Label3.Size = New Size(35, 15)
+        Label3.TabIndex = 88
+        Label3.Text = "SIZES"
+        ' 
+        ' Label4
+        ' 
+        Label4.AutoSize = True
+        Label4.ForeColor = SystemColors.Control
+        Label4.Location = New Point(400, 249)
+        Label4.Name = "Label4"
+        Label4.Size = New Size(47, 15)
+        Label4.TabIndex = 89
+        Label4.Text = "STATUS"
         ' 
         ' Label8
         ' 
         Label8.AutoSize = True
         Label8.Font = New Font("Segoe UI", 15F)
         Label8.ForeColor = SystemColors.Control
-        Label8.Location = New Point(348, 24)
+        Label8.Location = New Point(72, 94)
         Label8.Name = "Label8"
         Label8.Size = New Size(24, 28)
-        Label8.TabIndex = 75
+        Label8.TabIndex = 90
         Label8.Text = "₱"
         ' 
         ' frmCA_ScorpoView
@@ -182,19 +254,26 @@ Partial Class frmCA_ScorpoView
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         Panel1.ResumeLayout(False)
         Panel1.PerformLayout()
+        Panel2.ResumeLayout(False)
+        Panel2.PerformLayout()
         ResumeLayout(False)
     End Sub
 
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents Label7 As Label
     Friend WithEvents Label6 As Label
-    Friend WithEvents Label5 As Label
-    Friend WithEvents Label4 As Label
-    Friend WithEvents Label3 As Label
-    Friend WithEvents ComboBox2 As ComboBox
     Friend WithEvents Label2 As Label
+    Friend WithEvents Panel2 As Panel
+    Friend WithEvents rdoF As RadioButton
+    Friend WithEvents rdoM As RadioButton
+    Friend WithEvents Label5 As Label
+    Friend WithEvents cmbItemName As ComboBox
+    Friend WithEvents lblPrice As Label
+    Friend WithEvents cmbSizes As ComboBox
     Friend WithEvents Label1 As Label
-    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents lblStatus As Label
+    Friend WithEvents Label3 As Label
+    Friend WithEvents Label4 As Label
     Friend WithEvents Label8 As Label
+    Friend WithEvents rdoU As RadioButton
 End Class
