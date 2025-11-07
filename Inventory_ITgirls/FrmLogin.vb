@@ -17,14 +17,13 @@ Public Class FrmLogin
             Dim role As String = databaseConnection.dr("role").ToString()
 
             databaseConnection.currentUserId = databaseConnection.dr("user_id").ToString()
-            databaseConnection.currentUsername = databaseConnection.dr("user_id").ToString()
+            databaseConnection.currentUsername = databaseConnection.dr("username").ToString()
             databaseConnection.currentUserRole = role
             databaseConnection.isLoggedIn = True
 
             databaseConnection.dr.Close()
             databaseConnection.cn.Close()
             Call getAttempts()
-            frmUser.Show()
             Me.Hide()
             txtID.Clear()
             txtPassword.Clear()

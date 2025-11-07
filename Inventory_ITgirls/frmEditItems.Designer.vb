@@ -46,33 +46,37 @@ Partial Class frmEditItems
         txtLevel = New TextBox()
         txtSize = New TextBox()
         txtGender = New TextBox()
+        Label4 = New Label()
+        ComboBox1 = New ComboBox()
+        Panel3 = New Panel()
         Panel2.SuspendLayout()
         Panel1.SuspendLayout()
+        Panel3.SuspendLayout()
         SuspendLayout()
         ' 
         ' btnClear
         ' 
-        btnClear.BackColor = Color.Brown
+        btnClear.BackColor = Color.IndianRed
         btnClear.FlatAppearance.BorderSize = 0
         btnClear.FlatStyle = FlatStyle.Flat
-        btnClear.Font = New Font("Arial Rounded MT Bold", 9.75F)
-        btnClear.ForeColor = Color.White
-        btnClear.Location = New Point(136, 19)
+        btnClear.Font = New Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        btnClear.ForeColor = SystemColors.ButtonFace
+        btnClear.Location = New Point(16, 70)
         btnClear.Name = "btnClear"
-        btnClear.Size = New Size(95, 35)
+        btnClear.Size = New Size(254, 35)
         btnClear.TabIndex = 8
-        btnClear.Text = "Clear"
+        btnClear.Text = "CLEAR"
         btnClear.UseVisualStyleBackColor = False
         ' 
         ' TextBox2
         ' 
-        TextBox2.BackColor = Color.SaddleBrown
+        TextBox2.BackColor = Color.PowderBlue
         TextBox2.BorderStyle = BorderStyle.FixedSingle
         TextBox2.Font = New Font("Bookman Old Style", 12.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        TextBox2.ForeColor = Color.White
-        TextBox2.Location = New Point(-7, 11)
+        TextBox2.ForeColor = Color.DarkSlateGray
+        TextBox2.Location = New Point(-6, 16)
         TextBox2.Name = "TextBox2"
-        TextBox2.Size = New Size(366, 27)
+        TextBox2.Size = New Size(533, 27)
         TextBox2.TabIndex = 1000
         TextBox2.Text = "Edit Item"
         TextBox2.TextAlign = HorizontalAlignment.Center
@@ -81,7 +85,7 @@ Partial Class frmEditItems
         ' 
         lblDateAdded.AutoSize = True
         lblDateAdded.Font = New Font("Bookman Old Style", 9.75F, FontStyle.Bold)
-        lblDateAdded.Location = New Point(149, 347)
+        lblDateAdded.Location = New Point(244, 355)
         lblDateAdded.Name = "lblDateAdded"
         lblDateAdded.Size = New Size(11, 16)
         lblDateAdded.TabIndex = 18
@@ -91,7 +95,7 @@ Partial Class frmEditItems
         ' 
         Label10.AutoSize = True
         Label10.Font = New Font("Bookman Old Style", 9.75F, FontStyle.Bold)
-        Label10.Location = New Point(21, 347)
+        Label10.Location = New Point(115, 388)
         Label10.Name = "Label10"
         Label10.Size = New Size(109, 16)
         Label10.TabIndex = 17
@@ -101,7 +105,7 @@ Partial Class frmEditItems
         ' 
         lblStatus.AutoSize = True
         lblStatus.Font = New Font("Bookman Old Style", 9.75F, FontStyle.Bold)
-        lblStatus.Location = New Point(149, 314)
+        lblStatus.Location = New Point(244, 322)
         lblStatus.Name = "lblStatus"
         lblStatus.Size = New Size(0, 16)
         lblStatus.TabIndex = 16
@@ -110,7 +114,7 @@ Partial Class frmEditItems
         ' 
         Label9.AutoSize = True
         Label9.Font = New Font("Bookman Old Style", 9.75F, FontStyle.Bold)
-        Label9.Location = New Point(21, 314)
+        Label9.Location = New Point(115, 355)
         Label9.Name = "Label9"
         Label9.Size = New Size(64, 16)
         Label9.TabIndex = 15
@@ -118,8 +122,10 @@ Partial Class frmEditItems
         ' 
         ' txtPrice
         ' 
+        txtPrice.BackColor = Color.DarkSlateGray
         txtPrice.Font = New Font("Bookman Old Style", 9.75F, FontStyle.Bold)
-        txtPrice.Location = New Point(149, 164)
+        txtPrice.ForeColor = SystemColors.Menu
+        txtPrice.Location = New Point(244, 172)
         txtPrice.Name = "txtPrice"
         txtPrice.Size = New Size(175, 23)
         txtPrice.TabIndex = 3
@@ -128,7 +134,7 @@ Partial Class frmEditItems
         ' 
         Label8.AutoSize = True
         Label8.Font = New Font("Bookman Old Style", 9.75F, FontStyle.Bold)
-        Label8.Location = New Point(24, 165)
+        Label8.Location = New Point(119, 173)
         Label8.Name = "Label8"
         Label8.Size = New Size(54, 16)
         Label8.TabIndex = 13
@@ -136,8 +142,10 @@ Partial Class frmEditItems
         ' 
         ' txtStock
         ' 
+        txtStock.BackColor = Color.DarkSlateGray
         txtStock.Font = New Font("Bookman Old Style", 9.75F, FontStyle.Bold)
-        txtStock.Location = New Point(149, 91)
+        txtStock.ForeColor = SystemColors.Menu
+        txtStock.Location = New Point(244, 99)
         txtStock.Name = "txtStock"
         txtStock.Size = New Size(175, 23)
         txtStock.TabIndex = 2
@@ -146,7 +154,7 @@ Partial Class frmEditItems
         ' 
         Label7.AutoSize = True
         Label7.Font = New Font("Bookman Old Style", 9.75F, FontStyle.Bold)
-        Label7.Location = New Point(20, 94)
+        Label7.Location = New Point(115, 102)
         Label7.Name = "Label7"
         Label7.Size = New Size(123, 16)
         Label7.TabIndex = 11
@@ -154,13 +162,13 @@ Partial Class frmEditItems
         ' 
         ' Panel2
         ' 
-        Panel2.BackColor = Color.DarkSeaGreen
+        Panel2.BackColor = Color.DarkSlateGray
         Panel2.Controls.Add(btnBack)
         Panel2.Controls.Add(btnClear)
         Panel2.Controls.Add(btnSave)
-        Panel2.Location = New Point(31, 414)
+        Panel2.Location = New Point(24, 453)
         Panel2.Name = "Panel2"
-        Panel2.Size = New Size(351, 76)
+        Panel2.Size = New Size(526, 117)
         Panel2.TabIndex = 39
         ' 
         ' btnBack
@@ -168,34 +176,34 @@ Partial Class frmEditItems
         btnBack.BackColor = Color.DimGray
         btnBack.FlatAppearance.BorderSize = 0
         btnBack.FlatStyle = FlatStyle.Flat
-        btnBack.Font = New Font("Arial Rounded MT Bold", 9.75F)
-        btnBack.ForeColor = Color.White
-        btnBack.Location = New Point(239, 19)
+        btnBack.Font = New Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        btnBack.ForeColor = SystemColors.ButtonFace
+        btnBack.Location = New Point(276, 70)
         btnBack.Name = "btnBack"
-        btnBack.Size = New Size(96, 35)
+        btnBack.Size = New Size(231, 35)
         btnBack.TabIndex = 9
-        btnBack.Text = "Back"
+        btnBack.Text = "BACK"
         btnBack.UseVisualStyleBackColor = False
         ' 
         ' btnSave
         ' 
-        btnSave.BackColor = Color.SeaGreen
+        btnSave.BackColor = Color.CadetBlue
         btnSave.FlatAppearance.BorderSize = 0
         btnSave.FlatStyle = FlatStyle.Flat
-        btnSave.Font = New Font("Arial Rounded MT Bold", 9.75F)
-        btnSave.ForeColor = Color.White
+        btnSave.Font = New Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        btnSave.ForeColor = SystemColors.ButtonHighlight
         btnSave.Location = New Point(15, 19)
         btnSave.Name = "btnSave"
-        btnSave.Size = New Size(115, 35)
+        btnSave.Size = New Size(492, 35)
         btnSave.TabIndex = 7
-        btnSave.Text = "Save Changes"
+        btnSave.Text = "SAVE CHANGES"
         btnSave.UseVisualStyleBackColor = False
         ' 
         ' Label6
         ' 
         Label6.AutoSize = True
         Label6.Font = New Font("Bookman Old Style", 9.75F, FontStyle.Bold)
-        Label6.Location = New Point(24, 201)
+        Label6.Location = New Point(119, 209)
         Label6.Name = "Label6"
         Label6.Size = New Size(68, 16)
         Label6.TabIndex = 9
@@ -205,7 +213,7 @@ Partial Class frmEditItems
         ' 
         Label3.AutoSize = True
         Label3.Font = New Font("Bookman Old Style", 9.75F, FontStyle.Bold)
-        Label3.Location = New Point(21, 280)
+        Label3.Location = New Point(116, 288)
         Label3.Name = "Label3"
         Label3.Size = New Size(57, 16)
         Label3.TabIndex = 3
@@ -213,8 +221,10 @@ Partial Class frmEditItems
         ' 
         ' txtItemName
         ' 
+        txtItemName.BackColor = Color.DarkSlateGray
         txtItemName.Font = New Font("Bookman Old Style", 9.75F, FontStyle.Bold)
-        txtItemName.Location = New Point(149, 51)
+        txtItemName.ForeColor = SystemColors.Info
+        txtItemName.Location = New Point(244, 59)
         txtItemName.Name = "txtItemName"
         txtItemName.Size = New Size(175, 23)
         txtItemName.TabIndex = 0
@@ -223,7 +233,7 @@ Partial Class frmEditItems
         ' 
         Label2.AutoSize = True
         Label2.Font = New Font("Bookman Old Style", 9.75F, FontStyle.Bold)
-        Label2.Location = New Point(21, 59)
+        Label2.Location = New Point(116, 67)
         Label2.Name = "Label2"
         Label2.Size = New Size(90, 16)
         Label2.TabIndex = 1
@@ -233,7 +243,7 @@ Partial Class frmEditItems
         ' 
         Label5.AutoSize = True
         Label5.Font = New Font("Bookman Old Style", 9.75F, FontStyle.Bold)
-        Label5.Location = New Point(24, 240)
+        Label5.Location = New Point(119, 248)
         Label5.Name = "Label5"
         Label5.Size = New Size(48, 16)
         Label5.TabIndex = 7
@@ -241,7 +251,9 @@ Partial Class frmEditItems
         ' 
         ' Panel1
         ' 
-        Panel1.BackColor = Color.Azure
+        Panel1.BackColor = Color.LightCyan
+        Panel1.Controls.Add(ComboBox1)
+        Panel1.Controls.Add(Label4)
         Panel1.Controls.Add(cboReason)
         Panel1.Controls.Add(Label1)
         Panel1.Controls.Add(txtLevel)
@@ -261,19 +273,21 @@ Partial Class frmEditItems
         Panel1.Controls.Add(Label3)
         Panel1.Controls.Add(txtItemName)
         Panel1.Controls.Add(Label2)
-        Panel1.Location = New Point(31, 22)
+        Panel1.Location = New Point(24, 27)
         Panel1.Name = "Panel1"
-        Panel1.Size = New Size(351, 431)
+        Panel1.Size = New Size(526, 420)
         Panel1.TabIndex = 38
         ' 
         ' cboReason
         ' 
+        cboReason.BackColor = Color.DarkSlateGray
         cboReason.DropDownStyle = ComboBoxStyle.DropDownList
         cboReason.DropDownWidth = 190
         cboReason.Font = New Font("Bookman Old Style", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        cboReason.ForeColor = SystemColors.Menu
         cboReason.FormattingEnabled = True
         cboReason.Items.AddRange(New Object() {"Correction of Typographical Error", "Price Adjustment", "Size or Category Update"})
-        cboReason.Location = New Point(149, 130)
+        cboReason.Location = New Point(244, 138)
         cboReason.Name = "cboReason"
         cboReason.Size = New Size(175, 22)
         cboReason.TabIndex = 2
@@ -282,7 +296,7 @@ Partial Class frmEditItems
         ' 
         Label1.AutoSize = True
         Label1.Font = New Font("Bookman Old Style", 9.75F, FontStyle.Bold)
-        Label1.Location = New Point(24, 129)
+        Label1.Location = New Point(119, 137)
         Label1.Name = "Label1"
         Label1.Size = New Size(69, 16)
         Label1.TabIndex = 1004
@@ -290,41 +304,81 @@ Partial Class frmEditItems
         ' 
         ' txtLevel
         ' 
+        txtLevel.BackColor = Color.DarkSlateGray
         txtLevel.Font = New Font("Bookman Old Style", 9.75F, FontStyle.Bold)
-        txtLevel.Location = New Point(149, 273)
+        txtLevel.ForeColor = SystemColors.Window
+        txtLevel.Location = New Point(244, 281)
         txtLevel.Name = "txtLevel"
         txtLevel.Size = New Size(175, 23)
         txtLevel.TabIndex = 6
         ' 
         ' txtSize
         ' 
+        txtSize.BackColor = Color.DarkSlateGray
         txtSize.Font = New Font("Bookman Old Style", 9.75F, FontStyle.Bold)
-        txtSize.Location = New Point(149, 237)
+        txtSize.ForeColor = SystemColors.Window
+        txtSize.Location = New Point(244, 245)
         txtSize.Name = "txtSize"
         txtSize.Size = New Size(175, 23)
         txtSize.TabIndex = 5
         ' 
         ' txtGender
         ' 
+        txtGender.BackColor = Color.DarkSlateGray
         txtGender.Font = New Font("Bookman Old Style", 9.75F, FontStyle.Bold)
-        txtGender.Location = New Point(149, 201)
+        txtGender.ForeColor = SystemColors.MenuBar
+        txtGender.Location = New Point(244, 209)
         txtGender.Name = "txtGender"
         txtGender.Size = New Size(175, 23)
         txtGender.TabIndex = 4
+        ' 
+        ' Label4
+        ' 
+        Label4.AutoSize = True
+        Label4.Font = New Font("Bookman Old Style", 9.75F, FontStyle.Bold)
+        Label4.Location = New Point(116, 322)
+        Label4.Name = "Label4"
+        Label4.Size = New Size(63, 16)
+        Label4.TabIndex = 1005
+        Label4.Text = "Course :"
+        ' 
+        ' ComboBox1
+        ' 
+        ComboBox1.BackColor = Color.DarkSlateGray
+        ComboBox1.DropDownStyle = ComboBoxStyle.DropDownList
+        ComboBox1.DropDownWidth = 190
+        ComboBox1.Font = New Font("Bookman Old Style", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        ComboBox1.ForeColor = SystemColors.Menu
+        ComboBox1.FormattingEnabled = True
+        ComboBox1.Items.AddRange(New Object() {"Bachelor of Science in Information Technology / Computer Science", "Bachelor of Science in Psychology", "Bachelor of Science in Criminal Justice", "Bachelor of Science in Education", "Bachelor of Science in Tourism Management", "Bachelor of Science in Hospitality Management", "Bachelor of Science in Accountancy", "Bachelor of Science in Business Addministration", "Bachelor of Science in Customs Administration", "Bachelor of Science in Real States", "Bachelor of Science in Engineering"})
+        ComboBox1.Location = New Point(244, 321)
+        ComboBox1.Name = "ComboBox1"
+        ComboBox1.Size = New Size(175, 22)
+        ComboBox1.TabIndex = 1006
+        ' 
+        ' Panel3
+        ' 
+        Panel3.BackColor = Color.DarkSlateGray
+        Panel3.Controls.Add(Panel2)
+        Panel3.Controls.Add(Panel1)
+        Panel3.Location = New Point(24, 21)
+        Panel3.Name = "Panel3"
+        Panel3.Size = New Size(573, 586)
+        Panel3.TabIndex = 40
         ' 
         ' frmEditItems
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        BackColor = Color.DarkSlateGray
-        ClientSize = New Size(412, 505)
-        Controls.Add(Panel2)
-        Controls.Add(Panel1)
+        BackColor = Color.LightCyan
+        ClientSize = New Size(620, 619)
+        Controls.Add(Panel3)
         Name = "frmEditItems"
         Text = "frmEditItems"
         Panel2.ResumeLayout(False)
         Panel1.ResumeLayout(False)
         Panel1.PerformLayout()
+        Panel3.ResumeLayout(False)
         ResumeLayout(False)
     End Sub
 
@@ -352,4 +406,7 @@ Partial Class frmEditItems
     Friend WithEvents txtLevel As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents cboReason As ComboBox
+    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents Label4 As Label
+    Friend WithEvents Panel3 As Panel
 End Class

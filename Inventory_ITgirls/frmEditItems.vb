@@ -266,7 +266,7 @@ Public Class frmEditItems
             txtSize.Clear()
 
             If Me.Owner IsNot Nothing Then
-                Dim parentForm As frmStockManagement = TryCast(Me.Owner, frmStockManagement)
+                Dim parentForm As frmStockStorage = TryCast(Me.Owner, frmStockStorage)
                 If parentForm IsNot Nothing Then
                     parentForm.displayApplication()
                 End If
@@ -319,13 +319,13 @@ Public Class frmEditItems
     End Sub
 
     Private Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
-        If Me.Owner IsNot Nothing Then
-            Dim parentForm As frmStockManagement = TryCast(Me.Owner, frmStockManagement)
+        If Owner IsNot Nothing Then
+            Dim parentForm = TryCast(Owner, frmStockStorage)
             If parentForm IsNot Nothing Then
-                parentForm.displayApplication()
+                parentForm.displayApplication
             End If
         End If
-        Me.Close()
+        Close
     End Sub
 
     Private Sub frmEditItems_Load(sender As Object, e As EventArgs) Handles MyBase.Load

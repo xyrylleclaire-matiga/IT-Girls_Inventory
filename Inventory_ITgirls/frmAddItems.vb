@@ -64,13 +64,13 @@ Public Class frmAddItems
     End Sub
 
     Private Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
-        If Me.Owner IsNot Nothing Then
-            Dim parentForm As frmStockManagement = TryCast(Me.Owner, frmStockManagement)
+        If Owner IsNot Nothing Then
+            Dim parentForm = TryCast(Owner, frmStockStorage)
             If parentForm IsNot Nothing Then
-                parentForm.displayApplication()
+                parentForm.displayApplication
             End If
         End If
-        Me.Close()
+        Close
     End Sub
 
     Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
@@ -79,7 +79,7 @@ Public Class frmAddItems
 
     'ADDDDDDDDDDDDDDDD
     Private Sub addItems()
-        If txtItemName.Text.Trim() = "" Or txtStock.Text.Trim() = "" Or txtPrice.Text.Trim() = "" Or cboCategory.SelectedIndex = -1 Or cboGender.SelectedIndex = -1 Or cboLevel.SelectedIndex = -1 Or cboSize.SelectedIndex = -1 Or cboReason.SelectedIndex =- 1 Then
+        If txtItemName.Text.Trim() = "" Or txtStock.Text.Trim() = "" Or txtPrice.Text.Trim() = "" Or cboCategory.SelectedIndex = -1 Or cboGender.SelectedIndex = -1 Or cboLevel.SelectedIndex = -1 Or cboSize.SelectedIndex = -1 Or cboReason.SelectedIndex = -1 Then
             MsgBox("Please fill out all required fields.", vbExclamation)
             Exit Sub
         End If
@@ -174,7 +174,6 @@ Public Class frmAddItems
             If rowsAffected > 0 Then
                 Dim lastInsertedId As Long = databaseConnection.cmd.LastInsertedId
                 If databaseConnection.currentAdminId > 0 AndAlso databaseConnection.isLoggedIn Then
-                    ' Fetch the item details of the newly added uniform
                     Dim fetchSql As String = "SELECT item_name, level, gender, size FROM tbluniforms WHERE uniform_id = @id"
                     Dim itemName As String = "N/A"
                     Dim level As String = "N/A"
@@ -193,7 +192,6 @@ Public Class frmAddItems
                         End Using
                     End Using
 
-                    ' Insert log with proper item details
                     Dim logSql As String = "INSERT INTO tbluniformlogs(uniform_id, action, item_name, level, gender, size, changed_quantity, previous_quantity, new_quantity, admin_id, action_date, Reason) " &
                            "VALUES (@uniform_id, @action, @item_name, @level, @gender, @size, @changed_quantity, @previous_qty, @new_qty, @admin_id, @action_date, @reason)"
 
@@ -227,7 +225,7 @@ Public Class frmAddItems
                 cboReason.SelectedIndex = -1
 
                 If Me.Owner IsNot Nothing Then
-                    Dim parentForm As frmStockManagement = TryCast(Me.Owner, frmStockManagement)
+                    Dim parentForm As frmStockStorage = TryCast(Me.Owner, frmStockStorage)
                     If parentForm IsNot Nothing Then
                         parentForm.displayApplication()
                     End If
@@ -284,7 +282,7 @@ Public Class frmAddItems
         lblStatus.Text = status
     End Sub
 
-    Private Sub txtStock_TextChanged(sender As Object, e As EventArgs) Handles txtStock.TextChanged
+    Private Sub txtStock_TextChanged(sender As Object, e As EventArgs)
         statusColor()
     End Sub
 
@@ -296,11 +294,11 @@ Public Class frmAddItems
     End Sub
 
     'for PRICEEE -------------
-    Private Sub txtPrice_Enter(sender As Object, e As EventArgs) Handles txtPrice.Enter
+    Private Sub txtPrice_Enter(sender As Object, e As EventArgs)
         txtPrice.Clear()
     End Sub
 
-    Private Sub txtPrice_Leave(sender As Object, e As EventArgs) Handles txtPrice.Leave
+    Private Sub txtPrice_Leave(sender As Object, e As EventArgs)
         Dim value As Decimal = 0
         If Decimal.TryParse(txtPrice.Text, value) Then
             txtPrice.Text = "₱ " & value.ToString("N2")
@@ -310,6 +308,10 @@ Public Class frmAddItems
     End Sub
 
     Private Sub Panel2_Paint(sender As Object, e As PaintEventArgs) Handles Panel2.Paint
+
+    End Sub
+
+    Private Sub txtItemName_TextChanged(sender As Object, e As EventArgs) Handles txtItemName.TextChanged
 
     End Sub
     'for PRICEEE --------------

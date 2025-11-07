@@ -333,7 +333,7 @@ Public Class frmCorpoAttireView
         End While
 
         If parentForm IsNot Nothing Then
-            CType(parentForm, frmAdmin).openChildForm(New frmHomeAdmin)
+            CType(parentForm, frmAdmin).openChildForm(New frmAdminDashboard)
         Else
             MessageBox.Show("Cannot find the Admin form.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If

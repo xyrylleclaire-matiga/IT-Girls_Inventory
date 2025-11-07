@@ -111,7 +111,7 @@ Public Class frmRemove
                 End If
 
                 If Me.Owner IsNot Nothing Then
-                    Dim parentForm As frmStockManagement = TryCast(Me.Owner, frmStockManagement)
+                    Dim parentForm As frmStockStorage = TryCast(Me.Owner, frmStockStorage)
                     If parentForm IsNot Nothing Then
                         parentForm.displayApplication()
                     End If
@@ -136,7 +136,7 @@ Public Class frmRemove
 
     Private Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
         If Me.Owner IsNot Nothing Then
-            Dim parentForm As frmStockManagement = TryCast(Me.Owner, frmStockManagement)
+            Dim parentForm As frmStockStorage = TryCast(Me.Owner, frmStockStorage)
             If parentForm IsNot Nothing Then
                 parentForm.displayApplication()
             End If

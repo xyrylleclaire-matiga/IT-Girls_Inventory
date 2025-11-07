@@ -1,5 +1,7 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class frmAdmin
+﻿Imports System.Windows.Forms.DataVisualization.Charting
+
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+Partial Class frmAdminDashboard
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -22,19 +24,12 @@ Partial Class frmAdmin
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAdmin))
-        Dim ChartArea3 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New DataVisualization.Charting.ChartArea()
-        Dim Legend3 As System.Windows.Forms.DataVisualization.Charting.Legend = New DataVisualization.Charting.Legend()
-        Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New DataVisualization.Charting.Series()
-        Label3 = New Label()
-        btnBack = New Button()
-        btnSalesReport = New Button()
-        btnStockStorage = New Button()
-        PictureBox1 = New PictureBox()
-        btnAdminDashboard = New Button()
-        btnReturnedItems = New Button()
+        Dim ChartArea3 As ChartArea = New ChartArea()
+        Dim Legend3 As Legend = New Legend()
+        Dim Series3 As Series = New Series()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAdminDashboard))
+        PanelMain = New Panel()
         PictureBox2 = New PictureBox()
-        Panel1 = New Panel()
         Panel3 = New Panel()
         Panel4 = New Panel()
         Button5 = New Button()
@@ -55,21 +50,12 @@ Partial Class frmAdmin
         PanelLowStock = New Panel()
         Button1 = New Button()
         lblLowStockAlerts = New Label()
-        Chart1 = New DataVisualization.Charting.Chart()
-        Panel2 = New Panel()
+        Chart1 = New Chart()
         Label2 = New Label()
         Label1 = New Label()
         PictureBox3 = New PictureBox()
-        PanelMain = New Panel()
-        btnStockMonitoring = New Button()
-        btnStockReceiving = New Button()
-        btnStockIssuance = New Button()
-        btnStockReplenishment = New Button()
-        btnStockAuditing = New Button()
-        btnUserManagement = New Button()
-        CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
+        PanelMain.SuspendLayout()
         CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
-        Panel1.SuspendLayout()
         Panel3.SuspendLayout()
         Panel4.SuspendLayout()
         Panel17.SuspendLayout()
@@ -81,133 +67,45 @@ Partial Class frmAdmin
         Panel6.SuspendLayout()
         PanelLowStock.SuspendLayout()
         CType(Chart1, ComponentModel.ISupportInitialize).BeginInit()
-        Panel2.SuspendLayout()
         CType(PictureBox3, ComponentModel.ISupportInitialize).BeginInit()
-        PanelMain.SuspendLayout()
         SuspendLayout()
         ' 
-        ' Label3
+        ' PanelMain
         ' 
-        Label3.AutoSize = True
-        Label3.BackColor = Color.Transparent
-        Label3.Font = New Font("Arial Rounded MT Bold", 15.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label3.ForeColor = Color.DarkSlateGray
-        Label3.Location = New Point(791, 356)
-        Label3.Name = "Label3"
-        Label3.Size = New Size(0, 24)
-        Label3.TabIndex = 53
-        ' 
-        ' btnBack
-        ' 
-        btnBack.BackColor = Color.Teal
-        btnBack.FlatAppearance.BorderSize = 0
-        btnBack.FlatStyle = FlatStyle.Flat
-        btnBack.Font = New Font("Gadugi", 9.75F, FontStyle.Bold)
-        btnBack.ForeColor = Color.White
-        btnBack.Location = New Point(11, 696)
-        btnBack.Name = "btnBack"
-        btnBack.Size = New Size(180, 35)
-        btnBack.TabIndex = 2
-        btnBack.Text = "LOGOUT"
-        btnBack.UseVisualStyleBackColor = False
-        ' 
-        ' btnSalesReport
-        ' 
-        btnSalesReport.BackColor = Color.DarkSlateGray
-        btnSalesReport.FlatAppearance.BorderSize = 0
-        btnSalesReport.FlatStyle = FlatStyle.Flat
-        btnSalesReport.Font = New Font("Gadugi", 9.75F, FontStyle.Bold)
-        btnSalesReport.ForeColor = Color.White
-        btnSalesReport.Location = New Point(3, 554)
-        btnSalesReport.Name = "btnSalesReport"
-        btnSalesReport.Size = New Size(195, 49)
-        btnSalesReport.TabIndex = 1
-        btnSalesReport.Text = "REPORTS"
-        btnSalesReport.UseVisualStyleBackColor = False
-        ' 
-        ' btnStockStorage
-        ' 
-        btnStockStorage.BackColor = Color.DarkSlateGray
-        btnStockStorage.FlatAppearance.BorderSize = 0
-        btnStockStorage.FlatStyle = FlatStyle.Flat
-        btnStockStorage.Font = New Font("Gadugi", 9.75F, FontStyle.Bold)
-        btnStockStorage.ForeColor = Color.White
-        btnStockStorage.Location = New Point(-7, 219)
-        btnStockStorage.Name = "btnStockStorage"
-        btnStockStorage.Size = New Size(211, 35)
-        btnStockStorage.TabIndex = 0
-        btnStockStorage.Text = "STOCK STORAGE"
-        btnStockStorage.UseVisualStyleBackColor = False
-        ' 
-        ' PictureBox1
-        ' 
-        PictureBox1.BackColor = Color.DarkSlateGray
-        PictureBox1.Location = New Point(-1, -1)
-        PictureBox1.Name = "PictureBox1"
-        PictureBox1.Size = New Size(208, 753)
-        PictureBox1.TabIndex = 0
-        PictureBox1.TabStop = False
-        ' 
-        ' btnAdminDashboard
-        ' 
-        btnAdminDashboard.BackColor = Color.DarkSlateGray
-        btnAdminDashboard.FlatAppearance.BorderSize = 0
-        btnAdminDashboard.FlatStyle = FlatStyle.Flat
-        btnAdminDashboard.Font = New Font("Gadugi", 9.75F, FontStyle.Bold)
-        btnAdminDashboard.ForeColor = Color.White
-        btnAdminDashboard.Location = New Point(-8, 138)
-        btnAdminDashboard.Name = "btnAdminDashboard"
-        btnAdminDashboard.Size = New Size(211, 35)
-        btnAdminDashboard.TabIndex = 59
-        btnAdminDashboard.Text = "DASHBOARD"
-        btnAdminDashboard.UseVisualStyleBackColor = False
-        ' 
-        ' btnReturnedItems
-        ' 
-        btnReturnedItems.BackColor = Color.DarkSlateGray
-        btnReturnedItems.FlatAppearance.BorderSize = 0
-        btnReturnedItems.FlatStyle = FlatStyle.Flat
-        btnReturnedItems.Font = New Font("Gadugi", 9.75F, FontStyle.Bold)
-        btnReturnedItems.ForeColor = Color.White
-        btnReturnedItems.Location = New Point(-4, 502)
-        btnReturnedItems.Name = "btnReturnedItems"
-        btnReturnedItems.Size = New Size(206, 49)
-        btnReturnedItems.TabIndex = 69
-        btnReturnedItems.Text = "RETURNED ITEMS"
-        btnReturnedItems.UseVisualStyleBackColor = False
+        PanelMain.BackColor = Color.LightCyan
+        PanelMain.Controls.Add(Label2)
+        PanelMain.Controls.Add(PictureBox3)
+        PanelMain.Controls.Add(Label1)
+        PanelMain.Controls.Add(Chart1)
+        PanelMain.Controls.Add(Panel3)
+        PanelMain.Controls.Add(Panel17)
+        PanelMain.Controls.Add(Panel16)
+        PanelMain.Controls.Add(Panel15)
+        PanelMain.Controls.Add(Panel6)
+        PanelMain.Controls.Add(PictureBox2)
+        PanelMain.Location = New Point(-4, 0)
+        PanelMain.Name = "PanelMain"
+        PanelMain.Size = New Size(1138, 748)
+        PanelMain.TabIndex = 61
         ' 
         ' PictureBox2
         ' 
-        PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), Image)
-        PictureBox2.Location = New Point(6, -9)
+        PictureBox2.BackColor = Color.DarkSlateGray
+        PictureBox2.Location = New Point(-19, 0)
+        PictureBox2.Margin = New Padding(2)
         PictureBox2.Name = "PictureBox2"
-        PictureBox2.Size = New Size(189, 132)
-        PictureBox2.SizeMode = PictureBoxSizeMode.Zoom
-        PictureBox2.TabIndex = 70
+        PictureBox2.Size = New Size(1155, 101)
+        PictureBox2.TabIndex = 75
         PictureBox2.TabStop = False
-        ' 
-        ' Panel1
-        ' 
-        Panel1.BackColor = Color.LightCyan
-        Panel1.Controls.Add(Panel3)
-        Panel1.Controls.Add(Panel17)
-        Panel1.Controls.Add(Panel16)
-        Panel1.Controls.Add(Panel15)
-        Panel1.Controls.Add(Panel6)
-        Panel1.Controls.Add(Chart1)
-        Panel1.Location = New Point(0, 3)
-        Panel1.Name = "Panel1"
-        Panel1.Size = New Size(1138, 748)
-        Panel1.TabIndex = 60
         ' 
         ' Panel3
         ' 
         Panel3.BackColor = Color.DarkSlateGray
         Panel3.Controls.Add(Panel4)
-        Panel3.Location = New Point(912, 158)
+        Panel3.Location = New Point(913, 134)
         Panel3.Name = "Panel3"
         Panel3.Size = New Size(204, 137)
-        Panel3.TabIndex = 72
+        Panel3.TabIndex = 76
         ' 
         ' Panel4
         ' 
@@ -247,10 +145,10 @@ Partial Class frmAdmin
         ' 
         Panel17.BackColor = Color.Teal
         Panel17.Controls.Add(PanelPendingRequests)
-        Panel17.Location = New Point(687, 158)
+        Panel17.Location = New Point(688, 134)
         Panel17.Name = "Panel17"
         Panel17.Size = New Size(204, 137)
-        Panel17.TabIndex = 70
+        Panel17.TabIndex = 75
         ' 
         ' PanelPendingRequests
         ' 
@@ -290,10 +188,10 @@ Partial Class frmAdmin
         ' 
         Panel16.BackColor = Color.CadetBlue
         Panel16.Controls.Add(PanelTotalStocks)
-        Panel16.Location = New Point(462, 158)
+        Panel16.Location = New Point(463, 134)
         Panel16.Name = "Panel16"
         Panel16.Size = New Size(204, 137)
-        Panel16.TabIndex = 29
+        Panel16.TabIndex = 74
         ' 
         ' PanelTotalStocks
         ' 
@@ -333,10 +231,10 @@ Partial Class frmAdmin
         ' 
         Panel15.BackColor = Color.LightSeaGreen
         Panel15.Controls.Add(PanelTotalPullouts)
-        Panel15.Location = New Point(237, 158)
+        Panel15.Location = New Point(238, 134)
         Panel15.Name = "Panel15"
         Panel15.Size = New Size(204, 137)
-        Panel15.TabIndex = 73
+        Panel15.TabIndex = 78
         ' 
         ' PanelTotalPullouts
         ' 
@@ -377,10 +275,10 @@ Partial Class frmAdmin
         Panel6.BackColor = Color.MediumAquamarine
         Panel6.BorderStyle = BorderStyle.Fixed3D
         Panel6.Controls.Add(PanelLowStock)
-        Panel6.Location = New Point(16, 158)
+        Panel6.Location = New Point(17, 134)
         Panel6.Name = "Panel6"
         Panel6.Size = New Size(204, 137)
-        Panel6.TabIndex = 72
+        Panel6.TabIndex = 77
         ' 
         ' PanelLowStock
         ' 
@@ -419,35 +317,24 @@ Partial Class frmAdmin
         ' Chart1
         ' 
         Chart1.BackColor = Color.DarkSeaGreen
-        Chart1.BackGradientStyle = DataVisualization.Charting.GradientStyle.DiagonalRight
+        Chart1.BackGradientStyle = GradientStyle.DiagonalRight
         Chart1.BackSecondaryColor = Color.Transparent
         Chart1.BorderlineColor = Color.RosyBrown
-        Chart1.BorderlineDashStyle = DataVisualization.Charting.ChartDashStyle.DashDotDot
+        Chart1.BorderlineDashStyle = ChartDashStyle.DashDotDot
         ChartArea3.Name = "ChartArea1"
         Chart1.ChartAreas.Add(ChartArea3)
         Legend3.Name = "Legend1"
         Chart1.Legends.Add(Legend3)
-        Chart1.Location = New Point(16, 348)
+        Chart1.Location = New Point(16, 316)
         Chart1.Name = "Chart1"
-        Chart1.Palette = DataVisualization.Charting.ChartColorPalette.SeaGreen
+        Chart1.Palette = ChartColorPalette.SeaGreen
         Series3.ChartArea = "ChartArea1"
         Series3.Legend = "Legend1"
         Series3.Name = "Series1"
         Chart1.Series.Add(Series3)
         Chart1.Size = New Size(1100, 372)
-        Chart1.TabIndex = 130
+        Chart1.TabIndex = 131
         Chart1.Text = "Chart1"
-        ' 
-        ' Panel2
-        ' 
-        Panel2.BackColor = Color.DarkSlateGray
-        Panel2.Controls.Add(Label2)
-        Panel2.Controls.Add(Label1)
-        Panel2.Controls.Add(PictureBox3)
-        Panel2.Location = New Point(0, 0)
-        Panel2.Name = "Panel2"
-        Panel2.Size = New Size(1135, 101)
-        Panel2.TabIndex = 71
         ' 
         ' Label2
         ' 
@@ -455,11 +342,11 @@ Partial Class frmAdmin
         Label2.BackColor = Color.DarkSlateGray
         Label2.Font = New Font("Constantia", 18F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label2.ForeColor = Color.LightCyan
-        Label2.Location = New Point(322, 48)
+        Label2.Location = New Point(403, 50)
         Label2.Margin = New Padding(2, 0, 2, 0)
         Label2.Name = "Label2"
         Label2.Size = New Size(420, 29)
-        Label2.TabIndex = 80
+        Label2.TabIndex = 134
         Label2.Text = "INVENTORY MANAGEMENT SYSTEM"
         ' 
         ' Label1
@@ -468,144 +355,35 @@ Partial Class frmAdmin
         Label1.BackColor = Color.DarkSlateGray
         Label1.Font = New Font("Perpetua", 14.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Label1.ForeColor = SystemColors.ButtonHighlight
-        Label1.Location = New Point(408, 15)
+        Label1.Location = New Point(489, 17)
         Label1.Margin = New Padding(2, 0, 2, 0)
         Label1.Name = "Label1"
         Label1.Size = New Size(243, 22)
-        Label1.TabIndex = 79
+        Label1.TabIndex = 133
         Label1.Text = "BOOKSTORE DEPARTMENT"
         ' 
         ' PictureBox3
         ' 
+        PictureBox3.BackColor = Color.DarkSlateGray
         PictureBox3.Image = CType(resources.GetObject("PictureBox3.Image"), Image)
-        PictureBox3.Location = New Point(230, 1)
+        PictureBox3.Location = New Point(312, 0)
         PictureBox3.Name = "PictureBox3"
         PictureBox3.Size = New Size(112, 100)
         PictureBox3.SizeMode = PictureBoxSizeMode.Zoom
-        PictureBox3.TabIndex = 71
+        PictureBox3.TabIndex = 72
         PictureBox3.TabStop = False
         ' 
-        ' PanelMain
-        ' 
-        PanelMain.BackColor = Color.LightCyan
-        PanelMain.Controls.Add(Panel2)
-        PanelMain.Controls.Add(Panel1)
-        PanelMain.Location = New Point(204, 1)
-        PanelMain.Name = "PanelMain"
-        PanelMain.Size = New Size(1159, 754)
-        PanelMain.TabIndex = 58
-        ' 
-        ' btnStockMonitoring
-        ' 
-        btnStockMonitoring.BackColor = Color.DarkSlateGray
-        btnStockMonitoring.FlatAppearance.BorderSize = 0
-        btnStockMonitoring.FlatStyle = FlatStyle.Flat
-        btnStockMonitoring.Font = New Font("Gadugi", 9.75F, FontStyle.Bold)
-        btnStockMonitoring.ForeColor = Color.White
-        btnStockMonitoring.Location = New Point(-7, 306)
-        btnStockMonitoring.Name = "btnStockMonitoring"
-        btnStockMonitoring.Size = New Size(211, 35)
-        btnStockMonitoring.TabIndex = 71
-        btnStockMonitoring.Text = "STOCK MONITORING"
-        btnStockMonitoring.UseVisualStyleBackColor = False
-        ' 
-        ' btnStockReceiving
-        ' 
-        btnStockReceiving.BackColor = Color.DarkSlateGray
-        btnStockReceiving.FlatAppearance.BorderSize = 0
-        btnStockReceiving.FlatStyle = FlatStyle.Flat
-        btnStockReceiving.Font = New Font("Gadugi", 9.75F, FontStyle.Bold)
-        btnStockReceiving.ForeColor = Color.White
-        btnStockReceiving.Location = New Point(-7, 178)
-        btnStockReceiving.Name = "btnStockReceiving"
-        btnStockReceiving.Size = New Size(211, 35)
-        btnStockReceiving.TabIndex = 131
-        btnStockReceiving.Text = "STOCK RECEIVING"
-        btnStockReceiving.UseVisualStyleBackColor = False
-        ' 
-        ' btnStockIssuance
-        ' 
-        btnStockIssuance.BackColor = Color.DarkSlateGray
-        btnStockIssuance.FlatAppearance.BorderSize = 0
-        btnStockIssuance.FlatStyle = FlatStyle.Flat
-        btnStockIssuance.Font = New Font("Gadugi", 9.75F, FontStyle.Bold)
-        btnStockIssuance.ForeColor = Color.White
-        btnStockIssuance.Location = New Point(-7, 264)
-        btnStockIssuance.Name = "btnStockIssuance"
-        btnStockIssuance.Size = New Size(211, 35)
-        btnStockIssuance.TabIndex = 132
-        btnStockIssuance.Text = "STOCK ISSUANCE"
-        btnStockIssuance.UseVisualStyleBackColor = False
-        ' 
-        ' btnStockReplenishment
-        ' 
-        btnStockReplenishment.BackColor = Color.DarkSlateGray
-        btnStockReplenishment.FlatAppearance.BorderSize = 0
-        btnStockReplenishment.FlatStyle = FlatStyle.Flat
-        btnStockReplenishment.Font = New Font("Gadugi", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        btnStockReplenishment.ForeColor = Color.White
-        btnStockReplenishment.Location = New Point(-2, 395)
-        btnStockReplenishment.Name = "btnStockReplenishment"
-        btnStockReplenishment.Size = New Size(206, 49)
-        btnStockReplenishment.TabIndex = 133
-        btnStockReplenishment.Text = "STOCK REPLENISHMENT"
-        btnStockReplenishment.UseVisualStyleBackColor = False
-        ' 
-        ' btnStockAuditing
-        ' 
-        btnStockAuditing.BackColor = Color.DarkSlateGray
-        btnStockAuditing.FlatAppearance.BorderSize = 0
-        btnStockAuditing.FlatStyle = FlatStyle.Flat
-        btnStockAuditing.Font = New Font("Gadugi", 9.75F, FontStyle.Bold)
-        btnStockAuditing.ForeColor = Color.White
-        btnStockAuditing.Location = New Point(-8, 449)
-        btnStockAuditing.Name = "btnStockAuditing"
-        btnStockAuditing.Size = New Size(206, 49)
-        btnStockAuditing.TabIndex = 134
-        btnStockAuditing.Text = "STOCK AUDITING"
-        btnStockAuditing.UseVisualStyleBackColor = False
-        ' 
-        ' btnUserManagement
-        ' 
-        btnUserManagement.BackColor = Color.DarkSlateGray
-        btnUserManagement.FlatAppearance.BorderSize = 0
-        btnUserManagement.FlatStyle = FlatStyle.Flat
-        btnUserManagement.Font = New Font("Gadugi", 9.75F, FontStyle.Bold)
-        btnUserManagement.ForeColor = Color.White
-        btnUserManagement.Location = New Point(-6, 609)
-        btnUserManagement.Name = "btnUserManagement"
-        btnUserManagement.Size = New Size(209, 49)
-        btnUserManagement.TabIndex = 135
-        btnUserManagement.Text = "USER MANAGEMENT"
-        btnUserManagement.UseVisualStyleBackColor = False
-        ' 
-        ' frmAdmin
+        ' frmAdminDashboard
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        BackColor = Color.DarkSlateGray
-        ClientSize = New Size(1333, 749)
-        Controls.Add(btnUserManagement)
-        Controls.Add(btnStockAuditing)
-        Controls.Add(btnStockReplenishment)
-        Controls.Add(btnStockIssuance)
-        Controls.Add(btnStockReceiving)
-        Controls.Add(btnStockMonitoring)
-        Controls.Add(btnAdminDashboard)
-        Controls.Add(PictureBox2)
-        Controls.Add(btnReturnedItems)
+        ClientSize = New Size(1122, 709)
         Controls.Add(PanelMain)
-        Controls.Add(btnSalesReport)
-        Controls.Add(Label3)
-        Controls.Add(btnStockStorage)
-        Controls.Add(btnBack)
-        Controls.Add(PictureBox1)
-        Name = "frmAdmin"
-        StartPosition = FormStartPosition.CenterScreen
-        Text = "Admin"
-        CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
+        Name = "frmAdminDashboard"
+        Text = "frmAdminDashboard"
+        PanelMain.ResumeLayout(False)
+        PanelMain.PerformLayout()
         CType(PictureBox2, ComponentModel.ISupportInitialize).EndInit()
-        Panel1.ResumeLayout(False)
         Panel3.ResumeLayout(False)
         Panel4.ResumeLayout(False)
         Panel4.PerformLayout()
@@ -622,23 +400,16 @@ Partial Class frmAdmin
         PanelLowStock.ResumeLayout(False)
         PanelLowStock.PerformLayout()
         CType(Chart1, ComponentModel.ISupportInitialize).EndInit()
-        Panel2.ResumeLayout(False)
-        Panel2.PerformLayout()
         CType(PictureBox3, ComponentModel.ISupportInitialize).EndInit()
-        PanelMain.ResumeLayout(False)
         ResumeLayout(False)
-        PerformLayout()
     End Sub
-    Friend WithEvents Label3 As Label
-    Friend WithEvents btnBack As Button
-    Friend WithEvents btnSalesReport As Button
-    Friend WithEvents btnStockStorage As Button
-    Friend WithEvents PictureBox1 As PictureBox
-    Friend WithEvents btnAdminDashboard As Button
-    Friend WithEvents btnReturnedItems As Button
+
+    Friend WithEvents PanelMain As Panel
     Friend WithEvents PictureBox2 As PictureBox
-    Friend WithEvents Panel1 As Panel
-    Friend WithEvents Panel2 As Panel
+    Friend WithEvents Panel3 As Panel
+    Friend WithEvents Panel4 As Panel
+    Friend WithEvents Button5 As Button
+    Friend WithEvents lblMonthlyIssuance As Label
     Friend WithEvents Panel17 As Panel
     Friend WithEvents PanelPendingRequests As Panel
     Friend WithEvents Button4 As Button
@@ -655,19 +426,8 @@ Partial Class frmAdmin
     Friend WithEvents PanelLowStock As Panel
     Friend WithEvents Button1 As Button
     Friend WithEvents lblLowStockAlerts As Label
-    Friend WithEvents PanelMain As Panel
-    Friend WithEvents PictureBox3 As PictureBox
+    Friend WithEvents Chart1 As Chart
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
-    Friend WithEvents btnStockMonitoring As Button
-    Friend WithEvents Chart1 As DataVisualization.Charting.Chart
-    Friend WithEvents btnStockReceiving As Button
-    Friend WithEvents btnStockIssuance As Button
-    Friend WithEvents btnStockReplenishment As Button
-    Friend WithEvents btnStockAuditing As Button
-    Friend WithEvents btnUserManagement As Button
-    Friend WithEvents Panel3 As Panel
-    Friend WithEvents Panel4 As Panel
-    Friend WithEvents Button5 As Button
-    Friend WithEvents lblMonthlyIssuance As Label
+    Friend WithEvents PictureBox3 As PictureBox
 End Class

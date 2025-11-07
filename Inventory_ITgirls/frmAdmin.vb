@@ -51,11 +51,11 @@ Public Class frmAdmin
     End Sub
 
     Private Sub PanelPendingRequests_Paint(sender As Object, e As PaintEventArgs) Handles PanelPendingRequests.Paint
-        Dim pnl As Panel = DirectCast(sender, Panel)
-        Dim radius As Integer = 10
+        Dim pnl = DirectCast(sender, Panel)
+        Dim radius = 10
         e.Graphics.SmoothingMode = Drawing2D.SmoothingMode.AntiAlias
 
-        Dim path As New Drawing2D.GraphicsPath()
+        Dim path As New Drawing2D.GraphicsPath
         path.StartFigure()
         path.AddArc(0, 0, radius, radius, 180, 90)
         path.AddArc(pnl.Width - radius, 0, radius, radius, 270, 90)
@@ -65,11 +65,6 @@ Public Class frmAdmin
 
         pnl.Region = New Region(path)
     End Sub
-
-
-
-
-
 
 
     Private activeButton As Button = Nothing
@@ -103,18 +98,18 @@ Public Class frmAdmin
         End If
     End Sub
 
-    Private Sub btnStockManagement_Click(sender As Object, e As EventArgs) Handles btnStockManagement.Click
-        openChildForm(New frmStockManagement)
-        SetActiveButton(btnStockManagement)
+    Private Sub btnStockStorage_Click(sender As Object, e As EventArgs) Handles btnStockStorage.Click
+        openChildForm(New frmStockStorage)
+        SetActiveButton(btnStockStorage)
     End Sub
 
     Private Sub btnSalesReport_Click(sender As Object, e As EventArgs) Handles btnSalesReport.Click
-        openChildForm(New frmSalesReport)
+        openChildForm(New frmAdminReports)
         SetActiveButton(btnSalesReport)
     End Sub
 
-    Private Sub PictureBox7_Click(sender As Object, e As EventArgs) Handles picSchoolUniform.Click
-        Dim borderColor As Color = Color.Blue
+    Private Sub PictureBox7_Click(sender As Object, e As EventArgs)
+        Dim borderColor = Color.Blue
         openChildForm(New frmUniformView)
     End Sub
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
@@ -137,56 +132,14 @@ Public Class frmAdmin
 
     End Sub
 
-    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles btnHome.Click
-        openChildForm(New frmHomeAdmin)
-        SetActiveButton(btnHome)
+    Private Sub btnAdminDashboard_Click_1(sender As Object, e As EventArgs) Handles btnAdminDashboard.Click
+        openChildForm(New frmAdminDashboard)
+        SetActiveButton(btnAdminDashboard)
     End Sub
 
     Private originalSizes As New Dictionary(Of PictureBox, Size)
     Private originalPositions As New Dictionary(Of PictureBox, Point)
 
-    Private Sub frmAdmin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        For Each pic In {picPEUniform, picSchoolUniform, picCorpo}
-            originalSizes(pic) = pic.Size
-            originalPositions(pic) = pic.Location
-            AddHandler pic.MouseEnter, AddressOf PictureHover
-            AddHandler pic.MouseLeave, AddressOf PictureLeave
-        Next
-    End Sub
-
-    Private Sub PictureHover(sender As Object, e As EventArgs)
-        Dim pic As PictureBox = CType(sender, PictureBox)
-        pic.Size = New Size(originalSizes(pic).Width + 5, originalSizes(pic).Height + 5)
-        pic.Location = New Point(originalPositions(pic).X, originalPositions(pic).Y - 5)
-        pic.Cursor = Cursors.Hand
-        pic.BringToFront()
-        pic.BackColor = Color.Teal
-
-        Select Case pic.Name
-            Case "picPEUniform"
-                AnimateButton(btnPeUniform, True)
-            Case "picSchoolUniform"
-                AnimateButton(btnSchoolUniform, True)
-            Case "picCorpo"
-                AnimateButton(btnCorporateAttire, True)
-        End Select
-    End Sub
-
-    Private Sub PictureLeave(sender As Object, e As EventArgs)
-        Dim pic As PictureBox = CType(sender, PictureBox)
-        pic.Size = originalSizes(pic)
-        pic.Location = originalPositions(pic)
-        pic.BackColor = Color.LightGray
-
-        Select Case pic.Name
-            Case "picPEUniform"
-                AnimateButton(btnPeUniform, False)
-            Case "picSchoolUniform"
-                AnimateButton(btnSchoolUniform, False)
-            Case "picCorpo"
-                AnimateButton(btnCorporateAttire, False)
-        End Select
-    End Sub
 
     Private Sub AnimateButton(btn As Button, isHover As Boolean)
         If isHover Then
@@ -205,35 +158,50 @@ Public Class frmAdmin
 
     End Sub
 
-    Private Sub btnCorporateAttire_Click(sender As Object, e As EventArgs) Handles btnCorporateAttire.Click
+    Private Sub btnCorporateAttire_Click(sender As Object, e As EventArgs)
         openChildForm(New frmCorpoAttireView)
     End Sub
 
-    Private Sub picCorpo_Click(sender As Object, e As EventArgs) Handles picCorpo.Click
+    Private Sub picCorpo_Click(sender As Object, e As EventArgs)
         openChildForm(New frmCorpoAttireView)
     End Sub
 
-    Private Sub btnPeUniform_Click(sender As Object, e As EventArgs) Handles btnPeUniform.Click
+    Private Sub btnPeUniform_Click(sender As Object, e As EventArgs)
         openChildForm(New frmPEUniformView)
     End Sub
 
-    Private Sub picPEUniform_Click(sender As Object, e As EventArgs) Handles picPEUniform.Click
+    Private Sub picPEUniform_Click(sender As Object, e As EventArgs)
         openChildForm(New frmPEUniformView)
     End Sub
 
-    Private Sub btnSchoolUniform_Click(sender As Object, e As EventArgs) Handles btnSchoolUniform.Click
+    Private Sub btnSchoolUniform_Click(sender As Object, e As EventArgs)
         openChildForm(New frmUniformView)
     End Sub
 
-    Private Sub btnPullOut_Click(sender As Object, e As EventArgs) Handles btnPullOut.Click
-        openChildForm(New TotalPullouts)
-        SetActiveButton(btnPullOut)
+    Private Sub btnReturnedItems_Click(sender As Object, e As EventArgs) Handles btnReturnedItems.Click
+        openChildForm(New frmAdminReturnedItems)
+        SetActiveButton(btnReturnedItems)
     End Sub
 
-    Private Sub btnHistory_Click(sender As Object, e As EventArgs) Handles btnHistory.Click
-        openChildForm(New frmHistory)
-        SetActiveButton(btnHistory)
+    Private Sub btnHistory_Click(sender As Object, e As EventArgs) Handles btnStockMonitoring.Click
+        openChildForm(New frmAdminStockMonitoring)
+        SetActiveButton(btnStockMonitoring)
 
     End Sub
 
+    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
+
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+
+    End Sub
+
+    Private Sub Panel6_Paint(sender As Object, e As PaintEventArgs) Handles Panel6.Paint
+
+    End Sub
+
+    Private Sub Panel2_Paint(sender As Object, e As PaintEventArgs) Handles Panel2.Paint
+
+    End Sub
 End Class
